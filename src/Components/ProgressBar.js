@@ -25,6 +25,7 @@ function ProgressBar(props) {
       default:
         break;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="progressBar">

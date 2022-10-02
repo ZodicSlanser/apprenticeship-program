@@ -1,105 +1,117 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import "../styles.css";
 function ProgressBar(props) {
-  // props: descriptionDone, guideDone, surveyDone, settingsDone; All Boolean
-  const location = useLocation();
-  const [activity, setActivity] = useState(1);
+  const [activity, setActivity] = useState(0);
+  const [descriptionDone, setDescriptionDone] = useState(false);
+  const [typeDone, setTypeDone] = useState(false);
+  const [rolesDone, setRolesDone] = useState(false);
+  const [adminDone, setAdminDone] = useState(false);
+  const [timelineDone, setTimelineDone] = useState(false);
 
   useEffect(() => {
-    const path = location.pathname;
-    //Pathnames subject to change
-    switch (path) {
-      case "/addinternship/description":
-        setActivity(1);
-        break;
-      case "/addinternship/guide":
-        setActivity(2);
-        break;
-      case "/addinternship/survey":
-        setActivity(3);
-        break;
-      case "/addinternship/settings":
-        setActivity(4);
-        break;
-      default:
-        break;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    props.invokeActivity([activity, setActivity]);
+    props.invokeDescription([descriptionDone, setDescriptionDone]);
+    props.invokeType([typeDone, setTypeDone]);
+    props.invokeRoles([rolesDone, setRolesDone]);
+    props.invokeAdmin([adminDone, setAdminDone]);
+    props.invokeTimeline([timelineDone, setTimelineDone]);
+  }, [
+    props,
+    activity,
+    descriptionDone,
+    typeDone,
+    rolesDone,
+    adminDone,
+    timelineDone,
+  ]);
+
   return (
     <div className="progressBar">
       {/* description */}
-      <div className="iconText">
+      <div
+        className="iconText"
+        style={{ opacity: activity === 1 ? null : 0.3 }}
+      >
         <div className="tickCircle">
           <img
-            src={
-              props.descriptionDone
-                ? "./tick-circle.png"
-                : "./untick-circle.png"
-            }
+            src={descriptionDone ? "./tick-circle.png" : "./untick-circle.png"}
             alt=""
           ></img>
         </div>
         <p
           className="text"
-          style={{ color: props.descriptionDone ? "#793EF5" : "#1E1E1E" }}
+          style={{ color: descriptionDone ? "#793EF5" : "#1E1E1E" }}
         >
-          Internship Description
+          {"Company Title & Desc."}
         </p>
       </div>
-      {/* guide */}
+      {/* Type */}
       <div
         className="iconText"
         style={{ opacity: activity === 2 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={props.guideDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={typeDone ? "./tick-circle.png" : "./untick-circle.png"}
             alt=""
           ></img>
         </div>
-        <p
-          className="text"
-          style={{ color: props.guideDone ? "#793EF5" : "#1E1E1E" }}
-        >
-          Internship Guide
+        <p className="text" style={{ color: typeDone ? "#793EF5" : "#1E1E1E" }}>
+          Team Type{" "}
         </p>
       </div>
-      {/* survey */}
+      {/* Roles */}
       <div
         className="iconText"
         style={{ opacity: activity === 3 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={props.surveyDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={rolesDone ? "./tick-circle.png" : "./untick-circle.png"}
             alt=""
           ></img>
         </div>
         <p
           className="text"
-          style={{ color: props.surveyDone ? "#793EF5" : "#1E1E1E" }}
+          style={{ color: rolesDone ? "#793EF5" : "#1E1E1E" }}
         >
-          Surveys
+          Team Roles
         </p>
       </div>
-      {/* settings */}
+      {/* Admin */}
       <div
         className="iconText"
         style={{ opacity: activity === 4 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={props.done ? "./tick-circle.png" : "./untick-circle.png"}
+            src={adminDone ? "./tick-circle.png" : "./untick-circle.png"}
             alt=""
           ></img>
         </div>
         <p
           className="text"
-          style={{ color: props.done ? "#793EF5" : "#1E1E1E" }}
+          style={{ color: adminDone ? "#793EF5" : "#1E1E1E" }}
         >
-          Settings
+          Team Admin
+        </p>
+      </div>
+      {/* Timeline */}
+      <div
+        className="iconText"
+        style={{ opacity: activity === 5 ? null : 0.3 }}
+      >
+        <div className="tickCircle">
+          <img
+            src={timelineDone ? "./tick-circle.png" : "./untick-circle.png"}
+            alt=""
+          ></img>
+        </div>
+        <p
+          className="text"
+          style={{ color: timelineDone ? "#793EF5" : "#1E1E1E" }}
+        >
+          Timeline
         </p>
       </div>
     </div>

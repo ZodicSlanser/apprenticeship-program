@@ -65,6 +65,8 @@ function App() {
         tabindex="-1"
       >
         Description
+        <button onClick={() => invokeDescription(null, true)}>done</button>
+        <button onClick={() => invokeDescription(null, false)}>not done</button>
       </div>
       <div
         style={{ width: "600px", height: "100px", backgroundColor: "blue" }}
@@ -73,6 +75,8 @@ function App() {
         tabindex="-1"
       >
         Type
+        <button onClick={() => invokeType(null, true)}>done</button>
+        <button onClick={() => invokeType(null, false)}>not done</button>
       </div>
       <div
         style={{ width: "600px", height: "100px", backgroundColor: "green" }}
@@ -81,6 +85,8 @@ function App() {
         tabindex="-1"
       >
         Roles
+        <button onClick={() => invokeRoles(null, true)}>done</button>
+        <button onClick={() => invokeRoles(null, false)}>not done</button>
       </div>
       <div
         style={{ width: "600px", height: "100px", backgroundColor: "yellow" }}
@@ -89,6 +95,8 @@ function App() {
         tabindex="-1"
       >
         Admin
+        <button onClick={() => invokeAdmin(null, true)}>done</button>
+        <button onClick={() => invokeAdmin(null, false)}>not done</button>
       </div>
       <div
         style={{ width: "600px", height: "100px", backgroundColor: "grey" }}
@@ -97,6 +105,8 @@ function App() {
         tabindex="-1"
       >
         Timeline
+        <button onClick={() => invokeTimeline(null, true)}>done</button>
+        <button onClick={() => invokeTimeline(null, false)}>not done</button>
       </div>
     </>
   );

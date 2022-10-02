@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles.css";
+
 function ProgressBar(props) {
   const [activity, setActivity] = useState(0);
   const [descriptionDone, setDescriptionDone] = useState(false);
@@ -30,11 +31,13 @@ function ProgressBar(props) {
       {/* description */}
       <div
         className="iconText"
-        style={{ opacity: activity === 1 ? null : 0.3 }}
+        style={{
+          opacity: descriptionDone ? null : activity === 1 ? null : 0.3,
+        }}
       >
         <div className="tickCircle">
           <img
-            src={descriptionDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={descriptionDone ? "./tick-circle.svg" : "./untick-circle.svg"}
             alt=""
           ></img>
         </div>
@@ -48,11 +51,11 @@ function ProgressBar(props) {
       {/* Type */}
       <div
         className="iconText"
-        style={{ opacity: activity === 2 ? null : 0.3 }}
+        style={{ opacity: typeDone ? null : activity === 2 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={typeDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={typeDone ? "./tick-circle.svg" : "./untick-circle.svg"}
             alt=""
           ></img>
         </div>
@@ -63,11 +66,11 @@ function ProgressBar(props) {
       {/* Roles */}
       <div
         className="iconText"
-        style={{ opacity: activity === 3 ? null : 0.3 }}
+        style={{ opacity: rolesDone ? null : activity === 3 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={rolesDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={rolesDone ? "./tick-circle.svg" : "./untick-circle.svg"}
             alt=""
           ></img>
         </div>
@@ -81,11 +84,11 @@ function ProgressBar(props) {
       {/* Admin */}
       <div
         className="iconText"
-        style={{ opacity: activity === 4 ? null : 0.3 }}
+        style={{ opacity: adminDone ? null : activity === 4 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={adminDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={adminDone ? "./tick-circle.svg" : "./untick-circle.svg"}
             alt=""
           ></img>
         </div>
@@ -99,11 +102,11 @@ function ProgressBar(props) {
       {/* Timeline */}
       <div
         className="iconText"
-        style={{ opacity: activity === 5 ? null : 0.3 }}
+        style={{ opacity: timelineDone ? null : activity === 5 ? null : 0.3 }}
       >
         <div className="tickCircle">
           <img
-            src={timelineDone ? "./tick-circle.png" : "./untick-circle.png"}
+            src={timelineDone ? "./tick-circle.svg" : "./untick-circle.svg"}
             alt=""
           ></img>
         </div>

@@ -74,16 +74,9 @@ code {
 .Scaffolding {
   display: flex;
   flex-direction: column;
-
+  align-items: flex-start;
   padding: 0px;
-  gap: 16px;
+  gap: 20px;
   isolation: isolate;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  overflow-y: scroll;
-  width: 654px;
-  height: 696px;
-}
-.Scaffolding::-webkit-scrollbar {
-  display: none;
+  width: 770px;
 }

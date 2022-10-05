@@ -17,8 +17,8 @@ const validateApprenticeshipData = require("./validation");
 
 function addApprenticeship(Apprenticeship) {
     // if(!validateApprenticeshipData(Apprenticeship))
-    //     throw new Error("Invalid Apprenticeship data");
-    return ApprenticeshipCollection.doc(Apprenticeship._id).set(Apprenticeship).then(() => {
+    //     console.log"Invalid Apprenticeship data");
+    return ApprenticeshipCollection.doc(Apprenticeship.id).set({...Apprenticeship}).then(() => {
         console.log("Apprenticeship added");
     }
     ).catch((error) => {
@@ -28,37 +28,35 @@ function addApprenticeship(Apprenticeship) {
 }
 
 //create map of data
-role1 = new Roles(
+const roles = [ new Roles(
     2,
     "des",
     "java",
     "c#",
     8,
-    "cairo"
-).exp()
-role2 = new Roles(
+    "cairo"),
+    new Roles(
     2,
     "des",
     "java",
     "c#",
     8,
-    "cairo"
-).exp()
-member1 = new TeamMember(
+    "cairo") ];
+const members = [
+    new TeamMember(
     "ali",
     "photo-link",
     "www.github.com"
-).exp()
-member2 = new TeamMember(
+), new TeamMember(
     "mahmoud",
     "photo-link",
     "www.github.com"
-).exp()
-member3 = new TeamMember(
+), new TeamMember(
     "omar",
     "photo-link",
     "www.github.com"
-).exp()
+)];
+
 apper=new Apprenticeship(
     ApprenticeshipCollection.doc().id,
     "logo-link",
@@ -67,9 +65,9 @@ apper=new Apprenticeship(
     "app desc",
     "video-link",
     1,
-    [role1,role2],
-    [member1, member2, member3],
+    roles,
+    members,
     admin.firestore.Timestamp.fromDate(new Date()),
     admin.firestore.Timestamp.fromDate(new Date())
 )
-addApprenticeship(apper.exp());
+addApprenticeship(apper);

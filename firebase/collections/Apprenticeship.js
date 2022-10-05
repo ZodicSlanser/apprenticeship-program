@@ -1,115 +1,21 @@
 //create class using prototype
-
 class Apprenticeship {
-    constructor(_id, _logo, _title, _compDesc, _appDesc, _introVideo, _teamType, _roles, _members, _startDate,_endDate ) {
-        this._id = _id;
-        this._logo = _logo;
-        this._title = _title;
-        this._compDesc = _compDesc;
-        this._appDesc = _appDesc;
-        this._introVideo = _introVideo;
-        this._teamType = _teamType;
-        this._roles = _roles;
-        this._members = _members;
-        this._startDate = _startDate;
-        this._endDate = _endDate;
-        this.exp()
-
-    }
-
-
-    get id() {
-        return this._id;
-    }
-
-    set id(value) {
-        this._id = value;
-    }
-
-    get logo() {
-        return this._logo;
-    }
-
-    set logo(value) {
-        this._logo = value;
-    }
-
-    get title() {
-        return this._title;
-    }
-
-    set title(value) {
-        this._title = value;
-    }
-
-    get compDesc() {
-        return this._compDesc;
-    }
-
-    set compDesc(value) {
-        this._compDesc = value;
-    }
-
-    get appDesc() {
-        return this._appDesc;
-    }
-
-    set appDesc(value) {
-        this._appDesc = value;
-    }
-
-    get introVideo() {
-        return this._introVideo;
-    }
-
-    set introVideo(value) {
-        this._introVideo = value;
-    }
-
-    get teamType() {
-        return this._teamType;
-    }
-
-    set teamType(value) {
-        this._teamType = value;
-    }
-
-    get roles() {
-        return this._roles;
-    }
-
-    set roles(value) {
-        this._roles = value;
-    }
-
-    get members() {
-        return this._members;
-    }
-
-    set members(value) {
-        this._members = value;
-    }
-
-    get startDate() {
-        return this._startDate;
-    }
-
-    set startDate(value) {
-        this._startDate = value;
-    }
-
-    get endDate() {
-        return this._endDate;
-    }
-
-    set endDate(value) {
-        this._endDate = value;
-    }
-
-    exp(){
-        return {...this}
+    constructor(_id, _logo, _title, _compDesc, _appDesc, _introVideo, _teamType, _roles, _members, _startDate, _endDate) {
+        this.id = _id != null? _id : console.log("Cannot be null");
+        this.logo = typeof _logo === "string"? _logo :  console.log("Cannot be null");
+        this.title = typeof _title === "string"? _title : console.log("Cannot be null");
+        this.compDesc = typeof _compDesc === "string"? _compDesc : console.log("Cannot be null");
+        this.appDesc = typeof _appDesc === "string"? _appDesc : console.log("Cannot be null");
+        this.introVideo = typeof _introVideo === "string"? _introVideo : console.log("Cannot be null");
+        this.teamType = _teamType;   //TODO add Enum type/validation
+                                    //  _teamType instanceof Enum? _teamType : throw("invalid team type");
+        this.roles = _roles instanceof Array && _roles.length !== 0? _roles.map(r => ({...r})) : console.log("Invalid");
+        this.members = _members instanceof Array && _members.length !== 0? _members.map(r => ({...r})) : console.log("Invalid");
+        this.startDate = _startDate;
+        this.endDate = _endDate;
     }
 }
+
 
 //export class
 module.exports =Apprenticeship;

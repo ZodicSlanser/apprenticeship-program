@@ -1,0 +1,94 @@
+.team-roles-panel {
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+    width: 770px;
+    height: fit-content;
+    background: #FFFFFF;
+    /* Gray 50 */
+    border: 1px solid #E2E6EB;
+    border-radius: 24px;
+}
+
+.team-roles-panel:hover {
+    background: #FFFFFF;
+    /* Purple */
+    border: 1px solid #793EF5;
+    /* Card Selected */
+    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+}
+
+.team-Button-a {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 722px;
+    height: 28px;
+}
+
+.team-Button-a>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+}
+
+.team-Button-a>div>button {
+    /* Auto layout */
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 6px 10px;
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #793EF5;
+    /* Snow */
+    background: #FFFFFF;
+    /* Purple */
+    border: 1px dashed #793EF5;
+    border-radius: 8px;
+}
+
+.add-circle-icon {
+    width: 16px;
+    height: 16px;
+    left: 0px;
+    top: 0px;
+}
+
+.info-circle-icon {
+    width: 24px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+}
+
+.team-Button-a>div>p {
+    white-space: nowrap;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
+}

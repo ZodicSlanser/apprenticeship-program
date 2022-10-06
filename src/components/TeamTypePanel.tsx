@@ -9,6 +9,7 @@ import dottedBox from '../assets/dotted-box.svg';
 import box from '../assets/box.svg';
 import infoCircle from '../assets/info-circle.svg';
 import TeamTypeSelect from './TeamTypeSelect';
+
 export default function TeamType() {
   const [selectedWeb, setSelectedWeb] = useState(false)
   const [selectedMobile, setSelectedMobile] = useState(false)
@@ -17,34 +18,77 @@ export default function TeamType() {
   const [selectedPrototyping, setSelectedPrototyping] = useState(false)
   const [selectedData, setSelectedData] = useState(false)
   const [selectedCustomTeam, setSelectedCustomTeam] = useState(false)
-  const selectedTypes=[selectedWeb,selectedMobile,selectedGrowth,selectedMarketingWebsite,selectedPrototyping,selectedData,selectedCustomTeam]
-  const boolArr:boolean[]=[];
-  const panelHighlight = ():boolean|undefined => {
-    
-    return selectedTypes.every((type) => !type)
-  }
+  const selectedTypes = [selectedWeb, selectedMobile, selectedGrowth, selectedMarketingWebsite, selectedPrototyping, selectedData, selectedCustomTeam]
+  const panelHighlight:boolean = selectedTypes.every((type) => !type)
+  
   const handleSelectWebPlatform = (): void => {
     setSelectedWeb(!selectedWeb)
-    boolArr.length===0?boolArr.push(selectedWeb):boolArr.pop()
-
+    setSelectedMobile(false)
+    setSelectedGrowth(false)
+    setSelectedMarketingWebsite(false)
+    setSelectedPrototyping(false)
+    setSelectedData(false)
+    setSelectedCustomTeam(false)
+  
   }
   const handleSelectMobileApp = (): void => {
     setSelectedMobile(!selectedMobile)
+    setSelectedWeb(false)
+    setSelectedGrowth(false)
+    setSelectedMarketingWebsite(false)
+    setSelectedPrototyping(false)
+    setSelectedData(false)
+    setSelectedCustomTeam(false)
+    
+
   }
   const handleSelectGrowth = (): void => {
     setSelectedGrowth(!selectedGrowth)
+    setSelectedWeb(false)
+    setSelectedMobile(false)
+    setSelectedMarketingWebsite(false)
+    setSelectedPrototyping(false)
+    setSelectedData(false)
+    setSelectedCustomTeam(false)
+
   }
   const handleSelectMarketingWebsite = (): void => {
     setSelectedMarketingWebsite(!selectedMarketingWebsite)
+    setSelectedWeb(false)
+    setSelectedMobile(false)
+    setSelectedGrowth(false)
+    setSelectedPrototyping(false)
+    setSelectedData(false)
+    setSelectedCustomTeam(false)
   }
   const handleSelectPrototyping = (): void => {
     setSelectedPrototyping(!selectedPrototyping)
+    setSelectedWeb(false)
+    setSelectedMobile(false)
+    setSelectedGrowth(false)
+    setSelectedMarketingWebsite(false)
+    setSelectedData(false)
+    setSelectedCustomTeam(false)
+    
   }
   const handleSelectData = (): void => {
     setSelectedData(!selectedData)
+    setSelectedWeb(false)
+    setSelectedMobile(false)
+    setSelectedGrowth(false)
+    setSelectedMarketingWebsite(false)
+    setSelectedPrototyping(false)
+    setSelectedCustomTeam(false)
+
   }
   const handleSelectCustomTheme = (): void => {
     setSelectedCustomTeam(!selectedCustomTeam)
+    setSelectedWeb(false)
+    setSelectedMobile(false)
+    setSelectedGrowth(false)
+    setSelectedMarketingWebsite(false)
+    setSelectedPrototyping(false)
+    setSelectedData(false)
   }
   const teamTypes = [ // array of objects defining the team types along with their logo
     {
@@ -87,7 +131,7 @@ export default function TeamType() {
 
 
   return (
-    panelHighlight() ? (
+    panelHighlight ? (
       <div className={styles['panel']}>
         <div className={styles.panelHeader}>
           Team Type
@@ -115,10 +159,10 @@ export default function TeamType() {
       </div>
     ) : (
       <div className={styles['panel-selected']}>
-          <div className={styles.panelHeader}>
-            Team Type
-            <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
-          </div>
+        <div className={styles.panelHeader}>
+          Team Type
+          <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
+        </div>
         <div className={styles.row}>
           <TeamTypeSelect teamType={teamTypes[0].type} logo={teamTypes[0].logo} select={handleSelectWebPlatform} isSelected={selectedWeb} />
           <TeamTypeSelect teamType={teamTypes[1].type} logo={teamTypes[1].logo} select={handleSelectMobileApp} isSelected={selectedMobile} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import  '../styles/TeamRoles.css'
+import  '../styles/DropDown.css'
 import addCircle from '../icons/add-circle.png'
 import infoCircle from '../icons/info-circle.png'
 export default function TeamRoles(props) {
@@ -13,7 +13,8 @@ export default function TeamRoles(props) {
             </button></div>
             <img src={infoCircle} alt='Info Circle Icon' className='info-circle-icon'></img>
            </div>
-           <div className='available-roles'></div>
+           <div className='available-roles'>
+           </div>
         </section>
 
     )

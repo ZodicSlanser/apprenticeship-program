@@ -12,10 +12,9 @@ export const TeamTypeSelect: FC<TeamTypeSelectProps> = ({ teamType, logo, select
     return (
         <div className={styles.column}>
             <div className={isSelected ? styles['team-type-selected'] : styles['type-button']} onClick={select}>
+                <img src={logo} alt="logo" />
+                {teamType}
                 <img src={isSelected ? tickCircle : untickCircle} alt="tick-circle" />
-                <span> <img src={logo} alt="logo" /></span>
-
-                <span>{teamType}</span>
             </div>
         </div>
     )

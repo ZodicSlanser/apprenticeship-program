@@ -18,12 +18,14 @@ export default function TeamType() {
   const [selectedData, setSelectedData] = useState(false)
   const [selectedCustomTeam, setSelectedCustomTeam] = useState(false)
   const selectedTypes=[selectedWeb,selectedMobile,selectedGrowth,selectedMarketingWebsite,selectedPrototyping,selectedData,selectedCustomTeam]
+  const boolArr:boolean[]=[];
   const panelHighlight = ():boolean|undefined => {
     
     return selectedTypes.every((type) => !type)
   }
   const handleSelectWebPlatform = (): void => {
     setSelectedWeb(!selectedWeb)
+    boolArr.length===0?boolArr.push(selectedWeb):boolArr.pop()
 
   }
   const handleSelectMobileApp = (): void => {
@@ -113,10 +115,10 @@ export default function TeamType() {
       </div>
     ) : (
       <div className={styles['panel-selected']}>
-        <div>
-          Team Type
-          <img onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} src={infoCircle} alt="info-circle" />
-        </div>
+          <div className={styles.panelHeader}>
+            Team Type
+            <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
+          </div>
         <div className={styles.row}>
           <TeamTypeSelect teamType={teamTypes[0].type} logo={teamTypes[0].logo} select={handleSelectWebPlatform} isSelected={selectedWeb} />
           <TeamTypeSelect teamType={teamTypes[1].type} logo={teamTypes[1].logo} select={handleSelectMobileApp} isSelected={selectedMobile} />

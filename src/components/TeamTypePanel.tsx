@@ -87,10 +87,9 @@ export default function TeamType() {
   return (
     panelHighlight() ? (
       <div className={styles['panel']}>
-        <div>
+        <div className={styles.panelHeader}>
           Team Type
           <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
-
         </div>
         <div className={styles.row}>
 

@@ -1,22 +1,21 @@
-.dropDown-wrapper {
-    /* Frame 1321314704 */
+.skillwrapper {
+    /* Frame 1321314724 */
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     padding: 12px 12px 12px 16px;
     gap: 10px;
     width: 552px;
     height: 48px;
     /* Snow */
     background: #FFFFFF;
-    /* Field Stroke */
     border: 1px solid #CECECE;
-    border-radius: 12px;
+    border-radius: 12px
 }
 
-.select-btn {
+.skillselect-btn {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,8 +23,7 @@
     justify-content: space-between;
 }
 
-.menu-content {
-    /* Frame 1321314699 */
+.skillMenuContent {
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
@@ -35,9 +33,8 @@
     gap: 12px;
     position: absolute;
     width: 508px;
-    height: 236px;
-    left: 50px;
-    top: 105px;
+    left: 30px;
+    top: 500px;
     background: #FFFFFF;
     /* Gray 50 */
     border: 1px solid #E2E6EB;
@@ -46,7 +43,7 @@
     border-radius: 20px;
 }
 
-.search>input {
+.skillsearch>input {
     border: 0ch;
     outline: none;
     /* Auto layout */
@@ -72,14 +69,14 @@
     opacity: 0.5;
 }
 
-.search>input:hover,
-.search>input:focus {
+.skillsearch>input:hover,
+.skillsearch>input:focus {
     border: 2px solid #793EF5;
     /* Card Selected */
     box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
 }
 
-.menu-content .options {
+.skillMenuContent .skilloptions {
     align-self: flex-start;
     padding: 0%;
     width: inherit;
@@ -88,7 +85,13 @@
     overflow: visible;
 }
 
-.options>li {
+.skilloptions>li {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    gap: 16px;
+    cursor: pointer;
     align-self: flex-start;
     height: fit-content;
     border-radius: 5px;
@@ -108,7 +111,7 @@
     color: #1E1E1E;
 }
 
-.options>li:hover {
+.skilloptions>li:hover {
     border: 2px solid #793EF5;
     /* Card Selected */
     background-color: #f2f2f2;

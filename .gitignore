@@ -1,7 +1,9 @@
+### Apperenticeship-Program ###
+secerts/privateKey.json
+
+### Intellji ###
 # Default ignored files
 .idea/shelf/
 .idea/workspace.xml
 # Editor-based HTTP Client requests
 .idea/httpRequests/
-
-node_modules

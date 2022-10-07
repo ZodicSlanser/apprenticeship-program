@@ -119,6 +119,7 @@
 
 h3 {
     /* Text */
+    white-space: nowrap;
     width: 132px;
     height: 24px;
     font-family: 'Space Grotesk';
@@ -135,12 +136,12 @@ h3 {
 }
 
 .input-desc {
+    resize: none;
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 12px 12px 12px 16px;
     gap: 10px;
     width: 552px;
     height: 195px;
@@ -149,6 +150,17 @@ h3 {
     /* Field Stroke */
     border: 1px solid #CECECE;
     border-radius: 12px;
+    overflow-y: scroll;
+    overflow-y: hidden;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
 }
 
 .input-desc:hover,
@@ -193,105 +205,6 @@ h3 {
     width: 490px;
     height: 24px;
     border: 0ch;
-}
-
-.dropDown-wrapper {
-    /* Frame 1321314704 */
-    box-sizing: border-box;
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 12px 12px 12px 16px;
-    gap: 10px;
-    width: 552px;
-    height: 48px;
-    /* Snow */
-    background: #FFFFFF;
-    /* Field Stroke */
-    border: 1px solid #CECECE;
-    border-radius: 12px;
-}
-
-.select-btn {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: inherit;
-    justify-content: space-between;
-}
-
-.menu-content {
-    /* Frame 1321314699 */
-    box-sizing: border-box;
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
-    gap: 12px;
-    position: absolute;
-    width: 508px;
-    height: 236px;
-    left: 50px;
-    top: 105px;
-    background: #FFFFFF;
-    /* Gray 50 */
-    border: 1px solid #E2E6EB;
-    /* Card Selected */
-    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
-    border-radius: 20px;
-}
-
-.search>input {
-    border: 0ch;
-    outline: none;
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 10px;
-    width: 476px;
-    height: inherit;
-    /* Gray 10 */
-    background: #F1F4F8;
-    border-radius: 8px;
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.3px;
-    font-feature-settings: 'liga' off;
-    color: #1E1E1E;
-    opacity: 0.5;
-}
-
-.search>input:hover,
-.search>input:focus {
-    border: 2px solid #793EF5;
-    /* Card Selected */
-    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
-}
-
-.menu-content .options {
-    align-self: flex-start;
-    padding: 0%;
-    width: inherit;
-    width: 476px;
-    max-height: 236px;
-    overflow: visible;
-}
-
-.options>li {
-    align-self: flex-start;
-    height: fit-content;
-    border-radius: 5px;
-    margin-top: 5px;
-    width: inherit;
-    /* Text */
     font-family: 'Space Grotesk';
     font-style: normal;
     font-weight: 500;
@@ -305,9 +218,53 @@ h3 {
     color: #1E1E1E;
 }
 
-.options>li:hover {
-    border: 2px solid #793EF5;
-    /* Card Selected */
-    background-color: #f2f2f2;
-    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+.req-skills-component {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 552px;
+}
+
+.reqSkills {
+    /* Frame 1321314733 */
+    /* Auto layout */
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: inherit;
+}
+
+.singleSkill {
+    /* Frame 1321314731 */
+    /* Auto layout */
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
+    width: fit-content;
+    height: 40px;
+    background: rgba(102, 95, 239, 0.2);
+    border-radius: 12px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    /* Purple */
+    color: #793EF5;
+}
+
+.singleSkill:hover {
+    border: 1px solid #793EF5;
 }

@@ -25,7 +25,16 @@ coverage
 /src/Components/App.js
 /src/Components/styles.css
 /src/Components/index.js
+<<<<<<< HEAD
 >>>>>>> a9f43535 (Update .gitignore)
+=======
+package.json
+package-lock.json
+
+# testing
+/coverage
+
+>>>>>>> 7598708e (please work 2)
 # production
 build
 

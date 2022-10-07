@@ -45,6 +45,8 @@ package-lock.json
 /src/Components/App.js
 /src/Components/styles.css
 /src/Components/index.js
+package.json
+package-lock.json
 # production
 build
 

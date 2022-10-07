@@ -204,6 +204,17 @@ flex: none;
 order: 0;
 flex-grow: 0;
 }
+.Admin-details a{
+    width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;
+}
 .popup-container{
     
 position: absolute;
@@ -607,4 +618,48 @@ z-index: 5;
 .selected-img{
     width: 80px;
     height: 80px;
+}
+.admin-firstName{
+    display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 0px;
+gap: 11px;
+
+width: 241px;
+height: 40px;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+}
+.admin-firstName span{
+    width: 122px;
+height: 24px;
+
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+display: flex;
+align-items: center;
+letter-spacing: 0.3px;
+font-feature-settings: 'liga' off;
+
+color: #1E1E1E;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
 }

@@ -8,7 +8,7 @@ interface TeamTypeSelectProps {
     select?: () => void,
     isSelected: boolean
 }
-export const TeamTypeSelect: FC<TeamTypeSelectProps> = ({ teamType, logo, select, isSelected },tickID) => {
+export const TeamTypeSelect: FC<TeamTypeSelectProps> = ({ teamType, logo, select, isSelected }) => {
     return (
         <div className={styles.column}>
             <div className={isSelected ? styles['team-type-selected'] : styles['type-button']} onClick={select}>     

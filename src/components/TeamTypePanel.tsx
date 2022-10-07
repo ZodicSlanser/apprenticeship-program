@@ -19,8 +19,8 @@ export default function TeamType() {
   const [selectedData, setSelectedData] = useState(false)
   const [selectedCustomTeam, setSelectedCustomTeam] = useState(false)
   const selectedTypes = [selectedWeb, selectedMobile, selectedGrowth, selectedMarketingWebsite, selectedPrototyping, selectedData, selectedCustomTeam]
-  const panelHighlight:boolean = selectedTypes.every((type) => !type)
-  
+  const panelHighlight: boolean = selectedTypes.every((type) => !type)
+  const panelLeave: boolean = selectedTypes.every((type) => type)
   const handleSelectWebPlatform = (): void => {
     setSelectedWeb(!selectedWeb)
     setSelectedMobile(false)
@@ -29,7 +29,7 @@ export default function TeamType() {
     setSelectedPrototyping(false)
     setSelectedData(false)
     setSelectedCustomTeam(false)
-  
+
   }
   const handleSelectMobileApp = (): void => {
     setSelectedMobile(!selectedMobile)
@@ -39,7 +39,7 @@ export default function TeamType() {
     setSelectedPrototyping(false)
     setSelectedData(false)
     setSelectedCustomTeam(false)
-    
+
 
   }
   const handleSelectGrowth = (): void => {
@@ -69,7 +69,7 @@ export default function TeamType() {
     setSelectedMarketingWebsite(false)
     setSelectedData(false)
     setSelectedCustomTeam(false)
-    
+
   }
   const handleSelectData = (): void => {
     setSelectedData(!selectedData)
@@ -131,59 +131,34 @@ export default function TeamType() {
 
 
   return (
-    panelHighlight ? (
-      <div className={styles['panel']}>
-        <div className={styles.panelHeader}>
-          Team Type
-          <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
-        </div>
-        <div className={styles.row}>
 
-          <TeamTypeSelect teamType={teamTypes[0].type} logo={teamTypes[0].logo} select={handleSelectWebPlatform} isSelected={selectedWeb} />
-          <TeamTypeSelect teamType={teamTypes[1].type} logo={teamTypes[1].logo} select={handleSelectMobileApp} isSelected={selectedMobile} />
-          <TeamTypeSelect teamType={teamTypes[2].type} logo={teamTypes[2].logo} select={handleSelectGrowth} isSelected={selectedGrowth} />
+    <div className={panelHighlight
+      ? styles['panel'] : styles['panel-selected']} >
+      <div className={styles.panelHeader}>
+        Team Type
+        <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
+      </div>
+      <div className={styles.row}>
 
-        </div>
-        <div className={styles.row}>
-          <TeamTypeSelect teamType={teamTypes[3].type} logo={teamTypes[3].logo} select={handleSelectMarketingWebsite} isSelected={selectedMarketingWebsite} />
-          <TeamTypeSelect teamType={teamTypes[4].type} logo={teamTypes[4].logo} select={handleSelectPrototyping} isSelected={selectedPrototyping} />
-          <TeamTypeSelect teamType={teamTypes[5].type} logo={teamTypes[5].logo} select={handleSelectData} isSelected={selectedData} />
-
-
-        </div>
-        <div className={styles.row}>
-          <TeamTypeSelect teamType={teamTypes[6].type} logo={teamTypes[6].logo} select={handleSelectCustomTheme} isSelected={selectedCustomTeam} />
-
-        </div>
+        <TeamTypeSelect teamType={teamTypes[0].type} logo={teamTypes[0].logo} select={handleSelectWebPlatform} isSelected={selectedWeb} />
+        <TeamTypeSelect teamType={teamTypes[1].type} logo={teamTypes[1].logo} select={handleSelectMobileApp} isSelected={selectedMobile} />
+        <TeamTypeSelect teamType={teamTypes[2].type} logo={teamTypes[2].logo} select={handleSelectGrowth} isSelected={selectedGrowth} />
 
       </div>
-    ) : (
-      <div className={styles['panel-selected']}>
-        <div className={styles.panelHeader}>
-          Team Type
-          <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
-        </div>
-        <div className={styles.row}>
-          <TeamTypeSelect teamType={teamTypes[0].type} logo={teamTypes[0].logo} select={handleSelectWebPlatform} isSelected={selectedWeb} />
-          <TeamTypeSelect teamType={teamTypes[1].type} logo={teamTypes[1].logo} select={handleSelectMobileApp} isSelected={selectedMobile} />
-          <TeamTypeSelect teamType={teamTypes[2].type} logo={teamTypes[2].logo} select={handleSelectGrowth} isSelected={selectedGrowth} />
+      <div className={styles.row}>
+        <TeamTypeSelect teamType={teamTypes[3].type} logo={teamTypes[3].logo} select={handleSelectMarketingWebsite} isSelected={selectedMarketingWebsite} />
+        <TeamTypeSelect teamType={teamTypes[4].type} logo={teamTypes[4].logo} select={handleSelectPrototyping} isSelected={selectedPrototyping} />
+        <TeamTypeSelect teamType={teamTypes[5].type} logo={teamTypes[5].logo} select={handleSelectData} isSelected={selectedData} />
 
-
-
-        </div>
-        <div className={styles.row}>
-          <TeamTypeSelect teamType={teamTypes[3].type} logo={teamTypes[3].logo} select={handleSelectMarketingWebsite} isSelected={selectedMarketingWebsite} />
-          <TeamTypeSelect teamType={teamTypes[4].type} logo={teamTypes[4].logo} select={handleSelectPrototyping} isSelected={selectedPrototyping} />
-          <TeamTypeSelect teamType={teamTypes[5].type} logo={teamTypes[5].logo} select={handleSelectData} isSelected={selectedData} />
-
-
-        </div>
-        <div className={styles.row}>
-          <TeamTypeSelect teamType={teamTypes[6].type} logo={teamTypes[6].logo} select={handleSelectCustomTheme} isSelected={selectedCustomTeam} />
-
-        </div>
 
       </div>
-    )
+      <div className={styles.row}>
+        <TeamTypeSelect teamType={teamTypes[6].type} logo={teamTypes[6].logo} select={handleSelectCustomTheme} isSelected={selectedCustomTeam} />
+
+      </div>
+
+    </div>
+
+
   )
 }

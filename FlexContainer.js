@@ -2,7 +2,7 @@ import React from 'react';
 import arrowLeft from './assets/arrow-left.svg';
 import add from './assets/add.svg';
 export default function FlexContainer() {
-  // there is no such thing as `class`, it's `className`
+
 
   return (
     <div className="FlexContainer">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/DropMenu.css'
 import downarrw from '../icons/arrow-down.png'
+import activedownarrw from '../icons/active-arrow-down.png'
 import userFrame from '../icons/frame.png'
 
 export default function DropDownRoleMenu (props ){
@@ -26,7 +27,7 @@ export default function DropDownRoleMenu (props ){
             <img src={userFrame} alt='User Icon' className='user-Icon'/>
             <div className='select-btn' onClick={props.toggleRoleMenu} >
                     <div>{title}</div>
-                     <img src={downarrw} alt='arrow down' className='down-arrow'/>
+                    {props.showRoleMenu ?<img src={activedownarrw} alt='arrow down' className='down-arrow'/>:<img src={downarrw} alt='arrow down' className='down-arrow'/>}
             </div>
             {props.showRoleMenu && 
             <div className='menu-content'>

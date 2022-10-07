@@ -1,0 +1,143 @@
+/* import font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f1f4f8;
+}
+
+
+
+/* class for the entire header */
+.FlexContainer {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  padding: 24px;
+
+  width: 1466px;
+  height: 80px;
+
+  background: #FFFFFF;
+  border-radius: 30px;
+
+  /* Inside auto layout */
+
+  margin-left: 23px;
+  margin-top: 20px;
+
+  filter: drop-shadow(0px 12px 34px rgba(0, 0, 0, 0.04));
+
+}
+
+/* four classes for back, title and publish div and its respective button
+   zero padding and margin for all of them 
+*/
+
+.back {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 300px;
+  height: 80px;
+
+  background: #FFFFFF;
+  border-radius: 30px 0px 0px 30px;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+  color: #1E1E1E;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 866px;
+  height: 80px;
+
+  background: #FFFFFF;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 24px;
+  /* identical to box height, or 86% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+
+
+  color: #1E1E1E;
+}
+
+.publish {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 300px;
+  height: 80px;
+
+  background: #FFFFFF;
+  border-radius: 0px 30px 30px 0px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.publish-button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  width: 225px;
+  height: 44px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+  /* Gray 50 */
+  border: 0px;
+  background: #E2E6EB;
+  border-radius: 12px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}

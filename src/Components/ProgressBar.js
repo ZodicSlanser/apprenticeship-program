@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 
 function ProgressBar(props) {
-  //props:invokeActivity
   const [activity, setActivity] = useState(0);
   const [descriptionDone, setDescriptionDone] = useState(false);
   const [typeDone, setTypeDone] = useState(false);

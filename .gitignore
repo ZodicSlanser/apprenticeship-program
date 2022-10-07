@@ -17,8 +17,15 @@ backend/node_modules
 
 
 # testing
+<<<<<<< HEAD
 coverage
 
+=======
+/coverage
+/src/Components/App.js
+/src/Components/styles.css
+/src/Components/index.js
+>>>>>>> a9f43535 (Update .gitignore)
 # production
 build
 

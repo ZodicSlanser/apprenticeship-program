@@ -18,8 +18,6 @@ export default function TeamType() {
   const [selectedPrototyping, setSelectedPrototyping] = useState(false)
   const [selectedData, setSelectedData] = useState(false)
   const [selectedCustomTeam, setSelectedCustomTeam] = useState(false)
-  const selectedTypes = [selectedWeb, selectedMobile, selectedGrowth, selectedMarketingWebsite, selectedPrototyping, selectedData, selectedCustomTeam]
-  const panelHighlight: boolean = selectedTypes.includes(true)
 
   const handleSelectWebPlatform = (): void => {
     setSelectedWeb(!selectedWeb)
@@ -141,11 +139,11 @@ export default function TeamType() {
 
   return (
 
-    <div className={panelHighlight
-      ? styles['panel-selected'] : styles['panel']} >
+    <div  onMouseEnter={(e) => e.currentTarget.className = styles['panel-selected']} onMouseLeave={(e) => e.currentTarget.className = styles['panel']} >
       <div className={styles.panelHeader}>
         Team Type
-        <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }} />
+        <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }}
+       />
       </div>
       <div className={styles.row}>
 

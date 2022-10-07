@@ -159,6 +159,7 @@ code {
   height: 80px;
   background: #e2e6eb;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .uploadImage {
@@ -169,4 +170,5 @@ code {
   margin-top: 61px;
   background: #2153ff;
   border-radius: 10px;
+  cursor: pointer;
 }

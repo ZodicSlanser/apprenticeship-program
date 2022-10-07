@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./styles.css";
 function LogoTitlePanel(props) {
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);
+  const [selectedImage, setSelectedImage] = useState();
+  const [title, setTitle] = useState("");
+
+  const inputFile = useRef(null);
   function handleClick() {
     setActive(true);
   }
@@ -10,22 +14,40 @@ function LogoTitlePanel(props) {
     setActive(false);
   }
   function typingDone(e) {
-    if (e.target.value === "") {
-      props.invokeDescription(null, false);
-      setOpacity(0.3);
-    } else {
+    if (title !== "") {
       setOpacity(1);
-      props.invokeDescription(null, true);
+      if (selectedImage) props.invokeLogoTitle(null, true);
+      else props.invokeLogoTitle(null, false);
+    } else {
+      setOpacity(0.3);
+      props.invokeLogoTitle(null, false);
     }
+  }
+  function handleTitleChange(e) {
+    setTitle(e.target.value);
+    props.setTitle(e.target.value);
+  }
+  function handleChange(e) {
+    setSelectedImage(e.target.files[0]);
+    props.setImage(e.target.files[0]);
+    console.log(title);
+    if (title !== "" && e.target.files[0]) {
+      props.invokeLogoTitle(null, true);
+    } else {
+      props.invokeLogoTitle(null, false);
+    }
+  }
+  function handleImage() {
+    inputFile.current.click();
   }
   return (
     <div
       className="companyLogoTitle"
-      onClick={() => {
+      onMouseEnter={() => {
         handleClick();
         props.invokeActivity(null, 1);
       }}
-      onBlur={() => {
+      onMouseLeave={() => {
         handleBlur();
         props.invokeActivity(null, 0);
       }}
@@ -39,19 +61,47 @@ function LogoTitlePanel(props) {
           : null
       }
     >
+      <input
+        type="file"
+        id="file"
+        ref={inputFile}
+        style={{ display: "none" }}
+        accept="image/*"
+        onChange={handleChange}
+      />
+
       <div className="logoHeader">
         <p className="logoHeaderText">Company Logo & Apprenticeship Title</p>
         <img src={"./info-circle.svg"} alt=""></img>
       </div>
       <div className="logoTitle">
-        <div className="logoRectangle">
-          <img className="uploadImage" src="./image.svg" alt=""></img>
+        <div className="logoRectangle" onClick={handleImage}>
+          {selectedImage ? (
+            <img
+              className="logoRectangle"
+              alt=""
+              src={URL.createObjectURL(selectedImage)}
+            ></img>
+          ) : (
+            <></>
+          )}
+
+          <img
+            className="uploadImage"
+            src="./image.svg"
+            alt=""
+            style={{
+              marginLeft: selectedImage ? 0 : null,
+              left: selectedImage ? "86px" : null,
+            }}
+          ></img>
         </div>
         <input
           type={"text"}
           className="logoTitleText"
           placeholder="Enter  Apprenticeship Title"
           onBlur={typingDone}
+          onChange={handleTitleChange}
           onClick={() => {
             setOpacity(1);
           }}

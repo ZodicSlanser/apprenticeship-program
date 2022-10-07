@@ -90,40 +90,49 @@ export default function TeamType() {
     setSelectedPrototyping(false)
     setSelectedData(false)
   }
+  enum TeamType {
+    WebPlatform = 'Web Platform',
+    MobileApp = 'Mobile App',
+    Growth = 'Growth',
+    MarketingWebsite = 'Marketing Website',
+    Prototyping = 'Prototyping',
+    Data = 'Data',
+    CustomTeam = 'Custom Team'
+  }
   const teamTypes = [ // array of objects defining the team types along with their logo
     {
-      type: 'Web Platform',
+      type: TeamType.WebPlatform,
       logo: monitor,
       selected: false
     },
     {
-      type: 'Mobile App',
+      type: TeamType.MobileApp,
       logo: mobile,
       selected: false
     },
     {
-      type: 'Growth',
+      type: TeamType.Growth,
       logo: diagram,
       selected: false
     },
     {
-      type: 'Marketing Website',
+      type: TeamType.MarketingWebsite,
       logo: keyboardOpen,
       selected: false
     },
     {
-      type: 'Prototyping',
+      type: TeamType.Prototyping,
       logo: box,
       selected: false
 
     },
     {
-      type: 'Data',
+      type: TeamType.Data,
       logo: driver,
       selected: false
     },
     {
-      type: 'Custom Team',
+      type: TeamType.CustomTeam,
       logo: dottedBox,
       selected: false
     }

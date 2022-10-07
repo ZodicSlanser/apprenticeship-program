@@ -1,0 +1,172 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f1f4f8;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.progressBar {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  gap: 20px;
+
+  width: 1466px;
+  height: 60px;
+
+  border: 1px solid #d0d4da;
+  border-radius: 20px;
+}
+
+.iconText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  height: 24px;
+}
+.tickCircle {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v13/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUXskPMA.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+.text {
+  height: 100%;
+
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+
+  color: #1e1e1e;
+}
+
+.scaffolding {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  isolation: isolate;
+  width: 770px;
+}
+
+.companyLogoTitle {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  width: 770px;
+  height: 168px;
+  background: #ffffff;
+  border: 1px solid #e2e6eb;
+  border-radius: 24px;
+}
+
+.logoHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 722px;
+  height: 24px;
+}
+
+.logoHeaderText {
+  width: 300px;
+  height: 24px;
+
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+
+  color: #1e1e1e;
+}
+
+.logoTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  isolation: isolate;
+
+  width: 722px;
+  height: 80px;
+}
+
+.logoTitleText {
+  width: 480px;
+  height: 24px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+  color: #1e1e1e;
+  border: none;
+  outline: none;
+  opacity: 0.3;
+
+  margin-left: 24px;
+}
+
+.logoRectangle {
+  width: 80px;
+  height: 80px;
+  background: #e2e6eb;
+  border-radius: 20px;
+}
+
+.uploadImage {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  margin-left: 61px;
+  margin-top: 61px;
+  background: #2153ff;
+  border-radius: 10px;
+}

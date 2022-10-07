@@ -7,7 +7,9 @@
 
 # testing
 /coverage
-
+/src/Components/App.js
+/src/Components/styles.css
+/src/Components/index.js
 # production
 /build
 

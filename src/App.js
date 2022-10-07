@@ -1,5 +1,10 @@
+import LogoTitlePanel from "./Components/LogoTitlePanel";
 import ProgressBar from "./Components/ProgressBar";
+import Scaffolding from "./Components/Scaffolding";
+
 function App() {
+  function setImage() {}
+  function setTitle() {}
   let invokeActivitySetter;
   const invokeActivity = (setStateCallback, active) => {
     if (setStateCallback) {
@@ -49,7 +54,7 @@ function App() {
     }
   };
   return (
-    <>
+    <Scaffolding>
       <ProgressBar
         invokeActivity={invokeActivity}
         invokeDescription={invokeDescription}
@@ -58,21 +63,17 @@ function App() {
         invokeAdmin={invokeAdmin}
         invokeTimeline={invokeTimeline}
       ></ProgressBar>
-      <div
-        style={{ width: "600px", height: "100px", backgroundColor: "red" }}
-        onClick={() => invokeActivity(null, 1)}
-        onBlur={() => invokeActivity(null, 0)}
-        tabindex="-1"
-      >
-        Description
-        <button onClick={() => invokeDescription(null, true)}>done</button>
-        <button onClick={() => invokeDescription(null, false)}>not done</button>
-      </div>
+      <LogoTitlePanel
+        invokeActivity={invokeActivity}
+        invokeLogoTitle={invokeDescription}
+        setImage={setImage}
+        setTitle={setTitle}
+      ></LogoTitlePanel>
       <div
         style={{ width: "600px", height: "100px", backgroundColor: "blue" }}
         onClick={() => invokeActivity(null, 2)}
         onBlur={() => invokeActivity(null, 0)}
-        tabindex="-1"
+        tabIndex="-1"
       >
         Type
         <button onClick={() => invokeType(null, true)}>done</button>
@@ -82,7 +83,7 @@ function App() {
         style={{ width: "600px", height: "100px", backgroundColor: "green" }}
         onClick={() => invokeActivity(null, 3)}
         onBlur={() => invokeActivity(null, 0)}
-        tabindex="-1"
+        tabIndex="-1"
       >
         Roles
         <button onClick={() => invokeRoles(null, true)}>done</button>
@@ -92,7 +93,7 @@ function App() {
         style={{ width: "600px", height: "100px", backgroundColor: "yellow" }}
         onClick={() => invokeActivity(null, 4)}
         onBlur={() => invokeActivity(null, 0)}
-        tabindex="-1"
+        tabIndex="-1"
       >
         Admin
         <button onClick={() => invokeAdmin(null, true)}>done</button>
@@ -102,13 +103,13 @@ function App() {
         style={{ width: "600px", height: "100px", backgroundColor: "grey" }}
         onClick={() => invokeActivity(null, 5)}
         onBlur={() => invokeActivity(null, 0)}
-        tabindex="-1"
+        tabIndex="-1"
       >
         Timeline
         <button onClick={() => invokeTimeline(null, true)}>done</button>
         <button onClick={() => invokeTimeline(null, false)}>not done</button>
       </div>
-    </>
+    </Scaffolding>
   );
 }
 export default App;

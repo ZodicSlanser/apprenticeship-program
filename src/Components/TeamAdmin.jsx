@@ -5,17 +5,16 @@ import Rectangle from "./Rectangle.svg";
 import addCircle from "./add-circle.svg"
 import infoCircle from "./info-circle.svg"
 import link from "./LinkedIn logo.svg"
+import trash from "./trash.svg"
 
 function TeamAdmin() {
     const [modalOpen, setModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState();
-    const [formData, setFormData] = useState(
-        { firstName: '', url: '', photo: '' }
-    )
     const [list, setList] = useState([])
-
-
-    console.log(formData)
+    const [formData, setFormData] = useState(
+        { name: '', socialURL: '', photo: '' }
+    )
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         setList((ls) => [...ls, formData])
@@ -34,12 +33,20 @@ function TeamAdmin() {
 
         }
     }
+   const handleClose = () => {
+        setModal(false);
+        setSelectedImage(false);
 
-    function handleChange(event) {
+    }
+    const removeAdmin = (index) => {
+        setList(list.filter((el, i) => i !== index))
+    }
+
+    const handleChange= (e) => {
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
-                [event.target.name]: event.target.value
+                [e.target.name]: e.target.value
             }
         })
     }
@@ -52,34 +59,33 @@ function TeamAdmin() {
                     <button className='Add-member' onClick={() => {
                         setModal(true);
                     }}>
-                        <img src={addCircle}></img>
+                        <img src={addCircle} alt="add-circle"></img>
                         <span> Add Team Member</span>
                     </button>
                 </div>
-                <img src={infoCircle} className='info-circle'></img>
+                <img src={infoCircle} className='info-circle' alt="info-circle"></img>
             </div>
             <div className='TeamAdmin-container' >
                 {list.map((a, index) => (
 
-                    <div className='Admin-details' key={index}>
-                        {selectedImage ? <img src={a.photo}></img> : null}
+                    <li className='Admin-details' key={index}>
+
+                        {a.photo ? <img className='preview' src={a.photo} alt="pic"></img> : <img className='preview' src={Rectangle} alt="pic"> </img>}
                         <div className='admin-firstName'>
-                            <span> {a.firstName}</span>
+                            <span> {a.name}</span>
 
                         </div>
-                        <a href={a.url}><img src={link}></img></a>
+                        <a href={a.socialURL}><img src={link} alt="LinkedIn"></img></a>
 
-
-                    </div>
-
-
-
-
+                        <img className='delete' src={trash} onClick={() => removeAdmin(index)} alt="trash"></img>
+                    </li>
                 ))}
             </div>
 
-            {modalOpen && <TeamPage closeModal={() => setModal(false)} handleform={handleChange}
+            {modalOpen && <TeamPage closeModal={handleClose} handleform={handleChange}
                 selectedImage={selectedImage} changeImage={handleImage} submit={handleSubmit} />}
+
+
         </div>
 
     )

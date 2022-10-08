@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {  useRef } from 'react';
 import "../styles.css";
 import close from "./close.svg";
 import profile from "./profile.svg";
@@ -22,7 +22,7 @@ function TeamPage(props) {
               <span> Save</span>
             </button>
 
-            <img src={close} onClick={props.closeModal}></img>
+            <img src={close} onClick={props.closeModal} alt="close-icon"></img>
 
           </div>
         </div>
@@ -31,16 +31,17 @@ function TeamPage(props) {
           {props.selectedImage ?
             <img
               className='selected-img'
+              alt="pic"
               src={URL.createObjectURL(props.selectedImage)}
 
-            /> : <img src={Rectangle}></img>
+            /> : <img src={Rectangle} alt="pic"></img>
           }
           <input className='hide' accept="image/*" type="file" name="photo" onChange={props.changeImage} ref={fileInputRef} />
           <div className='upload' onClick={(event) => {
             event.preventDefault();
             fileInputRef.current.click();
           }}>
-            <img src={upload}></img>
+            <img src={upload} alt="upload-pic"></img>
 
 
           </div>
@@ -48,16 +49,16 @@ function TeamPage(props) {
         </div>
         <form onSubmit={props.submit}>
           <div className='admin-name'>
-            <img src={profile}></img>
-            <input type="text" placeholder="Name" name='firstName' onChange={props.handleform} ></input>
+            <img src={profile} alt="profile-icon"></img>
+            <input type="text" placeholder="Name" name='name' onChange={props.handleform} ></input>
           </div>
           <div className='admin-email' >
-            <img src={sms}></img>
+            <img src={sms} alt="sms-icon"></img>
             <input type="email" placeholder="Email address " ></input>
           </div>
           <div className='admin-linkedin'>
-            <img src={link}></img>
-            <input type="url" placeholder="LinkedIn URL (optional)" name='url' onChange={props.handleform} ></input>
+            <img src={link} alt="link-icon"></img>
+            <input type="url" placeholder="LinkedIn URL (optional)" name='socialURL' onChange={props.handleform} ></input>
           </div>
         </form>
 

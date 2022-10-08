@@ -27,7 +27,6 @@ export default function TeamType() {
     setSelectedPrototyping(false)
     setSelectedData(false)
     setSelectedCustomTeam(false)
-
   }
   const handleSelectMobileApp = (): void => {
     setSelectedMobile(!selectedMobile)
@@ -89,48 +88,48 @@ export default function TeamType() {
     setSelectedData(false)
   }
   enum TeamType {
-    WebPlatform = 'Web Platform',
-    MobileApp = 'Mobile App',
-    Growth = 'Growth',
-    MarketingWebsite = 'Marketing Website',
-    Prototyping = 'Prototyping',
-    Data = 'Data',
-    CustomTeam = 'Custom Team'
+    WebPlatform,
+    MobileApp,
+    Growth,
+    MarketingWebsite,
+    Prototyping ,
+    Data ,
+    CustomTeam 
   }
   const teamTypes = [ // array of objects defining the team types along with their logo
     {
-      type: TeamType.WebPlatform,
+      type: "Web Platform",
       logo: monitor,
       selected: false
     },
     {
-      type: TeamType.MobileApp,
+      type: "Mobile App",
       logo: mobile,
       selected: false
     },
     {
-      type: TeamType.Growth,
+      type: "Growth",
       logo: diagram,
       selected: false
     },
     {
-      type: TeamType.MarketingWebsite,
+      type: "Marketing Website",
       logo: keyboardOpen,
       selected: false
     },
     {
-      type: TeamType.Prototyping,
+      type: "Prototyping",
       logo: box,
       selected: false
 
     },
     {
-      type: TeamType.Data,
+      type: "Data",
       logo: driver,
       selected: false
     },
     {
-      type: TeamType.CustomTeam,
+      type: "Custom Team",
       logo: dottedBox,
       selected: false
     }
@@ -139,11 +138,11 @@ export default function TeamType() {
 
   return (
 
-    <div  onMouseEnter={(e) => e.currentTarget.className = styles['panel-selected']} onMouseLeave={(e) => e.currentTarget.className = styles['panel']} >
+    <div onMouseEnter={(e) => e.currentTarget.className = styles['panel-selected']} onMouseLeave={(e) => e.currentTarget.className = styles['panel']} >
       <div className={styles.panelHeader}>
         Team Type
         <img src={infoCircle} alt="info-circle" onMouseEnter={() => { setTimeout(() => console.log('Team type'), 1000) }}
-       />
+        />
       </div>
       <div className={styles.row}>
 

@@ -92,46 +92,44 @@ export default function TeamType() {
     MobileApp,
     Growth,
     MarketingWebsite,
-    Prototyping ,
-    Data ,
-    CustomTeam 
+    Prototyping,
+    Data,
+    CustomTeam
   }
   const teamTypes = [ // array of objects defining the team types along with their logo
     {
-      type: "Web Platform",
-      logo: monitor,
-      selected: false
+      type: TeamType.WebPlatform,
+      selected: selectedWeb
     },
     {
-      type: "Mobile App",
-      logo: mobile,
-      selected: false
+      type: TeamType.MobileApp,
+
+      selected: selectedMobile
     },
     {
-      type: "Growth",
-      logo: diagram,
-      selected: false
+      type: TeamType.Growth,
+
+      selected: selectedGrowth
     },
     {
-      type: "Marketing Website",
-      logo: keyboardOpen,
-      selected: false
+      type: TeamType.MarketingWebsite,
+      selected: selectedMarketingWebsite
     },
     {
-      type: "Prototyping",
-      logo: box,
-      selected: false
+      type: TeamType.Prototyping,
+
+      selected: selectedPrototyping
 
     },
     {
-      type: "Data",
-      logo: driver,
-      selected: false
+      type: TeamType.Data,
+
+      selected: selectedData
     },
     {
-      type: "Custom Team",
-      logo: dottedBox,
-      selected: false
+      type: TeamType.CustomTeam,
+
+      selected: selectedCustomTeam
     }
   ]
 
@@ -146,20 +144,20 @@ export default function TeamType() {
       </div>
       <div className={styles.row}>
 
-        <TeamTypeSelect teamType={teamTypes[0].type} logo={teamTypes[0].logo} select={handleSelectWebPlatform} isSelected={selectedWeb} />
-        <TeamTypeSelect teamType={teamTypes[1].type} logo={teamTypes[1].logo} select={handleSelectMobileApp} isSelected={selectedMobile} />
-        <TeamTypeSelect teamType={teamTypes[2].type} logo={teamTypes[2].logo} select={handleSelectGrowth} isSelected={selectedGrowth} />
+        <TeamTypeSelect teamType={"Web Platorm"} logo={monitor} select={handleSelectWebPlatform} isSelected={teamTypes[0].selected} />
+        <TeamTypeSelect teamType={"Mobile App"} logo={mobile} select={handleSelectMobileApp} isSelected={teamTypes[1].selected} />
+        <TeamTypeSelect teamType={"Growth"} logo={keyboardOpen} select={handleSelectGrowth} isSelected={teamTypes[2].selected} />
 
       </div>
       <div className={styles.row}>
-        <TeamTypeSelect teamType={teamTypes[3].type} logo={teamTypes[3].logo} select={handleSelectMarketingWebsite} isSelected={selectedMarketingWebsite} />
-        <TeamTypeSelect teamType={teamTypes[4].type} logo={teamTypes[4].logo} select={handleSelectPrototyping} isSelected={selectedPrototyping} />
-        <TeamTypeSelect teamType={teamTypes[5].type} logo={teamTypes[5].logo} select={handleSelectData} isSelected={selectedData} />
+        <TeamTypeSelect teamType={"Marketing Website"} logo={keyboardOpen} select={handleSelectMarketingWebsite} isSelected={teamTypes[3].selected} />
+        <TeamTypeSelect teamType={"Prototyping"} logo={box} select={handleSelectPrototyping} isSelected={teamTypes[4].selected} />
+        <TeamTypeSelect teamType={"Data"} logo={driver} select={handleSelectData} isSelected={teamTypes[5].selected} />
 
 
       </div>
       <div className={styles.row}>
-        <TeamTypeSelect teamType={teamTypes[6].type} logo={teamTypes[6].logo} select={handleSelectCustomTheme} isSelected={selectedCustomTeam} />
+        <TeamTypeSelect teamType={"Custom Team"} logo={dottedBox} select={handleSelectCustomTheme} isSelected={teamTypes[6].selected} />
 
       </div>
 

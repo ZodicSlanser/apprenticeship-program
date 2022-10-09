@@ -1,0 +1,98 @@
+/* import font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+.panel {
+    font-weight: bold;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+    
+    width: 770px;
+    height: 112px;
+    
+    background: #FFFFFF;
+    /* Gray 50 */
+    border: 1px solid #E2E6EB;
+    border-radius: 24px;
+    /* Inside auto layout */  
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 6;
+    
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.panel-heading {
+   
+width: 172px;
+height: 24px;
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+color: #1E1E1E;
+/* Inside auto layout */
+order: 0;
+flex-grow: 0;
+
+}
+
+.exmark {
+    
+    width: 24px;
+    height: 24px;
+    float: right;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    align-self: auto;
+
+    
+}
+.desc-txt {
+    
+    width: 156px;
+    height: 24px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
+    opacity: 0.3;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;    
+    overflow: auto;
+}
+
+
+textarea{
+    
+    height: 200px;
+    width: 700px;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    text-overflow: scroll;
+    resize: both;
+    line-height: 5000px;
+
+}
+
+
+
+

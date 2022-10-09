@@ -44,14 +44,8 @@ class Apprenticeship {
   create = () => {
     const params = { ...this };
     delete params["create"];
-    ApprenticeshipCollection.doc(this.id)
-      .set(params)
-      .then(() => {
-        console.log("Apprenticeship added");
-      })
-      .catch((error) => {
-        console.log("Error adding Apprenticeship", error);
-      });
+    return ApprenticeshipCollection.doc(this.id)
+      .set(params);
   };
 }
 

@@ -7,3 +7,4 @@ secerts/
 .idea/workspace.xml
 # Editor-based HTTP Client requests
 .idea/httpRequests/
+node_modules

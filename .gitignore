@@ -17,7 +17,7 @@ backend/node_modules
 
 
 # testing
-/coverage
+coverage
 
 # production
 build

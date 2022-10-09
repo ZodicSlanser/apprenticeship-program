@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./Scaffolding.css";
 function Scaffolding(props) {
   return <div className="scaffolding">{props.children}</div>;
 }

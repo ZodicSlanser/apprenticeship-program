@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import "./LogoTitlePanel.css";
+import image from "../../Assets/LogoTitlePanel/image.svg";
+import infoCircle from "../../Assets/LogoTitlePanel/info-circle.svg";
 function LogoTitlePanel(props) {
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);
@@ -72,7 +74,7 @@ function LogoTitlePanel(props) {
 
       <div className="logoHeader">
         <p className="logoHeaderText">Company Logo & Apprenticeship Title</p>
-        <img src={"./info-circle.svg"} alt=""></img>
+        <img src={infoCircle} alt=""></img>
       </div>
       <div className="logoTitle">
         <div className="logoRectangle" onClick={handleImage}>
@@ -88,7 +90,7 @@ function LogoTitlePanel(props) {
 
           <img
             className="uploadImage"
-            src="./image.svg"
+            src={image}
             alt=""
             style={{
               marginLeft: selectedImage ? 0 : null,

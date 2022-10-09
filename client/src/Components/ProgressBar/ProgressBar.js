@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ProgressBar.css";
-
+import tickCircle from "../../Assets/ProgressBar/tick-circle.svg";
+import unTickCircle from "../../Assets/ProgressBar/untick-circle.svg";
 function ProgressBar(props) {
   const [activity, setActivity] = useState(0);
   const [descriptionDone, setDescriptionDone] = useState(false);
@@ -36,10 +37,7 @@ function ProgressBar(props) {
         }}
       >
         <div className="tickCircle">
-          <img
-            src={descriptionDone ? "./tick-circle.svg" : "./untick-circle.svg"}
-            alt=""
-          ></img>
+          <img src={descriptionDone ? tickCircle : unTickCircle} alt=""></img>
         </div>
         <p
           className="text"
@@ -54,10 +52,7 @@ function ProgressBar(props) {
         style={{ opacity: typeDone ? null : activity === 2 ? null : 0.3 }}
       >
         <div className="tickCircle">
-          <img
-            src={typeDone ? "./tick-circle.svg" : "./untick-circle.svg"}
-            alt=""
-          ></img>
+          <img src={typeDone ? tickCircle : unTickCircle} alt=""></img>
         </div>
         <p className="text" style={{ color: typeDone ? "#793EF5" : "#1E1E1E" }}>
           Team Type{" "}
@@ -69,10 +64,7 @@ function ProgressBar(props) {
         style={{ opacity: rolesDone ? null : activity === 3 ? null : 0.3 }}
       >
         <div className="tickCircle">
-          <img
-            src={rolesDone ? "./tick-circle.svg" : "./untick-circle.svg"}
-            alt=""
-          ></img>
+          <img src={rolesDone ? tickCircle : unTickCircle} alt=""></img>
         </div>
         <p
           className="text"
@@ -87,10 +79,7 @@ function ProgressBar(props) {
         style={{ opacity: adminDone ? null : activity === 4 ? null : 0.3 }}
       >
         <div className="tickCircle">
-          <img
-            src={adminDone ? "./tick-circle.svg" : "./untick-circle.svg"}
-            alt=""
-          ></img>
+          <img src={adminDone ? tickCircle : unTickCircle} alt=""></img>
         </div>
         <p
           className="text"
@@ -105,10 +94,7 @@ function ProgressBar(props) {
         style={{ opacity: timelineDone ? null : activity === 5 ? null : 0.3 }}
       >
         <div className="tickCircle">
-          <img
-            src={timelineDone ? "./tick-circle.svg" : "./untick-circle.svg"}
-            alt=""
-          ></img>
+          <img src={timelineDone ? tickCircle : unTickCircle} alt=""></img>
         </div>
         <p
           className="text"

@@ -146,7 +146,7 @@ export default function TeamType() {
 
         <TeamTypeSelect teamType={"Web Platorm"} logo={monitor} select={handleSelectWebPlatform} isSelected={teamTypes[0].selected} />
         <TeamTypeSelect teamType={"Mobile App"} logo={mobile} select={handleSelectMobileApp} isSelected={teamTypes[1].selected} />
-        <TeamTypeSelect teamType={"Growth"} logo={keyboardOpen} select={handleSelectGrowth} isSelected={teamTypes[2].selected} />
+        <TeamTypeSelect teamType={"Growth"} logo={diagram} select={handleSelectGrowth} isSelected={teamTypes[2].selected} />
 
       </div>
       <div className={styles.row}>

@@ -10,7 +10,6 @@ backend/.idea/httpRequests/
 
 
 # dependencies
-<<<<<<< HEAD
 backend/node_modules
 /ui/node_modules
 /ui/.pnp
@@ -18,35 +17,8 @@ backend/node_modules
 
 
 # testing
-<<<<<<< HEAD
 coverage
 
-=======
-/coverage
-/src/Components/App.js
-/src/Components/styles.css
-/src/Components/index.js
-<<<<<<< HEAD
->>>>>>> a9f43535 (Update .gitignore)
-=======
-=======
-/node_modules
-/.pnp
-.pnp.js
-src/App.js
-src/styles.css
-src/index.js
->>>>>>> 8607d739 (Ready to merge)
-package.json
-package-lock.json
-
-# testing
-/coverage
-/src/Components/App.js
-/src/Components/styles.css
-/src/Components/index.js
-package.json
-package-lock.json
 # production
 build
 

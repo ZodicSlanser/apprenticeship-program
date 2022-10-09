@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import styles from '../styles/TeamTypePanel.module.css';
-import monitor from '../assets/monitor.svg';
-import mobile from '../assets/mobile.svg';
-import diagram from '../assets/diagram.svg';
-import keyboardOpen from '../assets/keyboard-open.svg';
-import driver from '../assets/driver.svg';
-import dottedBox from '../assets/dotted-box.svg';
-import box from '../assets/box.svg';
-import infoCircle from '../assets/info-circle.svg';
+import styles from './TeamTypePanel.module.css';
+import monitor from '../../assets/monitor.svg';
+import mobile from '../../assets/mobile.svg';
+import diagram from '../../assets/diagram.svg';
+import keyboardOpen from '../../assets/keyboard-open.svg';
+import driver from '../../assets/driver.svg';
+import dottedBox from '../../assets/dotted-box.svg';
+import box from '../../assets/box.svg';
+import infoCircle from '../../assets/info-circle.svg';
 import TeamTypeSelect from './TeamTypeSelect';
 
 export default function TeamType() {

@@ -1,4 +1,4 @@
-import TeamType from "./components/TeamTypePanel"
+import TeamType from "./components/TeamType/TeamTypePanel"
 
 function App() {
 

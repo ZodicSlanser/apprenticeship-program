@@ -2,7 +2,7 @@ import { Role } from "./firebase/Collections/Role.js";
 import { TeamMember } from "./firebase/Collections/TeamMember.js";
 import { Apprenticeship } from "./firebase/Collections/Apprenticeship.js";
 import admin from "firebase-admin";
-
+import { AddApprenticeship, ViewApprenticeship, DeleteApprenticeship, UpdateApprenticeship, AddValue, UpdateField, DeleteField } from "./firebase/CRUD.js";
 const roles = [
   {
     type: 2,
@@ -48,5 +48,16 @@ const apprenticeship = new Apprenticeship({
   startDate: admin.firestore.Timestamp.fromDate(new Date()),
   endDate: admin.firestore.Timestamp.fromDate(new Date()),
 });
+const id = apprenticeship.id;
+AddApprenticeship(apprenticeship).then((res) => {
+  // var obj = await ViewApprenticeship(id);
+  // //cast to Apprenticeship
+  // var app = new Apprenticeship(obj.data());
+  // console.log(app);
+  //DeleteApprenticeship(id);
+  // apprenticeship.logo = "new-logo-link";
+  // UpdateApprenticeship(apprenticeship);
+  //UpdateField(id, "logo", "new logo");
+  //DeleteField(id, "roles");
+});
 
-apprenticeship.create();

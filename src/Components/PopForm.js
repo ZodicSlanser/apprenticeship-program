@@ -29,25 +29,27 @@ export default function PopForm(){
     }
     //**************************************************************** */
     /*toggle the menu */
-    
+    const [AllSkills,setAllSkills]=useState(["Swift","ios",
+    "Objective-c","ARM"
+    ])
     const [reqSkills,setreqSkills]=useState([])
-    function appendToRSkills(skill){
+    function appendToRSkills(skill,index){
         setreqSkills(prevSkills=>{
         const newSkills=[]
             if(prevSkills.length<=2){
             prevSkills.map((prevSkill)=>{
-                if(prevSkill!==skill){
-                    newSkills.push(prevSkill)
-                }
-            })
-            newSkills.push(skill)
-            return newSkills
-        }
-        else
-        {
-            return prevSkills
-        }
-    })
+                    if(prevSkill!==skill){
+                        newSkills.push(prevSkill)
+                    }
+                })
+                newSkills.push(skill)
+                return newSkills
+            }
+            else
+            {
+                 return prevSkills
+            }
+        })
     }
     function deleteRSkill(index){
         setreqSkills(reqSkills=>[
@@ -83,6 +85,8 @@ export default function PopForm(){
             ])
   
     }
+    /*Location Menu */
+    const numberOfSelectedLocation=0
     
     return(
         <div className="popup">
@@ -110,9 +114,7 @@ export default function PopForm(){
                 <h3>Required Skills (Select any 3)</h3>
                  <DropDownSkillsMenu 
                        Frame={medalIcon}
-                       skills={["Swift","ios",
-                       "Objective-c","ARM"
-                       ]}
+                       skills={AllSkills}
                        chooseSkill={appendToRSkills}
                        chosenSkills={reqSkills}
                  />
@@ -131,9 +133,7 @@ export default function PopForm(){
                 <h3>Complimentary Skills (Select any 3)</h3>
                  <DropDownSkillsMenu 
                        Frame={starIcon}
-                       skills={["Swift","ios",
-                       "Objective-c"
-                       ]}
+                       skills={AllSkills}
                        chooseSkill={appendToCSkills}
                        chosenSkills={compSkills}
                  />
@@ -154,6 +154,15 @@ export default function PopForm(){
                     <img src={clockIcon} alt='Clock Icon' className='clock-Icon'/>
                     <input type="text" className='input-hours' placeholder="No. of hours" />
                 </div>
+            </div>
+            <div className='location'>
+            <DropDownSkillsMenu
+                       title={{numberOfSelectedLocation}+'Locations'}
+                       Frame={starIcon}
+                       skills={AllSkills}
+                       chooseSkill={appendToCSkills}
+                       chosenSkills={compSkills}
+                 />
             </div>
 
         </div>

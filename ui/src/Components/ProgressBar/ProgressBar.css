@@ -1,0 +1,47 @@
+.progressBar {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  gap: 20px;
+
+  width: 1466px;
+  height: 60px;
+
+  border: 1px solid #d0d4da;
+  border-radius: 20px;
+}
+
+.iconText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  height: 24px;
+}
+.tickCircle {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+}
+
+.text {
+  height: 100%;
+
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+
+  color: #1e1e1e;
+}

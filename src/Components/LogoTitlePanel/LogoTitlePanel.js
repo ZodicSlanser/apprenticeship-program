@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import "./styles.css";
+import "./LogoTitlePanel.css";
 function LogoTitlePanel(props) {
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);

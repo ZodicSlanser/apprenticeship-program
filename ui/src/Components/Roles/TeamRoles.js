@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import'./TeamRoles.css'
 import addCircle from '../../Assets/Roles/add-circle.png'
 import infoCircle from '../../Assets/Roles/info-circle.png'
 export default function TeamRoles(props) {

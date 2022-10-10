@@ -10,7 +10,8 @@ import TeamRoles from './Components/Roles/TeamRoles';
 function App() {
     return ( 
       <>
-      <PopForm />
+      {/* <PopForm /> */}
+      <TeamRoles />
     </>
     )
 }

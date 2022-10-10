@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -16,9 +14,7 @@ function App() {
   );
 }
 
-=======
-function App() {}
->>>>>>> 030c2608 (removed App.css)
+
 export default App;
 
 

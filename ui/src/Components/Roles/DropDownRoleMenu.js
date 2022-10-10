@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import '../styles/DropMenu.css'
-import downarrw from '../icons/arrow-down.png'
-import activedownarrw from '../icons/active-arrow-down.png'
-import userFrame from '../icons/frame.png'
+import './DropDownRoleMenu.css'
+import downarrw from '../../Assets/Roles/arrow-down.png'
+import activedownarrw from '../../Assets/Roles/active-arrow-down.png'
+import userFrame from '../../Assets/Roles/frame.png'
 
 export default function DropDownRoleMenu (props ){
     const title=props.title

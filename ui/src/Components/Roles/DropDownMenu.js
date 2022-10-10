@@ -44,7 +44,7 @@ export default function DropDownMenu (props ){
             <div className='skillwrapper-icon-btn'>
             <img src={props.Frame} alt='Icon' className='skillIcon'/>
             <div className='skillselect-btn' onClick={toggleMenu} >
-                    <div >Select skills</div>
+                    <div >{props.title}</div>
                     {showMenu?<img src={activedownarrw} alt='arrow down' className='skilldown-arrow'/>:<img src={downarrw} alt='arrow down' className='skilldown-arrow'/>}
             </div>
             </div>
@@ -54,17 +54,10 @@ export default function DropDownMenu (props ){
                         <input type="text" placeholder='Search' onChange={search}  />
                     </div>
                 <ul className="skilloptions">
-                {props.chosenSkills.map((option,index)=>(
-                         <li key={index}>
-                            <img src={tickCircle} alt='tick' className='tick-icon-selected'/>
-                            {option}</li>
-                        ))
-                    }
                     {options.map((option,index)=>(
-                         <li key={index} onClick={()=>{
-                            deleteSkill(index)
-                            props.chooseSkill(option)}}>
-                            <img src={tickCircle} alt='tick' className='tick-icon'/>
+                         <li key={index} onClick={()=>
+                            props.chooseSkill(option,index)}>
+                            {props.chosenSkills[index]?<img src={tickCircle} alt='tick' className='tick-icon-selected'/>:<img src={tickCircle} alt='tick' className='tick-icon'/>}
                             {option}</li>
                         ))
                     }

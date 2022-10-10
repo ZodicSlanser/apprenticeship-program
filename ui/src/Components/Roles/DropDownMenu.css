@@ -36,6 +36,7 @@
 }
 
 .skillMenuContent {
+    overflow-y: auto;
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
@@ -46,12 +47,17 @@
     position: relative;
     z-index: 10;
     width: 508px;
+    height: 204px;
     background: #FFFFFF;
     /* Gray 50 */
     border: 1px solid #E2E6EB;
     /* Card Selected */
     box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
     border-radius: 20px;
+}
+
+.skillMenuContent::-webkit-scrollbar {
+    display: none;
 }
 
 .skillsearch>input {

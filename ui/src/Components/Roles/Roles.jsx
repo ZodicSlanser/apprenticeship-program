@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import "../styles/Roles.css"
-import pen_icon from "../Icons/pen-tool-2.png"
-import edit_icon from "../Icons/edit.png"
-import copy_icon from "../Icons/copy.png"
-import trash_icon from "../Icons/trash.png"
+import "./Roles.css"
+import pen_icon from "../../Assets/Roles/pen-tool-2.png"
+import edit_icon from "../../Assets/Roles/edit.png"
+import copy_icon from "../../Assets/Roles/copy.png"
+import trash_icon from "../../Assets/Roles/trash.png"
 export default function Roles(props) {
     return (
         <div className='new-role'>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import '../styles/PopForm.css'
-import medalIcon from '../icons/medal-star.png'
-import clockIcon from '../icons/clock.png'
-import closeIcon from '../icons/close.png'
+import './PopForm.css'
 import DropDownRoleMenu  from './DropDownRoleMenu'
-import DropDownSkillsMenu from './DropDownSkillsMenu'
-import closeSquare from '../icons/close-square.png'
-import starIcon from '../icons/star.png'
+import DropDownMenu from './DropDownMenu'
+import medalIcon from '../../Assets/Roles/medal-star.png'
+import clockIcon from '../../Assets/Roles/clock.png'
+import closeIcon from '../../Assets/Roles/close.png'
+import closeSquare from '../../Assets/Roles/close-square.png'
+import starIcon from '../../Assets/Roles/star.png'
 
 export default function PopForm(){
     /* Role*/
@@ -112,7 +112,7 @@ export default function PopForm(){
             </div>
             <div className='skills-component'>
                 <h3>Required Skills (Select any 3)</h3>
-                 <DropDownSkillsMenu 
+                 <DropDownMenu 
                        Frame={medalIcon}
                        skills={AllSkills}
                        chooseSkill={appendToRSkills}
@@ -131,7 +131,7 @@ export default function PopForm(){
             </div>
             <div className='skills-component'>
                 <h3>Complimentary Skills (Select any 3)</h3>
-                 <DropDownSkillsMenu 
+                 <DropDownMenu 
                        Frame={starIcon}
                        skills={AllSkills}
                        chooseSkill={appendToCSkills}
@@ -156,7 +156,7 @@ export default function PopForm(){
                 </div>
             </div>
             <div className='location'>
-            <DropDownSkillsMenu
+            <DropDownMenu
                        title={{numberOfSelectedLocation}+'Locations'}
                        Frame={starIcon}
                        skills={AllSkills}

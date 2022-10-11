@@ -19,6 +19,9 @@ export default function DropDownMenu (props ){
                 if(pervOption.toLowerCase().includes(event.target.value.toLowerCase())){
                     newOptions.push(pervOption)
                 }
+                else{
+                newOptions.push('')
+                }
             })
             return(newOptions)
         })
@@ -55,6 +58,7 @@ export default function DropDownMenu (props ){
                     </div>
                 <ul className="skilloptions">
                     {options.map((option,index)=>(
+                        option!==''&&
                          <li key={index} onClick={()=>
                             props.chooseSkill(option,index)}>
                             {props.chosenSkills[index]?<img src={tickCircle} alt='tick' className='tick-icon-selected'/>:<img src={tickCircle} alt='tick' className='tick-icon'/>}

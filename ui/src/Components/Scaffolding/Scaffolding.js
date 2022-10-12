@@ -1,5 +1,8 @@
 import "./Scaffolding.css";
 function Scaffolding(props) {
-  return <div className="scaffolding">{props.children}</div>;
+  setTimeout(() => {
+    return <div className="scaffolding">{props.children}</div>;
+  }, 100);
+  return;
 }
 export default Scaffolding;

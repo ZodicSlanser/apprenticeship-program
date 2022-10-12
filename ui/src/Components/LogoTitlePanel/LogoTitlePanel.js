@@ -31,7 +31,7 @@ function LogoTitlePanel(props) {
   }
   function handleChange(e) {
     setSelectedImage(e.target.files[0]);
-    props.setImage(e.target.files[0]);
+    props.setLogo(e.target.files[0]);
     console.log(title);
     if (title !== "" && e.target.files[0]) {
       props.invokeLogoTitle(null, true);

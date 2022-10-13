@@ -1,8 +1,7 @@
 //TODO: 1- Add,Update,Delete,View --> Apprenticeship
 import { commit, getApprenticeship, removeFromDB, updateInDB } from "./CRUD_OP.js";
-const hasOwn = Object.prototype.hasOwnProperty;
-import { apprenticeshipSchema } from "../validation/validationSchema.js";
-import { Apprenticeship } from "./Collections/Apprenticeship.js";
+import { apprenticeshipSchema } from "./validation/validationSchema.js";
+import { Apprenticeship } from "./models/Apprenticeship.js";
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
@@ -16,7 +15,7 @@ function AddApprenticeship(apprenticeship) {
   }
   ).catch((err) => {
     console.log(err);
-    return false;
+    return err;
   }
   );
 

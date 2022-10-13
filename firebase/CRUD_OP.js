@@ -3,14 +3,13 @@ import db from "./Database.js";//Apprenticeship Object => bool
 import admin from "firebase-admin";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
-const batch = db().batch();
 const ApprenticeshipCollection = db().collection("Apprenticeship");
 //adds internship to DB
 function commit(apprenticeship) {
-
+    const batch = db().batch();
     const params = { ...apprenticeship };
-    params.startDate = db.Timestamp.fromDate(params.startDate);
-    params.endDate = db.Timestamp.fromDate(params.endDate);
+    params.startDate = db.Timestamp.fromDate(new Date(params.startDate));
+    params.endDate = db.Timestamp.fromDate(new Date(params.endDate));
     Object.values(apprenticeship.roles).forEach((role) => {
         const roleRef = RolesCollection.doc(role.id);
         batch.set(roleRef, role);
@@ -22,8 +21,10 @@ function commit(apprenticeship) {
     batch.set(ApprenticeshipCollection.doc(apprenticeship.id), params);
     batch.commit().then(() => {
         console.log("Apprenticeship Added");
+        return true;
     }).catch((err) => {
         console.log(err);
+        return err;
     });
 }
 

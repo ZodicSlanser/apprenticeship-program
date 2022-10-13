@@ -1,6 +1,6 @@
-import { Role } from "./firebase/models/Role.js";
-import { TeamMember } from "./firebase/models/TeamMember.js";
-import { Apprenticeship } from "./firebase/models/Apprenticeship.js";
+import { Role } from "./Firebase/models/Role.js";
+import { TeamMember } from "./Firebase/models/TeamMember.js";
+import { Apprenticeship } from "./Firebase/models/Apprenticeship.js";
 import admin from "firebase-admin";
 import {
   AddApprenticeship,

@@ -6,8 +6,8 @@ import {
   updateInDB,
 } from "./CRUD_OP.js";
 import joi from "joi";
-import { apprenticeshipSchema } from "../firebase/validation/ValidationSchema.js";
-import { Apprenticeship } from "../firebase/models/Apprenticeship.js";
+import { apprenticeshipSchema } from "../Firebase/Validation/ValidationSchema.js";
+import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
@@ -120,7 +120,7 @@ function UpdateField(ID, fieldName, value) {
   //ValidateValue() => bool
   //TODO 3- Validate Apprenticeship
   //ValidateApprenticeship() => bool
-  //TODO 4- replace value in firebase
+  //TODO 4- replace value in Firebase
   //updateInDB() =>
   return updateInDB(ID, fieldName, value)
     .then(() => {

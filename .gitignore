@@ -1,5 +1,6 @@
 ### Apperenticeship-Program ###
-secerts/
+backend/secrets/
+
 
 ### Intellji ###
 # Default ignored files
@@ -7,4 +8,5 @@ secerts/
 .idea/workspace.xml
 # Editor-based HTTP Client requests
 .idea/httpRequests/
+backend/node_modules
 node_modules

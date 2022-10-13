@@ -1,5 +1,5 @@
 //TODO Implement CRUD Operations
-import db from "../firebase/Database.js"; //Apprenticeship Object => bool
+import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");

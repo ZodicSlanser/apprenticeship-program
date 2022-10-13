@@ -30,13 +30,13 @@ class Apprenticeship {
   }
 
   teamType = {
-    "Web Platform": 0,
-    "Mobile App": 1,
+    Web_Platform: 0,
+    Mobile_App: 1,
     Growth: 2,
-    "Marketing Website": 3,
+    Marketing_Website: 3,
     Prototyping: 4,
     Data: 5,
-    "Custom Team": 6,
+    Custom_Team: 6,
   };
 }
 

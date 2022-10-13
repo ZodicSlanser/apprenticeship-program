@@ -11,9 +11,9 @@ import {
   UpdateField,
   DeleteField,
 } from "./CRUDS/CRUD.js";
-const port = process.env.PORT || 9000;
 import express from "express";
 import bodyParser from "body-parser";
+const port = process.env.PORT || 9000;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

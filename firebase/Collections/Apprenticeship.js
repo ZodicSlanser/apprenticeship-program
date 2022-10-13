@@ -1,10 +1,10 @@
 import db from "../Database.js";
-
-const ApprenticeshipCollection = db.collection("Apprenticeship");
+const ApprenticeshipCollection = db().collection("Apprenticeship");
 
 //create class using prototype
 class Apprenticeship {
   constructor({
+    id,
     logo,
     title,
     compDesc,
@@ -16,7 +16,8 @@ class Apprenticeship {
     startDate,
     endDate,
   }) {
-    this.id = ApprenticeshipCollection.doc().id;
+    //TODO: remove unnecessary validation
+    this.id = id || ApprenticeshipCollection.doc().id;
     this.logo = typeof logo === "string" ? logo : console.log("Cannot be null");
     this.title =
       typeof title === "string" ? title : console.log("Cannot be null");
@@ -41,12 +42,6 @@ class Apprenticeship {
     this.startDate = startDate;
     this.endDate = endDate;
   }
-  create = () => {
-    const params = { ...this };
-    delete params["create"];
-    return ApprenticeshipCollection.doc(this.id)
-      .set(params);
-  };
 }
 
 export { Apprenticeship, ApprenticeshipCollection };

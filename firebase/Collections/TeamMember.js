@@ -1,16 +1,13 @@
 import db from "../Database.js";
 
-const TeamMemberCollection = db.collection("TeamMembers");
+const TeamMemberCollection = db().collection("TeamMembers");
 
 class TeamMember {
-  constructor({ name, photo, socialURL }) {
-    this.id = TeamMemberCollection.doc().id;
+  constructor({ id, name, photo, socialURL }) {
+    this.id = id || TeamMemberCollection.doc().id;
     this.name = name;
     this.photo = photo;
     this.socialURL = socialURL;
-    TeamMemberCollection.doc(this.id)
-      .set({ ...this })
-      .then(() => {});
   }
 }
 

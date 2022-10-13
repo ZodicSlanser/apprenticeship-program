@@ -1,7 +1,7 @@
 import request from "request";
-import { Role } from "./models/Role.js";
-import { TeamMember } from "./models/TeamMember.js";
-import { Apprenticeship } from "./models/Apprenticeship.js";
+import { Role } from "./Models/Role.js";
+import { TeamMember } from "./Models/TeamMember.js";
+import { Apprenticeship } from "./Models/Apprenticeship.js";
 const clientHost = "localhost:9000";
 
 function updateClient(postData) {

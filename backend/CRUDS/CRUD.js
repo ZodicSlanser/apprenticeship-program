@@ -6,8 +6,8 @@ import {
   updateInDB,
 } from "./CRUD_OP.js";
 import joi from "joi";
-import { apprenticeshipSchema } from "../firebase/validation/ValidationSchema.js";
-import { Apprenticeship } from "../firebase/models/Apprenticeship.js";
+import { apprenticeshipSchema } from "../firebase/Validation/ValidationSchema.js";
+import { Apprenticeship } from "../firebase/Models/Apprenticeship.js";
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool

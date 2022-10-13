@@ -7,24 +7,24 @@ const roles = [
   {
     type: 2,
     desc: "des",
-    compSkills: "C#",
-    reqSkills: "java",
+    compSkills: ["C#"],
+    reqSkills: ["java"],
     hours: 8,
     location: "cairo",
   },
   {
     type: 2,
     desc: "des",
-    compSkills: "C#",
-    reqSkills: "java",
+    compSkills: ["C#"],
+    reqSkills: ["java"],
     hours: 8,
     location: "cairo",
   },
   {
     type: 2,
     desc: "des",
-    compSkills: "C#",
-    reqSkills: "java",
+    compSkills: ["C#"],
+    reqSkills: ["java"],
     hours: 8,
     location: "cairo",
   },
@@ -45,19 +45,22 @@ const apprenticeship = new Apprenticeship({
   teamType: 1,
   roles: roles.map((r) => new Role(r)),
   members: members.map((m) => new TeamMember(m)),
-  startDate: admin.firestore.Timestamp.fromDate(new Date()),
-  endDate: admin.firestore.Timestamp.fromDate(new Date()),
+  startDate: new Date(),
+  endDate: new Date(),
 });
-const id = apprenticeship.id;
-AddApprenticeship(apprenticeship).then((res) => {
-  // var obj = await ViewApprenticeship(id);
-  // //cast to Apprenticeship
-  // var app = new Apprenticeship(obj.data());
-  // console.log(app);
-  //DeleteApprenticeship(id);
-  // apprenticeship.logo = "new-logo-link";
-  // UpdateApprenticeship(apprenticeship);
-  //UpdateField(id, "logo", "new logo");
-  //DeleteField(id, "roles");
-});
+
+
+AddApprenticeship(apprenticeship);
+
+// AddApprenticeship(apprenticeship).then((res) => {
+//   // var obj = await ViewApprenticeship(id);
+//   // //cast to Apprenticeship
+//   // var app = new Apprenticeship(obj.data());
+//   // console.log(app);
+//   //DeleteApprenticeship(id);
+//   // apprenticeship.logo = "new-logo-link";
+//   // UpdateApprenticeship(apprenticeship);
+//   //UpdateField(id, "logo", "new logo");
+//   //DeleteField(id, "roles");
+// });
 

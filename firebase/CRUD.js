@@ -1,6 +1,8 @@
 //TODO: 1- Add,Update,Delete,View --> Apprenticeship
 import { commit, getApprenticeship, removeFromDB, updateInDB } from "./CRUD_OP.js";
 const hasOwn = Object.prototype.hasOwnProperty;
+import { apprenticeshipSchema } from "../validation/validationSchema.js";
+import { Apprenticeship } from "./Collections/Apprenticeship.js";
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
@@ -9,7 +11,15 @@ function AddApprenticeship(apprenticeship) {
   //ValidateApprenticeship(apprenticeship) : Bool
   //TODO: 2- Add to DB
   //Commit(apprenticeship) : void
-  return commit(apprenticeship);
+  apprenticeshipSchema.validateAsync(apprenticeship).then(() => {
+    return commit(apprenticeship);
+  }
+  ).catch((err) => {
+    console.log(err);
+    return false;
+  }
+  );
+
 }
 
 //GET DB to API
@@ -19,7 +29,18 @@ function ViewApprenticeship(ID) {
   //ValidateApprenticeship()
   //TODO: 2- return from DB
   //returnApprenticeship()
-  return getApprenticeship(ID);
+  getApprenticeship(ID).then(async (apprenticeship) => {
+    try {
+      await apprenticeshipSchema.validateAsync(apprenticeship);
+      return new Apprenticeship(apprenticeship);
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }).catch((error) => {
+    console.log(error);
+    return null;
+  });
 }
 
 //POST API -> DB
@@ -43,7 +64,6 @@ function DeleteApprenticeship(ID) {
 function UpdateApprenticeship(apprenticeship) {
   //TODO: 1- Validation
   //ValidateApprenticeship()
-  delete apprenticeship["create"];
   updateInDB(apprenticeship.id, null, { ...apprenticeship }).then(() => {
     return true;
   }).catch((error) => {
@@ -61,13 +81,19 @@ function UpdateApprenticeship(apprenticeship) {
 function AddValue(fieldName, value, apprenticeship) {
   //TODO 1- Validate FieldName
   //ValidateField() -> Bool
-  if (!hasOwn.call(apprenticeship, fieldName))
+  apprenticeshipSchema.validateAsync(apprenticeship).then(() => {
+    return updateInDB(apprenticeship.id, fieldName, value);
+  }
+  ).catch((err) => {
+    console.log(err);
     return false;
+  }
+  );
   //TODO 2- Validate Value
   //ValidateValue() => bool
   //TODO 3- Add to Apprenticeship object
   //updateInDB() => bool
-  return updateInDB(apprenticeship.id, fieldName, value);
+
 }
 
 //POST Update Value in Apprenticeship Document

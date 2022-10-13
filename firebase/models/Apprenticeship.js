@@ -16,32 +16,28 @@ class Apprenticeship {
     startDate,
     endDate,
   }) {
-    //TODO: remove unnecessary validation
     this.id = id || ApprenticeshipCollection.doc().id;
-    this.logo = typeof logo === "string" ? logo : console.log("Cannot be null");
-    this.title =
-      typeof title === "string" ? title : console.log("Cannot be null");
-    this.compDesc =
-      typeof compDesc === "string" ? compDesc : console.log("Cannot be null");
-    this.appDesc =
-      typeof appDesc === "string" ? appDesc : console.log("Cannot be null");
-    this.introVideo =
-      typeof introVideo === "string"
-        ? introVideo
-        : console.log("Cannot be null");
-    this.teamType = teamType; //TODO add Enum type/validation
-    //  _teamType instanceof Enum? _teamType : throw("invalid team type");
-    this.roles =
-      roles instanceof Array && roles.length !== 0
-        ? roles.map((r) => ({ ...r }))
-        : console.log("Invalid");
-    this.members =
-      members instanceof Array && members.length !== 0
-        ? members.map((r) => ({ ...r }))
-        : console.log("Invalid");
+    this.logo = logo;
+    this.title = title;
+    this.compDesc = compDesc;
+    this.appDesc = appDesc;
+    this.introVideo = introVideo;
+    this.teamType = teamType;
+    this.roles = roles;
+    this.members = members;
     this.startDate = startDate;
     this.endDate = endDate;
   }
+
+  teamType = {
+    "Web Platform": 0,
+    "Mobile App": 1,
+    Growth: 2,
+    "Marketing Website": 3,
+    Prototyping: 4,
+    Data: 5,
+    "Custom Team": 6,
+  };
 }
 
 export { Apprenticeship, ApprenticeshipCollection };

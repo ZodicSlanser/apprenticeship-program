@@ -1,6 +1,7 @@
-import "./TeamRoles.css";
+import React, { useState } from "react";
 import addCircle from "../../Assets/Roles/add-circle.png";
 import infoCircle from "../../Assets/Roles/info-circle.png";
+import "./TeamRoles.css";
 export default function TeamRoles(props) {
   return (
     <section className="team-roles-panel">
@@ -22,7 +23,7 @@ export default function TeamRoles(props) {
           className="info-circle-icon"
         ></img>
       </div>
-      <div className="available-roles"></div>
+      <div className="available-roles">{props.children}</div>
     </section>
   );
 }

@@ -24,17 +24,23 @@ export default function DropDownRoleMenu(props) {
   }
 
   return (
-    <div className="dropDown-wrapper" onClick={props.toggleRoleMenu}>
-      <img src={userFrame} alt="User Icon" className="user-Icon" />
-      <div className="select-btn">
-        <div>{title}</div>
-        {props.showRoleMenu ? (
-          <img src={activedownarrw} alt="arrow down" className="down-arrow" />
-        ) : (
-          <img src={downarrw} alt="arrow down" className="down-arrow" />
-        )}
+    <div
+      onBlur={(e) => {
+        if (!e.relatedTarget) props.toggleRoleMenu();
+      }}
+      tabIndex={props.tabIndex + ""}
+    >
+      <div className="dropDown-wrapper" onClick={props.toggleRoleMenu}>
+        <img src={userFrame} alt="User Icon" className="user-Icon" />
+        <div className="select-btn">
+          <div>{title}</div>
+          {props.showRoleMenu ? (
+            <img src={activedownarrw} alt="arrow down" className="down-arrow" />
+          ) : (
+            <img src={downarrw} alt="arrow down" className="down-arrow" />
+          )}
+        </div>
       </div>
-
       {props.showRoleMenu && (
         <div className="menu-content">
           <div className="search">

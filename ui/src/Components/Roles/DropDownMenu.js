@@ -45,14 +45,16 @@ export default function DropDownMenu(props) {
     }
   }
   function handleBlur(e) {
+    console.log(e);
     if (
-      e.relatedTarget &&
-      e.target &&
-      ((e.relatedTarget.nodeName === "INPUT" &&
-        e.target.tabIndex === props.tabIndex) ||
-        (e.target.nodeName === "INPUT" &&
-          e.relatedTarget.tabIndex === props.tabIndex) ||
-        (!showMenu && e.relatedTarget.nodeName === e.target.nodeName))
+      (e.relatedTarget &&
+        e.target &&
+        ((e.relatedTarget.nodeName === "INPUT" &&
+          e.target.tabIndex === props.tabIndex) ||
+          (e.target.nodeName === "INPUT" &&
+            e.relatedTarget.tabIndex === props.tabIndex) ||
+          (!showMenu && e.relatedTarget.nodeName === e.target.nodeName))) ||
+      (!showMenu && !e.relatedTarget)
     )
       return;
     toggleMenu();

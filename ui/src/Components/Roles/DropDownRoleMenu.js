@@ -26,6 +26,7 @@ export default function DropDownRoleMenu(props) {
   return (
     <div
       onBlur={(e) => {
+        console.log(e);
         if (
           (e.relatedTarget &&
             e.target &&
@@ -35,7 +36,8 @@ export default function DropDownRoleMenu(props) {
                 e.relatedTarget.tabIndex === props.tabIndex) ||
               (!props.showRoleMenu &&
                 e.relatedTarget.nodeName === e.target.nodeName))) ||
-          (!props.showRoleMenu && !e.relatedTarget)
+          (!props.showRoleMenu &&
+            (!e.relatedTarget || e.relatedTarget.nodeName === "TEXTAREA"))
         )
           return;
         props.toggleRoleMenu();
@@ -43,7 +45,13 @@ export default function DropDownRoleMenu(props) {
       }}
       tabIndex={props.tabIndex + ""}
     >
-      <div className="dropDown-wrapper" onClick={props.toggleRoleMenu}>
+      <div
+        className="dropDown-wrapper"
+        onClick={() => {
+          props.toggleRoleMenu();
+          setOptions(props.options);
+        }}
+      >
         <img src={userFrame} alt="User Icon" className="user-Icon" />
         <div className="select-btn">
           <div>{title}</div>

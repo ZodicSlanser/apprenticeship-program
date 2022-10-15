@@ -6,8 +6,8 @@ export default function Header() {
   return (
     <div className="FlexContainer">
       <div className="back" onClick={() => console.log("Back")}>
-        <img src={arrowLeft} alt="arrow left" />
-        Back
+        <img src={arrowLeft} alt="arrow left" style={{ marginLeft: "24px" }} />
+        <p style={{ marginLeft: "7px" }}> Back</p>
       </div>
       <div className="title">Creating Apprenticeship</div>
       <div className="publish">

@@ -28,3 +28,14 @@
 .scaffolding-container::-webkit-scrollbar {
   display: none;
 }
+.header-container {
+  margin-left: 23px;
+  margin-right: 23px;
+  margin-top: 20px;
+}
+.progressbar-container {
+  margin-top: 18px;
+}
+.scaffolding-container {
+  margin-top: 40px;
+}

@@ -7,7 +7,7 @@ function LogoTitlePanel(props) {
   const [opacity, setOpacity] = useState(0.3);
   const [selectedImage, setSelectedImage] = useState();
   const [title, setTitle] = useState("");
-
+  const [typing, setTyping] = useState(false);
   const inputFile = useRef(null);
   function handleClick() {
     setActive(true);
@@ -30,9 +30,11 @@ function LogoTitlePanel(props) {
     props.setTitle(e.target.value);
   }
   function handleChange(e) {
-    setSelectedImage(e.target.files[0]);
-    props.setLogo(e.target.files[0]);
-    console.log(title);
+    if (e.target.files[0]) {
+      setSelectedImage(e.target.files[0]);
+      props.setLogo(e.target.files[0]);
+    }
+
     if (title !== "" && e.target.files[0]) {
       props.invokeLogoTitle(null, true);
     } else {
@@ -45,13 +47,19 @@ function LogoTitlePanel(props) {
   return (
     <div
       className="companyLogoTitle"
+      onClick={() => {
+        handleClick();
+        props.invokeActivity(null, 1);
+      }}
       onMouseEnter={() => {
         handleClick();
         props.invokeActivity(null, 1);
       }}
       onMouseLeave={() => {
-        handleBlur();
-        props.invokeActivity(null, 0);
+        if (!typing) {
+          handleBlur();
+          props.invokeActivity(null, 0);
+        }
       }}
       tabIndex="-1"
       style={
@@ -92,20 +100,31 @@ function LogoTitlePanel(props) {
             className="uploadImage"
             src={image}
             alt=""
-            style={{
-              marginLeft: selectedImage ? 0 : null,
-              left: selectedImage ? "86px" : null,
-            }}
+            style={
+              selectedImage
+                ? {
+                    marginTop: "0px",
+                    marginBottom: "60px",
+                    bottom: "23.5px",
+                  }
+                : null
+            }
           ></img>
         </div>
         <input
           type={"text"}
           className="logoTitleText"
           placeholder="Enter  Apprenticeship Title"
-          onBlur={typingDone}
+          onBlur={() => {
+            handleBlur();
+            props.invokeActivity(null, 0);
+            typingDone();
+            setTyping(false);
+          }}
           onChange={handleTitleChange}
           onClick={() => {
             setOpacity(1);
+            setTyping(true);
           }}
           style={{ opacity: opacity }}
         ></input>

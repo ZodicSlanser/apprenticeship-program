@@ -8,6 +8,7 @@ export default function TeamRoles(props) {
   const [ListOfRoles, setRoles] = useState([]);
 
   const [showPopForm, setShowPopForm] = useState(false);
+
   function togglePopForm() {
     setShowPopForm(!showPopForm);
   }
@@ -20,6 +21,7 @@ export default function TeamRoles(props) {
     });
     togglePopForm();
   }
+
   function deleteRole(index1) {
     setRoles((prevRoles) => {
       const newRoles = [];
@@ -33,28 +35,51 @@ export default function TeamRoles(props) {
     });
   }
 
+  const [showPopFormUpdate, setShowPopFormUpdate] = useState(false);
+
+  function togglePopFormUpdate() {
+    setShowPopFormUpdate(!showPopFormUpdate);
+  }
+
+  function UpdateRole(Role, index1) {
+    setRoles((prevRoles) => {
+      const newRoles = [];
+      prevRoles.map((role, index) => {
+        if (index1 === index) {
+          newRoles.push(Role);
+        } else {
+          newRoles.push(role);
+        }
+      });
+      return newRoles;
+    });
+    togglePopFormUpdate();
+    console.log(ListOfRoles);
+  }
+
   return (
     <>
       <section className="team-roles-panel">
         <div className="team-Button-a">
           <div>
-            <p>Team Roles</p>
+            <p> Team Roles </p>{" "}
             <button className="team-roles-button" onClick={togglePopForm}>
               <img
                 src={addCircle}
                 alt="add Circle Icon"
                 className="add-circle-icon"
               />
-              Add Team Member
-            </button>
-          </div>
+              Add Team Member{" "}
+            </button>{" "}
+          </div>{" "}
           <img
             src={infoCircle}
             alt="Info Circle Icon"
             className="info-circle-icon"
-          ></img>
-        </div>
+          ></img>{" "}
+        </div>{" "}
         <div className="available-roles">
+          {" "}
           {ListOfRoles.map((singleRole, index) => (
             <Roles
               key={index}
@@ -66,16 +91,17 @@ export default function TeamRoles(props) {
               reqSkills={singleRole.reqSkills}
               hours={singleRole.hours}
               location={singleRole.location}
+              UpdateRole={UpdateRole}
             />
-          ))}
-        </div>
-      </section>
+          ))}{" "}
+        </div>{" "}
+      </section>{" "}
       {showPopForm && (
         <PopForm
           togglePopForm={togglePopForm}
           handleClick={appendToListOfRoles}
         />
-      )}
+      )}{" "}
     </>
   );
 }

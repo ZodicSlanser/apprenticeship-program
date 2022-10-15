@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Header from "../Header/Header";
 import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Scaffolding from "../Scaffolding/Scaffolding";
+import TeamTypePanel from "../TeamType/TeamTypePanel";
 import "./MainPage.css";
 function MainPage() {
   const [title, setTitle] = useState();
@@ -58,8 +60,10 @@ function MainPage() {
   };
   return (
     <div className="main-page">
-      <div>Header goes here</div>
-      <div>
+      <div className="header-container">
+        <Header></Header>
+      </div>
+      <div className="progressbar-container">
         <ProgressBar
           invokeActivity={invokeActivity}
           invokeDescription={invokeDescription}
@@ -69,15 +73,21 @@ function MainPage() {
           invokeTimeline={invokeTimeline}
         ></ProgressBar>
       </div>
-      <Scaffolding>
-        <LogoTitlePanel
-          invokeActivity={invokeActivity}
-          invokeLogoTitle={invokeDescription}
-          setTitle={setTitle}
-          setLogo={setLogo}
-        ></LogoTitlePanel>
-        <div>rest of page</div>
-      </Scaffolding>
+      <div className="scaffolding-container">
+        <Scaffolding>
+          <LogoTitlePanel
+            invokeActivity={invokeActivity}
+            invokeLogoTitle={invokeDescription}
+            setTitle={setTitle}
+            setLogo={setLogo}
+          ></LogoTitlePanel>
+          <TeamTypePanel
+            invokeActivity={invokeActivity}
+            invokeType={invokeType}
+          ></TeamTypePanel>
+          <div>Rest of page</div>
+        </Scaffolding>
+      </div>
     </div>
   );
 }

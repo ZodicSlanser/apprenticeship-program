@@ -1,15 +1,24 @@
+<<<<<<< HEAD
 import { useState, useRef, useEffect, memo } from "react";
 import Header from "../Header/Header";
 import LogoTitle from "../LogoTitle/LogoTitle";
+=======
+import { useState } from "react";
+import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
+>>>>>>> e5eb39a4 (Centered everything on main page)
 import ProgressBar from "../ProgressBar/ProgressBar";
 import TeamRoles from "../Roles/TeamRoles";
 import Scaffolding from "../Scaffolding/Scaffolding";
+<<<<<<< HEAD
 import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
 import TimeLine from "../TimeLine/TimeLine";
 import "./MainPage.css";
 let lock = false;
 
+=======
+import "./MainPage.css";
+>>>>>>> e5eb39a4 (Centered everything on main page)
 function MainPage() {
   const [title, setTitle] = useState("");
   const [logo, setLogo] = useState("");
@@ -46,6 +55,7 @@ function MainPage() {
     };
   });
 
+  const apprenticeship = { title: title, logo: logo };
   let invokeActivitySetter;
   const invokeActivity = (setStateCallback, active, lockValue) => {
     if (lockValue && active !== 0) invokeActivitySetter(active);

@@ -27,10 +27,13 @@ export default function DropDownMenu(props) {
       return newOptions;
     });
   }
-  /*to toggel the menu  */
+  /*to toggle the menu  */
   const [showMenu, setshowMenu] = useState(false);
   function toggleMenu() {
     setshowMenu(!showMenu);
+    if (!showMenu) {
+      setOptions(AllOptions);
+    }
   }
 
   function deleteSkill(index) {
@@ -41,9 +44,25 @@ export default function DropDownMenu(props) {
       ]);
     }
   }
-
+  function handleBlur(e) {
+    if (
+      e.relatedTarget &&
+      e.target &&
+      ((e.relatedTarget.nodeName === "INPUT" &&
+        e.target.tabIndex === props.tabIndex) ||
+        (e.target.nodeName === "INPUT" &&
+          e.relatedTarget.tabIndex === props.tabIndex) ||
+        (!showMenu && e.relatedTarget.nodeName === e.target.nodeName))
+    )
+      return;
+    toggleMenu();
+  }
   return (
-    <div className="skillwrapper" tabIndex={props.tabIndex + ""}>
+    <div
+      className="skillwrapper"
+      onBlur={handleBlur}
+      tabIndex={props.tabIndex + ""}
+    >
       <div className="skillwrapper-icon-btn" onClick={toggleMenu}>
         <img src={props.Frame} alt="Icon" className="skillIcon" />
         <div className="skillselect-btn">

@@ -35,12 +35,6 @@ export default function TeamRoles(props) {
     });
   }
 
-  const [showPopFormUpdate, setShowPopFormUpdate] = useState(false);
-
-  function togglePopFormUpdate() {
-    setShowPopFormUpdate(!showPopFormUpdate);
-  }
-
   function UpdateRole(Role, index1) {
     setRoles((prevRoles) => {
       const newRoles = [];
@@ -53,8 +47,21 @@ export default function TeamRoles(props) {
       });
       return newRoles;
     });
-    togglePopFormUpdate();
     console.log(ListOfRoles);
+  }
+  function duplicateRole(index1) {
+    setRoles((prevRoles) => {
+      const newRoles = [];
+      prevRoles.map((role, index) => {
+        if (index1 === index) {
+          newRoles.push(role);
+          newRoles.push(role);
+        } else {
+          newRoles.push(role);
+        }
+      });
+      return newRoles;
+    });
   }
 
   return (
@@ -92,6 +99,7 @@ export default function TeamRoles(props) {
               hours={singleRole.hours}
               location={singleRole.location}
               UpdateRole={UpdateRole}
+              duplicateRole={duplicateRole}
             />
           ))}{" "}
         </div>{" "}

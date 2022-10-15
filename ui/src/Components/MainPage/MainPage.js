@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Scaffolding from "../Scaffolding/Scaffolding";
-
+import "./MainPage.css";
 function MainPage() {
   const [title, setTitle] = useState();
   const [logo, setLogo] = useState();
 
+  const apprenticeship = { title: title, logo: logo };
   let invokeActivitySetter;
   const invokeActivity = (setStateCallback, active) => {
     if (setStateCallback) {
@@ -56,7 +57,7 @@ function MainPage() {
     }
   };
   return (
-    <div>
+    <div className="main-page">
       <div>Header goes here</div>
       <div>
         <ProgressBar
@@ -68,7 +69,6 @@ function MainPage() {
           invokeTimeline={invokeTimeline}
         ></ProgressBar>
       </div>
-
       <Scaffolding>
         <LogoTitlePanel
           invokeActivity={invokeActivity}

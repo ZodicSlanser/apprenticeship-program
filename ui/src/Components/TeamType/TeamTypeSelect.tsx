@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styles from "./TeamTypePanel.module.css";
-import untickCircle from "../../Assets/untick-circle.svg";
-import tickCircle from "../../Assets/tick-circle.svg";
+import untickCircle from "../../Assets/TeamType/untick-circle.svg";
+import tickCircle from "../../Assets/TeamType/tick-circle.svg";
 interface TeamTypeSelectProps {
   teamType: string;
   logo: string;

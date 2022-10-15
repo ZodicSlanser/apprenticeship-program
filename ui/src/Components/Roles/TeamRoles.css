@@ -94,7 +94,7 @@
     color: #1E1E1E;
 }
 
-.available-roles{
+.available-roles {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -104,4 +104,10 @@
     gap: 16px;
     width: 722px;
     height: fit-content;
+}
+
+.team-roles-button:hover {
+    border: 1px solid #793ef5;
+    /* Card Selected */
+    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
 }

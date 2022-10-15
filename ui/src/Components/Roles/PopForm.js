@@ -275,6 +275,11 @@ export default function PopForm(props) {
   const [description, setDesc] = useState("");
   const [minimumHours, setMinimumHours] = useState(0);
   function pickMinimumHours(event) {
+    if (event.target.value < 0) {
+      event.target.value = 0;
+    }
+
+    event.target.value = parseInt(event.target.value);
     setMinimumHours(event.target.value);
   }
 
@@ -516,7 +521,7 @@ export default function PopForm(props) {
               })
             }
           >
-            save
+            Save
           </button>
           <img
             src={closeIcon}
@@ -609,7 +614,7 @@ export default function PopForm(props) {
         <div className="icon-hours">
           <img src={clockIcon} alt="Clock Icon" className="clock-Icon" />
           <input
-            type="text"
+            type="number"
             className="input-hours"
             placeholder="No. of hours"
             onChange={pickMinimumHours}

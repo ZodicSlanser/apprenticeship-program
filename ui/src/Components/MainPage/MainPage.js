@@ -3,13 +3,23 @@ import Header from "../Header/Header";
 import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Scaffolding from "../Scaffolding/Scaffolding";
+import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
 import "./MainPage.css";
 function MainPage() {
   const [title, setTitle] = useState();
   const [logo, setLogo] = useState();
+  const [type, setType] = useState();
+  const [roles, setRoles] = useState();
+  const [admin, setAdmin] = useState();
 
-  const apprenticeship = { title: title, logo: logo };
+  const apprenticeship = {
+    title: title,
+    logo: logo,
+    type: type,
+    roles: roles,
+    admin: admin,
+  };
   let invokeActivitySetter;
   const invokeActivity = (setStateCallback, active) => {
     if (setStateCallback) {
@@ -84,7 +94,13 @@ function MainPage() {
           <TeamTypePanel
             invokeActivity={invokeActivity}
             invokeType={invokeType}
+            setType={setType}
           ></TeamTypePanel>
+          <TeamAdmin
+            invokeActivity={invokeActivity}
+            invokeAdmin={invokeAdmin}
+            setAdmin={setAdmin}
+          ></TeamAdmin>
           <div>Rest of page</div>
         </Scaffolding>
       </div>

@@ -104,7 +104,6 @@ function LogoTitlePanel(props) {
               selectedImage
                 ? {
                     marginTop: "0px",
-                    marginBottom: "60px",
                     bottom: "23.5px",
                   }
                 : null

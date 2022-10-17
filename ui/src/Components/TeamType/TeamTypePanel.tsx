@@ -99,7 +99,7 @@ export default memo(function TeamTypePanel({
             teamType={"Web Platform"}
             logo={monitor}
             select={() => {
-              handleSelect(1);
+              handleSelect(0);
             }}
             isSelected={teamTypes[0].selected}
           />
@@ -107,7 +107,7 @@ export default memo(function TeamTypePanel({
             teamType={"Mobile App"}
             logo={mobile}
             select={() => {
-              handleSelect(2);
+              handleSelect(1);
             }}
             isSelected={teamTypes[1].selected}
           />
@@ -115,7 +115,7 @@ export default memo(function TeamTypePanel({
             teamType={"Growth"}
             logo={diagram}
             select={() => {
-              handleSelect(3);
+              handleSelect(2);
             }}
             isSelected={teamTypes[2].selected}
           />
@@ -125,7 +125,7 @@ export default memo(function TeamTypePanel({
             teamType={"Marketing Website"}
             logo={keyboardOpen}
             select={() => {
-              handleSelect(4);
+              handleSelect(3);
             }}
             isSelected={teamTypes[3].selected}
           />
@@ -133,7 +133,7 @@ export default memo(function TeamTypePanel({
             teamType={"Prototyping"}
             logo={box}
             select={() => {
-              handleSelect(5);
+              handleSelect(4);
             }}
             isSelected={teamTypes[4].selected}
           />
@@ -141,7 +141,7 @@ export default memo(function TeamTypePanel({
             teamType={"Data"}
             logo={driver}
             select={() => {
-              handleSelect(6);
+              handleSelect(5);
             }}
             isSelected={teamTypes[5].selected}
           />
@@ -151,7 +151,7 @@ export default memo(function TeamTypePanel({
             teamType={"Custom Team"}
             logo={dottedBox}
             select={() => {
-              handleSelect(7);
+              handleSelect(6);
             }}
             isSelected={teamTypes[6].selected}
           />

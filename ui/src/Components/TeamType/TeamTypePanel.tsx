@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./TeamTypePanel.module.css";
 import monitor from "../../Assets/TeamType/monitor.svg";
 import mobile from "../../Assets/TeamType/mobile.svg";
@@ -13,102 +13,24 @@ import TeamTypeSelect from "./TeamTypeSelect";
 interface TeamTypePanelProps {
   invokeActivity: (x: null, y: Number) => void;
   invokeType: (x: null, y: boolean) => void;
+  setType: (x: Number) => void;
 }
 export default function TeamTypePanel({
+  setType,
   invokeActivity,
   invokeType,
 }: TeamTypePanelProps) {
-  const [selectedWeb, setSelectedWeb] = useState(false);
-  const [selectedMobile, setSelectedMobile] = useState(false);
-  const [selectedGrowth, setSelectedGrowth] = useState(false);
-  const [selectedMarketingWebsite, setSelectedMarketingWebsite] =
-    useState(false);
-  const [selectedPrototyping, setSelectedPrototyping] = useState(false);
-  const [selectedData, setSelectedData] = useState(false);
-  const [selectedCustomTeam, setSelectedCustomTeam] = useState(false);
-  const handleSelectWebPlatform = (): void => {
-    invokeType(null, true);
-    setSelectedWeb(!selectedWeb);
-    setSelectedMobile(false);
-    setSelectedGrowth(false);
-    setSelectedMarketingWebsite(false);
-    setSelectedPrototyping(false);
-    setSelectedData(false);
-    setSelectedCustomTeam(false);
-    if (!selectedWeb) invokeType(null, true);
+  const [selected, setSelected] = useState(0);
+
+  function handleSelect(selection: number) {
+    setSelected(selection === selected ? 0 : selection);
+  }
+  useEffect(() => {
+    setType(selected);
+    if (selected) invokeType(null, true);
     else invokeType(null, false);
-  };
-  const handleSelectMobileApp = (): void => {
-    invokeType(null, true);
-    setSelectedMobile(!selectedMobile);
-    setSelectedWeb(false);
-    setSelectedGrowth(false);
-    setSelectedMarketingWebsite(false);
-    setSelectedPrototyping(false);
-    setSelectedData(false);
-    setSelectedCustomTeam(false);
-    if (!selectedMobile) invokeType(null, true);
-    else invokeType(null, false);
-  };
-  const handleSelectGrowth = (): void => {
-    invokeType(null, true);
-    setSelectedGrowth(!selectedGrowth);
-    setSelectedWeb(false);
-    setSelectedMobile(false);
-    setSelectedMarketingWebsite(false);
-    setSelectedPrototyping(false);
-    setSelectedData(false);
-    setSelectedCustomTeam(false);
-    if (!selectedGrowth) invokeType(null, true);
-    else invokeType(null, false);
-  };
-  const handleSelectMarketingWebsite = (): void => {
-    invokeType(null, true);
-    setSelectedMarketingWebsite(!selectedMarketingWebsite);
-    setSelectedWeb(false);
-    setSelectedMobile(false);
-    setSelectedGrowth(false);
-    setSelectedPrototyping(false);
-    setSelectedData(false);
-    setSelectedCustomTeam(false);
-    if (!selectedMarketingWebsite) invokeType(null, true);
-    else invokeType(null, false);
-  };
-  const handleSelectPrototyping = (): void => {
-    invokeType(null, true);
-    setSelectedPrototyping(!selectedPrototyping);
-    setSelectedWeb(false);
-    setSelectedMobile(false);
-    setSelectedGrowth(false);
-    setSelectedMarketingWebsite(false);
-    setSelectedData(false);
-    setSelectedCustomTeam(false);
-    if (!selectedPrototyping) invokeType(null, true);
-    else invokeType(null, false);
-  };
-  const handleSelectData = (): void => {
-    setSelectedData(!selectedData);
-    setSelectedWeb(false);
-    setSelectedMobile(false);
-    setSelectedGrowth(false);
-    setSelectedMarketingWebsite(false);
-    setSelectedPrototyping(false);
-    setSelectedCustomTeam(false);
-    if (!selectedData) invokeType(null, true);
-    else invokeType(null, false);
-  };
-  const handleSelectCustomTheme = (): void => {
-    invokeType(null, true);
-    setSelectedCustomTeam(!selectedCustomTeam);
-    setSelectedWeb(false);
-    setSelectedMobile(false);
-    setSelectedGrowth(false);
-    setSelectedMarketingWebsite(false);
-    setSelectedPrototyping(false);
-    setSelectedData(false);
-    if (!selectedCustomTeam) invokeType(null, true);
-    else invokeType(null, false);
-  };
+  }, [selected, invokeType, setType]);
+
   enum TeamType {
     WebPlatform,
     MobileApp,
@@ -118,40 +40,36 @@ export default function TeamTypePanel({
     Data,
     CustomTeam,
   }
+
   const teamTypes = [
     // array of objects defining the team types along with their logo
     {
       type: TeamType.WebPlatform,
-      selected: selectedWeb,
+      selected: selected === 1 ? true : false,
     },
     {
       type: TeamType.MobileApp,
-
-      selected: selectedMobile,
+      selected: selected === 2 ? true : false,
     },
     {
       type: TeamType.Growth,
-
-      selected: selectedGrowth,
+      selected: selected === 3 ? true : false,
     },
     {
       type: TeamType.MarketingWebsite,
-      selected: selectedMarketingWebsite,
+      selected: selected === 4 ? true : false,
     },
     {
       type: TeamType.Prototyping,
-
-      selected: selectedPrototyping,
+      selected: selected === 5 ? true : false,
     },
     {
       type: TeamType.Data,
-
-      selected: selectedData,
+      selected: selected === 6 ? true : false,
     },
     {
       type: TeamType.CustomTeam,
-
-      selected: selectedCustomTeam,
+      selected: selected === 7 ? true : false,
     },
   ];
 
@@ -174,21 +92,27 @@ export default function TeamTypePanel({
         </div>
         <div className={styles.row}>
           <TeamTypeSelect
-            teamType={"Web Platorm"}
+            teamType={"Web Platform"}
             logo={monitor}
-            select={handleSelectWebPlatform}
+            select={() => {
+              handleSelect(1);
+            }}
             isSelected={teamTypes[0].selected}
           />
           <TeamTypeSelect
             teamType={"Mobile App"}
             logo={mobile}
-            select={handleSelectMobileApp}
+            select={() => {
+              handleSelect(2);
+            }}
             isSelected={teamTypes[1].selected}
           />
           <TeamTypeSelect
             teamType={"Growth"}
             logo={diagram}
-            select={handleSelectGrowth}
+            select={() => {
+              handleSelect(3);
+            }}
             isSelected={teamTypes[2].selected}
           />
         </div>
@@ -196,19 +120,25 @@ export default function TeamTypePanel({
           <TeamTypeSelect
             teamType={"Marketing Website"}
             logo={keyboardOpen}
-            select={handleSelectMarketingWebsite}
+            select={() => {
+              handleSelect(4);
+            }}
             isSelected={teamTypes[3].selected}
           />
           <TeamTypeSelect
             teamType={"Prototyping"}
             logo={box}
-            select={handleSelectPrototyping}
+            select={() => {
+              handleSelect(5);
+            }}
             isSelected={teamTypes[4].selected}
           />
           <TeamTypeSelect
             teamType={"Data"}
             logo={driver}
-            select={handleSelectData}
+            select={() => {
+              handleSelect(6);
+            }}
             isSelected={teamTypes[5].selected}
           />
         </div>
@@ -216,7 +146,9 @@ export default function TeamTypePanel({
           <TeamTypeSelect
             teamType={"Custom Team"}
             logo={dottedBox}
-            select={handleSelectCustomTheme}
+            select={() => {
+              handleSelect(7);
+            }}
             isSelected={teamTypes[6].selected}
           />
         </div>

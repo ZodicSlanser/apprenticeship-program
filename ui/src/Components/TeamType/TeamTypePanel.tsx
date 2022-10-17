@@ -20,7 +20,7 @@ export default function TeamTypePanel({
   invokeActivity,
   invokeType,
 }: TeamTypePanelProps) {
-  const [selected, setSelected] = useState(-1);
+  const [selected, setSelected] = useState(0);
 
   function handleSelect(selection: number) {
     setSelected(selection === selected ? 0 : selection);
@@ -28,7 +28,7 @@ export default function TeamTypePanel({
   useEffect(() => {
     setType(selected);
     if (selected) invokeType(null, true);
-    else invokeType(null, false);
+    invokeType(null, false);
   }, [selected, invokeType, setType]);
 
   enum TeamType {
@@ -45,31 +45,31 @@ export default function TeamTypePanel({
     // array of objects defining the team types along with their logo
     {
       type: TeamType.WebPlatform,
-      selected: selected === 0 ? true : false,
-    },
-    {
-      type: TeamType.MobileApp,
       selected: selected === 1 ? true : false,
     },
     {
-      type: TeamType.Growth,
+      type: TeamType.MobileApp,
       selected: selected === 2 ? true : false,
     },
     {
-      type: TeamType.MarketingWebsite,
+      type: TeamType.Growth,
       selected: selected === 3 ? true : false,
     },
     {
-      type: TeamType.Prototyping,
+      type: TeamType.MarketingWebsite,
       selected: selected === 4 ? true : false,
     },
     {
-      type: TeamType.Data,
+      type: TeamType.Prototyping,
       selected: selected === 5 ? true : false,
     },
     {
-      type: TeamType.CustomTeam,
+      type: TeamType.Data,
       selected: selected === 6 ? true : false,
+    },
+    {
+      type: TeamType.CustomTeam,
+      selected: selected === 7 ? true : false,
     },
   ];
 
@@ -95,7 +95,7 @@ export default function TeamTypePanel({
             teamType={"Web Platform"}
             logo={monitor}
             select={() => {
-              handleSelect(0);
+              handleSelect(1);
             }}
             isSelected={teamTypes[0].selected}
           />
@@ -103,7 +103,7 @@ export default function TeamTypePanel({
             teamType={"Mobile App"}
             logo={mobile}
             select={() => {
-              handleSelect(1);
+              handleSelect(2);
             }}
             isSelected={teamTypes[1].selected}
           />
@@ -111,7 +111,7 @@ export default function TeamTypePanel({
             teamType={"Growth"}
             logo={diagram}
             select={() => {
-              handleSelect(2);
+              handleSelect(3);
             }}
             isSelected={teamTypes[2].selected}
           />
@@ -121,7 +121,7 @@ export default function TeamTypePanel({
             teamType={"Marketing Website"}
             logo={keyboardOpen}
             select={() => {
-              handleSelect(3);
+              handleSelect(4);
             }}
             isSelected={teamTypes[3].selected}
           />
@@ -129,7 +129,7 @@ export default function TeamTypePanel({
             teamType={"Prototyping"}
             logo={box}
             select={() => {
-              handleSelect(4);
+              handleSelect(5);
             }}
             isSelected={teamTypes[4].selected}
           />
@@ -137,7 +137,7 @@ export default function TeamTypePanel({
             teamType={"Data"}
             logo={driver}
             select={() => {
-              handleSelect(5);
+              handleSelect(6);
             }}
             isSelected={teamTypes[5].selected}
           />
@@ -147,7 +147,7 @@ export default function TeamTypePanel({
             teamType={"Custom Team"}
             logo={dottedBox}
             select={() => {
-              handleSelect(6);
+              handleSelect(7);
             }}
             isSelected={teamTypes[6].selected}
           />

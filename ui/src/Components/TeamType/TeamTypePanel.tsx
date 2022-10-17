@@ -21,7 +21,7 @@ export default memo(function TeamTypePanel({
   invokeActivity,
   invokeType,
 }: TeamTypePanelProps) {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(-1);
 
   function handleSelect(selection: number) {
     setSelected(selection === selected ? 0 : selection);

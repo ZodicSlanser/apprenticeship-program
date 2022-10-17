@@ -14,12 +14,14 @@ export default function TeamRoles(props) {
   }
 
   function appendToListOfRoles(role) {
-    setRoles((prevRoles) => {
-      const newRoles = prevRoles;
-      newRoles.push(role);
-      return newRoles;
-    });
-    togglePopForm();
+    if (!(role.type === "Select Role")) {
+      setRoles((prevRoles) => {
+        const newRoles = prevRoles;
+        newRoles.push(role);
+        return newRoles;
+      });
+      togglePopForm();
+    }
   }
 
   function deleteRole(index1) {
@@ -36,18 +38,19 @@ export default function TeamRoles(props) {
   }
 
   function UpdateRole(Role, index1) {
-    setRoles((prevRoles) => {
-      const newRoles = [];
-      prevRoles.map((role, index) => {
-        if (index1 === index) {
-          newRoles.push(Role);
-        } else {
-          newRoles.push(role);
-        }
+    if (!(Role.type === "Select Role")) {
+      setRoles((prevRoles) => {
+        const newRoles = [];
+        prevRoles.map((role, index) => {
+          if (index1 === index) {
+            newRoles.push(Role);
+          } else {
+            newRoles.push(role);
+          }
+        });
+        return newRoles;
       });
-      return newRoles;
-    });
-    console.log(ListOfRoles);
+    }
   }
   function duplicateRole(index1) {
     setRoles((prevRoles) => {

@@ -1,63 +1,28 @@
-import { Role } from "./firebase/Collections/Role.js";
-import { TeamMember } from "./firebase/Collections/TeamMember.js";
-import { Apprenticeship } from "./firebase/Collections/Apprenticeship.js";
+import { Role } from "./Firebase/models/Role.js";
+import { TeamMember } from "./Firebase/models/TeamMember.js";
+import { Apprenticeship } from "./Firebase/models/Apprenticeship.js";
 import admin from "firebase-admin";
-import { AddApprenticeship, ViewApprenticeship, DeleteApprenticeship, UpdateApprenticeship, AddValue, UpdateField, DeleteField } from "./firebase/CRUD.js";
-const roles = [
-  {
-    type: 2,
-    desc: "des",
-    compSkills: "C#",
-    reqSkills: "java",
-    hours: 8,
-    location: "cairo",
-  },
-  {
-    type: 2,
-    desc: "des",
-    compSkills: "C#",
-    reqSkills: "java",
-    hours: 8,
-    location: "cairo",
-  },
-  {
-    type: 2,
-    desc: "des",
-    compSkills: "C#",
-    reqSkills: "java",
-    hours: 8,
-    location: "cairo",
-  },
-];
+import {
+  AddApprenticeship,
+  ViewApprenticeship,
+  DeleteApprenticeship,
+  UpdateApprenticeship,
+  AddValue,
+  UpdateField,
+  DeleteField,
+} from "./CRUDS/CRUD.js";
+import express from "express";
+import bodyParser from "body-parser";
+const port = process.env.PORT || 9000;
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-const members = [
-  { name: "ali", photo: "photo-link", socialURL: "www.github.com" },
-  { name: "ahmed", photo: "photo-link", socialURL: "www.twitter.com" },
-  { name: "saif", photo: "photo-link", socialURL: "www.facebook.com" },
-];
-
-const apprenticeship = new Apprenticeship({
-  logo: "logo-link",
-  title: "title",
-  compDesc: "company des",
-  appDesc: "app desc",
-  introVideo: "video-link",
-  teamType: 1,
-  roles: roles.map((r) => new Role(r)),
-  members: members.map((m) => new TeamMember(m)),
-  startDate: admin.firestore.Timestamp.fromDate(new Date()),
-  endDate: admin.firestore.Timestamp.fromDate(new Date()),
-});
-const id = apprenticeship.id;
-AddApprenticeship(apprenticeship).then((res) => {
-  // var obj = await ViewApprenticeship(id);
-  // //cast to Apprenticeship
-  // var app = new Apprenticeship(obj.data());
-  // console.log(app);
-  //DeleteApprenticeship(id);
-  // apprenticeship.logo = "new-logo-link";
-  // UpdateApprenticeship(apprenticeship);
-  //UpdateField(id, "logo", "new logo");
-  //DeleteField(id, "roles");
+app.post("/", (req, res) => {
+  console.log("receiving data ...");
+  const msg = AddApprenticeship(new Apprenticeship(req.body));
+  //TODO send error if failed
+  res.send(`${msg}`);
 });
 
+app.listen(port, () => console.log(`The server is running on port ${port}`));

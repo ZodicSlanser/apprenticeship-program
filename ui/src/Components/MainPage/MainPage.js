@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Header from "../Header/Header";
 import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -6,13 +6,15 @@ import Scaffolding from "../Scaffolding/Scaffolding";
 import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
 import "./MainPage.css";
+
 function MainPage() {
   const [title, setTitle] = useState();
   const [logo, setLogo] = useState();
   const [type, setType] = useState();
   const [roles, setRoles] = useState();
   const [admin, setAdmin] = useState();
-
+  const [contentHover, setContentHover] = useState(false);
+  const contentRef = useRef(null);
   const apprenticeship = {
     title: title,
     logo: logo,
@@ -20,6 +22,22 @@ function MainPage() {
     roles: roles,
     admin: admin,
   };
+
+  useEffect(() => {
+    const handleScrolling = (event) => {
+      if (contentRef !== null) {
+        if (contentHover === false) {
+          contentRef.current.scrollTop += event.deltaY;
+        }
+      }
+    };
+
+    window.addEventListener("wheel", handleScrolling);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrolling);
+    };
+  });
   let invokeActivitySetter;
   const invokeActivity = (setStateCallback, active) => {
     if (setStateCallback) {
@@ -28,6 +46,7 @@ function MainPage() {
       if (invokeActivitySetter) invokeActivitySetter(active);
     }
   };
+
   let invokeDescriptionSetter;
   const invokeDescription = (setStateCallback, done) => {
     if (setStateCallback) {
@@ -68,43 +87,78 @@ function MainPage() {
       if (invokeTimelineSetter) invokeTimelineSetter(done);
     }
   };
+  let invokeDoneSetter;
+  const invokeDone = (setStateCallback, done) => {
+    if (setStateCallback) {
+      invokeDoneSetter = setStateCallback[1];
+    } else {
+      if (invokeDoneSetter) invokeDoneSetter(done);
+    }
+  };
   return (
-    <div className="main-page">
-      <div className="header-container">
-        <Header></Header>
+    <>
+      <div style={{ overflow: "auto" }}>
+        <div className="main-page">
+          <div className="header-container">
+            <Header
+              invokeDone={invokeDone}
+              apprenticeship={apprenticeship}
+            ></Header>
+          </div>
+          <div className="progressbar-container">
+            <ProgressBar
+              invokeActivity={invokeActivity}
+              invokeDescription={invokeDescription}
+              invokeType={invokeType}
+              invokeRoles={invokeRoles}
+              invokeAdmin={invokeAdmin}
+              invokeTimeline={invokeTimeline}
+              invokeDone={invokeDone}
+            ></ProgressBar>
+          </div>
+          <div
+            className="scaffolding-container"
+            ref={contentRef}
+            onMouseEnter={() => {
+              setContentHover(true);
+            }}
+            onMouseLeave={() => {
+              setContentHover(false);
+            }}
+          >
+            <Scaffolding>
+              <LogoTitlePanel
+                invokeActivity={invokeActivity}
+                invokeLogoTitle={invokeDescription}
+                setTitle={setTitle}
+                setLogo={setLogo}
+              ></LogoTitlePanel>
+              <TeamTypePanel
+                invokeActivity={invokeActivity}
+                invokeType={invokeType}
+                setType={setType}
+              ></TeamTypePanel>
+              <TeamAdmin
+                invokeActivity={invokeActivity}
+                invokeAdmin={invokeAdmin}
+                setAdmin={setAdmin}
+              ></TeamAdmin>
+              <div>Rest of page</div>
+              <TeamTypePanel
+                invokeActivity={invokeActivity}
+                invokeType={invokeType}
+                setType={setType}
+              ></TeamTypePanel>
+              <TeamTypePanel
+                invokeActivity={invokeActivity}
+                invokeType={invokeType}
+                setType={setType}
+              ></TeamTypePanel>
+            </Scaffolding>
+          </div>
+        </div>
       </div>
-      <div className="progressbar-container">
-        <ProgressBar
-          invokeActivity={invokeActivity}
-          invokeDescription={invokeDescription}
-          invokeType={invokeType}
-          invokeRoles={invokeRoles}
-          invokeAdmin={invokeAdmin}
-          invokeTimeline={invokeTimeline}
-        ></ProgressBar>
-      </div>
-      <div className="scaffolding-container">
-        <Scaffolding>
-          <LogoTitlePanel
-            invokeActivity={invokeActivity}
-            invokeLogoTitle={invokeDescription}
-            setTitle={setTitle}
-            setLogo={setLogo}
-          ></LogoTitlePanel>
-          <TeamTypePanel
-            invokeActivity={invokeActivity}
-            invokeType={invokeType}
-            setType={setType}
-          ></TeamTypePanel>
-          <TeamAdmin
-            invokeActivity={invokeActivity}
-            invokeAdmin={invokeAdmin}
-            setAdmin={setAdmin}
-          ></TeamAdmin>
-          <div>Rest of page</div>
-        </Scaffolding>
-      </div>
-    </div>
+    </>
   );
 }
 export default MainPage;

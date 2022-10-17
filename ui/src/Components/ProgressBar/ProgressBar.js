@@ -17,6 +17,9 @@ function ProgressBar(props) {
     props.invokeRoles([rolesDone, setRolesDone]);
     props.invokeAdmin([adminDone, setAdminDone]);
     props.invokeTimeline([timelineDone, setTimelineDone]);
+    if (descriptionDone && typeDone && rolesDone && adminDone && timelineDone)
+      props.invokeDone(null, true);
+    else props.invokeDone(null, false);
   }, [
     props,
     activity,

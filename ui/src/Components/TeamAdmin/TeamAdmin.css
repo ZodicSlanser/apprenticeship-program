@@ -237,8 +237,10 @@ height: 24px; */
   position: absolute;
   width: 600px;
   height: 388px;
-  left: 26.3%;
-  top: 40px;
+  top: 50%; /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+
+  transform: translate(-50%, -50%);
 
   background: #ffffff;
   /* Purple */
@@ -569,6 +571,13 @@ height: 24px; */
   align-self: stretch;
   flex-grow: 1;
 }
+.image-upload {
+  width: 80px;
+  height: 80px;
+  background: #e2e6eb;
+  border-radius: 20px;
+  cursor: pointer;
+}
 .upload {
   display: flex;
   flex-direction: row;
@@ -603,6 +612,9 @@ height: 24px; */
 .selected-img {
   width: 80px;
   height: 80px;
+  background: #e2e6eb;
+  border-radius: 20px;
+  cursor: pointer;
 }
 .admin-firstName {
   display: flex;

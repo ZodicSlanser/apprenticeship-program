@@ -1,9 +1,9 @@
 .main-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: auto;
+  height: 100vh;
 }
 .header-container {
   margin-left: 23px;
@@ -14,5 +14,17 @@
   margin-top: 18px;
 }
 .scaffolding-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+  width: 950px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
   margin-top: 40px;
+  padding-bottom: 50px;
+}
+
+.scaffolding-container::-webkit-scrollbar {
+  display: none;
 }

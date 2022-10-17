@@ -4,7 +4,7 @@ import TeamPage from "./TeamPage";
 import Rectangle from "../../Assets/TeamAdmin/Rectangle.svg";
 import addCircle from "../../Assets/TeamAdmin/add-circle.svg";
 import infoCircle from "../../Assets/TeamAdmin/info-circle.svg";
-import link from "../../Assets/TeamAdmin/link.svg";
+import link from "../../Assets/TeamAdmin/linkedin.svg";
 import trash from "../../Assets/TeamAdmin/close.svg";
 
 function TeamAdmin(props) {
@@ -26,6 +26,10 @@ function TeamAdmin(props) {
     setList((ls) => [...ls, formData]);
     setFormData("");
   };
+  useEffect(() => {
+    document.getElementById("root").style.height = "100vh";
+    document.getElementById("root").style.overflow = "auto";
+  }, []);
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -71,6 +75,8 @@ function TeamAdmin(props) {
             <button
               className="Add-member"
               onClick={() => {
+                document.getElementById("root").style.height = "100vh";
+                document.getElementById("root").style.overflow = "auto";
                 setModal(true);
               }}
             >

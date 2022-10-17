@@ -41,7 +41,8 @@ function LogoTitlePanel(props) {
       props.invokeLogoTitle(null, false);
     }
   }
-  function handleImage() {
+  function handleImage(e) {
+    e.preventDefault();
     inputFile.current.click();
   }
   return (

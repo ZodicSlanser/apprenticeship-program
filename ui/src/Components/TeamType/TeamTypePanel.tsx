@@ -20,7 +20,7 @@ export default function TeamTypePanel({
   invokeActivity,
   invokeType,
 }: TeamTypePanelProps) {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(-1);
 
   function handleSelect(selection: number) {
     setSelected(selection === selected ? 0 : selection);
@@ -45,31 +45,31 @@ export default function TeamTypePanel({
     // array of objects defining the team types along with their logo
     {
       type: TeamType.WebPlatform,
-      selected: selected === 1 ? true : false,
+      selected: selected === 0 ? true : false,
     },
     {
       type: TeamType.MobileApp,
-      selected: selected === 2 ? true : false,
+      selected: selected === 1 ? true : false,
     },
     {
       type: TeamType.Growth,
-      selected: selected === 3 ? true : false,
+      selected: selected === 2 ? true : false,
     },
     {
       type: TeamType.MarketingWebsite,
-      selected: selected === 4 ? true : false,
+      selected: selected === 3 ? true : false,
     },
     {
       type: TeamType.Prototyping,
-      selected: selected === 5 ? true : false,
+      selected: selected === 4 ? true : false,
     },
     {
       type: TeamType.Data,
-      selected: selected === 6 ? true : false,
+      selected: selected === 5 ? true : false,
     },
     {
       type: TeamType.CustomTeam,
-      selected: selected === 7 ? true : false,
+      selected: selected === 6 ? true : false,
     },
   ];
 

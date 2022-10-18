@@ -31,11 +31,7 @@ export default function Roles(props) {
                 alt="edit_icon"
                 onClick={togglePopFormUpdate}
               />
-              <img
-                src={copy_icon}
-                alt="copy_icon"
-                onClick={() => props.duplicateRole(props.index)}
-              />
+              <img src={copy_icon} alt="copy_icon" />
               <img
                 src={trash_icon}
                 alt="trash_icon"

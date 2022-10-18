@@ -1,271 +1,270 @@
 *:focus {
-  outline: none;
+    outline: none;
 }
 
 .popup {
-  /* Frame 1321314699 */
-  box-sizing: border-box;
-  /* Auto layout */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px;
-  gap: 20px;
-  position: absolute;
-  width: 600px;
-  height: fit-content;
-  left: 456px;
-  background: #ffffff;
-  /* Purple */
-  border: 1px solid #793ef5;
-  /* Card Selected */
-  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
-  border-radius: 24px;
+    /* Frame 1321314699 */
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 20px;
+    position: absolute;
+    width: 600px;
+    height: fit-content;
+    left: 456px;
+    background: #FFFFFF;
+    /* Purple */
+    border: 1px solid #793EF5;
+    /* Card Selected */
+    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
 }
 
 .title-btn {
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px;
-  gap: 16px;
-  width: 552px;
-  height: 36px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 552px;
+    height: 36px;
 }
 
-.title-btn > h1 {
-  width: 88px;
-  height: 24px;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  /* identical to box height, or 120% */
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.3px;
-  font-feature-settings: "liga" off;
-  color: #1e1e1e;
+.title-btn>h1 {
+    width: 88px;
+    height: 24px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height, or 120% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
 }
 
 .buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 12px;
 }
 
-.buttons > img:hover {
-  /* Card Selected */
-  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+.buttons>img:hover {
+    /* Card Selected */
+    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
 }
 
 .button {
-  /* Frame 1321314610 */
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 8px 24px;
-  gap: 29px;
-  width: 82px;
-  height: 36px;
-  /* Purple */
-  background: #793ef5;
-  border-radius: 8px;
-  /*Text6*/
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  /* identical to box height, or 143% */
-  text-align: center;
-  letter-spacing: 0.4px;
-  font-feature-settings: "liga" off;
-  color: #ffffff;
-  border: 0ch;
+    /* Frame 1321314610 */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 29px;
+    width: 82px;
+    height: 36px;
+    /* Purple */
+    background: #793EF5;
+    border-radius: 8px;
+    /*Text6*/
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    text-align: center;
+    letter-spacing: 0.4px;
+    font-feature-settings: 'liga' off;
+    color: #FFFFFF;
+    border: 0ch;
 }
 
 .button:hover {
-  /* Purple */
-  border: 1px solid #793ef5;
-  /* Card Selected */
-  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+    /* Purple */
+    border: 1px solid #793EF5;
+    /* Card Selected */
+    box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
 }
 
 .roles-menu::content {
-  color: #1e1e1e;
-  opacity: 0.5;
+    color: #1E1E1E;
+    opacity: 0.5;
 }
 
 .role-desc {
-  /* Frame 1321314722 */
-  /* Auto layout */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 8px;
-  width: 552px;
-  height: 231px;
+    /* Frame 1321314722 */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 552px;
+    height: 231px;
 }
 
-.popup > h3 {
-  /* Text */
-  white-space: nowrap;
-  width: 132px;
-  height: 24px;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height, or 150% */
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.3px;
-  font-feature-settings: "liga" off;
-  color: #1e1e1e;
+.popup>h3 {
+    /* Text */
+    white-space: nowrap;
+    width: 132px;
+    height: 24px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
 }
 
 .input-desc {
-  resize: none;
-  box-sizing: border-box;
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 10px;
-  width: 552px;
-  height: 195px;
-  /* Snow */
-  background: #ffffff;
-  /* Field Stroke */
-  border: 1px solid #cecece;
-  border-radius: 12px;
-  overflow-y: scroll;
-  overflow-y: hidden;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  /* or 150% */
-  letter-spacing: 0.3px;
-  font-feature-settings: "liga" off;
-  color: #1e1e1e;
+    resize: none;
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    width: 552px;
+    height: 195px;
+    /* Snow */
+    background: #FFFFFF;
+    /* Field Stroke */
+    border: 1px solid #CECECE;
+    border-radius: 12px;
+    overflow-y: scroll;
+    overflow-y: hidden;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
 }
 
 .input-desc:hover,
 .input-desc:focus {
-  outline: none;
-  border: 1px solid #793ef5;
+    outline: none;
+    border: 1px solid #793EF5;
 }
 
 .icon-hours {
-  box-sizing: border-box;
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 12px 12px 12px 16px;
-  gap: 10px;
-  width: 552px;
-  height: 48px;
-  /* Snow */
-  background: #ffffff;
-  border: 1px solid #cecece;
-  border-radius: 12px;
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px 12px 12px 16px;
+    gap: 10px;
+    width: 552px;
+    height: 48px;
+    /* Snow */
+    background: #FFFFFF;
+    border: 1px solid #CECECE;
+    border-radius: 12px;
 }
 
 .icon-hours:hover,
 .icon-hours:focus-within {
-  background: #ffffff;
-  /* Purple */
-  border: 1px solid #793ef5;
-  border-radius: 12px;
+    background: #FFFFFF;
+    /* Purple */
+    border: 1px solid #793EF5;
+    border-radius: 12px;
 }
 
 .input-hours {
-  /* Frame 1321314703 */
-  /* Auto layout */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 11px;
-  width: 490px;
-  height: 24px;
-  border: 0ch;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height, or 150% */
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.3px;
-  font-feature-settings: "liga" off;
-  color: #1e1e1e;
+    /* Frame 1321314703 */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 11px;
+    width: 490px;
+    height: 24px;
+    border: 0ch;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
 }
 
 .skills-component {
-  /* Auto layout */
-  display: flex;
-  flex-direction: column;
-  align-self: flex-start;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 8px;
-  width: 552px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 552px;
 }
 
 .skills {
-  /* Frame 1321314733 */
-  /* Auto layout */
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 8px;
-  width: inherit;
+    /* Frame 1321314733 */
+    /* Auto layout */
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: inherit;
 }
 
 .singleSkill {
-  /* Frame 1321314731 */
-  /* Auto layout */
-  align-self: flex-start;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 8px 12px;
-  gap: 10px;
-  width: fit-content;
-  height: 40px;
-  background: rgba(102, 95, 239, 0.2);
-  border-radius: 12px;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height, or 150% */
-  letter-spacing: 0.3px;
-  font-feature-settings: "liga" off;
-  /* Purple */
-  color: #793ef5;
-  border: 1px solid transparent;
+    /* Frame 1321314731 */
+    /* Auto layout */
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
+    width: fit-content;
+    height: 40px;
+    background: rgba(102, 95, 239, 0.2);
+    border-radius: 12px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    /* Purple */
+    color: #793EF5;
 }
 
 .singleSkill:hover {
-  border: 1px solid #793ef5;
+    border: 1px solid #793EF5;
 }

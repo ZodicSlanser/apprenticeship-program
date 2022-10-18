@@ -24,6 +24,7 @@
 .skillwrapper-icon-btn:focus {
   border: 1px solid #793ef5;
   /* Card Selected */
+  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
 }
 
 .skillselect-btn {
@@ -124,7 +125,7 @@
   /* Text */
   font-family: "Space Grotesk";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */

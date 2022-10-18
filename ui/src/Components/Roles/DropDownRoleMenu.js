@@ -26,20 +26,7 @@ export default function DropDownRoleMenu(props) {
   return (
     <div
       onBlur={(e) => {
-        if (
-          (e.relatedTarget &&
-            e.target &&
-            ((e.relatedTarget.nodeName === "INPUT" &&
-              e.target.tabIndex === props.tabIndex) ||
-              (e.target.nodeName === "INPUT" &&
-                e.relatedTarget.tabIndex === props.tabIndex) ||
-              (!props.showRoleMenu &&
-                e.relatedTarget.nodeName === e.target.nodeName))) ||
-          (!props.showRoleMenu && !e.relatedTarget)
-        )
-          return;
-        props.toggleRoleMenu();
-        setOptions(props.options);
+        if (!e.relatedTarget) props.toggleRoleMenu();
       }}
       tabIndex={props.tabIndex + ""}
     >

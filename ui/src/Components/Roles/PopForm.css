@@ -116,7 +116,7 @@
     height: 231px;
 }
 
-.popup>h3 {
+h3 {
     /* Text */
     white-space: nowrap;
     width: 132px;

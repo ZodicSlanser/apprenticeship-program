@@ -13,8 +13,9 @@
     gap: 20px;
     position: absolute;
     width: 600px;
-    height: fit-content;
+    height: 810px;
     left: 456px;
+    top: 86px;
     background: #FFFFFF;
     /* Purple */
     border: 1px solid #793EF5;
@@ -217,18 +218,17 @@ h3 {
     color: #1E1E1E;
 }
 
-.skills-component {
+.req-skills-component {
     /* Auto layout */
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
     align-items: flex-start;
     padding: 0px;
     gap: 8px;
     width: 552px;
 }
 
-.skills {
+.reqSkills {
     /* Frame 1321314733 */
     /* Auto layout */
     overflow: hidden;

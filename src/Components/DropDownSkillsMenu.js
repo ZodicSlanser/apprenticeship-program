@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/DropSkillMenu.css'
 import tickCircle from '../icons/Vector.svg'
-import activedownarrw from '../icons/active-arrow-down.png'
 import downarrw from '../icons/arrow-down.png'
 
 export default function DropDownSkillsMenu (props ){
@@ -22,22 +21,16 @@ export default function DropDownSkillsMenu (props ){
             return(newOptions)
         })
     }
-    const [showMenu,setshowMenu]=useState(false)
-    function toggleMenu(){
-        setshowMenu(!showMenu)
-    }
     
     return(
         <div className='skillwrapper'>
-            <div className='skillwrapper-icon-btn'>
             <img src={props.Frame} alt='Icon' className='skillIcon'/>
-            <div className='skillselect-btn' onClick={toggleMenu} >
+            <div className='skillselect-btn' onClick={props.toggleMenu} >
                     <div >Select skills</div>
-                    {showMenu?<img src={activedownarrw} alt='arrow down' className='skilldown-arrow'/>:<img src={downarrw} alt='arrow down' className='skilldown-arrow'/>}
+                    <img src={downarrw} alt='arrow down' className='skilldown-arrow'/>
             </div>
-            </div>
-            {showMenu && 
-            <div className='skillMenuContent' >
+            {props.showMenu && 
+            <div className='skillMenuContent'>
                     <div className='skillsearch' >
                         <input type="text" placeholder='Search' onChange={search}  />
                     </div>
@@ -50,6 +43,7 @@ export default function DropDownSkillsMenu (props ){
                     }
                 </ul>
             </div> }
+    
         </div>
     )
 }

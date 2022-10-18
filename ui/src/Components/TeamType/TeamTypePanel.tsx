@@ -44,31 +44,38 @@ export default function TeamTypePanel({
   const teamTypes = [
     // array of objects defining the team types along with their logo
     {
-      type: TeamType.WebPlatform,
+      id: TeamType.WebPlatform,
+      type: "Web Platform",
       selected: selected === 1 ? true : false,
     },
     {
-      type: TeamType.MobileApp,
+      id: TeamType.MobileApp,
+      type: "Mobile App",
       selected: selected === 2 ? true : false,
     },
     {
-      type: TeamType.Growth,
+      id: TeamType.Growth,
+      type: "Growth",
       selected: selected === 3 ? true : false,
     },
     {
-      type: TeamType.MarketingWebsite,
+      id: TeamType.MarketingWebsite,
+      type: "Marketing Website",
       selected: selected === 4 ? true : false,
     },
     {
-      type: TeamType.Prototyping,
+      id: TeamType.Prototyping,
+      type: "Prototyping",
       selected: selected === 5 ? true : false,
     },
     {
-      type: TeamType.Data,
+      id: TeamType.Data,
+      type: "Data",
       selected: selected === 6 ? true : false,
     },
     {
-      type: TeamType.CustomTeam,
+      id: TeamType.CustomTeam,
+      type: "Custom Team",
       selected: selected === 7 ? true : false,
     },
   ];

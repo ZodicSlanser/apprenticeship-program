@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import addCircle from '../../Assets/Roles/add-circle.png'
-import infoCircle from '../../Assets/Roles/info-circle.png'
+import addCircle from '../icons/add-circle.png'
+import infoCircle from '../icons/info-circle.png'
 export default function TeamRoles(props) {
     return (
         <section className="team-roles-panel">

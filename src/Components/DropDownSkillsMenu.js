@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import './DropDownMenu.css'
-import tickCircle from '../../Assets/Roles/Vector.svg'
-import activedownarrw from '../../Assets/Roles/active-arrow-down.png'
-import downarrw from '../../Assets/Roles/arrow-down.png'
+import '../styles/DropSkillMenu.css'
+import tickCircle from '../icons/Vector.svg'
+import activedownarrw from '../icons/active-arrow-down.png'
+import downarrw from '../icons/arrow-down.png'
 
-export default function DropDownMenu (props ){
+export default function DropDownSkillsMenu (props ){
     /*containing all options */
     const count=0
     const AllOptions=(props.skills)

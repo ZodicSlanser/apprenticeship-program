@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./PopForm.css";
 import DropDownRoleMenu from "./DropDownRoleMenu";
 import DropDownMenu from "./DropDownMenu";
@@ -9,7 +9,7 @@ import closeSquare from "../../Assets/Roles/close-square.png";
 import starIcon from "../../Assets/Roles/star.png";
 import locationIcon from "../../Assets/Roles/location.png";
 
-export default function PopForm(props) {
+export default memo(function PopForm(props) {
   /* Role*/
   const AllSkills = ["Swift", "ios", "Objective-c", "ARM"];
   const allLocations = [
@@ -639,4 +639,4 @@ export default function PopForm(props) {
       </div>
     </div>
   );
-}
+});

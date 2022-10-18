@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./DropDownRoleMenu.css";
 import downarrw from "../../Assets/Roles/arrow-down.png";
 import activedownarrw from "../../Assets/Roles/active-arrow-down.png";
 import userFrame from "../../Assets/Roles/frame.png";
 
-export default function DropDownRoleMenu(props) {
+export default memo(function DropDownRoleMenu(props) {
   const title = props.title;
   const AllOptions = props.options;
   const [options, setOptions] = useState(props.options);
@@ -78,4 +78,4 @@ export default function DropDownRoleMenu(props) {
       )}
     </div>
   );
-}
+});

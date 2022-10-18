@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./DropDownMenu.css";
 import tickCircle from "../../Assets/Roles/Vector.svg";
 import activedownarrw from "../../Assets/Roles/active-arrow-down.png";
 import downarrw from "../../Assets/Roles/arrow-down.png";
 
-export default function DropDownMenu(props) {
+export default memo(function DropDownMenu(props) {
   /*containing all options */
   const count = 0;
   const AllOptions = props.skills;
@@ -121,4 +121,4 @@ export default function DropDownMenu(props) {
       )}
     </div>
   );
-}
+});

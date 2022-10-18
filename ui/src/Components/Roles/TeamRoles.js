@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import addCircle from "../../Assets/Roles/add-circle.png";
 import infoCircle from "../../Assets/Roles/info-circle.png";
 import "./TeamRoles.css";
 import Roles from "./Roles.jsx";
 import PopForm from "./PopForm";
-export default function TeamRoles(props) {
+export default memo(function TeamRoles(props) {
   const [listOfRoles, setRoles] = useState([]);
   const [showPopForm, setShowPopForm] = useState(false);
   useEffect(() => {
@@ -128,4 +128,4 @@ export default function TeamRoles(props) {
       )}{" "}
     </>
   );
-}
+});

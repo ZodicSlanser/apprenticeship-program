@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import "./Roles.css";
 import pen_icon from "../../Assets/Roles/pen-tool-2.png";
 import edit_icon from "../../Assets/Roles/edit.png";
 import copy_icon from "../../Assets/Roles/copy.png";
 import trash_icon from "../../Assets/Roles/trash.png";
 import PopFormUpdate from "./PopFormUpdate";
-export default function Roles(props) {
+export default memo(function Roles(props) {
   const [showPopFormUpdate, setShowPopFormUpdate] = useState(false);
 
   function togglePopFormUpdate() {
@@ -74,4 +74,4 @@ export default function Roles(props) {
       )}
     </>
   );
-}
+});

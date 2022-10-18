@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import Header from "../Header/Header";
 import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -159,4 +159,4 @@ function MainPage() {
     </>
   );
 }
-export default MainPage;
+export default memo(MainPage);

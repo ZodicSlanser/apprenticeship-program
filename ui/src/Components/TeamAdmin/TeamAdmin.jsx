@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import "./TeamAdmin.css";
 import TeamPage from "./TeamPage";
 import Rectangle from "../../Assets/TeamAdmin/Rectangle.svg";
@@ -122,4 +122,4 @@ function TeamAdmin(props) {
     </div>
   );
 }
-export default TeamAdmin;
+export default memo(TeamAdmin);

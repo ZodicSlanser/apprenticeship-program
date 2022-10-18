@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import arrowLeft from "../../Assets/Header/arrow-left.svg";
 import add from "../../Assets/Header/add.svg";
 import addDone from "../../Assets/Header/add-done.svg";
 import "./Header.css";
-export default function Header(props) {
+export default memo(function Header(props) {
   const [done, setDone] = useState();
   useEffect(() => {
     props.invokeDone([done, setDone]);
@@ -27,4 +27,4 @@ export default function Header(props) {
       </div>
     </div>
   );
-}
+});

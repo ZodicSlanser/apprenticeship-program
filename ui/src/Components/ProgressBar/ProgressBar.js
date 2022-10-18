@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import "./ProgressBar.css";
 import tickCircle from "../../Assets/ProgressBar/tick-circle.svg";
 import unTickCircle from "../../Assets/ProgressBar/untick-circle.svg";
@@ -110,4 +110,4 @@ function ProgressBar(props) {
   );
 }
 
-export default ProgressBar;
+export default memo(ProgressBar);

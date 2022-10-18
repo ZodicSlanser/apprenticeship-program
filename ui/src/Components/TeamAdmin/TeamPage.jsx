@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import "./TeamAdmin.css";
 import close from "../../Assets/TeamAdmin/close.svg";
 import profile from "../../Assets/TeamAdmin/profile.svg";

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, memo } from "react";
 import "./LogoTitlePanel.css";
 import image from "../../Assets/LogoTitlePanel/image.svg";
 import infoCircle from "../../Assets/LogoTitlePanel/info-circle.svg";
@@ -133,4 +133,4 @@ function LogoTitlePanel(props) {
     </div>
   );
 }
-export default LogoTitlePanel;
+export default memo(LogoTitlePanel);

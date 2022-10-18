@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import styles from "./TeamTypePanel.module.css";
 import monitor from "../../Assets/TeamType/monitor.svg";
 import mobile from "../../Assets/TeamType/mobile.svg";
@@ -15,7 +15,7 @@ interface TeamTypePanelProps {
   invokeType: (x: null, y: boolean) => void;
   setType: (x: Number) => void;
 }
-export default function TeamTypePanel({
+export default memo(function TeamTypePanel({
   setType,
   invokeActivity,
   invokeType,
@@ -159,4 +159,4 @@ export default function TeamTypePanel({
       </div>
     </div>
   );
-}
+});

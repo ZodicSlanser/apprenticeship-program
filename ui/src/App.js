@@ -1,9 +1,9 @@
-import TeamTypePanel from "./Components/TeamType/TeamTypePanel.tsx";
+import TeamTypePanel from "./Components/TeamType/TeamTypePanel";
 
 function App() {
     return (
         <>
-            <TeamTypePanel />
+            <TeamTypePanel  />
         </>
     )
 }

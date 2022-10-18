@@ -537,7 +537,6 @@ export default function PopForm(props) {
           "Front-end Developer",
           "Back-end Developer",
         ]}
-        tabIndex={-1}
       />
       <div className="role-desc">
         <h3>Role Description</h3>
@@ -557,7 +556,7 @@ export default function PopForm(props) {
             skills={AllSkills}
             chooseSkill={appendToRSkills}
             chosenSkills={RSkillsBoolean}
-            tabIndex={-2}
+            tabIndex={-3}
           />
           <div className="skills">
             {RSkillsBoolean.map(
@@ -585,7 +584,7 @@ export default function PopForm(props) {
           skills={AllSkills}
           chooseSkill={appendToCSkills}
           chosenSkills={CSkillsBoolean}
-          tabIndex={-3}
+          tabIndex={-5}
         />
         <div className="skills">
           {CSkillsBoolean.map(
@@ -625,7 +624,7 @@ export default function PopForm(props) {
           skills={allLocations}
           chooseSkill={appendToLocations}
           chosenSkills={LocationsBoolean}
-          tabIndex={-4}
+          tabIndex={-7}
         />
       </div>
     </div>

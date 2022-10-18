@@ -2,16 +2,18 @@ import { useState, useRef, useEffect } from "react";
 import Header from "../Header/Header";
 import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import TeamRoles from "../Roles/TeamRoles";
 import Scaffolding from "../Scaffolding/Scaffolding";
 import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
 import "./MainPage.css";
+let lock = false;
 
 function MainPage() {
   const [title, setTitle] = useState();
   const [logo, setLogo] = useState();
   const [type, setType] = useState();
-  const [roles, setRoles] = useState();
+  const [roles, setRoles] = useState([]);
   const [admin, setAdmin] = useState();
   const [contentHover, setContentHover] = useState(false);
   const contentRef = useRef(null);
@@ -39,14 +41,14 @@ function MainPage() {
     };
   });
   let invokeActivitySetter;
-  const invokeActivity = (setStateCallback, active) => {
+  const invokeActivity = (setStateCallback, active, lockValue) => {
+    lock = lockValue === undefined ? lock : lockValue;
     if (setStateCallback) {
       invokeActivitySetter = setStateCallback[1];
     } else {
-      if (invokeActivitySetter) invokeActivitySetter(active);
+      if (invokeActivitySetter && !lock) invokeActivitySetter(active);
     }
   };
-
   let invokeDescriptionSetter;
   const invokeDescription = (setStateCallback, done) => {
     if (setStateCallback) {
@@ -138,22 +140,18 @@ function MainPage() {
                 invokeType={invokeType}
                 setType={setType}
               ></TeamTypePanel>
+              <TeamRoles
+                invokeActivity={invokeActivity}
+                invokeRoles={invokeRoles}
+                setRoles={setRoles}
+              ></TeamRoles>
               <TeamAdmin
                 invokeActivity={invokeActivity}
                 invokeAdmin={invokeAdmin}
                 setAdmin={setAdmin}
               ></TeamAdmin>
+
               <div>Rest of page</div>
-              <TeamTypePanel
-                invokeActivity={invokeActivity}
-                invokeType={invokeType}
-                setType={setType}
-              ></TeamTypePanel>
-              <TeamTypePanel
-                invokeActivity={invokeActivity}
-                invokeType={invokeType}
-                setType={setType}
-              ></TeamTypePanel>
             </Scaffolding>
           </div>
         </div>

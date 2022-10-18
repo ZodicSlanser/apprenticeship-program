@@ -77,6 +77,10 @@ export default function TeamTypePanel({
     <div>
       <div
         className={styles["panel"]}
+        onClick={(e) => {
+          e.currentTarget.className = styles["panel-selected"];
+          invokeActivity(null, 2);
+        }}
         onMouseEnter={(e) => {
           e.currentTarget.className = styles["panel-selected"];
           invokeActivity(null, 2);

@@ -81,7 +81,12 @@ export default function DropDownMenu(props) {
         </div>
       </div>
       {showMenu && (
-        <div className="skillMenuContent">
+        <div
+          className="skillMenuContent"
+          style={
+            props.tabIndex === -4 ? { bottom: "66px", height: "236px" } : null
+          }
+        >
           <div className="skillSearch">
             <input
               type="text"

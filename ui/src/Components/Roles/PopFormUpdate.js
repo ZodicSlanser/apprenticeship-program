@@ -14,8 +14,6 @@ export default function PopFormUpdate(props) {
   let ir, cr, ic, cc, cl, il;
   const AllSkills = ["Swift", "ios", "Objective-c", "ARM"];
   const allLocations = [
-    "United States",
-    "Canada",
     "Afghanistan",
     "Albania",
     "Algeria",
@@ -53,6 +51,7 @@ export default function PopFormUpdate(props) {
     "Burundi",
     "Cambodia",
     "Cameroon",
+    "Canada",
     "Cape Verde",
     "Cayman Islands",
     "Central African Republic",
@@ -239,6 +238,8 @@ export default function PopFormUpdate(props) {
     "Ukraine",
     "United Arab Emirates",
     "United Kingdom",
+    "United States",
+
     "United States minor outlying islands",
     "Uruguay",
     "Uzbekistan",
@@ -554,72 +555,103 @@ export default function PopFormUpdate(props) {
   }
 
   return (
-    <div className="popup">
-      <div className="title-btn">
-        <h1 className=""> Add Role </h1>{" "}
-        <div className="buttons">
-          <button
-            className="button"
-            onClick={() =>
-              props.handleClick(
-                {
-                  type: roleTitle,
-                  compSkills: compSkills,
-                  reqSkills: reqSkills,
-                  hours: minimumHours,
-                  desc: description,
-                  location: selectedLocations,
-                },
-                props.index
-              )
-            }
-          >
-            Save{" "}
-          </button>{" "}
-          <img
-            src={closeIcon}
-            alt="Close utton"
-            onClick={props.togglePopForm}
+    <div className="popup-container-blurred">
+      <div className="popup">
+        <div className="title-btn">
+          <h1 className=""> Add Role </h1>{" "}
+          <div className="buttons">
+            <button
+              className="button"
+              onClick={() =>
+                props.handleClick(
+                  {
+                    type: roleTitle,
+                    compSkills: compSkills,
+                    reqSkills: reqSkills,
+                    hours: minimumHours,
+                    desc: description,
+                    location: selectedLocations,
+                  },
+                  props.index
+                )
+              }
+            >
+              Save{" "}
+            </button>{" "}
+            <img
+              src={closeIcon}
+              alt="Close utton"
+              onClick={props.togglePopForm}
+            />{" "}
+          </div>{" "}
+        </div>{" "}
+        <DropDownRoleMenu
+          title={roleTitle}
+          showRoleMenu={showRoleMenu}
+          toggleRoleMenu={toggleRoleMenu}
+          handleChange={pickRole}
+          options={[
+            "ios Developer",
+            "Mobile Developer",
+            "Full Stack Developer",
+            "Front-end Developer",
+            "Back-end Developer",
+          ]}
+          tabIndex={-1}
+        />{" "}
+        <div className="role-desc">
+          <h3> Role Description </h3>{" "}
+          <textarea
+            type="text"
+            className="input-desc"
+            onChange={saveDesc}
+            value={description}
           />{" "}
         </div>{" "}
-      </div>{" "}
-      <DropDownRoleMenu
-        title={roleTitle}
-        showRoleMenu={showRoleMenu}
-        toggleRoleMenu={toggleRoleMenu}
-        handleChange={pickRole}
-        options={[
-          "ios Developer",
-          "Mobile Developer",
-          "Full Stack Developer",
-          "Front-end Developer",
-          "Back-end Developer",
-        ]}
-        tabIndex={-1}
-      />{" "}
-      <div className="role-desc">
-        <h3> Role Description </h3>{" "}
-        <textarea
-          type="text"
-          className="input-desc"
-          onChange={saveDesc}
-          value={description}
-        />{" "}
-      </div>{" "}
-      <div>
+        <div>
+          <div className="skills-component">
+            <h3> Required Skills(Select any 3) </h3>{" "}
+            <DropDownMenu
+              title="Select skills"
+              Frame={medalIcon}
+              skills={AllSkills}
+              chooseSkill={appendToRSkills}
+              chosenSkills={RSkillsBoolean}
+              tabIndex={-2}
+            />{" "}
+            <div className="skills">
+              {" "}
+              {RSkillsBoolean.map(
+                (ischosen, index) =>
+                  ischosen && (
+                    <span key={index} className="singleSkill">
+                      {" "}
+                      {AllSkills[index]}{" "}
+                      <img
+                        src={closeSquare}
+                        alt="close Icon"
+                        className="close-skill"
+                        onClick={() => deleteRSkill(index)}
+                      />{" "}
+                    </span>
+                  )
+              )}{" "}
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
         <div className="skills-component">
-          <h3> Required Skills(Select any 3) </h3>{" "}
+          <h3> Complimentary Skills(Select any 3) </h3>{" "}
           <DropDownMenu
             title="Select skills"
-            Frame={medalIcon}
+            Frame={starIcon}
             skills={AllSkills}
-            chooseSkill={appendToRSkills}
-            chosenSkills={RSkillsBoolean}
-            tabIndex={-2}
+            chooseSkill={appendToCSkills}
+            chosenSkills={CSkillsBoolean}
+            tabIndex={-3}
           />{" "}
           <div className="skills">
             {" "}
-            {RSkillsBoolean.map(
+            {CSkillsBoolean.map(
               (ischosen, index) =>
                 ischosen && (
                   <span key={index} className="singleSkill">
@@ -629,66 +661,37 @@ export default function PopFormUpdate(props) {
                       src={closeSquare}
                       alt="close Icon"
                       className="close-skill"
-                      onClick={() => deleteRSkill(index)}
+                      onClick={() => deleteCSkill(index)}
                     />{" "}
                   </span>
                 )
             )}{" "}
           </div>{" "}
         </div>{" "}
-      </div>{" "}
-      <div className="skills-component">
-        <h3> Complimentary Skills(Select any 3) </h3>{" "}
-        <DropDownMenu
-          title="Select skills"
-          Frame={starIcon}
-          skills={AllSkills}
-          chooseSkill={appendToCSkills}
-          chosenSkills={CSkillsBoolean}
-          tabIndex={-3}
-        />{" "}
-        <div className="skills">
-          {" "}
-          {CSkillsBoolean.map(
-            (ischosen, index) =>
-              ischosen && (
-                <span key={index} className="singleSkill">
-                  {" "}
-                  {AllSkills[index]}{" "}
-                  <img
-                    src={closeSquare}
-                    alt="close Icon"
-                    className="close-skill"
-                    onClick={() => deleteCSkill(index)}
-                  />{" "}
-                </span>
-              )
-          )}{" "}
+        <div className="minimum-hours">
+          <h3> Minimum Hours Per Week </h3>{" "}
+          <div className="icon-hours">
+            <img src={clockIcon} alt="Clock Icon" className="clock-Icon" />
+            <input
+              type="number"
+              className="input-hours"
+              onChange={pickMinimumHours}
+              value={minimumHours}
+            />{" "}
+          </div>{" "}
         </div>{" "}
-      </div>{" "}
-      <div className="minimum-hours">
-        <h3> Minimum Hours Per Week </h3>{" "}
-        <div className="icon-hours">
-          <img src={clockIcon} alt="Clock Icon" className="clock-Icon" />
-          <input
-            type="number"
-            className="input-hours"
-            onChange={pickMinimumHours}
-            value={minimumHours}
-          />{" "}
-        </div>{" "}
-      </div>{" "}
-      <div className="location">
-        <h3> Location Preferences </h3>{" "}
-        <DropDownMenu
-          title={LocationTitle}
-          Frame={locationIcon}
-          skills={allLocations}
-          chooseSkill={appendToLocations}
-          chosenSkills={LocationsBoolean}
-          tabIndex={-4}
-        />{" "}
-      </div>{" "}
+        <div className="location">
+          <h3> Location Preferences </h3>{" "}
+          <DropDownMenu
+            title={LocationTitle}
+            Frame={locationIcon}
+            skills={allLocations}
+            chooseSkill={appendToLocations}
+            chosenSkills={LocationsBoolean}
+            tabIndex={-4}
+          />
+        </div>
+      </div>
     </div>
   );
 }

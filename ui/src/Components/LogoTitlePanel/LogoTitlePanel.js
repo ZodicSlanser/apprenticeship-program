@@ -35,7 +35,7 @@ function LogoTitlePanel(props) {
       props.setLogo(e.target.files[0]);
     }
 
-    if (title !== "" && e.target.files[0]) {
+    if (title !== "" && (e.target.files[0] || selectedImage)) {
       props.invokeLogoTitle(null, true);
     } else {
       props.invokeLogoTitle(null, false);
@@ -60,7 +60,7 @@ function LogoTitlePanel(props) {
         if (!typing) {
           handleBlur();
           props.invokeActivity(null, 0);
-        }
+        } else props.invokeActivity(null, 0, true);
       }}
       tabIndex="-1"
       style={
@@ -114,16 +114,17 @@ function LogoTitlePanel(props) {
         <input
           type={"text"}
           className="logoTitleText"
-          placeholder="Enter  Apprenticeship Title"
+          placeholder="Enter Apprenticeship Title"
           onBlur={() => {
             handleBlur();
-            props.invokeActivity(null, 0);
+            props.invokeActivity(null, 0, false);
             typingDone();
             setTyping(false);
           }}
           onChange={handleTitleChange}
           onClick={() => {
             setOpacity(1);
+            props.invokeActivity(null, 0, true);
             setTyping(true);
           }}
           style={{ opacity: opacity }}

@@ -20,7 +20,7 @@ function TeamPage(props) {
         onChange={props.changeImage}
         ref={fileInputRef}
       />
-      <div className="popup" style={{ filter: "0px", WebkitFilter: "0px" }}>
+      <div className="popup2" style={{ filter: "0px", WebkitFilter: "0px" }}>
         <div className="popup-header">
           <span>Add Team Admin</span>
           <div className="popup-btns">

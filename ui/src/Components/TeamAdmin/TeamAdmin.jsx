@@ -26,10 +26,6 @@ function TeamAdmin(props) {
     setList((ls) => [...ls, formData]);
     setFormData("");
   };
-  useEffect(() => {
-    document.getElementById("root").style.height = "100vh";
-    document.getElementById("root").style.overflow = "auto";
-  }, []);
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -62,6 +58,9 @@ function TeamAdmin(props) {
     <div>
       <div
         className="Team-container"
+        onClick={(e) => {
+          props.invokeActivity(null, 4);
+        }}
         onMouseEnter={(e) => {
           props.invokeActivity(null, 4);
         }}
@@ -75,8 +74,6 @@ function TeamAdmin(props) {
             <button
               className="Add-member"
               onClick={() => {
-                document.getElementById("root").style.height = "100vh";
-                document.getElementById("root").style.overflow = "auto";
                 setModal(true);
               }}
             >

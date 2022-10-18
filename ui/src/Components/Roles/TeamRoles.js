@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import addCircle from "../../Assets/Roles/add-circle.png";
 import infoCircle from "../../Assets/Roles/info-circle.png";
 import "./TeamRoles.css";
 import Roles from "./Roles.jsx";
 import PopForm from "./PopForm";
 export default function TeamRoles(props) {
-  const [ListOfRoles, setRoles] = useState([]);
-
+  const [listOfRoles, setRoles] = useState([]);
   const [showPopForm, setShowPopForm] = useState(false);
-
+  useEffect(() => {
+    props.invokeRoles(null, listOfRoles.length > 0 ? true : false);
+    props.setRoles(listOfRoles);
+  }, [listOfRoles.length, props]);
   function togglePopForm() {
     setShowPopForm(!showPopForm);
   }
@@ -69,7 +71,18 @@ export default function TeamRoles(props) {
 
   return (
     <>
-      <section className="team-roles-panel">
+      <section
+        className="team-roles-panel"
+        onMouseEnter={(e) => {
+          props.invokeActivity(null, 3);
+        }}
+        onClick={(e) => {
+          props.invokeActivity(null, 3);
+        }}
+        onMouseLeave={(e) => {
+          props.invokeActivity(null, 0);
+        }}
+      >
         <div className="team-Button-a">
           <div>
             <p> Team Roles </p>{" "}
@@ -90,7 +103,7 @@ export default function TeamRoles(props) {
         </div>{" "}
         <div className="available-roles">
           {" "}
-          {ListOfRoles.map((singleRole, index) => (
+          {listOfRoles.map((singleRole, index) => (
             <Roles
               key={index}
               index={index}

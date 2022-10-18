@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@components/*": ["ui/src/components/*"],
+            "@backend/*": ["backend/*"],
+        }
+    }
+}

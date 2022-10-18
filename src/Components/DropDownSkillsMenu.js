@@ -6,8 +6,7 @@ import downarrw from '../icons/arrow-down.png'
 
 export default function DropDownSkillsMenu (props ){
     /*containing all options */
-    const count=0
-    const AllOptions=(props.skills)
+    const AllOptions=props.skills
     /*it will hold the searched for options */
     const [options,setOptions]= useState(props.skills)
     /*Search Function triggered by any change (keystroke)in the search */
@@ -29,15 +28,6 @@ export default function DropDownSkillsMenu (props ){
         setshowMenu(!showMenu)
     }
 
-    function deleteSkill(index){
-        if(count<=3){
-       setOptions(options=>[
-              ...options.slice(0, index),
-              ...options.slice(index + 1,options.length)
-            ])
-  
-    }
-}
     
     return(
         <div className='skillwrapper'>
@@ -54,16 +44,8 @@ export default function DropDownSkillsMenu (props ){
                         <input type="text" placeholder='Search' onChange={search}  />
                     </div>
                 <ul className="skilloptions">
-                {props.chosenSkills.map((option,index)=>(
-                         <li key={index}>
-                            <img src={tickCircle} alt='tick' className='tick-icon-selected'/>
-                            {option}</li>
-                        ))
-                    }
                     {options.map((option,index)=>(
-                         <li key={index} onClick={()=>{
-                            deleteSkill(index)
-                            props.chooseSkill(option)}}>
+                         <li key={index} onClick={()=>props.chooseSkill(option)  }>
                             <img src={tickCircle} alt='tick' className='tick-icon'/>
                             {option}</li>
                         ))

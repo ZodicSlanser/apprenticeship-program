@@ -22,12 +22,10 @@ export default function DropDownSkillsMenu (props ){
             return(newOptions)
         })
     }
-    /*to toggel the menu  */
     const [showMenu,setshowMenu]=useState(false)
     function toggleMenu(){
         setshowMenu(!showMenu)
     }
-
     
     return(
         <div className='skillwrapper'>

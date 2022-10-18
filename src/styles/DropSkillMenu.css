@@ -43,7 +43,7 @@
     align-items: flex-start;
     padding: 16px;
     gap: 12px;
-    position: relative;
+    position: fixed;
     z-index: 10;
     width: 508px;
     background: #FFFFFF;
@@ -127,9 +127,4 @@
     /* Card Selected */
     background-color: #f2f2f2;
     box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
-}
-
-.tick-icon-selected {
-    background-color: #793EF5;
-    border-radius: 6px;
 }

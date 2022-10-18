@@ -33,15 +33,11 @@ export default function PopForm(){
     const [reqSkills,setreqSkills]=useState([])
     function appendToRSkills(skill){
         setreqSkills(prevSkills=>{
-        const newSkills=[]
             if(prevSkills.length<=2){
-            prevSkills.map((prevSkill)=>{
-                if(prevSkill!==skill){
-                    newSkills.push(prevSkill)
-                }
-            })
-            newSkills.push(skill)
-            return newSkills
+            return[
+                ...prevSkills,
+                skill
+            ]
         }
         else
         {
@@ -60,26 +56,22 @@ export default function PopForm(){
     const [compSkills,setCompSkills]=useState([])
     function appendToCSkills(skill){
         setCompSkills(prevSkills=>{
-        const newSkills=[]
-            if(prevSkills.length<=2){
-            prevSkills.map((prevSkill)=>{
-                if(prevSkill!==skill){
-                    newSkills.push(prevSkill)
-                }
-            })
-            newSkills.push(skill)
-            return newSkills
+            if(prevSkills.length<=3){
+            return[
+                ...prevSkills,
+                skill
+            ]
         }
         else
         {
             return prevSkills
         }
     })
-}
+    }
     function deleteCSkill(index){
         setCompSkills(compSkills=>[
               ...compSkills.slice(0, index),
-              ...compSkills.slice(index + 1, compSkills.length)
+              ...compSkills.slice(index + 1, reqSkills.length)
             ])
   
     }

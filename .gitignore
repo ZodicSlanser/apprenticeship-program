@@ -14,7 +14,7 @@ backend/node_modules
 /ui/node_modules
 /ui/.pnp
 /ui.pnp.js
-
+/node_modules
 
 # testing
 coverage

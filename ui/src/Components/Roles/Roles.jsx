@@ -21,7 +21,8 @@ export default function Roles(props) {
         <header>
           <div className="role-head">
             <div className="role-name">
-              <img src={pen_icon} alt="pen-icon" className="tagIcon" />
+              <img src={pen_icon} alt="pen-icon" />
+              {/* add {props.name} */}
               <h1>{props.type}</h1>
             </div>
             <div className="side-icons">

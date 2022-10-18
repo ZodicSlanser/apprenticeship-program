@@ -252,7 +252,7 @@ export default function PopForm(){
                  </div>
             </div>
             <div className='minimum-hours'>
-                <h3>Minimum Hours Per Week</h3>
+                <h3>Minimum Hours</h3>
                 <div className='icon-hours'>
                     <img src={clockIcon} alt='Clock Icon' className='clock-Icon'/>
                     <input type="text" className='input-hours' placeholder="No. of hours" />

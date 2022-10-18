@@ -1,88 +1,101 @@
-.new-role {
+.new-role{
     box-sizing: border-box;
+
     /* Auto layout */
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 16px 12px 16px 16px;
     gap: 20px;
+
     width: 353px;
     height: 252px;
+
     /* Snow */
+
     background: #FFFFFF;
     border: 1px solid #CFD3D9;
     border-radius: 20px;
 }
 
-header {
+header{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 20px;
+
     width: 325px;
-    height: fit-content;
+    height: 104px;
 }
 
-.role-head {
+.role-head{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0px;
     gap: 11px;
+
     width: 325px;
     height: 24px;
 }
 
-.role-name {
+.role-name{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
     gap: 11px;
+
     width: 174px;
     height: 24px;
 }
 
-.side-icons {
+.side-icons{
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0px;
     gap: 8px;
+
     width: 76px;
     height: 20px;
 }
 
-header>p {
+header > p{
     width: 325px;
     height: 60px;
+
     font-family: 'Space Grotesk';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     /* or 143% */
+
     letter-spacing: 0.3px;
     font-feature-settings: 'liga' off;
+
     color: #1E1E1E;
 }
 
-.role-skills {
+.role-skills{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 8px;
+
     width: 301px;
-    height: fit-content;
-    flex-wrap: wrap;
+    height: 62px;
 }
 
-.role-name>h1 {
+.role-name > h1 {
     width: 139px;
     height: 24px;
+
     font-family: 'Space Grotesk';
     font-style: normal;
     white-space: nowrap;
@@ -90,74 +103,12 @@ header>p {
     font-size: 16px;
     line-height: 24px;
     /* identical to box height, or 150% */
+
     display: flex;
     flex-wrap: 0;
     align-items: center;
     letter-spacing: 0.3px;
     font-feature-settings: 'liga' off;
+
     color: #1E1E1E;
-}
-
-.skill-req {
-    box-sizing: border-box;
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    padding: 6px 10px;
-    gap: 10px;
-    width: fit-content;
-    height: 27px;
-    background: #EDEAFF;
-    /* Purple */
-    border: 1px solid #793EF5;
-    border-radius: 8px;
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.3px;
-    font-feature-settings: 'liga' off;
-    /* Purple */
-    color: #793EF5;
-}
-
-.skill-comp {
-    box-sizing: border-box;
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    padding: 6px 10px;
-    gap: 10px;
-    height: 27px;
-    background: #E7F0FF;
-    /* Blue */
-    border: 1px solid #2153FF;
-    border-radius: 8px;
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.3px;
-    font-feature-settings: 'liga' off;
-    /* Blue */
-    color: #2153FF;
-}
-
-.DescritionSpace {
-    width: 325px;
-    height: 60px;
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    /* or 143% */
-    letter-spacing: 0.3px;
-    font-feature-settings: 'liga' off;
-    color: #1E1E1E;
-    overflow-wrap: break-word;
 }

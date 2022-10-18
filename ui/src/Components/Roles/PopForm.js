@@ -9,7 +9,7 @@ import closeSquare from "../../Assets/Roles/close-square.png";
 import starIcon from "../../Assets/Roles/star.png";
 import locationIcon from "../../Assets/Roles/location.png";
 
-export default function PopForm(props) {
+export default function PopForm() {
   /* Role*/
   const AllSkills = ["Swift", "ios", "Objective-c", "ARM"];
   const allLocations = [
@@ -255,7 +255,7 @@ export default function PopForm(props) {
     "Zambia",
     "Zimbabwe",
   ];
-  const [roleTitle, setRoleTitle] = useState("Select Role");
+  const [role, setRole] = useState("Select Role");
 
   const [reqSkills, setreqSkills] = useState([]);
   const [CSkillsBoolean, setCSkillsBoolean] = useState(
@@ -272,19 +272,19 @@ export default function PopForm(props) {
   const [RSkillsBoolean, setRSkillsBoolean] = useState(
     new Array(AllSkills.length).fill(false)
   );
-  const [description, setDesc] = useState("");
-  const [minimumHours, setMinimumHours] = useState(0);
-  function pickMinimumHours(event) {
-    setMinimumHours(event.target.value);
-  }
+  const [desc, setDesc] = useState("");
 
   function pickRole(selectedRole) {
-    setRoleTitle(selectedRole);
+    setRole(selectedRole);
     setshowRoleMenu(!showRoleMenu);
   }
   /*To Toggle Role DropDown Menu */
-  function toggleRoleMenu() {
-    setshowRoleMenu(!showRoleMenu);
+  function toggleRoleMenu(e) {
+    console.log(e.target);
+    if (!e.target.maxLength) {
+      console.log("asdas");
+      setshowRoleMenu(!showRoleMenu);
+    }
   }
   /******************************************************************* */
   /*Role Description triggered by onChange*/
@@ -503,30 +503,12 @@ export default function PopForm(props) {
       <div className="title-btn">
         <h1 className="">Add Role</h1>
         <div className="buttons">
-          <button
-            className="button"
-            onClick={() =>
-              props.handleClick({
-                type: roleTitle,
-                compSkills: compSkills,
-                reqSkills: reqSkills,
-                hours: minimumHours,
-                desc: description,
-                location: selectedLocations,
-              })
-            }
-          >
-            save
-          </button>
-          <img
-            src={closeIcon}
-            alt="Close utton"
-            onClick={props.togglePopForm}
-          />
+          <button className="button">save</button>
+          <img src={closeIcon} alt="Close utton" />
         </div>
       </div>
       <DropDownRoleMenu
-        title={roleTitle}
+        title={role}
         showRoleMenu={showRoleMenu}
         toggleRoleMenu={toggleRoleMenu}
         handleChange={pickRole}
@@ -611,8 +593,6 @@ export default function PopForm(props) {
             type="text"
             className="input-hours"
             placeholder="No. of hours"
-            onChange={pickMinimumHours}
-            value={minimumHours}
           />
         </div>
       </div>

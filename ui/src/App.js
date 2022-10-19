@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import Scaffolding from"./Components/CompanyDesc/Scaffolding"
-import CompanyDesc from "./Components/CompanyDesc/CompanyDesc"
+import Scaffolding from"./Components/AprenticeshipDescription/Scaffolding.js"
+import ApprenticeshipDesc from "./Components/AprenticeshipDescription/ApprenticeshipDesc"
 
- 
 function App() {
   
   const components=[      
-   <CompanyDesc
-     panel= {<CompanyDesc />}
+   <ApprenticeshipDesc
+     panel= {<ApprenticeshipDesc />}
    />
 
   ]
@@ -18,5 +17,6 @@ function App() {
      />
    </>
    )
+   
 }
 export default App

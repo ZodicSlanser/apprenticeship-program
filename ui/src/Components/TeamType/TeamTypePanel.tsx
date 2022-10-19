@@ -9,6 +9,7 @@ import dottedBox from "../../Assets/TeamType/dotted-box.svg";
 import box from "../../Assets/TeamType/box.svg";
 import infoCircle from "../../Assets/TeamType/info-circle.svg";
 import TeamTypeSelect from "./TeamTypeSelect";
+const { AddApprenticeship } = require("/backend/CRUD.js")
 
 interface TeamTypePanelProps {
   invokeActivity: (x: null, y: Number) => void;
@@ -27,7 +28,15 @@ export default memo(function TeamTypePanel({
   }
   useEffect(() => {
     setType(selected);
-    if (selected) invokeType(null, true);
+    if (selected) {invokeType(null, true);
+      const newApprenticeship = {
+        title:"test",
+        description:"test",
+        date:"Feb 23, 2021",
+        members:[{name:"test",email:"test",role:"test"}],
+        teamType: selected,
+      };
+    }
     invokeType(null, false);
   }, [selected, invokeType, setType]);
 

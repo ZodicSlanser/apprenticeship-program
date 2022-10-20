@@ -4,15 +4,17 @@ import { TeamMember } from "./Models/TeamMember.js";
 import { Apprenticeship } from "./Models/Apprenticeship.js";
 const clientHost = "localhost:9000";
 
+// uri: "http://" + clientHost + "/{ operation to be called }"
 function updateClient(postData) {
   const clientServerOptions = {
-    uri: "http://" + clientHost + "/",
+    uri: "http://" + clientHost + "/add",
     body: JSON.stringify(postData),
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
   };
+
   request(clientServerOptions, function (error, response) {
     console.log(error, response.body);
   });

@@ -7,12 +7,17 @@ import {
   AddValue,
   DeleteField,
 } from "./CRUDS/CRUD.js";
+import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
 const port = process.env.PORT || 9000;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cors({
+  methods : ['GET','POST','PUT','DELETE','OPTIONS'],}
+))
 
 app.post("/add", (req, res) => {
   console.log("receiving data ...");
@@ -37,9 +42,10 @@ app.get("/view-all", (req, res) => {
 });
 //res.send(`${msg}`);
 //delete apprenticeship
-app.post("/delete", (req, res) => {
+app.delete("/delete", (req, res) => {
   console.log("receiving data ...");
-  const msg = DeleteApprenticeship(req.body.id);
+  console.log(req.body?.id)
+  const msg = DeleteApprenticeship(req.body?.id);
   res.send(`${msg}`);
 });
 //update apprenticeship

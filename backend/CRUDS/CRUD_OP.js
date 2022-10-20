@@ -1,7 +1,7 @@
 //TODO Implement CRUD Operations
 import db from "../firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
-import { getStorage } from 'firebase-admin/storage';
+import { getStorage } from "firebase-admin/storage";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
@@ -66,20 +66,29 @@ function updateInDB(Apprenticeship, fieldName = null, value = null) {
         [fieldName]: value,
       });
   }
-  return db().collection("Apprenticeship").doc(Apprenticeship.id).set({ ...Apprenticeship }, { merge: true });
+  return db()
+    .collection("Apprenticeship")
+    .doc(Apprenticeship.id)
+    .set({ ...Apprenticeship }, { merge: true });
 }
 function getAllMembers() {
   return db.collection("TeamMembers").get();
 }
 function updateMember(member) {
-  return db.collection("TeamMembers").doc(member.id).set({ ...member }, { merge: true });
+  return db
+    .collection("TeamMembers")
+    .doc(member.id)
+    .set({ ...member }, { merge: true });
 }
 
 function getAllRoles() {
   return db.collection("Roles").get();
 }
 function updateRole(role) {
-  return db.collection("Roles").doc(role.id).set({ ...role }, { merge: true });
+  return db
+    .collection("Roles")
+    .doc(role.id)
+    .set({ ...role }, { merge: true });
 }
 function uploadToFireStore(file) {
   const storage = getStorage();
@@ -99,5 +108,5 @@ export {
   getAllRoles,
   uploadToFireStore,
   updateMember,
-  updateRole
+  updateRole,
 };

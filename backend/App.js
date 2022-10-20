@@ -1,7 +1,4 @@
-import { Role } from "./firebase/Models/Role.js";
-import { TeamMember } from "./firebase/Models/TeamMember.js";
 import { Apprenticeship } from "./firebase/Models/Apprenticeship.js";
-import admin from "firebase-admin";
 import {
   AddApprenticeship,
   ViewApprenticeship,
@@ -33,8 +30,7 @@ app.get("/view-all", (req, res) => {
     const apprenticeships = [];
     data.forEach((doc) => {
       apprenticeships.push(new Apprenticeship(doc.data()));
-    }
-    );
+    });
     console.log(apprenticeships);
     res.send(apprenticeships);
   });
@@ -68,6 +64,5 @@ app.delete("/delete-field", (req, res) => {
   const msg = DeleteField(req.body.id, req.body.field);
   res.send(`${msg}`);
 });
-
 
 app.listen(port, () => console.log(`The server is running on port ${port}`));

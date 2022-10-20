@@ -1,4 +1,3 @@
-//TODO: 1- Add,Update,Delete,View --> Apprenticeship
 import {
   commit,
   getApprenticeship,
@@ -7,14 +6,14 @@ import {
   uploadToFireStore,
   updateInDB,
 } from "./CRUD_OP.js";
-import joi from "joi";
 import { apprenticeshipSchema } from "../firebase/Validation/ValidationSchema.js";
 import { Apprenticeship } from "../firebase/Models/Apprenticeship.js";
+
+//Create, Read, Update, Delete  --> Apprenticeship
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
 function AddApprenticeship(apprenticeship) {
-
   const validationResult = apprenticeshipSchema.validate(
     { ...apprenticeship },
     { abortEarly: true }
@@ -29,8 +28,7 @@ function AddApprenticeship(apprenticeship) {
     commit(apprenticeship);
     console.log("Commit done successfully");
     return "Commit done successfully";
-  }
-  else {
+  } else {
     console.log(validationResult.error);
     return validationResult.error;
   }
@@ -57,7 +55,6 @@ function ViewApprenticeship(ID = null) {
         return null;
       });
   }
-
 }
 
 //POST API -> DB
@@ -76,6 +73,7 @@ function DeleteApprenticeship(ID) {
       console.log(error);
       return false;
     });
+  return false;
 }
 
 //POST API -> DB
@@ -94,15 +92,17 @@ function UpdateApprenticeship(apprenticeship) {
       console.log(error);
       return false;
     });
+  return false;
 }
 
-//TODO: 2- Add,Update,Delete,View --> Fields
+//Create, Read, Update, Delete --> Fields
 
 //Add Field value to Apprenticeship Object.
 //Field Name, Value, Apprenticeship object => bool
 function AddValue(fieldName, value, apprenticeship) {
-  //TODO 1- Validate FieldName
-  //ValidateField() -> Bool
+  // 1- Validate FieldName
+  // 2- Validate Value
+  // 3- Add to Apprenticeship object
   apprenticeshipSchema
     .validateAsync(apprenticeship)
     .then(() => {
@@ -112,29 +112,21 @@ function AddValue(fieldName, value, apprenticeship) {
       console.log(err);
       return false;
     });
-  //TODO 2- Validate Value
-  //ValidateValue() => bool
-  //TODO 3- Add to Apprenticeship object
-  //updateInDB() => bool
+  return false;
 }
-
 
 //POST Delete field from Apprenticeship Document
 //Apprenticeship ID, Field => Bool
 function DeleteField(ID, fieldName) {
-  //TODO 1- Validate FieldName
-  //ValidateField() -> bool
-  //TODO 2- Validate Apprenticeship
-  //ValidateApprenticeship() => bool
-  //TODO 3- Delete field from Apprenticeship Document
-  //removeFromDB() => bool
+  // 1- Validate FieldName
+  // 2- Validate Apprenticeship
+  // 3- Delete field from Apprenticeship Document
   return removeFromDB(ID, fieldName);
 }
 function uploadFile(file) {
   uploadToFireStore(file).then((url) => {
     return url;
-  }
-  );
+  });
 }
 export {
   AddApprenticeship,

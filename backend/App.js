@@ -37,7 +37,7 @@ app.get("/view-all", (req, res) => {
 });
 //res.send(`${msg}`);
 //delete apprenticeship
-app.delete("/delete", (req, res) => {
+app.post("/delete", (req, res) => {
   console.log("receiving data ...");
   const msg = DeleteApprenticeship(req.body.id);
   res.send(`${msg}`);

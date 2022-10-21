@@ -60,7 +60,7 @@ function ViewApprenticeship(ID = null) {
 //POST API -> DB
 //int ID => bool
 function DeleteApprenticeship(ID) {
-  //1- Validation
+  //TODO : 1- Validation
   //ValidateApprenticeship()
   //Delete Apprenticeship from DB and return true
   //Delete()

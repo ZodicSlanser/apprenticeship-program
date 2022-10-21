@@ -35,6 +35,7 @@ function commit(apprenticeship) {
 //Apprenticeship ID, Field Name = null => Bool
 //removes Item from DB or Document
 function removeFromDB(ID, fieldName = null) {
+
   if (fieldName) {
     return db()
       .collection("Apprenticeship")
@@ -43,7 +44,7 @@ function removeFromDB(ID, fieldName = null) {
         [fieldName]: admin.firestore.FieldValue.delete(),
       });
   }
-  return db.collection("Apprenticeship").doc(ID).delete();
+  return db().collection("Apprenticeship").doc(ID).delete();
 }
 
 function getApprenticeship(ID) {

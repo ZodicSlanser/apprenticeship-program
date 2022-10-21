@@ -131,8 +131,7 @@ const apprenticeship = new Apprenticeship({
   startDate: new Date(),
   endDate: new Date(),
 });
-//addApprenticeship(apprenticeship);
+addApprenticeship(apprenticeship);
 
 export {addApprenticeship,viewApprenticeship,viewAllApprenticeships,deleteApprenticeship,updateApprenticeship,addValue};
 
-//console.log(JSON.parse(JSON.stringify({ apprenticeship })))

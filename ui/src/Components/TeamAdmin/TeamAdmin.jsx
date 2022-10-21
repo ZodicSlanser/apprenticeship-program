@@ -13,8 +13,9 @@ function TeamAdmin(props) {
   const [list, setList] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
-    socialURL: "",
+    linkedinUrl: "",
     photo: "",
+    email: "",
   });
 
   useEffect(() => {
@@ -25,6 +26,7 @@ function TeamAdmin(props) {
     e.preventDefault();
     setList((ls) => [...ls, formData]);
     setFormData("");
+    handleClose();
   };
 
   const handleImage = (e) => {
@@ -86,26 +88,30 @@ function TeamAdmin(props) {
         {list.length !== 0 && (
           <div className="TeamAdmin-container">
             {list.map((a, index) => (
-              <li className="Admin-details" key={index}>
-                {a.photo ? (
-                  <img className="preview" src={a.photo} alt="pic"></img>
-                ) : (
-                  <img className="preview" src={Rectangle} alt="pic"></img>
-                )}
-                <div className="admin-firstName">
-                  <span> {a.name}</span>
+              <div className="Admin-details" key={index}>
+                <div className="ImageTitleAdmin">
+                  {a.photo ? (
+                    <img className="preview" src={a.photo} alt="pic"></img>
+                  ) : (
+                    <img className="preview" src={Rectangle} alt="pic"></img>
+                  )}
+                  <div className="admin-firstName">
+                    <span> {a.name}</span>
+                  </div>
                 </div>
-                <a href={a.socialURL}>
-                  <img src={link} alt="LinkedIn"></img>
-                </a>
+                <div className="IconsAdmin">
+                  <a href={a.socialURL} className="LinkedInIcon">
+                    <img src={link} alt="LinkedIn"></img>
+                  </a>
 
-                <img
-                  className="delete"
-                  src={trash}
-                  onClick={() => removeAdmin(index)}
-                  alt="trash"
-                ></img>
-              </li>
+                  <img
+                    className="deleteAdmin"
+                    src={trash}
+                    onClick={() => removeAdmin(index)}
+                    alt="trash"
+                  ></img>
+                </div>
+              </div>
             ))}
           </div>
         )}

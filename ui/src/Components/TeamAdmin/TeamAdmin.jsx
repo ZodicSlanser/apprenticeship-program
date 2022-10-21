@@ -100,7 +100,7 @@ function TeamAdmin(props) {
                   </div>
                 </div>
                 <div className="IconsAdmin">
-                  <a href={a.socialURL} className="LinkedInIcon">
+                  <a href={a.linkedinUrl} className="LinkedInIcon">
                     <img src={link} alt="LinkedIn"></img>
                   </a>
 

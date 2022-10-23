@@ -9,7 +9,6 @@ import dottedBox from "../../Assets/TeamType/dotted-box.svg";
 import box from "../../Assets/TeamType/box.svg";
 import infoCircle from "../../Assets/TeamType/info-circle.svg";
 import TeamTypeSelect from "./TeamTypeSelect";
-const { AddApprenticeship } = require("/backend/CRUD.js")
 
 interface TeamTypePanelProps {
   invokeActivity: (x: null, y: Number) => void;
@@ -92,16 +91,7 @@ export default function TeamTypePanel({
   return (
     <div>
       <div
-        className={styles["panel"]}
-        onMouseEnter={(e) => {
-          e.currentTarget.className = styles["panel-selected"];
-          invokeActivity(null, 2);
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.className = styles["panel"];
-          invokeActivity(null, 0);
-        }}
-      >
+        className={styles["panel"]}>
         <div className={styles.panelHeader}>
           Team Type
           <img src={infoCircle} alt="info-circle" />

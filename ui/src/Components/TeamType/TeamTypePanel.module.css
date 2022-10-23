@@ -67,7 +67,7 @@
   flex: 0.3333333;
 }
 
-.panel-selected {
+.panel:hover {
   box-sizing: border-box;
   /* Auto layout */
 

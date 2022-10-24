@@ -1,24 +1,17 @@
 .Team-container {
   box-sizing: border-box;
-
   /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 24px;
   gap: 16px;
-
   width: 770px;
-
   background: #ffffff;
   /* Gray 50 */
-
   border: 1px solid #e2e6eb;
   border-radius: 24px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 6;
   flex-grow: 0;
@@ -36,106 +29,84 @@
   align-items: center;
   padding: 0px;
   gap: 16px;
-
   width: 722px;
   height: 28px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   align-self: stretch;
   flex-grow: 0;
 }
+
 .info-circle {
   width: 24px;
   height: 24px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
 }
+
 .Title {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0px;
   gap: 16px;
-
   width: 262px;
   height: 28px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
 .Title span {
   /* width: 95px;
 height: 24px; */
-
   font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   color: #1e1e1e;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
 .Add-member {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 6px 10px;
   gap: 4px;
-
-  width: 152px;
-  height: 30px;
-
+  margin-top: 3px;
+  width: 151px;
+  height: 28px;
   /* Snow */
-
   background: #ffffff;
   /* Purple */
-
   border: 1px dashed #793ef5;
   border-radius: 8px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
 }
+
 .Add-member:hover {
   cursor: pointer;
-
-  background: #ffffff;
-  /* Purple */
-  border: 1px solid #793ef5;
-  /* Card Selected */
-  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
-  border-radius: 8px;
 }
-
 .Add-member span {
   width: 111px;
   height: 15px;
-
   font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 500;
@@ -145,118 +116,111 @@ height: 24px; */
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   /* Purple */
-
   color: #793ef5;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
 }
+
 .Add-member img {
   width: 16px;
   height: 16px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
 .TeamAdmin-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
   gap: 16px;
-
   width: 722px;
-  height: 72px;
-
   /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
 }
+
 .Admin-details {
   box-sizing: border-box;
-
+  justify-content: space-between;
   /* Auto layout */
-
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   padding: 16px 12px 16px 16px;
   gap: 10px;
-
   width: 353px;
   height: 72px;
-
   /* Snow */
-
   background: #ffffff;
   border: 1px solid #cfd3d9;
   border-radius: 16px;
-
   /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
-.Admin-details a {
+
+.ImageTitleAdmin {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.IconsAdmin {
+  align-self: center;
+  justify-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 50px;
+  justify-content: space-between;
+  bottom: 10px;
+}
+
+.LinkedInIcon {
   width: 24px;
   height: 24px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 2;
-  flex-grow: 0;
+  align-self: flex-end;
 }
+
+.deleteAdmin {
+  width: 20px;
+  height: 20px;
+}
+
 .popup-container {
   position: absolute;
   width: 100%;
   height: 100%;
   left: 0px;
   top: 0px;
-
   background: rgba(3, 2, 23, 0.3);
   backdrop-filter: blur(7px);
 }
 
 .popup2 {
   box-sizing: border-box;
-
   /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 24px;
   gap: 20px;
-
   position: absolute;
   width: 600px;
   height: 388px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   background: #ffffff;
   /* Purple */
-
   border: 1px solid #793ef5;
   /* Card Selected */
-
   box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
   border-radius: 24px;
 }
+
 .popup-header {
   display: flex;
   flex-direction: row;
@@ -264,18 +228,16 @@ height: 24px; */
   align-items: center;
   padding: 0px;
   gap: 16px;
-
   width: 552px;
   height: 36px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   align-self: stretch;
   flex-grow: 0;
   z-index: 0;
 }
+
 .popup-header span {
   font-family: "Space Grotesk";
   font-style: normal;
@@ -283,38 +245,32 @@ height: 24px; */
   font-size: 20px;
   line-height: 24px;
   /* identical to box height, or 120% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   color: #1e1e1e;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
 .popup-btns {
   /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0px;
   gap: 12px;
-
   width: 118px;
   height: 36px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
 }
+
 .save-btn {
   display: flex;
   flex-direction: row;
@@ -322,23 +278,19 @@ height: 24px; */
   align-items: center;
   padding: 8px 24px;
   gap: 29px;
-
   width: 82px;
   height: 36px;
   outline: none;
   border: none;
-
   /* Purple */
-
   background: #793ef5;
   border-radius: 8px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
 .save-btn span {
   font-family: "Space Grotesk";
   font-style: normal;
@@ -346,66 +298,57 @@ height: 24px; */
   font-size: 14px;
   line-height: 20px;
   /* identical to box height, or 143% */
-
   text-align: center;
   letter-spacing: 0.4px;
   font-feature-settings: "liga" off;
-
   color: #ffffff;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
 }
+
 .popup-btns img {
   width: 24px;
   height: 24px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   flex-grow: 0;
 }
+
 .popup-btns img:hover {
   cursor: pointer;
 }
+
 .save-btn:hover {
   cursor: pointer;
 }
+
 .admin-name {
   box-sizing: border-box;
-
   /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 12px 12px 12px 16px;
   margin-bottom: 2%;
   gap: 10px;
-
   width: 552px;
   height: 48px;
-
   /* Snow */
-
   background: #ffffff;
   /* Field Stroke */
-
   border: 1px solid #cecece;
   border-radius: 12px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 2;
   align-self: stretch;
   flex-grow: 0;
   z-index: 2;
 }
+
 .admin-name input {
   display: flex;
   flex-direction: column;
@@ -413,7 +356,6 @@ height: 24px; */
   align-items: flex-start;
   padding: 0px;
   gap: 11px;
-
   width: 490px;
   height: 24px;
   border: none;
@@ -425,54 +367,43 @@ height: 24px; */
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   color: #1e1e1e;
-
   opacity: 0.5;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   align-self: stretch;
   flex-grow: 1;
 }
+
 .admin-email {
   box-sizing: border-box;
-
   /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 12px 12px 12px 16px;
   margin-bottom: 2%;
   gap: 10px;
-
   width: 552px;
   height: 48px;
-
   /* Snow */
-
   background: #ffffff;
   /* Field Stroke */
-
   border: 1px solid #cecece;
   border-radius: 12px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 3;
   align-self: stretch;
   flex-grow: 0;
   z-index: 3;
 }
+
 .admin-email input {
   display: flex;
   flex-direction: column;
@@ -480,12 +411,10 @@ height: 24px; */
   align-items: flex-start;
   padding: 0px;
   gap: 11px;
-
   width: 490px;
   height: 24px;
   border: none;
   outline: none;
-
   /*font*/
   font-family: "Space Grotesk";
   font-style: normal;
@@ -493,54 +422,43 @@ height: 24px; */
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   color: #1e1e1e;
-
   opacity: 0.5;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   align-self: stretch;
   flex-grow: 1;
 }
+
 .admin-linkedin {
   box-sizing: border-box;
-
   /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 12px 12px 12px 16px;
   margin-bottom: 2%;
   gap: 10px;
-
   width: 552px;
   height: 48px;
-
   /* Snow */
-
   background: #ffffff;
   /* Field Stroke */
-
   border: 1px solid #cecece;
   border-radius: 12px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 4;
   align-self: stretch;
   flex-grow: 0;
   z-index: 4;
 }
+
 .admin-linkedin input {
   display: flex;
   flex-direction: column;
@@ -548,7 +466,6 @@ height: 24px; */
   align-items: flex-start;
   padding: 0px;
   gap: 11px;
-
   width: 490px;
   height: 24px;
   border: none;
@@ -560,23 +477,19 @@ height: 24px; */
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   color: #1e1e1e;
-
   opacity: 0.5;
-
   /* Inside auto layout */
-
   flex: none;
   order: 1;
   align-self: stretch;
   flex-grow: 1;
 }
+
 .image-upload {
   width: 80px;
   height: 80px;
@@ -584,37 +497,36 @@ height: 24px; */
   border-radius: 20px;
   cursor: pointer;
 }
+
 .upload {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 6px;
   gap: 10px;
-
   position: absolute;
   width: 16px;
   height: 16px;
   left: 82px;
   top: 137px;
-
   /* Blue */
-
   background: #2153ff;
   border-radius: 10px;
-
   /* Inside auto layout */
-
   flex: none;
   order: 5;
   flex-grow: 0;
   z-index: 5;
 }
+
 .upload:hover {
   cursor: pointer;
 }
+
 .hide {
   display: none;
 }
+
 .selected-img {
   width: 80px;
   height: 80px;
@@ -622,45 +534,45 @@ height: 24px; */
   border-radius: 20px;
   cursor: pointer;
 }
+
 .admin-firstName {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 11px;
-
-  width: 241px;
-  height: 40px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 1;
+  align-self: center;
 }
+
 .admin-firstName span {
   width: 122px;
   height: 24px;
-
   font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   /* identical to box height, or 150% */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-
   color: #1e1e1e;
-
   /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+
+.TeamAdmin-container {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0px;
+  gap: 16px;
+  width: 722px;
+}
+
+.preview {
+  align-self: flex-start;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
 }

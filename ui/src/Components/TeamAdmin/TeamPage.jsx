@@ -68,20 +68,25 @@ function TeamPage(props) {
             <input
               type="text"
               placeholder="Name"
-              name="firstName"
+              name="name"
               onChange={props.handleform}
             ></input>
           </div>
           <div className="admin-email">
             <img src={sms}></img>
-            <input type="email" placeholder="Email address "></input>
+            <input
+              type="email"
+              placeholder="Email address "
+              name="email"
+              onChange={props.handleform}
+            ></input>
           </div>
           <div className="admin-linkedin">
             <img src={link}></img>
             <input
               type="url"
               placeholder="LinkedIn URL (optional)"
-              name="url"
+              name="linkedinUrl"
               onChange={props.handleform}
             ></input>
           </div>

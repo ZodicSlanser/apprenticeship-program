@@ -26,7 +26,6 @@ export default memo(function DropDownRoleMenu(props) {
   return (
     <div
       onBlur={(e) => {
-        console.log(e);
         if (
           (e.relatedTarget &&
             e.target &&

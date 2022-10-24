@@ -13,7 +13,6 @@ function LogoTitle(props) {
     setActive(true);
   }
   function handleBlur() {
-    console.log("asjkdbskjdgaksjb");
     setActive(false);
   }
   function typingDone(e) {
@@ -125,7 +124,7 @@ function LogoTitle(props) {
           onChange={handleTitleChange}
           onClick={() => {
             setOpacity(1);
-            props.invokeActivity(null, 0, true);
+            props.invokeActivity(null, 1, true);
             setTyping(true);
           }}
           style={{ opacity: opacity }}

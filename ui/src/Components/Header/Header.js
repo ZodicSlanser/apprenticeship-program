@@ -7,11 +7,11 @@ export default memo(function Header(props) {
   const [done, setDone] = useState();
   useEffect(() => {
     props.invokeDone([done, setDone]);
-  }, []);
+  }, [done, props]);
   function backendCall() {}
   return (
     <div className="FlexContainer">
-      <div className="back" onClick={() => console.log("Back")}>
+      <div className="back" onClick={() => {}}>
         <img src={arrowLeft} alt="arrow left" style={{ marginLeft: "24px" }} />
         <p style={{ marginLeft: "7px" }}> Back</p>
       </div>

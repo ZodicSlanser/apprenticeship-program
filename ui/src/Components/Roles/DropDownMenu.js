@@ -45,7 +45,6 @@ export default memo(function DropDownMenu(props) {
     }
   }
   function handleBlur(e) {
-    console.log(e);
     if (
       (e.relatedTarget &&
         e.target &&

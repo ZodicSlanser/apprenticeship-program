@@ -106,3 +106,10 @@
   width: 200px;
   z-index: 0;
 }
+
+.calendar {
+  position: absolute;
+  background: #ffffff;
+  margin-left: 316px;
+  margin-top: 4px;
+}

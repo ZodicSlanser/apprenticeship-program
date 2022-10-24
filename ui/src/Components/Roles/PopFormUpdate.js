@@ -2,12 +2,12 @@ import { useState, memo } from "react";
 import "./PopForm.css";
 import DropDownRoleMenu from "./DropDownRoleMenu";
 import DropDownMenu from "./DropDownMenu";
-import medalIcon from "../../Assets/Roles/medal-star.png";
-import clockIcon from "../../Assets/Roles/clock.png";
-import closeIcon from "../../Assets/Roles/close.png";
-import closeSquare from "../../Assets/Roles/close-square.png";
-import starIcon from "../../Assets/Roles/star.png";
-import locationIcon from "../../Assets/Roles/location.png";
+import medalIcon from "../../Assets/Roles/medal-star.svg";
+import clockIcon from "../../Assets/Roles/clock.svg";
+import closeIcon from "../../Assets/Roles/close.svg";
+import closeSquare from "../../Assets/Roles/close-square.svg";
+import starIcon from "../../Assets/Roles/star.svg";
+import locationIcon from "../../Assets/Roles/location.svg";
 
 export default memo(function PopFormUpdate(props) {
   /* Role*/
@@ -581,8 +581,9 @@ export default memo(function PopFormUpdate(props) {
             </button>
             <img
               src={closeIcon}
-              alt="Close utton"
+              alt="Close button"
               onClick={props.togglePopForm}
+              style={{ cursor: "pointer" }}
             />
           </div>
         </div>

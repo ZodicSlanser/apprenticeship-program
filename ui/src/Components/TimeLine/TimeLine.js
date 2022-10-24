@@ -1,6 +1,8 @@
-import { useState, memo, useEffect } from "react";
+import { useState, memo, useEffect, useRef } from "react";
 import "./TimeLine.css";
 import infoCircle from "../../Assets/TimeLine/info-circle.svg";
+import calendar from "../../Assets/TimeLine/calendar.svg";
+
 function TimeLine(props) {
   const [active, setActive] = useState(false);
   const [typing, setTyping] = useState(false);
@@ -8,6 +10,8 @@ function TimeLine(props) {
   const [endDateFormatted, setEndDateFormatted] = useState("");
   const [showStart, setShowStart] = useState();
   const [showEnd, setShowEnd] = useState();
+  const endRef = useRef();
+  const startRef = useRef();
 
   useEffect(() => {
     if (endDateFormatted && startDateFormatted)
@@ -50,7 +54,14 @@ function TimeLine(props) {
     const month = date.toLocaleString("default", { month: "long" });
     setEndDateFormatted(day + " " + month + " " + year);
   }
-
+  function handleStartCalendar() {
+    startRef.current.focus();
+    startRef.current.showPicker();
+  }
+  function handleEndCalendar() {
+    endRef.current.focus();
+    endRef.current.showPicker();
+  }
   return (
     <div
       className="timeline"
@@ -84,6 +95,7 @@ function TimeLine(props) {
       </div>
       <div className="dates">
         <input
+          ref={startRef}
           type={"text"}
           className="date"
           placeholder="Start Date"
@@ -102,6 +114,9 @@ function TimeLine(props) {
             setShowStart(false);
           }}
         ></input>
+        <div className="calendar">
+          <img src={calendar} alt="" onClick={handleStartCalendar}></img>
+        </div>
         {showStart && (
           <div
             className="startDate-overwrite"
@@ -116,6 +131,7 @@ function TimeLine(props) {
           </div>
         )}
         <input
+          ref={endRef}
           type={"text"}
           className="date"
           placeholder="Estimated End Date"
@@ -135,6 +151,9 @@ function TimeLine(props) {
           }}
           style={{ marginLeft: "16px" }}
         ></input>
+        <div className="calendar" style={{ marginLeft: "685px" }}>
+          <img src={calendar} alt="" onClick={handleEndCalendar}></img>
+        </div>
         {showEnd && <div className="endDate-overwrite">{endDateFormatted}</div>}
       </div>
     </div>

@@ -1,8 +1,8 @@
 import { useState, memo } from "react";
 import "./DropDownMenu.css";
 import tickCircle from "../../Assets/Roles/Vector.svg";
-import activedownarrw from "../../Assets/Roles/active-arrow-down.png";
-import downarrw from "../../Assets/Roles/arrow-down.png";
+import activedownarrw from "../../Assets/Roles/active-arrow-down.svg";
+import downarrw from "../../Assets/Roles/arrow-down.svg";
 
 export default memo(function DropDownMenu(props) {
   /*containing all options */

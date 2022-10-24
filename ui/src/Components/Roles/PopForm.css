@@ -103,6 +103,7 @@
   font-feature-settings: "liga" off;
   color: #ffffff;
   border: 0ch;
+  cursor: pointer;
 }
 
 .button:hover {

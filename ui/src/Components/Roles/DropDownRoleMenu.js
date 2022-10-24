@@ -1,8 +1,8 @@
 import { useState, memo } from "react";
 import "./DropDownRoleMenu.css";
-import downarrw from "../../Assets/Roles/arrow-down.png";
-import activedownarrw from "../../Assets/Roles/active-arrow-down.png";
-import userFrame from "../../Assets/Roles/frame.png";
+import downarrw from "../../Assets/Roles/arrow-down.svg";
+import activedownarrw from "../../Assets/Roles/active-arrow-down.svg";
+import userFrame from "../../Assets/Roles/frame.svg";
 
 export default memo(function DropDownRoleMenu(props) {
   const title = props.title;

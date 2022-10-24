@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react";
-import addCircle from "../../Assets/Roles/add-circle.png";
-import infoCircle from "../../Assets/Roles/info-circle.png";
+import addCircle from "../../Assets/Roles/add-circle.svg";
+import infoCircle from "../../Assets/Roles/info-circle.svg";
 import "./TeamRoles.css";
 import Roles from "./Roles.jsx";
 import PopForm from "./PopForm";

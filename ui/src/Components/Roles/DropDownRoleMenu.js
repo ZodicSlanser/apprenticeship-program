@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./DropDownRoleMenu.css";
 import downarrw from "../../Assets/Roles/arrow-down.png";
 import activedownarrw from "../../Assets/Roles/active-arrow-down.png";
 import userFrame from "../../Assets/Roles/frame.png";
 
-export default function DropDownRoleMenu(props) {
+export default memo(function DropDownRoleMenu(props) {
   const title = props.title;
   const AllOptions = props.options;
   const [options, setOptions] = useState(props.options);
@@ -37,7 +37,9 @@ export default function DropDownRoleMenu(props) {
               (!props.showRoleMenu &&
                 e.relatedTarget.nodeName === e.target.nodeName))) ||
           (!props.showRoleMenu &&
-            (!e.relatedTarget || e.relatedTarget.nodeName === "TEXTAREA"))
+            (!e.relatedTarget ||
+              e.relatedTarget.nodeName === "TEXTAREA" ||
+              "BUTTON"))
         )
           return;
         props.toggleRoleMenu();
@@ -46,7 +48,9 @@ export default function DropDownRoleMenu(props) {
       tabIndex={props.tabIndex + ""}
     >
       <div
-        className="dropDown-wrapper"
+        className={
+          props.showRoleMenu ? "dropDown-wrapper-hovering" : "dropDown-wrapper"
+        }
         onClick={() => {
           props.toggleRoleMenu();
           setOptions(props.options);
@@ -54,7 +58,7 @@ export default function DropDownRoleMenu(props) {
       >
         <img src={userFrame} alt="User Icon" className="user-Icon" />
         <div className="select-btn">
-          <div>{title}</div>
+          <div style={{ cursor: "default" }}>{title}</div>
           {props.showRoleMenu ? (
             <img src={activedownarrw} alt="arrow down" className="down-arrow" />
           ) : (
@@ -78,4 +82,4 @@ export default function DropDownRoleMenu(props) {
       )}
     </div>
   );
-}
+});

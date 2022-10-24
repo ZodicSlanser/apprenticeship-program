@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
-import "./LogoTitlePanel.css";
-import image from "../../Assets/LogoTitlePanel/image.svg";
-import infoCircle from "../../Assets/LogoTitlePanel/info-circle.svg";
-function LogoTitlePanel(props) {
+import { useState, useRef, memo } from "react";
+import "./LogoTitle.css";
+import image from "../../Assets/LogoTitle/image.svg";
+import infoCircle from "../../Assets/LogoTitle/info-circle.svg";
+function LogoTitle(props) {
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);
   const [selectedImage, setSelectedImage] = useState();
@@ -13,6 +13,7 @@ function LogoTitlePanel(props) {
     setActive(true);
   }
   function handleBlur() {
+    console.log("asjkdbskjdgaksjb");
     setActive(false);
   }
   function typingDone(e) {
@@ -35,13 +36,14 @@ function LogoTitlePanel(props) {
       props.setLogo(e.target.files[0]);
     }
 
-    if (title !== "" && e.target.files[0]) {
+    if (title !== "" && (e.target.files[0] || selectedImage)) {
       props.invokeLogoTitle(null, true);
     } else {
       props.invokeLogoTitle(null, false);
     }
   }
-  function handleImage() {
+  function handleImage(e) {
+    e.preventDefault();
     inputFile.current.click();
   }
   return (
@@ -59,7 +61,7 @@ function LogoTitlePanel(props) {
         if (!typing) {
           handleBlur();
           props.invokeActivity(null, 0);
-        }
+        } else props.invokeActivity(null, 0, true);
       }}
       tabIndex="-1"
       style={
@@ -113,16 +115,17 @@ function LogoTitlePanel(props) {
         <input
           type={"text"}
           className="logoTitleText"
-          placeholder="Enter  Apprenticeship Title"
+          placeholder="Enter Apprenticeship Title"
           onBlur={() => {
             handleBlur();
-            props.invokeActivity(null, 0);
+            props.invokeActivity(null, 0, false);
             typingDone();
             setTyping(false);
           }}
           onChange={handleTitleChange}
           onClick={() => {
             setOpacity(1);
+            props.invokeActivity(null, 0, true);
             setTyping(true);
           }}
           style={{ opacity: opacity }}
@@ -131,4 +134,4 @@ function LogoTitlePanel(props) {
     </div>
   );
 }
-export default LogoTitlePanel;
+export default memo(LogoTitle);

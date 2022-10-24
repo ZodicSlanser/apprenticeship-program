@@ -1,21 +1,53 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import Header from "../Header/Header";
-import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
+import LogoTitle from "../LogoTitle/LogoTitle";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import TeamRoles from "../Roles/TeamRoles";
 import Scaffolding from "../Scaffolding/Scaffolding";
+import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
+import TimeLine from "../TimeLine/TimeLine";
 import "./MainPage.css";
+let lock = false;
+
 function MainPage() {
   const [title, setTitle] = useState();
   const [logo, setLogo] = useState();
+  const [type, setType] = useState();
+  const [roles, setRoles] = useState([]);
+  const [admin, setAdmin] = useState();
+  const [contentHover, setContentHover] = useState(false);
+  const contentRef = useRef(null);
+  const apprenticeship = {
+    title: title,
+    logo: logo,
+    type: type,
+    roles: roles,
+    admin: admin,
+  };
 
-  const apprenticeship = { title: title, logo: logo };
+  useEffect(() => {
+    const handleScrolling = (event) => {
+      if (contentRef !== null) {
+        if (contentHover === false) {
+          contentRef.current.scrollTop += event.deltaY;
+        }
+      }
+    };
+
+    window.addEventListener("wheel", handleScrolling);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrolling);
+    };
+  });
   let invokeActivitySetter;
-  const invokeActivity = (setStateCallback, active) => {
+  const invokeActivity = (setStateCallback, active, lockValue) => {
+    lock = lockValue === undefined ? lock : lockValue;
     if (setStateCallback) {
       invokeActivitySetter = setStateCallback[1];
     } else {
-      if (invokeActivitySetter) invokeActivitySetter(active);
+      if (invokeActivitySetter && !lock) invokeActivitySetter(active);
     }
   };
   let invokeDescriptionSetter;
@@ -58,37 +90,74 @@ function MainPage() {
       if (invokeTimelineSetter) invokeTimelineSetter(done);
     }
   };
+  let invokeDoneSetter;
+  const invokeDone = (setStateCallback, done) => {
+    if (setStateCallback) {
+      invokeDoneSetter = setStateCallback[1];
+    } else {
+      if (invokeDoneSetter) invokeDoneSetter(done);
+    }
+  };
   return (
-    <div className="main-page">
-      <div className="header-container">
-        <Header></Header>
+    <>
+      <div style={{ overflow: "auto" }}>
+        <div className="main-page">
+          <div className="header-container">
+            <Header
+              invokeDone={invokeDone}
+              apprenticeship={apprenticeship}
+            ></Header>
+          </div>
+          <div className="progressbar-container">
+            <ProgressBar
+              invokeActivity={invokeActivity}
+              invokeDescription={invokeDescription}
+              invokeType={invokeType}
+              invokeRoles={invokeRoles}
+              invokeAdmin={invokeAdmin}
+              invokeTimeline={invokeTimeline}
+              invokeDone={invokeDone}
+            ></ProgressBar>
+          </div>
+          <div
+            className="scaffolding-container"
+            ref={contentRef}
+            onMouseEnter={() => {
+              setContentHover(true);
+            }}
+            onMouseLeave={() => {
+              setContentHover(false);
+            }}
+          >
+            <Scaffolding>
+              <LogoTitle
+                invokeActivity={invokeActivity}
+                invokeLogoTitle={invokeDescription}
+                setTitle={setTitle}
+                setLogo={setLogo}
+              ></LogoTitle>
+              <TeamTypePanel
+                invokeActivity={invokeActivity}
+                invokeType={invokeType}
+                setType={setType}
+              ></TeamTypePanel>
+              <TeamRoles
+                invokeActivity={invokeActivity}
+                invokeRoles={invokeRoles}
+                setRoles={setRoles}
+              ></TeamRoles>
+              <TeamAdmin
+                invokeActivity={invokeActivity}
+                invokeAdmin={invokeAdmin}
+                setAdmin={setAdmin}
+              ></TeamAdmin>
+              <TimeLine invokeActivity={invokeActivity}></TimeLine>
+              <div>Rest of page</div>
+            </Scaffolding>
+          </div>
+        </div>
       </div>
-      <div className="progressbar-container">
-        <ProgressBar
-          invokeActivity={invokeActivity}
-          invokeDescription={invokeDescription}
-          invokeType={invokeType}
-          invokeRoles={invokeRoles}
-          invokeAdmin={invokeAdmin}
-          invokeTimeline={invokeTimeline}
-        ></ProgressBar>
-      </div>
-      <div className="scaffolding-container">
-        <Scaffolding>
-          <LogoTitlePanel
-            invokeActivity={invokeActivity}
-            invokeLogoTitle={invokeDescription}
-            setTitle={setTitle}
-            setLogo={setLogo}
-          ></LogoTitlePanel>
-          <TeamTypePanel
-            invokeActivity={invokeActivity}
-            invokeType={invokeType}
-          ></TeamTypePanel>
-          <div>Rest of page</div>
-        </Scaffolding>
-      </div>
-    </div>
+    </>
   );
 }
-export default MainPage;
+export default memo(MainPage);

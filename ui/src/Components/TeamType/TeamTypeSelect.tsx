@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./TeamTypePanel.module.css";
 import untickCircle from "../../Assets/TeamType/untick-circle.svg";
 import tickCircle from "../../Assets/TeamType/tick-circle.svg";
@@ -31,4 +31,4 @@ export const TeamTypeSelect: FC<TeamTypeSelectProps> = ({
     </div>
   );
 };
-export default TeamTypeSelect;
+export default memo(TeamTypeSelect);

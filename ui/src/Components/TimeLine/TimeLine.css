@@ -1,0 +1,92 @@
+.companyLogoTitle {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  width: 770px;
+  height: 168px;
+  background: #ffffff;
+  border: 1px solid #e2e6eb;
+  border-radius: 24px;
+}
+
+.logoHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 722px;
+  height: 24px;
+}
+
+.logoHeaderText {
+  width: 300px;
+  height: 24px;
+
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+
+  color: #1e1e1e;
+}
+
+.logoTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  isolation: isolate;
+
+  width: 722px;
+  height: 80px;
+}
+
+.logoTitleText {
+  width: 480px;
+  height: 24px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+  color: #1e1e1e;
+  border: none;
+  outline: none;
+  opacity: 0.3;
+
+  margin-left: 24px;
+}
+
+.logoRectangle {
+  width: 80px;
+  height: 80px;
+  background: #e2e6eb;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.uploadImage {
+  display: block;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin-left: 61px;
+  margin-top: 61px;
+  background: #2153ff;
+  border-radius: 10px;
+  cursor: pointer;
+}

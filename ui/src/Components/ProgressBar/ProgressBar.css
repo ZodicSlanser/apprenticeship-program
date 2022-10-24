@@ -7,8 +7,8 @@
   align-items: center;
   padding: 24px;
   gap: 20px;
-
-  width: 1466px;
+  overflow: hidden;
+  width: 95.5vw;
   height: 60px;
 
   border: 1px solid #d0d4da;

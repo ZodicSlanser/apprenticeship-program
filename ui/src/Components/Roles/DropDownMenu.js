@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./DropDownMenu.css";
 import tickCircle from "../../Assets/Roles/Vector.svg";
 import activedownarrw from "../../Assets/Roles/active-arrow-down.png";
 import downarrw from "../../Assets/Roles/arrow-down.png";
 
-export default function DropDownMenu(props) {
+export default memo(function DropDownMenu(props) {
   /*containing all options */
   const count = 0;
   const AllOptions = props.skills;
@@ -54,7 +54,10 @@ export default function DropDownMenu(props) {
           (e.target.nodeName === "INPUT" &&
             e.relatedTarget.tabIndex === props.tabIndex) ||
           (!showMenu && e.relatedTarget.nodeName === e.target.nodeName))) ||
-      (!showMenu && !e.relatedTarget)
+      (!showMenu &&
+        (!e.relatedTarget ||
+          e.relatedTarget.nodeName === "TEXTAREA" ||
+          "BUTTON"))
     )
       return;
     toggleMenu();
@@ -65,10 +68,15 @@ export default function DropDownMenu(props) {
       onBlur={handleBlur}
       tabIndex={props.tabIndex + ""}
     >
-      <div className="skillwrapper-icon-btn" onClick={toggleMenu}>
+      <div
+        className={
+          showMenu ? "skillwrapper-icon-btn-hovering" : "skillwrapper-icon-btn"
+        }
+        onClick={toggleMenu}
+      >
         <img src={props.Frame} alt="Icon" className="skillIcon" />
         <div className="skillselect-btn">
-          <div>{props.title}</div>
+          <div style={{ cursor: "default" }}>{props.title}</div>
           {showMenu ? (
             <img
               src={activedownarrw}
@@ -81,7 +89,12 @@ export default function DropDownMenu(props) {
         </div>
       </div>
       {showMenu && (
-        <div className="skillMenuContent">
+        <div
+          className="skillMenuContent"
+          style={
+            props.tabIndex === -4 ? { bottom: "66px", height: "236px" } : null
+          }
+        >
           <div className="skillSearch">
             <input
               type="text"
@@ -116,4 +129,4 @@ export default function DropDownMenu(props) {
       )}
     </div>
   );
-}
+});

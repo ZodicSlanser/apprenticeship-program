@@ -78,7 +78,7 @@ function TeamAdmin(props) {
               }}
             >
               <img src={addCircle} alt="add-circle"></img>
-              <span> Add Team Member</span>
+              <span style={{ marginTop: "1px" }}> Add Team Member</span>
             </button>
           </div>
           <img src={infoCircle} className="info-circle" alt="info-circle"></img>

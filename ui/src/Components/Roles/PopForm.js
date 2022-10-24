@@ -273,7 +273,7 @@ export default memo(function PopForm(props) {
     new Array(AllSkills.length).fill(false)
   );
   const [description, setDesc] = useState("");
-  const [minimumHours, setMinimumHours] = useState(0);
+  const [minimumHours, setMinimumHours] = useState("");
   function pickMinimumHours(event) {
     if (event.target.value < 0) {
       event.target.value = 0;

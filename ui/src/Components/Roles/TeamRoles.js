@@ -101,25 +101,29 @@ export default memo(function TeamRoles(props) {
             className="info-circle-icon"
           ></img>{" "}
         </div>{" "}
-        <div className="available-roles">
-          {" "}
-          {listOfRoles.map((singleRole, index) => (
-            <Roles
-              key={index}
-              index={index}
-              handleDelete={deleteRole}
-              type={singleRole.type}
-              desc={singleRole.desc}
-              compSkills={singleRole.compSkills}
-              reqSkills={singleRole.reqSkills}
-              hours={singleRole.hours}
-              location={singleRole.location}
-              UpdateRole={UpdateRole}
-              duplicateRole={duplicateRole}
-            />
-          ))}{" "}
-        </div>{" "}
-      </section>{" "}
+        {listOfRoles.length > 0 ? (
+          <div className="available-roles">
+            {" "}
+            {listOfRoles.map((singleRole, index) => (
+              <Roles
+                key={index}
+                index={index}
+                handleDelete={deleteRole}
+                type={singleRole.type}
+                desc={singleRole.desc}
+                compSkills={singleRole.compSkills}
+                reqSkills={singleRole.reqSkills}
+                hours={singleRole.hours}
+                location={singleRole.location}
+                UpdateRole={UpdateRole}
+                duplicateRole={duplicateRole}
+              />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
+      </section>
       {showPopForm && (
         <PopForm
           togglePopForm={togglePopForm}

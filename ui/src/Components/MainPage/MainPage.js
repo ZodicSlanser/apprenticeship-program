@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect, memo } from "react";
 import Header from "../Header/Header";
-import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
+import LogoTitle from "../LogoTitle/LogoTitle";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import TeamRoles from "../Roles/TeamRoles";
 import Scaffolding from "../Scaffolding/Scaffolding";
 import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
+import TimeLine from "../TimeLine/TimeLine";
 import "./MainPage.css";
 let lock = false;
 
@@ -129,12 +130,12 @@ function MainPage() {
             }}
           >
             <Scaffolding>
-              <LogoTitlePanel
+              <LogoTitle
                 invokeActivity={invokeActivity}
                 invokeLogoTitle={invokeDescription}
                 setTitle={setTitle}
                 setLogo={setLogo}
-              ></LogoTitlePanel>
+              ></LogoTitle>
               <TeamTypePanel
                 invokeActivity={invokeActivity}
                 invokeType={invokeType}
@@ -150,7 +151,7 @@ function MainPage() {
                 invokeAdmin={invokeAdmin}
                 setAdmin={setAdmin}
               ></TeamAdmin>
-
+              <TimeLine invokeActivity={invokeActivity}></TimeLine>
               <div>Rest of page</div>
             </Scaffolding>
           </div>

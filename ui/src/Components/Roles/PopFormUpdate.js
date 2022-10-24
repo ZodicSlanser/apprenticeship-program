@@ -320,7 +320,10 @@ export default memo(function PopFormUpdate(props) {
   const [LocationsBoolean, setLoctionsBoolean] = useState(LocationsB);
   const [RSkillsBoolean, setRSkillsBoolean] = useState(RskillB);
   const [description, setDesc] = useState(props.desc);
-  const [minimumHours, setMinimumHours] = useState(props.hours);
+  console.log(props.hours);
+  const [minimumHours, setMinimumHours] = useState(
+    props.hours !== null ? props.hours : ""
+  );
 
   function pickMinimumHours(event) {
     if (event.target.value < 0) {
@@ -558,7 +561,7 @@ export default memo(function PopFormUpdate(props) {
     <div className="popup-container-blurred">
       <div className="popup">
         <div className="title-btn">
-          <h1 className=""> Add Role </h1>{" "}
+          <h1 className=""> Add Role </h1>
           <div className="buttons">
             <button
               className="button"
@@ -576,15 +579,15 @@ export default memo(function PopFormUpdate(props) {
                 )
               }
             >
-              Save{" "}
-            </button>{" "}
+              Save
+            </button>
             <img
               src={closeIcon}
               alt="Close utton"
               onClick={props.togglePopForm}
-            />{" "}
-          </div>{" "}
-        </div>{" "}
+            />
+          </div>
+        </div>
         <DropDownRoleMenu
           title={roleTitle}
           showRoleMenu={showRoleMenu}
@@ -598,19 +601,19 @@ export default memo(function PopFormUpdate(props) {
             "Back-end Developer",
           ]}
           tabIndex={-1}
-        />{" "}
+        />
         <div className="role-desc">
-          <h3> Role Description </h3>{" "}
+          <h3> Role Description </h3>
           <textarea
             type="text"
             className="input-desc"
             onChange={saveDesc}
             value={description}
-          />{" "}
-        </div>{" "}
+          />
+        </div>
         <div>
           <div className="skills-component">
-            <h3> Required Skills(Select any 3) </h3>{" "}
+            <h3> Required Skills(Select any 3) </h3>
             <DropDownMenu
               title="Select skills"
               Frame={medalIcon}
@@ -618,29 +621,27 @@ export default memo(function PopFormUpdate(props) {
               chooseSkill={appendToRSkills}
               chosenSkills={RSkillsBoolean}
               tabIndex={-2}
-            />{" "}
+            />
             <div className="skills">
-              {" "}
               {RSkillsBoolean.map(
                 (ischosen, index) =>
                   ischosen && (
                     <span key={index} className="singleSkill">
-                      {" "}
-                      {AllSkills[index]}{" "}
+                      {AllSkills[index]}
                       <img
                         src={closeSquare}
                         alt="close Icon"
                         className="close-skill"
                         onClick={() => deleteRSkill(index)}
-                      />{" "}
+                      />
                     </span>
                   )
-              )}{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
+              )}
+            </div>
+          </div>
+        </div>
         <div className="skills-component">
-          <h3> Complimentary Skills(Select any 3) </h3>{" "}
+          <h3> Complimentary Skills(Select any 3) </h3>
           <DropDownMenu
             title="Select skills"
             Frame={starIcon}
@@ -648,28 +649,27 @@ export default memo(function PopFormUpdate(props) {
             chooseSkill={appendToCSkills}
             chosenSkills={CSkillsBoolean}
             tabIndex={-3}
-          />{" "}
+          />
           <div className="skills">
-            {" "}
             {CSkillsBoolean.map(
               (ischosen, index) =>
                 ischosen && (
                   <span key={index} className="singleSkill">
                     {" "}
-                    {AllSkills[index]}{" "}
+                    {AllSkills[index]}
                     <img
                       src={closeSquare}
                       alt="close Icon"
                       className="close-skill"
                       onClick={() => deleteCSkill(index)}
-                    />{" "}
+                    />
                   </span>
                 )
-            )}{" "}
-          </div>{" "}
-        </div>{" "}
+            )}
+          </div>
+        </div>
         <div className="minimum-hours">
-          <h3> Minimum Hours Per Week </h3>{" "}
+          <h3> Minimum Hours Per Week </h3>
           <div className="icon-hours">
             <img src={clockIcon} alt="Clock Icon" className="clock-Icon" />
             <input
@@ -677,11 +677,12 @@ export default memo(function PopFormUpdate(props) {
               className="input-hours"
               onChange={pickMinimumHours}
               value={minimumHours}
-            />{" "}
-          </div>{" "}
-        </div>{" "}
+              placeholder="No. of hours"
+            />
+          </div>
+        </div>
         <div className="location">
-          <h3> Location Preferences </h3>{" "}
+          <h3> Location Preferences </h3>
           <DropDownMenu
             title={LocationTitle}
             Frame={locationIcon}

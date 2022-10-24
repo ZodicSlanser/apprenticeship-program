@@ -1,8 +1,8 @@
 import { useState, useRef, memo } from "react";
-import "./LogoTitlePanel.css";
-import image from "../../Assets/LogoTitlePanel/image.svg";
-import infoCircle from "../../Assets/LogoTitlePanel/info-circle.svg";
-function LogoTitlePanel(props) {
+import "./LogoTitle.css";
+import image from "../../Assets/LogoTitle/image.svg";
+import infoCircle from "../../Assets/LogoTitle/info-circle.svg";
+function LogoTitle(props) {
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);
   const [selectedImage, setSelectedImage] = useState();
@@ -13,6 +13,7 @@ function LogoTitlePanel(props) {
     setActive(true);
   }
   function handleBlur() {
+    console.log("asjkdbskjdgaksjb");
     setActive(false);
   }
   function typingDone(e) {
@@ -133,4 +134,4 @@ function LogoTitlePanel(props) {
     </div>
   );
 }
-export default memo(LogoTitlePanel);
+export default memo(LogoTitle);

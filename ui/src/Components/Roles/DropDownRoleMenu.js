@@ -37,7 +37,9 @@ export default memo(function DropDownRoleMenu(props) {
               (!props.showRoleMenu &&
                 e.relatedTarget.nodeName === e.target.nodeName))) ||
           (!props.showRoleMenu &&
-            (!e.relatedTarget || e.relatedTarget.nodeName === "TEXTAREA"))
+            (!e.relatedTarget ||
+              e.relatedTarget.nodeName === "TEXTAREA" ||
+              "BUTTON"))
         )
           return;
         props.toggleRoleMenu();
@@ -46,7 +48,9 @@ export default memo(function DropDownRoleMenu(props) {
       tabIndex={props.tabIndex + ""}
     >
       <div
-        className="dropDown-wrapper"
+        className={
+          props.showRoleMenu ? "dropDown-wrapper-hovering" : "dropDown-wrapper"
+        }
         onClick={() => {
           props.toggleRoleMenu();
           setOptions(props.options);
@@ -54,7 +58,7 @@ export default memo(function DropDownRoleMenu(props) {
       >
         <img src={userFrame} alt="User Icon" className="user-Icon" />
         <div className="select-btn">
-          <div>{title}</div>
+          <div style={{ cursor: "default" }}>{title}</div>
           {props.showRoleMenu ? (
             <img src={activedownarrw} alt="arrow down" className="down-arrow" />
           ) : (

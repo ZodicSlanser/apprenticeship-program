@@ -103,10 +103,9 @@ height: 24px; */
   align-items: flex-start;
   padding: 6px 10px;
   gap: 4px;
-  margin-top: 3px;
 
-  width: 151px;
-  height: 28px;
+  width: 152px;
+  height: 30px;
 
   /* Snow */
 
@@ -124,7 +123,15 @@ height: 24px; */
 }
 .Add-member:hover {
   cursor: pointer;
+
+  background: #ffffff;
+  /* Purple */
+  border: 1px solid #793ef5;
+  /* Card Selected */
+  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
 }
+
 .Add-member span {
   width: 111px;
   height: 15px;

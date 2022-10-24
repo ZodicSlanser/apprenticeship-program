@@ -11,12 +11,14 @@ import "./MainPage.css";
 let lock = false;
 
 function MainPage() {
-  const [title, setTitle] = useState();
-  const [logo, setLogo] = useState();
-  const [type, setType] = useState();
+  const [title, setTitle] = useState("");
+  const [logo, setLogo] = useState("");
+  const [type, setType] = useState("");
   const [roles, setRoles] = useState([]);
-  const [admin, setAdmin] = useState();
+  const [admin, setAdmin] = useState([]);
   const [contentHover, setContentHover] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const contentRef = useRef(null);
   const apprenticeship = {
     title: title,
@@ -24,6 +26,8 @@ function MainPage() {
     type: type,
     roles: roles,
     admin: admin,
+    startDate: startDate,
+    endDate: endDate,
   };
 
   useEffect(() => {
@@ -41,8 +45,10 @@ function MainPage() {
       window.removeEventListener("wheel", handleScrolling);
     };
   });
+
   let invokeActivitySetter;
   const invokeActivity = (setStateCallback, active, lockValue) => {
+    if (lockValue && active !== 0) invokeActivitySetter(active);
     lock = lockValue === undefined ? lock : lockValue;
     if (setStateCallback) {
       invokeActivitySetter = setStateCallback[1];
@@ -151,7 +157,12 @@ function MainPage() {
                 invokeAdmin={invokeAdmin}
                 setAdmin={setAdmin}
               ></TeamAdmin>
-              <TimeLine invokeActivity={invokeActivity}></TimeLine>
+              <TimeLine
+                invokeActivity={invokeActivity}
+                invokeTimeline={invokeTimeline}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+              ></TimeLine>
               <div>Rest of page</div>
             </Scaffolding>
           </div>

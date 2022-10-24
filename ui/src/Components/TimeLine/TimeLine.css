@@ -1,17 +1,16 @@
-.companyLogoTitle {
+.timeline {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   padding: 24px;
-  gap: 16px;
   width: 770px;
-  height: 168px;
+  height: 136px;
   background: #ffffff;
   border: 1px solid #e2e6eb;
   border-radius: 24px;
 }
 
-.logoHeader {
+.timelineHeader {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,7 +21,7 @@
   height: 24px;
 }
 
-.logoHeaderText {
+.timelineText {
   width: 300px;
   height: 24px;
 
@@ -40,53 +39,70 @@
   color: #1e1e1e;
 }
 
-.logoTitle {
+.dates {
+  position: relative;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0px;
   isolation: isolate;
-
+  margin-top: 16px;
   width: 722px;
   height: 80px;
 }
 
-.logoTitleText {
-  width: 480px;
-  height: 24px;
+.date {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 12px 12px 16px;
+  gap: 10px;
+
+  width: 353px;
+  height: 48px;
+
+  /* Snow */
+
+  background: #ffffff;
+  border: 1px solid #cfd3d9;
+  border-radius: 12px;
   font-family: "Space Grotesk";
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;
-  color: #1e1e1e;
-  border: none;
-  outline: none;
-  opacity: 0.3;
-
-  margin-left: 24px;
+}
+.date:hover {
+  border: 1px solid #665fef;
+}
+.startDate-overwrite {
+  bottom: 0px;
+  margin-bottom: 12px;
+  margin-left: 18px;
+  position: absolute;
+  opacity: 1;
+  background: #ffffff;
+  pointer-events: none;
+  height: 20px;
+  width: 200px;
+  z-index: 0;
 }
 
-.logoRectangle {
-  width: 80px;
-  height: 80px;
-  background: #e2e6eb;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.uploadImage {
-  display: block;
-  position: relative;
-  width: 28px;
-  height: 28px;
-  margin-left: 61px;
-  margin-top: 61px;
-  background: #2153ff;
-  border-radius: 10px;
-  cursor: pointer;
+.endDate-overwrite {
+  bottom: 0px;
+  margin-bottom: 12px;
+  margin-left: 385px;
+  position: absolute;
+  opacity: 1;
+  background: #ffffff;
+  pointer-events: none;
+  height: 20px;
+  width: 200px;
+  z-index: 0;
 }

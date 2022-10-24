@@ -33,6 +33,7 @@
   top: 0px;
   background: rgba(3, 2, 23, 0.3);
   backdrop-filter: blur(7px);
+  z-index: 1;
 }
 
 .title-btn {

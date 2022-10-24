@@ -291,7 +291,6 @@ export default memo(function PopFormUpdate(props) {
       RskillB.push(false);
     }
   }
-  console.log(RskillB);
   let locationTitleTemp = selectedLocations.length;
   if (selectedLocations.length == 1) {
     locationTitleTemp = locationTitleTemp + " Location";
@@ -320,7 +319,6 @@ export default memo(function PopFormUpdate(props) {
   const [LocationsBoolean, setLoctionsBoolean] = useState(LocationsB);
   const [RSkillsBoolean, setRSkillsBoolean] = useState(RskillB);
   const [description, setDesc] = useState(props.desc);
-  console.log(props.hours);
   const [minimumHours, setMinimumHours] = useState(
     props.hours !== null ? props.hours : ""
   );

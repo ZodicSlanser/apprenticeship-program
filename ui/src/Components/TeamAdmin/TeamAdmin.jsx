@@ -35,7 +35,7 @@ function TeamAdmin(props) {
       setFormData((prevFormData) => {
         return {
           ...prevFormData,
-          [e.target.name]: URL.createObjectURL(e.target.files[0]),
+          photo: e.target.files[0],
         };
       });
     }
@@ -91,7 +91,11 @@ function TeamAdmin(props) {
               <div className="Admin-details" key={index}>
                 <div className="ImageTitleAdmin">
                   {a.photo ? (
-                    <img className="preview" src={a.photo} alt="pic"></img>
+                    <img
+                      className="preview"
+                      src={URL.createObjectURL(a.photo)}
+                      alt="pic"
+                    ></img>
                   ) : (
                     <img className="preview" src={Rectangle} alt="pic"></img>
                   )}

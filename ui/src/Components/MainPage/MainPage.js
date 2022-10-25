@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState,useEffect,useRef,memo } from "react";
 import Header from "../Header/Header";
-import LogoTitlePanel from "../LogoTitlePanel/LogoTitlePanel";
+import LogoTitle from "../LogoTitle/LogoTitle";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import TeamRoles from "../Roles/TeamRoles";
 import Scaffolding from "../Scaffolding/Scaffolding";

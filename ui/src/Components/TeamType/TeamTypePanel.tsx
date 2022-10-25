@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useState, useEffect, memo } from "react";
-=======
-import React, { useState,useEffect } from "react";
->>>>>>> 325ea2aa1b7cfd3c6fcef2167cda68f8f3bba681
 import styles from "./TeamTypePanel.module.css";
 import monitor from "../../Assets/TeamType/monitor.svg";
 import mobile from "../../Assets/TeamType/mobile.svg";
@@ -97,11 +93,11 @@ export default memo(function TeamTypePanel({
       <div
         className={styles["panel"]}
         onClick={(e) => {
-          e.currentTarget.className = styles["panel-selected"];
+          e.currentTarget.className = styles["panel"];
           invokeActivity(null, 2);
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.className = styles["panel-selected"];
+          e.currentTarget.className = styles["panel"];
           invokeActivity(null, 2);
         }}
         onMouseLeave={(e) => {

@@ -3,12 +3,15 @@ import arrowLeft from "../../Assets/Header/arrow-left.svg";
 import add from "../../Assets/Header/add.svg";
 import addDone from "../../Assets/Header/add-done.svg";
 import "./Header.css";
+import { addApprenticeship } from "../../API interface/API";
 export default memo(function Header(props) {
   const [done, setDone] = useState();
   useEffect(() => {
     props.invokeDone([done, setDone]);
   }, [done, props]);
-  function backendCall() {}
+  function backendCall() {
+    console.table(props.apprenticeship);
+  }
   return (
     <div className="FlexContainer">
       <div className="back" onClick={() => {}}>

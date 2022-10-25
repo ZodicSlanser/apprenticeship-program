@@ -27,16 +27,9 @@ export default memo(function TeamTypePanel({
   }
   useEffect(() => {
     setType(selected);
-    if (selected) {invokeType(null, true);
-      const newApprenticeship = {
-        title:"test",
-        description:"test",
-        date:"Feb 23, 2021",
-        members:[{name:"test",email:"test",role:"test"}],
-        teamType: selected,
-      };
+    if (!selected) { invokeType(null, false); 
     }
-    invokeType(null, false);
+    else invokeType(null, true);
   }, [selected, invokeType, setType]);
 
   enum TeamType {

@@ -69,6 +69,7 @@
 
 .panel:hover {
   box-sizing: border-box;
+  cursor: pointer;
   /* Auto layout */
 
   display: flex;

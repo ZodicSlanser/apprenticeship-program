@@ -10,7 +10,10 @@ import {
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
-import { getFileFromFireStore, uploadToFireStore } from "./CRUDS/CRUD_OP.js";
+import { getFileFromFireStore, removeFromDB, uploadToFireStore } from "./CRUDS/CRUD_OP.js";
+import { Role } from "./Firebase/Models/Role.js";
+import { TeamMember } from "./Firebase/Models/TeamMember.js";
+import { deleteApprenticeship } from "./Firebase/API.js";
 
 const port = process.env.PORT || 9000;
 const app = express();
@@ -59,19 +62,71 @@ app.put("/update", (req, res) => {
 //add value to apprenticeship
 app.post("/add-value", (req, res) => {
   console.log("receiving data ...");
-  const msg = AddValue(
+  AddValue(
     req.body.field,
     req.body.value,
     new Apprenticeship(req.body.apprenticeship)
-  );
-  res.send(`${msg}`);
+  ).then((msg) => {
+    res.send(`${msg}`);
+  });
 });
 //delete field in apprenticeship
 app.delete("/delete-field", (req, res) => {
   console.log("receiving data ...");
-  const msg = DeleteField(req.body.id, req.body.field);
-  res.send(`${msg}`);
+  DeleteField(req.body.id, req.body.field).then((msg) => {
+    res.send(`${msg}`);
+  });
 });
 
 app.listen(port, () => console.log(`The server is running on port ${port}`));
-getFileFromFireStore("frame.png").catch((err) => console.log(err));
+const roles = [
+  {
+    type: 2,
+    desc: "des",
+    compSkills: ["C#"],
+    reqSkills: ["java"],
+    hours: 8,
+    location: "Test"
+  },
+  {
+    type: 2,
+    desc: "des",
+    compSkills: ["C#"],
+    reqSkills: ["java"],
+    hours: 8,
+    location: "cairo"
+  },
+  {
+    type: 2,
+    desc: "des",
+    compSkills: ["C#"],
+    reqSkills: ["java"],
+    hours: 8,
+    location: "cairo"
+  }
+];
+
+const members = [
+  { name: "ali", photo: "photo-link", socialURL: "www.github.com" },
+  {  name: "ahmed", photo: "photo-link", socialURL: "www.twitter.com" },
+  { name: "saif", photo: "photo-link", socialURL: "www.facebook.com" }
+];
+
+const apprenticeship = new Apprenticeship({
+  logo: "./frame.png",
+  title: "title",
+  compDesc: "company des",
+  appDesc: "app desc",
+  introVideo: "video-link",
+  teamType: 1,
+  roles: roles.map((role) => {
+    return { ...new Role(role) }
+  }),
+  members: members.map((member) => {
+   return { ...new TeamMember(member) }
+  }),
+  startDate: new Date(),
+  endDate: new Date()
+});
+//AddApprenticeship(apprenticeship);
+//removeFromDB("irW3OGMyDMOEq3O5ae87").then((msg) => console.log(msg));

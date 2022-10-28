@@ -1,6 +1,7 @@
 import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
+import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
@@ -13,11 +14,11 @@ function commit(apprenticeship) {
   params.endDate = db.Timestamp.fromDate(new Date(params.endDate));
   Object.values(apprenticeship.roles).forEach((role) => {
     const roleRef = RolesCollection.doc(role.id);
-    batch.set(roleRef, role);
+    batch.set(roleRef,role);
   });
   Object.values(apprenticeship.members).forEach((teamMember) => {
     const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
-    batch.set(teamMemberRef, teamMember);
+    batch.set(teamMemberRef, { ...teamMember });
   });
   batch.set(ApprenticeshipCollection.doc(apprenticeship.id), params);
   batch
@@ -35,23 +36,47 @@ function commit(apprenticeship) {
 
 //Apprenticeship ID, Field Name = null => Bool
 //removes Item from DB or Document
-function removeFromDB(ID, fieldName = null) {
+async function removeFromDB(ID, fieldName = null) {
 
   if (fieldName) {
-    return db()
+    const res=await db()
       .collection("Apprenticeship")
       .doc(ID)
       .update({
         [fieldName]: admin.firestore.FieldValue.delete()
       });
+    if(res){
+      console.log("Deleted");
+      return true;
+    }
+    return false;
   }
-  return db().collection("Apprenticeship").doc(ID).delete();
+  const app = await getApprenticeship(ID)
+  const batch = db().batch();
+  if(!app){
+    return false;
+  }
+  app.roles.forEach((role) => {
+    const roleRef = RolesCollection.doc(role.id);
+    batch.delete(roleRef);
+  });
+  app.members.forEach((teamMember) => {
+    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+    batch.delete(teamMemberRef);
+  });
+  batch.delete(ApprenticeshipCollection.doc(ID));
+  const res = await batch.commit();
+  if (res) {
+    console.log("Deleted");
+    return true;
+  }
+  return false;
 }
 
 async function getApprenticeship(ID) {
   const apprenticeship = db().collection("Apprenticeship").doc(ID);
   const doc = await apprenticeship.get();
-  return doc.exists ? doc.data() : null;
+  return doc.exists ? new Apprenticeship(doc.data()) : null;
 }
 
 async function getAllApprenticeships() {
@@ -60,20 +85,30 @@ async function getAllApprenticeships() {
 
 //Apprenticeship ID, Field Name, Field Value => Bool
 //Updates Content of document or object
-function updateInDB(Apprenticeship, fieldName = null, value = null) {
+async function updateInDB(Apprenticeship, fieldName = null, value = null) {
   console.log(Apprenticeship);
   if (fieldName && value) {
-    return db()
+    const res = await db()
       .collection("Apprenticeship")
       .doc(Apprenticeship.id)
       .update({
         [fieldName]: value
       });
+    if (res) {
+      console.log("Updated");
+      return true;
+    }
+    return false;
   }
-  return db()
+  const res = await db()
     .collection("Apprenticeship")
     .doc(Apprenticeship.id)
     .set({ ...Apprenticeship }, { merge: true });
+  if (res) {
+    console.log("Updated");
+    return true;
+  }
+  return false;
 }
 
 function getAllMembers() {
@@ -98,7 +133,8 @@ function updateRole(role) {
     .set({ ...role }, { merge: true });
 }
 
-async function uploadToFireStore(fileName, filePath) {
+async function uploadToFireStore(filePath) {
+  const fileName = filePath.split("/").pop();
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const generationMatchPrecondition = 0;
   const storage = new Storage({

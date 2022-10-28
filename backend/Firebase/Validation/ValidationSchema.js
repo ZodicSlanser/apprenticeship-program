@@ -10,7 +10,7 @@ const RoleSchema = joi.object({
   id: joi
     .string()
     .required()
-    .messages({ "any.required": "cannot post apprenticeship without an ID " }),
+    .messages({ "any.required": "cannot post Role without an ID " }),
   type: joi
     .alternatives()
     .try(joi.string(), joi.number())

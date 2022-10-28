@@ -25,7 +25,6 @@ const sendRequest = async(method,uri,axiosOptions) => {
 }
 
 //deletes apprenticeship from DB (that doesn't remove the roles or the team members)
-//TODO : remove sub collections after apprenticeship is deleted
 
 // function deleteApprenticeship(ID, endpoint = "/delete") {
 //   const clientServerOptions = {

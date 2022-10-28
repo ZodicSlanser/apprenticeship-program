@@ -15,19 +15,18 @@ import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 //Apprenticeship object => bool
 function AddApprenticeship(apprenticeship) {
   const validationResult = apprenticeshipSchema.validate(
-    { ...apprenticeship },
+    apprenticeship,
     { abortEarly: true }
   );
   if (validationResult.error === undefined) {
-    // uploadFile([apprenticeship.logo, apprenticeship.introVideo]).forEach((url) => {
-    //   apprenticeship.logo = url[0];
-    //   apprenticeship.introVideo = url[1];
-    //   commit(apprenticeship);
-    // }
-    // );
-    commit(apprenticeship);
-    console.log("Commit done successfully");
-    return "Commit done successfully";
+    uploadToFireStore(apprenticeship.logo).then(() => {
+      apprenticeship.logo = apprenticeship.logo.split("/").pop();
+      commit(apprenticeship);
+      return "Commit done successfully";
+    }).catch((error) => {
+      console.log(error);
+      return error;
+    });
   } else {
     console.log(validationResult.error);
     return validationResult.error;
@@ -62,24 +61,13 @@ function DeleteApprenticeship(ID) {
 //POST API -> DB
 //old Apprenticeship ID, New Apprenticeship Object => bool
 function UpdateApprenticeship(apprenticeship) {
-  //1- Validation
-  //ValidateApprenticeship()
-  //2- Update Document by ID
-  //updateInDB()
   apprenticeship = Object.values(apprenticeship)[0];
   const isValid = apprenticeshipSchema.validate(apprenticeship, { abortEarly: true });
   if (isValid.error) {
     console.log(isValid.error);
     return isValid.error;
   }
-  updateInDB(apprenticeship, null, null)
-    .then(() => {
-      return true;
-    })
-    .catch((error) => {
-      console.log(error);
-      return false;
-    });
+  return updateInDB(apprenticeship, null, null);
 }
 
 //Create, Read, Update, Delete --> Fields
@@ -94,7 +82,7 @@ function AddValue(fieldName, value, apprenticeship) {
     .validate(apprenticeship, { abortEarly: true });
   if (isValid.error) {
     console.log(isValid.error);
-    return false;
+    return isValid.error;
   }
   return updateInDB(apprenticeship.id, fieldName, value);
 
@@ -102,20 +90,14 @@ function AddValue(fieldName, value, apprenticeship) {
 
 //POST Delete field from Apprenticeship Document
 //Apprenticeship ID, Field => Bool
-function DeleteField(ID, fieldName) {
-  // 1- Validate FieldName
-  // 2- Validate Apprenticeship
-  // 3- Delete field from Apprenticeship Document
-  getApprenticeship(ID).then((apprenticeship) => {
-    if (apprenticeship == null) return false;
-    return removeFromDB(ID, fieldName);
-  }).catch(() => {
-    return false;
-  });
+async function DeleteField(ID, fieldName) {
+  const app = await getApprenticeship(ID);
+  if (app == null) return false;
+  return removeFromDB(ID, fieldName);
 }
 
-function uploadFile(fileName,filePath) {
-  uploadToFireStore(fileName,filePath).catch((error) => {
+function uploadFile(filePath) {
+  uploadToFireStore(filePath).catch((error) => {
     console.log(error);
     return false;
   });

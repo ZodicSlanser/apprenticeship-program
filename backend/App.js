@@ -24,14 +24,14 @@ app.post("/add", (req, res) => {
   const msg = AddApprenticeship(new Apprenticeship(req.body));
   res.send(`${msg}`);
 });
-app.get("/view", (req, res) => {
+app.get("/view", async (req, res) => {
   console.log("receiving data ...");
-  const msg = ViewApprenticeship(req.body.id);
-  res.send(`${msg}`);
+  const msg = await ViewApprenticeship(req.query.id);
+  res.send(JSON.stringify(msg));
 });
 app.get("/view-all", (req, res) => {
   console.log("receiving data ...");
-  ViewApprenticeship().then((data) => {
+   ViewApprenticeship().then((data) => {
     const apprenticeships = [];
     data.forEach((doc) => {
       apprenticeships.push(new Apprenticeship(doc.data()));

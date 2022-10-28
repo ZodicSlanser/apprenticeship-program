@@ -4,6 +4,7 @@ import { getStorage } from "firebase-admin/storage";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
+
 //adds internship to DB
 function commit(apprenticeship) {
   const batch = db().batch();
@@ -47,11 +48,14 @@ function removeFromDB(ID, fieldName = null) {
   return db().collection("Apprenticeship").doc(ID).delete();
 }
 
-function getApprenticeship(ID) {
-  return db().collection("Apprenticeship").doc(ID).get();
+async function getApprenticeship(ID) {
+  const apprenticeship = db().collection("Apprenticeship").doc(ID)
+  const doc = await apprenticeship.get();
+  return doc.exists ? doc.data() : null;
 }
-function getAllApprenticeships() {
-  return db().collection("Apprenticeship").get();
+
+async function getAllApprenticeships() {
+  return await db().collection("Apprenticeship").get();
 }
 
 //Apprenticeship ID, Field Name, Field Value => Bool
@@ -97,6 +101,7 @@ function uploadToFireStore(file) {
   return fileRef.put(file).then((snapshot) => {
     return snapshot.ref.getDownloadURL();
   });
+
 }
 export {
   commit,

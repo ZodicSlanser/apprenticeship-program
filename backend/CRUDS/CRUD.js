@@ -37,24 +37,7 @@ function AddApprenticeship(apprenticeship) {
 //GET DB to API
 //int ID => Apprenticeship object / null
 function ViewApprenticeship(ID = null) {
-  if (ID == null) {
-    return getAllApprenticeships();
-  } else {
-    getApprenticeship(ID)
-      .then(async (apprenticeship) => {
-        try {
-          await apprenticeshipSchema.validateAsync(apprenticeship);
-          return new Apprenticeship(apprenticeship);
-        } catch (err) {
-          console.log(err);
-          return null;
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        return null;
-      });
-  }
+ return ID != null? getApprenticeship(ID) : getAllApprenticeships();
 }
 
 //POST API -> DB

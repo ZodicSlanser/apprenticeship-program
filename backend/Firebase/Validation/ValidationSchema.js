@@ -6,6 +6,8 @@ const TeamMemberSchema = joi.object({
   photo: joi.string().required(),
   socialURL: joi.string().required(),
 });
+
+
 const RoleSchema = joi.object({
   id: joi
     .string()

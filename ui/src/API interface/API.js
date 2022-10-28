@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_ROUTES} from "./API_ROUTES";
+import {API_ROUTES} from "./Config";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
 

@@ -1,0 +1,167 @@
+.skillwrapper {
+  /* Frame 1321314724 */
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.skillwrapper-icon-btn {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 552px;
+  padding: 12px 12px 12px 16px;
+  align-self: flex-start;
+  /* Snow */
+  background: #ffffff;
+  border: 1px solid #cecece;
+  border-radius: 12px;
+}
+
+.skillwrapper-icon-btn:hover,
+.skillwrapper-icon-btn:focus {
+  border: 1px solid #793ef5;
+  /* Card Selected */
+}
+
+.skillwrapper-icon-btn-hovering {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 552px;
+  padding: 12px 12px 12px 16px;
+  align-self: flex-start;
+  /* Snow */
+  background: #ffffff;
+  border: 1px solid #cecece;
+  border-radius: 12px;
+  border: 1px solid #793ef5;
+}
+.skillselect-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: inherit;
+  justify-content: space-between;
+}
+
+.skillMenuContent {
+  overflow-y: auto;
+  box-sizing: border-box;
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  position: absolute;
+  width: 508px;
+  height: 204px;
+  left: 50px;
+  margin-top: 27px;
+  background: #ffffff;
+  /* Gray 50 */
+  border: 1px solid #e2e6eb;
+  /* Card Selected */
+  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+}
+
+.skillMenuContent::-webkit-scrollbar {
+  display: none;
+}
+.skillSearch {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  width: 476px;
+  height: 40px;
+
+  /* Gray 10 */
+
+  background: #f1f4f8;
+  border-radius: 8px;
+}
+.skillSearch:hover,
+.skillSearch:focus {
+  border: 2px solid #793ef5;
+  /* Card Selected */
+  margin: -2px;
+
+  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+}
+.skillSearch > input {
+  border: 0ch;
+  outline: none;
+  /* Auto layout */
+  width: inherit;
+  height: inherit;
+  /* Gray 10 */
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  background: transparent;
+  margin-left: 10px;
+  font-feature-settings: "liga" off;
+  color: #1e1e1e;
+  opacity: 0.5;
+  border-radius: 8px;
+}
+.skillMenuContent .skilloptions {
+  align-self: flex-start;
+  padding: 0%;
+  width: inherit;
+  width: 476px;
+  overflow: visible;
+  margin-top: 6px;
+  margin-bottom: 0px;
+}
+
+.skilloptions > li {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  gap: 16px;
+  cursor: pointer;
+  align-self: flex-start;
+  height: fit-content;
+  border-radius: 5px;
+  margin-top: 6px;
+  width: inherit;
+  /* Text */
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+  color: #1e1e1e;
+}
+
+.skilloptions > li:hover {
+  border: 2px solid #793ef5;
+  /* Card Selected */
+  margin: 1px;
+
+  background-color: #f2f2f2;
+  box-shadow: 0px 24px 34px rgba(0, 0, 0, 0.12);
+}
+
+.tick-icon-selected {
+  background-color: #793ef5;
+  border-radius: 6px;
+}
+.close-skill {
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import "./ProgressBar.css";
 import tickCircle from "../../Assets/ProgressBar/tick-circle.svg";
 import unTickCircle from "../../Assets/ProgressBar/untick-circle.svg";
@@ -17,6 +17,10 @@ function ProgressBar(props) {
     props.invokeRoles([rolesDone, setRolesDone]);
     props.invokeAdmin([adminDone, setAdminDone]);
     props.invokeTimeline([timelineDone, setTimelineDone]);
+
+    if (descriptionDone && typeDone && rolesDone && adminDone && timelineDone)
+      props.invokeDone(null, true);
+    else props.invokeDone(null, false);
   }, [
     props,
     activity,
@@ -107,4 +111,4 @@ function ProgressBar(props) {
   );
 }
 
-export default ProgressBar;
+export default memo(ProgressBar);

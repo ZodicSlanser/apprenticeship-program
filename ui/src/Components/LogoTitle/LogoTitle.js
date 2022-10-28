@@ -1,13 +1,13 @@
-import { useState, useRef } from "react";
-import "./LogoTitlePanel.css";
-import image from "../../Assets/LogoTitlePanel/image.svg";
-import infoCircle from "../../Assets/LogoTitlePanel/info-circle.svg";
-function LogoTitlePanel(props) {
+import { useState, useRef, memo } from "react";
+import "./LogoTitle.css";
+import image from "../../Assets/LogoTitle/image.svg";
+import infoCircle from "../../Assets/LogoTitle/info-circle.svg";
+function LogoTitle(props) {
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);
   const [selectedImage, setSelectedImage] = useState();
   const [title, setTitle] = useState("");
-
+  const [typing, setTyping] = useState(false);
   const inputFile = useRef(null);
   function handleClick() {
     setActive(true);
@@ -30,28 +30,37 @@ function LogoTitlePanel(props) {
     props.setTitle(e.target.value);
   }
   function handleChange(e) {
-    setSelectedImage(e.target.files[0]);
-    props.setImage(e.target.files[0]);
-    console.log(title);
-    if (title !== "" && e.target.files[0]) {
+    if (e.target.files[0]) {
+      setSelectedImage(e.target.files[0]);
+      props.setLogo(e.target.files[0]);
+    }
+
+    if (title !== "" && (e.target.files[0] || selectedImage)) {
       props.invokeLogoTitle(null, true);
     } else {
       props.invokeLogoTitle(null, false);
     }
   }
-  function handleImage() {
+  function handleImage(e) {
+    e.preventDefault();
     inputFile.current.click();
   }
   return (
     <div
       className="companyLogoTitle"
+      onClick={() => {
+        handleClick();
+        props.invokeActivity(null, 1);
+      }}
       onMouseEnter={() => {
         handleClick();
         props.invokeActivity(null, 1);
       }}
       onMouseLeave={() => {
-        handleBlur();
-        props.invokeActivity(null, 0);
+        if (!typing) {
+          handleBlur();
+          props.invokeActivity(null, 0);
+        } else props.invokeActivity(null, 0, true);
       }}
       tabIndex="-1"
       style={
@@ -92,20 +101,31 @@ function LogoTitlePanel(props) {
             className="uploadImage"
             src={image}
             alt=""
-            style={{
-              marginLeft: selectedImage ? 0 : null,
-              left: selectedImage ? "86px" : null,
-            }}
+            style={
+              selectedImage
+                ? {
+                    marginTop: "0px",
+                    bottom: "23.5px",
+                  }
+                : null
+            }
           ></img>
         </div>
         <input
           type={"text"}
           className="logoTitleText"
-          placeholder="Enter  Apprenticeship Title"
-          onBlur={typingDone}
+          placeholder="Enter Apprenticeship Title"
+          onBlur={() => {
+            handleBlur();
+            props.invokeActivity(null, 0, false);
+            typingDone();
+            setTyping(false);
+          }}
           onChange={handleTitleChange}
           onClick={() => {
             setOpacity(1);
+            props.invokeActivity(null, 1, true);
+            setTyping(true);
           }}
           style={{ opacity: opacity }}
         ></input>
@@ -113,4 +133,4 @@ function LogoTitlePanel(props) {
     </div>
   );
 }
-export default LogoTitlePanel;
+export default memo(LogoTitle);

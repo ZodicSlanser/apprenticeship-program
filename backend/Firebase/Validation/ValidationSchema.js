@@ -25,7 +25,7 @@ const RoleSchema = joi.object({
 //validate filed is string or number
 const apprenticeshipSchema = joi.object({
   id: joi.string().required(),
-  logo: joi.string().required(),
+  logo: joi.alternatives().try(joi.string(), joi.any()).required(),
   title: joi.string().required(),
   compDesc: joi.string().required(),
   appDesc: joi.string().required(),

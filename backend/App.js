@@ -1,23 +1,26 @@
-import { Apprenticeship } from "./firebase/Models/Apprenticeship.js";
+import { Apprenticeship } from "./Firebase/Models/Apprenticeship.js";
 import {
   AddApprenticeship,
   ViewApprenticeship,
   DeleteApprenticeship,
   UpdateApprenticeship,
   AddValue,
-  DeleteField,
+  DeleteField
 } from "./CRUDS/CRUD.js";
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
+import { getFileFromFireStore, uploadToFireStore } from "./CRUDS/CRUD_OP.js";
+
 const port = process.env.PORT || 9000;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cors({
-  methods : ['GET','POST','PUT','DELETE','OPTIONS'],}
-))
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+  }
+));
 
 app.post("/add", (req, res) => {
   console.log("receiving data ...");
@@ -31,7 +34,7 @@ app.get("/view", async (req, res) => {
 });
 app.get("/view-all", (req, res) => {
   console.log("receiving data ...");
-   ViewApprenticeship().then((data) => {
+  ViewApprenticeship().then((data) => {
     const apprenticeships = [];
     data.forEach((doc) => {
       apprenticeships.push(new Apprenticeship(doc.data()));
@@ -40,11 +43,10 @@ app.get("/view-all", (req, res) => {
     res.send(apprenticeships);
   });
 });
-//res.send(`${msg}`);
-//delete apprenticeship
+
 app.delete("/delete", (req, res) => {
   console.log("receiving data ...");
-  console.log(req.body?.id)
+  console.log(req.body?.id);
   const msg = DeleteApprenticeship(req.body?.id);
   res.send(`${msg}`);
 });
@@ -72,3 +74,4 @@ app.delete("/delete-field", (req, res) => {
 });
 
 app.listen(port, () => console.log(`The server is running on port ${port}`));
+getFileFromFireStore("frame.png").catch((err) => console.log(err));

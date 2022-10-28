@@ -4,10 +4,10 @@ import {
   getAllApprenticeships,
   removeFromDB,
   uploadToFireStore,
-  updateInDB,
+  updateInDB
 } from "./CRUD_OP.js";
-import { apprenticeshipSchema } from "../firebase/Validation/ValidationSchema.js";
-import { Apprenticeship } from "../firebase/Models/Apprenticeship.js";
+import { apprenticeshipSchema } from "../Firebase/Validation/ValidationSchema.js";
+import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 
 //Create, Read, Update, Delete  --> Apprenticeship
 
@@ -37,26 +37,26 @@ function AddApprenticeship(apprenticeship) {
 //GET DB to API
 //int ID => Apprenticeship object / null
 function ViewApprenticeship(ID = null) {
- return ID != null? getApprenticeship(ID) : getAllApprenticeships();
+  return ID != null ? getApprenticeship(ID) : getAllApprenticeships();
 }
 
 //POST API -> DB
 //int ID => bool
 function DeleteApprenticeship(ID) {
   //TODO : 1- Validation
-  //ValidateApprenticeship()
-  //Delete Apprenticeship from DB and return true
-  //Delete()
-  //false
-  removeFromDB(ID)
-    .then(() => {
-      return true;
-    })
-    .catch((error) => {
-      console.log(error);
-      return false;
-    });
-  return false;
+  getApprenticeship(ID).then((apprenticeship) => {
+    if (apprenticeship == null) return false;
+    removeFromDB(ID)
+      .then(() => {
+        return true;
+      })
+      .catch((error) => {
+        console.log(error);
+        return false;
+      });
+  }).catch(() => {
+    return false;
+  });
 }
 
 //POST API -> DB
@@ -67,6 +67,11 @@ function UpdateApprenticeship(apprenticeship) {
   //2- Update Document by ID
   //updateInDB()
   apprenticeship = Object.values(apprenticeship)[0];
+  const isValid = apprenticeshipSchema.validate(apprenticeship, { abortEarly: true });
+  if (isValid.error) {
+    console.log(isValid.error);
+    return isValid.error;
+  }
   updateInDB(apprenticeship, null, null)
     .then(() => {
       return true;
@@ -75,7 +80,6 @@ function UpdateApprenticeship(apprenticeship) {
       console.log(error);
       return false;
     });
-  return false;
 }
 
 //Create, Read, Update, Delete --> Fields
@@ -86,16 +90,14 @@ function AddValue(fieldName, value, apprenticeship) {
   // 1- Validate FieldName
   // 2- Validate Value
   // 3- Add to Apprenticeship object
-  apprenticeshipSchema
-    .validateAsync(apprenticeship)
-    .then(() => {
-      return updateInDB(apprenticeship.id, fieldName, value);
-    })
-    .catch((err) => {
-      console.log(err);
-      return false;
-    });
-  return false;
+  const isValid = apprenticeshipSchema
+    .validate(apprenticeship, { abortEarly: true });
+  if (isValid.error) {
+    console.log(isValid.error);
+    return false;
+  }
+  return updateInDB(apprenticeship.id, fieldName, value);
+
 }
 
 //POST Delete field from Apprenticeship Document
@@ -104,13 +106,21 @@ function DeleteField(ID, fieldName) {
   // 1- Validate FieldName
   // 2- Validate Apprenticeship
   // 3- Delete field from Apprenticeship Document
-  return removeFromDB(ID, fieldName);
-}
-function uploadFile(file) {
-  uploadToFireStore(file).then((url) => {
-    return url;
+  getApprenticeship(ID).then((apprenticeship) => {
+    if (apprenticeship == null) return false;
+    return removeFromDB(ID, fieldName);
+  }).catch(() => {
+    return false;
   });
 }
+
+function uploadFile(fileName,filePath) {
+  uploadToFireStore(fileName,filePath).catch((error) => {
+    console.log(error);
+    return false;
+  });
+}
+
 export {
   AddApprenticeship,
   ViewApprenticeship,
@@ -118,5 +128,5 @@ export {
   UpdateApprenticeship,
   AddValue,
   DeleteField,
-  uploadFile,
+  uploadFile
 };

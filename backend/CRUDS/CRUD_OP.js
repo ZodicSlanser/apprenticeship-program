@@ -1,6 +1,6 @@
-import db from "../firebase/Database.js"; //Apprenticeship Object => bool
+import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
-import { getStorage } from "firebase-admin/storage";
+import { Storage } from "@google-cloud/storage";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
@@ -42,14 +42,14 @@ function removeFromDB(ID, fieldName = null) {
       .collection("Apprenticeship")
       .doc(ID)
       .update({
-        [fieldName]: admin.firestore.FieldValue.delete(),
+        [fieldName]: admin.firestore.FieldValue.delete()
       });
   }
   return db().collection("Apprenticeship").doc(ID).delete();
 }
 
 async function getApprenticeship(ID) {
-  const apprenticeship = db().collection("Apprenticeship").doc(ID)
+  const apprenticeship = db().collection("Apprenticeship").doc(ID);
   const doc = await apprenticeship.get();
   return doc.exists ? doc.data() : null;
 }
@@ -67,7 +67,7 @@ function updateInDB(Apprenticeship, fieldName = null, value = null) {
       .collection("Apprenticeship")
       .doc(Apprenticeship.id)
       .update({
-        [fieldName]: value,
+        [fieldName]: value
       });
   }
   return db()
@@ -75,9 +75,11 @@ function updateInDB(Apprenticeship, fieldName = null, value = null) {
     .doc(Apprenticeship.id)
     .set({ ...Apprenticeship }, { merge: true });
 }
+
 function getAllMembers() {
   return db.collection("TeamMembers").get();
 }
+
 function updateMember(member) {
   return db
     .collection("TeamMembers")
@@ -88,21 +90,41 @@ function updateMember(member) {
 function getAllRoles() {
   return db.collection("Roles").get();
 }
+
 function updateRole(role) {
   return db
     .collection("Roles")
     .doc(role.id)
     .set({ ...role }, { merge: true });
 }
-function uploadToFireStore(file) {
-  const storage = getStorage();
-  const storageRef = storage.ref();
-  const fileRef = storageRef.child(file.name);
-  return fileRef.put(file).then((snapshot) => {
-    return snapshot.ref.getDownloadURL();
-  });
 
+async function uploadToFireStore(fileName, filePath) {
+  const bucketName = "gs://internship-db-1a1e1.appspot.com";
+  const generationMatchPrecondition = 0;
+  const storage = new Storage({
+    projectId: "internship-db-1a1e1",
+    keyFilename: "../backend/secrets/privateKey.json"
+  });
+  const options = {
+    destination: fileName,
+    preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
+  };
+  await storage.bucket(bucketName).upload(filePath, options);
+  console.log(`${filePath} uploaded to ${bucketName}`);
 }
+async function getFileFromFireStore(fileName) {
+  const bucketName = "gs://internship-db-1a1e1.appspot.com";
+  const storage = new Storage({
+    projectId: "internship-db-1a1e1",
+    keyFilename: "../backend/secrets/privateKey.json"
+  });
+  const options = {
+    destination: fileName,
+  };
+  await storage.bucket(bucketName).file(fileName).download(options);
+  console.log(`${fileName} downloaded from ${bucketName}`);
+}
+
 export {
   commit,
   removeFromDB,
@@ -114,4 +136,5 @@ export {
   uploadToFireStore,
   updateMember,
   updateRole,
+  getFileFromFireStore,
 };

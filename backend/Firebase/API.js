@@ -5,7 +5,7 @@ import { Apprenticeship } from "./Models/Apprenticeship.js";
 const clientHost = "localhost:9000";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
-function addApprenticeship(postData, endpoint = '/add') {
+function addApprenticeship(postData, endpoint = "/add") {
   const clientServerOptions = {
     uri: "http://" + clientHost + endpoint,
     body: JSON.stringify(postData),
@@ -20,7 +20,7 @@ function addApprenticeship(postData, endpoint = '/add') {
 }
 
 //adds the
-function viewApprenticeship(ID, endpoint = '/view') {
+function viewApprenticeship(ID, endpoint = "/view") {
   const clientServerOptions = {
     uri: "http://" + clientHost + endpoint,
     body: JSON.stringify(ID),
@@ -34,7 +34,7 @@ function viewApprenticeship(ID, endpoint = '/view') {
     console.log(response.body);
   });
 }
-function viewAllApprenticeships(endpoint = '/view-all') {
+function viewAllApprenticeships(endpoint = "/view-all") {
   const clientServerOptions = {
     uri: "http://" + clientHost + endpoint,
     method: "GET",
@@ -47,7 +47,7 @@ function viewAllApprenticeships(endpoint = '/view-all') {
     console.log(response.body);
   });
 }
-function deleteApprenticeship(ID, endpoint = '/delete') {
+function deleteApprenticeship(ID, endpoint = "/delete") {
   const clientServerOptions = {
     uri: "http://" + clientHost + endpoint,
     body: JSON.stringify(ID),
@@ -60,7 +60,7 @@ function deleteApprenticeship(ID, endpoint = '/delete') {
     console.log(response.body);
   });
 }
-function updateApprenticeship(apprenticeship, endpoint = '/update') {
+function updateApprenticeship(apprenticeship, endpoint = "/update") {
   const clientServerOptions = {
     uri: "http://" + clientHost + endpoint,
     body: JSON.stringify({ apprenticeship }),
@@ -73,7 +73,7 @@ function updateApprenticeship(apprenticeship, endpoint = '/update') {
     console.log(response.body);
   });
 }
-function addValue(field, value, apprenticeship, endpoint = '/add-value') {
+function addValue(field, value, apprenticeship, endpoint = "/add-value") {
   const clientServerOptions = {
     uri: "http://" + clientHost + endpoint,
     body: JSON.stringify({ field, value, apprenticeship }),
@@ -131,7 +131,13 @@ const apprenticeship = new Apprenticeship({
   startDate: new Date(),
   endDate: new Date(),
 });
-addApprenticeship(apprenticeship);
+//addApprenticeship(apprenticeship);
 
-export {addApprenticeship,viewApprenticeship,viewAllApprenticeships,deleteApprenticeship,updateApprenticeship,addValue};
-
+export {
+  addApprenticeship,
+  viewApprenticeship,
+  viewAllApprenticeships,
+  deleteApprenticeship,
+  updateApprenticeship,
+  addValue,
+};

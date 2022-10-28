@@ -14,7 +14,7 @@ function commit(apprenticeship) {
   params.endDate = db.Timestamp.fromDate(new Date(params.endDate));
   Object.values(apprenticeship.roles).forEach((role) => {
     const roleRef = RolesCollection.doc(role.id);
-    batch.set(roleRef,role);
+    batch.set(roleRef, role);
   });
   Object.values(apprenticeship.members).forEach((teamMember) => {
     const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
@@ -37,23 +37,22 @@ function commit(apprenticeship) {
 //Apprenticeship ID, Field Name = null => Bool
 //removes Item from DB or Document
 async function removeFromDB(ID, fieldName = null) {
-
   if (fieldName) {
-    const res=await db()
+    const res = await db()
       .collection("Apprenticeship")
       .doc(ID)
       .update({
-        [fieldName]: admin.firestore.FieldValue.delete()
+        [fieldName]: admin.firestore.FieldValue.delete(),
       });
-    if(res){
+    if (res) {
       console.log("Deleted");
       return true;
     }
     return false;
   }
-  const app = await getApprenticeship(ID)
+  const app = await getApprenticeship(ID);
   const batch = db().batch();
-  if(!app){
+  if (!app) {
     return false;
   }
   app.roles.forEach((role) => {
@@ -74,8 +73,7 @@ async function removeFromDB(ID, fieldName = null) {
 }
 
 async function getApprenticeship(ID) {
-  const apprenticeship = db().collection("Apprenticeship").doc(ID);
-  const doc = await apprenticeship.get();
+  const doc = await db().collection("Apprenticeship").doc(ID).get();
   return doc.exists ? new Apprenticeship(doc.data()) : null;
 }
 
@@ -92,7 +90,7 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
       .collection("Apprenticeship")
       .doc(Apprenticeship.id)
       .update({
-        [fieldName]: value
+        [fieldName]: value,
       });
     if (res) {
       console.log("Updated");
@@ -139,7 +137,7 @@ async function uploadToFireStore(filePath) {
   const generationMatchPrecondition = 0;
   const storage = new Storage({
     projectId: "internship-db-1a1e1",
-    keyFilename: "../backend/secrets/privateKey.json"
+    keyFilename: "../backend/secrets/privateKey.json",
   });
   const options = {
     destination: fileName,
@@ -152,7 +150,7 @@ async function getFileFromFireStore(fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const storage = new Storage({
     projectId: "internship-db-1a1e1",
-    keyFilename: "../backend/secrets/privateKey.json"
+    keyFilename: "../backend/secrets/privateKey.json",
   });
   const options = {
     destination: fileName,

@@ -4,7 +4,7 @@ import {
   getAllApprenticeships,
   removeFromDB,
   uploadToFireStore,
-  updateInDB
+  updateInDB,
 } from "./CRUD_OP.js";
 import { apprenticeshipSchema } from "../Firebase/Validation/ValidationSchema.js";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
@@ -14,19 +14,20 @@ import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
 function AddApprenticeship(apprenticeship) {
-  const validationResult = apprenticeshipSchema.validate(
-    apprenticeship,
-    { abortEarly: true }
-  );
+  const validationResult = apprenticeshipSchema.validate(apprenticeship, {
+    abortEarly: true,
+  });
   if (validationResult.error === undefined) {
-    uploadToFireStore(apprenticeship.logo).then(() => {
-      apprenticeship.logo = apprenticeship.logo.split("/").pop();
-      commit(apprenticeship);
-      return "Commit done successfully";
-    }).catch((error) => {
-      console.log(error);
-      return error;
-    });
+    uploadToFireStore(apprenticeship.logo)
+      .then(() => {
+        apprenticeship.logo = apprenticeship.logo.split("/").pop();
+        commit(apprenticeship);
+        return "Commit done successfully";
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
+      });
   } else {
     console.log(validationResult.error);
     return validationResult.error;
@@ -43,26 +44,30 @@ function ViewApprenticeship(ID = null) {
 //int ID => bool
 function DeleteApprenticeship(ID) {
   //TODO : 1- Validation
-  getApprenticeship(ID).then((apprenticeship) => {
-    if (apprenticeship == null) return false;
-    removeFromDB(ID)
-      .then(() => {
-        return true;
-      })
-      .catch((error) => {
-        console.log(error);
-        return false;
-      });
-  }).catch(() => {
-    return false;
-  });
+  getApprenticeship(ID)
+    .then((apprenticeship) => {
+      if (apprenticeship == null) return false;
+      removeFromDB(ID)
+        .then(() => {
+          return true;
+        })
+        .catch((error) => {
+          console.log(error);
+          return false;
+        });
+    })
+    .catch(() => {
+      return false;
+    });
 }
 
 //POST API -> DB
 //old Apprenticeship ID, New Apprenticeship Object => bool
 function UpdateApprenticeship(apprenticeship) {
   apprenticeship = Object.values(apprenticeship)[0];
-  const isValid = apprenticeshipSchema.validate(apprenticeship, { abortEarly: true });
+  const isValid = apprenticeshipSchema.validate(apprenticeship, {
+    abortEarly: true,
+  });
   if (isValid.error) {
     console.log(isValid.error);
     return isValid.error;
@@ -78,14 +83,14 @@ function AddValue(fieldName, value, apprenticeship) {
   // 1- Validate FieldName
   // 2- Validate Value
   // 3- Add to Apprenticeship object
-  const isValid = apprenticeshipSchema
-    .validate(apprenticeship, { abortEarly: true });
+  const isValid = apprenticeshipSchema.validate(apprenticeship, {
+    abortEarly: true,
+  });
   if (isValid.error) {
     console.log(isValid.error);
     return isValid.error;
   }
   return updateInDB(apprenticeship.id, fieldName, value);
-
 }
 
 //POST Delete field from Apprenticeship Document
@@ -110,5 +115,5 @@ export {
   UpdateApprenticeship,
   AddValue,
   DeleteField,
-  uploadFile
+  uploadFile,
 };

@@ -1,28 +1,32 @@
 import axios from "axios";
-import {API_ROUTES} from "./Config";
+import { API_ROUTES } from "./Config";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
-
-function addApprenticeship(postData,callback) {
-    sendRequest("POST",API_ROUTES.addApprenticeship,{data : postData}).then(callback);}
+function addApprenticeship(postData, callback) {
+  sendRequest("POST", API_ROUTES.addApprenticeship, { data: postData }).then(
+    callback
+  );
+}
 
 //returns a specific apprenticeship ID in an object
-function viewApprenticeship(id,callback) {
-  sendRequest("GET",API_ROUTES.viewApprenticeship,{params : {id : id}}).then(callback);
+function viewApprenticeship(id, callback) {
+  sendRequest("GET", API_ROUTES.viewApprenticeship, {
+    params: { id: id },
+  }).then(callback);
 }
 //returns all apprenticeship objects in DB in Array of JSONs
-const viewAllApprenticeships= (callback) => sendRequest("GET",API_ROUTES.viewAllApprenticeships).then(callback);
+const viewAllApprenticeships = (callback) =>
+  sendRequest("GET", API_ROUTES.viewAllApprenticeships).then(callback);
 
 //fetches data from the API
-const sendRequest = async(method,uri,axiosOptions) => {
+const sendRequest = async (method, uri, axiosOptions) => {
   try {
-      const response = await axios[method.toLowerCase()](uri,axiosOptions);
-     debugger; return response.data;
+    const response = await axios[method.toLowerCase()](uri, axiosOptions);
+    return response.data;
+  } catch (error) {
+    return error;
   }
-  catch (error){
-   return error;
-  }
-}
+};
 
 //deletes apprenticeship from DB (that doesn't remove the roles or the team members)
 

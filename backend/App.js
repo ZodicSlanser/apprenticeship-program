@@ -5,12 +5,16 @@ import {
   DeleteApprenticeship,
   UpdateApprenticeship,
   AddValue,
-  DeleteField
+  DeleteField,
 } from "./CRUDS/CRUD.js";
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
-import { getFileFromFireStore, removeFromDB, uploadToFireStore } from "./CRUDS/CRUD_OP.js";
+import {
+  getFileFromFireStore,
+  removeFromDB,
+  uploadToFireStore,
+} from "./CRUDS/CRUD_OP.js";
 import { Role } from "./Firebase/Models/Role.js";
 import { TeamMember } from "./Firebase/Models/TeamMember.js";
 import { deleteApprenticeship } from "./Firebase/API.js";
@@ -20,10 +24,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors({
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-  }
-));
+app.use(
+  cors({
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 
 app.post("/add", (req, res) => {
   console.log("receiving data ...");
@@ -86,7 +91,7 @@ const roles = [
     compSkills: ["C#"],
     reqSkills: ["java"],
     hours: 8,
-    location: "Test"
+    location: "Test",
   },
   {
     type: 2,
@@ -94,7 +99,7 @@ const roles = [
     compSkills: ["C#"],
     reqSkills: ["java"],
     hours: 8,
-    location: "cairo"
+    location: "cairo",
   },
   {
     type: 2,
@@ -102,14 +107,14 @@ const roles = [
     compSkills: ["C#"],
     reqSkills: ["java"],
     hours: 8,
-    location: "cairo"
-  }
+    location: "cairo",
+  },
 ];
 
 const members = [
   { name: "ali", photo: "photo-link", socialURL: "www.github.com" },
-  {  name: "ahmed", photo: "photo-link", socialURL: "www.twitter.com" },
-  { name: "saif", photo: "photo-link", socialURL: "www.facebook.com" }
+  { name: "ahmed", photo: "photo-link", socialURL: "www.twitter.com" },
+  { name: "saif", photo: "photo-link", socialURL: "www.facebook.com" },
 ];
 
 const apprenticeship = new Apprenticeship({
@@ -120,13 +125,13 @@ const apprenticeship = new Apprenticeship({
   introVideo: "video-link",
   teamType: 1,
   roles: roles.map((role) => {
-    return { ...new Role(role) }
+    return { ...new Role(role) };
   }),
   members: members.map((member) => {
-   return { ...new TeamMember(member) }
+    return { ...new TeamMember(member) };
   }),
   startDate: new Date(),
-  endDate: new Date()
+  endDate: new Date(),
 });
 //AddApprenticeship(apprenticeship);
 //removeFromDB("irW3OGMyDMOEq3O5ae87").then((msg) => console.log(msg));

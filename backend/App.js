@@ -10,78 +10,45 @@ import {
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
-import {
-  getFileFromFireStore,
-  removeFromDB,
-  uploadToFireStore,
-} from "./CRUDS/CRUD_OP.js";
+import morgan from "morgan";
+import swaggerUi from "swagger-ui-express";
+import swaggerJsDoc from "swagger-jsdoc";
 import { Role } from "./Firebase/Models/Role.js";
 import { TeamMember } from "./Firebase/Models/TeamMember.js";
 import { deleteApprenticeship } from "./Firebase/API.js";
+import Router from "./routes/apprenticeship.js";
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Apprenticeship API",
+      version: "1.0.0",
+      description:
+        "This is a REST API application made with Express and documented with Swagger",
+    },
+    servers: [
+      {
+        url: "http://localhost:9000",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+const specs = swaggerJsDoc(options);
 
 const port = process.env.PORT || 9000;
 const app = express();
+app.use("/apprenticeship", Router);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(cors());
+app.use(morgan("dev"));
 app.use(
   cors({
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
-
-app.post("/add", (req, res) => {
-  console.log("receiving data ...");
-  const msg = AddApprenticeship(new Apprenticeship(req.body));
-  res.send(`${msg}`);
-});
-app.get("/view", async (req, res) => {
-  console.log("receiving data ...");
-  const msg = await ViewApprenticeship(req.query.id);
-  res.send(JSON.stringify(msg));
-});
-app.get("/view-all", (req, res) => {
-  console.log("receiving data ...");
-  ViewApprenticeship().then((data) => {
-    const apprenticeships = [];
-    data.forEach((doc) => {
-      apprenticeships.push(new Apprenticeship(doc.data()));
-    });
-    console.log(apprenticeships);
-    res.send(apprenticeships);
-  });
-});
-
-app.delete("/delete", (req, res) => {
-  console.log("receiving data ...");
-  console.log(req.body?.id);
-  const msg = DeleteApprenticeship(req.body?.id);
-  res.send(`${msg}`);
-});
-//update apprenticeship
-app.put("/update", (req, res) => {
-  console.log("receiving data ...");
-  const msg = UpdateApprenticeship(req.body);
-  res.send(`${msg}`);
-});
-//add value to apprenticeship
-app.post("/add-value", (req, res) => {
-  console.log("receiving data ...");
-  AddValue(
-    req.body.field,
-    req.body.value,
-    new Apprenticeship(req.body.apprenticeship)
-  ).then((msg) => {
-    res.send(`${msg}`);
-  });
-});
-//delete field in apprenticeship
-app.delete("/delete-field", (req, res) => {
-  console.log("receiving data ...");
-  DeleteField(req.body.id, req.body.field).then((msg) => {
-    res.send(`${msg}`);
-  });
-});
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(port, () => console.log(`The server is running on port ${port}`));
 const roles = [
@@ -133,5 +100,7 @@ const apprenticeship = new Apprenticeship({
   startDate: new Date(),
   endDate: new Date(),
 });
-//AddApprenticeship(apprenticeship);
+// AddApprenticeship(apprenticeship).then((msg) => {
+//   console.log(msg);
+// });
 //removeFromDB("irW3OGMyDMOEq3O5ae87").then((msg) => console.log(msg));

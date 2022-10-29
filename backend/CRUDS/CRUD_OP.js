@@ -2,12 +2,14 @@ import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
+import { tryParse } from "firebase-tools/lib/utils.js";
+
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
 
 //adds internship to DB
-function commit(apprenticeship) {
+async function commit(apprenticeship) {
   const batch = db().batch();
   const params = { ...apprenticeship };
   params.startDate = db.Timestamp.fromDate(new Date(params.startDate));
@@ -21,17 +23,13 @@ function commit(apprenticeship) {
     batch.set(teamMemberRef, { ...teamMember });
   });
   batch.set(ApprenticeshipCollection.doc(apprenticeship.id), params);
-  batch
-    .commit()
-    .then(() => {
-      console.log("Apprenticeship Added");
-      return true;
-    })
-    .catch((err) => {
-      console.log(err);
-      return false;
-    });
-  return false;
+  try {
+    await batch.commit();
+    return apprenticeship.id;
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
 }
 
 //Apprenticeship ID, Field Name = null => Bool
@@ -143,9 +141,14 @@ async function uploadToFireStore(filePath) {
     destination: fileName,
     preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
   };
-  await storage.bucket(bucketName).upload(filePath, options);
-  console.log(`${filePath} uploaded to ${bucketName}`);
+  try {
+    return await storage.bucket(bucketName).upload(filePath, options);
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
+
 async function getFileFromFireStore(fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const storage = new Storage({

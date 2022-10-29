@@ -13,21 +13,16 @@ import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
-function AddApprenticeship(apprenticeship) {
+async function AddApprenticeship(apprenticeship) {
   const validationResult = apprenticeshipSchema.validate(apprenticeship, {
     abortEarly: true,
   });
   if (validationResult.error === undefined) {
-    uploadToFireStore(apprenticeship.logo)
-      .then(() => {
-        apprenticeship.logo = apprenticeship.logo.split("/").pop();
-        commit(apprenticeship);
-        return "Commit done successfully";
-      })
-      .catch((error) => {
-        console.log(error);
-        return error;
-      });
+    const res = await uploadToFireStore(apprenticeship.logo);
+    if (res) {
+      apprenticeship.logo = apprenticeship.logo.split("/").pop();
+      return await commit(apprenticeship);
+    }
   } else {
     console.log(validationResult.error);
     return validationResult.error;

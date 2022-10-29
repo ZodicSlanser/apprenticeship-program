@@ -4,6 +4,7 @@ const API_URL = `${API_CONFIG.scheme}://${API_CONFIG.hostname}:${API_CONFIG.PORT
 const API_ROUTES = {
   viewApprenticeship: `${API_URL}/view`,
   addApprenticeship: `${API_URL}/add`,
+  duplicateApprenticeship: `${API_URL}/duplicate`,
   viewAllApprenticeships: `${API_URL}/view-all`,
   deleteApprenticeship: `${API_URL}/delete`,
   updateApprenticeship: `${API_URL}/update`,

@@ -1,53 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90444df0-037d-4c6f-b6b2-38964d7f9653" name="Changes" comment="Reformatting with prettier">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Firebase/Models/Role.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Firebase/Models/Role.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Firebase/Models/TeamMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Firebase/Models/TeamMember.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Firebase/Validation/ValidationSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Firebase/Validation/ValidationSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/globals.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/globals.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Header/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/LogoTitle/LogoTitle.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/LogoTitle/LogoTitle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/LogoTitle/LogoTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/LogoTitle/LogoTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/MainPage/MainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/MainPage/MainPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/MainPage/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/MainPage/MainPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/ProgressBar/ProgressBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/ProgressBar/ProgressBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/ProgressBar/ProgressBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/ProgressBar/ProgressBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownRoleMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownRoleMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownRoleMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/DropDownRoleMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/PopForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/PopForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/PopForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/PopForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/PopFormUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/PopFormUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/Roles.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/Roles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/Roles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/Roles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/TeamRoles.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/TeamRoles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Roles/TeamRoles.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Roles/TeamRoles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Scaffolding/Scaffolding.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Scaffolding/Scaffolding.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/Scaffolding/Scaffolding.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Scaffolding/Scaffolding.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TeamAdmin/TeamAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TeamAdmin/TeamAdmin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TeamAdmin/TeamAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TeamAdmin/TeamAdmin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TeamAdmin/TeamPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TeamAdmin/TeamPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TeamType/TeamTypePanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TeamType/TeamTypePanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TeamType/TeamTypePanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TeamType/TeamTypePanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TeamType/TeamTypeSelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TeamType/TeamTypeSelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TimeLine/TimeLine.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TimeLine/TimeLine.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/TimeLine/TimeLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TimeLine/TimeLine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tsconfig.json" afterDir="false" />
+    <list default="true" id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship">
+      <change afterPath="$PROJECT_DIR$/backend/routes/apprenticeship.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/CRUDS/CRUD.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CRUDS/CRUD.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/API interface/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/API interface/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/API interface/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/API interface/Config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,248 +25,105 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Backend-Fix-Sandbox" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="KEEP" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2GOtnOdM5V6X6dzprvLTxH95ps3" />
+  <component name="ProjectId" id="2GlEvr5vRyGV1gw9swZkhYVdJTJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.10.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.11.2&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\zodic\\WebstormProjects\\apprenticeship-program\\ui\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="17.9.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="17.0.45" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/backend/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/ui/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/secrets" />
+      <recent name="$PROJECT_DIR$/backend" />
+    </key>
+  </component>
   <component name="RunManager" selected="Node.js.App.js">
-    <configuration name="API.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/backend/Firebase/API.js" working-dir="$PROJECT_DIR$/backend/Firebase">
+    <configuration name="App.js" type="NodeJSConfigurationType" path-to-node="node" nameIsGenerated="true" path-to-js-file="App.js" working-dir="$PROJECT_DIR$/backend">
       <method v="2" />
     </configuration>
-    <configuration name="App.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/backend/App.js" working-dir="$PROJECT_DIR$/backend">
+    <configuration name="react" type="NodeJSConfigurationType" path-to-js-file="src/App.js" working-dir="$PROJECT_DIR$/ui">
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/ui/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.App.js" />
+      <item itemvalue="Node.js.react" />
+      <item itemvalue="npm.start" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.App.js" />
-        <item itemvalue="Node.js.API.js" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="90444df0-037d-4c6f-b6b2-38964d7f9653" name="Changes" comment="" />
-      <created>1666271626547</created>
+      <changelist id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="" />
+      <created>1666955008685</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1666271626547</updated>
-      <workItem from="1666271630351" duration="592000" />
-      <workItem from="1666272381122" duration="756000" />
-      <workItem from="1666273161622" duration="55000" />
-      <workItem from="1666273226091" duration="1194000" />
-      <workItem from="1666274454952" duration="229000" />
-      <workItem from="1666279225379" duration="13845000" />
-      <workItem from="1666293822207" duration="411000" />
-      <workItem from="1666294249012" duration="104000" />
-      <workItem from="1666294378505" duration="40000" />
-      <workItem from="1666294442414" duration="7857000" />
-      <workItem from="1666303526823" duration="104000" />
-      <workItem from="1666304622413" duration="2381000" />
-      <workItem from="1666308888943" duration="278000" />
-      <workItem from="1666349423375" duration="3508000" />
-      <workItem from="1666389374314" duration="2729000" />
-      <workItem from="1666551175499" duration="241000" />
-      <workItem from="1666889934428" duration="10916000" />
-      <workItem from="1666901161986" duration="17822000" />
-      <workItem from="1666921065803" duration="3070000" />
-      <workItem from="1666952384388" duration="233000" />
-      <workItem from="1666952781782" duration="603000" />
-      <workItem from="1666963670043" duration="2408000" />
+      <updated>1666955008685</updated>
+      <workItem from="1666955014807" duration="11937000" />
+      <workItem from="1667043733957" duration="9534000" />
     </task>
-    <task id="LOCAL-00001" summary="Remove the .idea">
-      <created>1666271817398</created>
+    <task id="LOCAL-00001" summary="Added validation when Deleting and Updating Apprenticeship&#10;Added ``uploadToFireStore()`` to upload files to fireStorage&#10;Added ``getFileFromFireStore()`` to download files based on fileName">
+      <created>1666959669181</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1666271817398</updated>
+      <updated>1666959669185</updated>
     </task>
-    <task id="LOCAL-00002" summary="Migrated changes from backend-features &#10;fixed some syntax">
-      <created>1666274164819</created>
+    <task id="LOCAL-00002" summary="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship">
+      <created>1666963155147</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1666274164819</updated>
+      <updated>1666963155147</updated>
     </task>
-    <task id="LOCAL-00003" summary="fixed some dependencies">
-      <created>1666274429150</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1666274429150</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Beta endpoints">
-      <created>1666293290963</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1666293290963</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Fixed CORS error, endpoints now functional">
-      <created>1666300971886</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1666300971886</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Returned to original state">
-      <created>1666301014649</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301014649</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Some Tweaks">
-      <created>1666301113541</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301113541</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Fixed endpoints, all now functional -theoretically-">
-      <created>1666301169872</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301169872</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Returned to original state">
-      <created>1666301193032</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301193032</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Needs to have validation fixed">
-      <created>1666301225144</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301225144</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fixed some errors and refactored some code">
-      <created>1666301255337</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301255337</updated>
-    </task>
-    <task id="LOCAL-00012" summary="added CORS dependency to bypass the error">
-      <created>1666301310586</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1666301310586</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Updated the way endpoints talk to the API and handled promise returns">
-      <created>1666919998651</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1666919998651</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fixed the object return query">
-      <created>1666920112405</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1666920112405</updated>
-    </task>
-    <task id="LOCAL-00015" summary="added an example for the &quot;UseState&quot;, &quot;UseEffect&quot;">
-      <created>1666920304366</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1666920304366</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Fixed a hideous &quot;ViewApprenticeship&quot; method :&quot;D">
-      <created>1666920497688</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1666920497688</updated>
-    </task>
-    <task id="LOCAL-00017" summary="handled the object return from document in getApprenticeship">
-      <created>1666920547271</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1666920547271</updated>
-    </task>
-    <task id="LOCAL-00018" summary="added live-server to avoid multiple refreshes when working">
-      <created>1666920580909</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1666920580909</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Merged from main">
-      <created>1666921992850</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1666921992850</updated>
-    </task>
-    <task id="LOCAL-00020" summary="More refactors for a more readable code">
-      <created>1666923115692</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1666923115692</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Updated dependencies">
-      <created>1666923160629</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1666923160629</updated>
-    </task>
-    <task id="LOCAL-00022" summary="more refactors for a more readable code">
-      <created>1666923218994</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1666923218994</updated>
-    </task>
-    <task id="LOCAL-00023" summary="fixed a file path">
-      <created>1666952541241</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1666952541241</updated>
-    </task>
-    <task id="LOCAL-00024" summary="bug fixes, reformatting with prettier">
-      <created>1666966057528</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1666966057528</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,68 +134,59 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Backend-Fix" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-              <option name="COLUMN_ID_WIDTH">
-                <map>
-                  <entry key="Table.Default.Author.ColumnIdWidth" value="231" />
-                  <entry key="Table.Default.Date.ColumnIdWidth" value="114" />
-                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="54" />
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove the .idea" />
-    <MESSAGE value="Migrated changes from backend-features &#10;fixed some syntax" />
-    <MESSAGE value="fixed some dependencies" />
-    <MESSAGE value="Beta endpoints" />
-    <MESSAGE value="Fixed CORS error, endpoints now functional" />
-    <MESSAGE value="Some Tweaks" />
-    <MESSAGE value="Fixed endpoints, all now functional -theoretically-" />
-    <MESSAGE value="Returned to original state" />
-    <MESSAGE value="Needs to have validation fixed" />
-    <MESSAGE value="fixed some errors and refactored some code" />
-    <MESSAGE value="added CORS dependency to bypass the error" />
-    <MESSAGE value="Updated the way endpoints talk to the API and handled promise returns" />
-    <MESSAGE value="fixed the object return query" />
-    <MESSAGE value="added an example for the &quot;UseState&quot;, &quot;UseEffect&quot;" />
-    <MESSAGE value="Fixed a hideous &quot;ViewApprenticeship&quot; method :&quot;D" />
-    <MESSAGE value="handled the object return from document in getApprenticeship" />
-    <MESSAGE value="added live-server to avoid multiple refreshes when working" />
-    <MESSAGE value="Merged from main" />
-    <MESSAGE value="More refactors for a more readable code" />
-    <MESSAGE value="Updated dependencies" />
-    <MESSAGE value="more refactors for a more readable code" />
-    <MESSAGE value="fixed a file path" />
-    <MESSAGE value="bug fixs, reformatting with prettier" />
-    <MESSAGE value="bug fixes, reformatting with prettier" />
-    <MESSAGE value="Reformatting with prettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformatting with prettier" />
+    <MESSAGE value="Added validation when Deleting and Updating Apprenticeship&#10;Added ``uploadToFireStore()`` to upload files to fireStorage&#10;Added ``getFileFromFireStore()`` to download files based on fileName" />
+    <MESSAGE value="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/ui/src/Components/ProgressBar/ProgressBar.js</url>
-          <line>4</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD.js</url>
+          <line>23</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
+          <line>26</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD.js</url>
+          <line>16</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
+          <line>133</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
+          <line>145</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="NodeJSConfigurationType">
+        <watch expression="apprenticeship" />
+        <watch expression="params" />
+        <watch expression="typeof role" language="JavaScript" />
+        <watch expression="Object.assign({}, role)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

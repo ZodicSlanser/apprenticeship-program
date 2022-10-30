@@ -14,19 +14,15 @@ import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
 async function AddApprenticeship(apprenticeship) {
-  const validationResult = apprenticeshipSchema.validate(apprenticeship, {
-    abortEarly: true,
-  });
-  if (validationResult.error === undefined) {
-    const res = await uploadToFireStore(apprenticeship.logo);
-    if (res) {
-      apprenticeship.logo = apprenticeship.logo.split("/").pop();
-      return await commit(apprenticeship);
-    }
-  } else {
-    console.log(validationResult.error);
-    return validationResult.error;
-  }
+  // const validationResult = apprenticeshipSchema.validate(apprenticeship, {
+  //   abortEarly: true,
+  // });
+
+  // const res = await uploadToFireStore(apprenticeship.logo);
+
+  return await commit(apprenticeship);
+
+
 }
 
 //GET DB to API

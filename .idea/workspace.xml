@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship">
-      <change afterPath="$PROJECT_DIR$/backend/routes/apprenticeship.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/CRUDS/CRUD.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CRUDS/CRUD.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/API interface/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/API interface/API.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/API interface/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/API interface/Config.js" afterDir="false" />
-    </list>
+    <list default="true" id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="reverted last commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +21,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -143,7 +136,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added validation when Deleting and Updating Apprenticeship&#10;Added ``uploadToFireStore()`` to upload files to fireStorage&#10;Added ``getFileFromFireStore()`` to download files based on fileName" />
     <MESSAGE value="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship" />
+    <MESSAGE value="reverted last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="reverted last commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -151,31 +145,26 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD.js</url>
           <line>23</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
           <line>26</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD.js</url>
           <line>16</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
           <line>133</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
           <line>145</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

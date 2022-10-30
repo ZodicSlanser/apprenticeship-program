@@ -211,6 +211,7 @@ router.post("/duplicate", (req, res) => {
 
 router.post("/add", (req, res) => {
   console.log("receiving data ...");
+  console.log(req.body);
   const msg = AddApprenticeship(new Apprenticeship(req.body));
   res.send(`${msg}`);
 });

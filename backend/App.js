@@ -38,16 +38,16 @@ const specs = swaggerJsDoc(options);
 
 const port = process.env.PORT || 9000;
 const app = express();
-app.use("/apprenticeship", Router);
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors());
-app.use(morgan("dev"));
 app.use(
   cors({
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
+app.use("/apprenticeship", Router);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(morgan("dev"));
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(port, () => console.log(`The server is running on port ${port}`));

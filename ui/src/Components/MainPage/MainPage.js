@@ -22,14 +22,18 @@ function MainPage() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const contentRef = useRef(null);
-  const apprenticeship = {
-    title: title,
-    logo: logo,
-    type: type,
-    roles: roles,
-    admin: admin,
-    startDate: startDate,
-    endDate: endDate,
+
+  const apprenticeship={
+    teamType:type,
+    logo:logo,
+    title:title,
+    compDesc:undefined,
+    appDesc:undefined,
+    introVideo:undefined,
+    roles:roles,
+    members: admin,
+    startDate:startDate,
+    endDate:endDate,
   };
 
   useEffect(() => {

@@ -10,8 +10,11 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
 html {
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
   min-height: 100%;
   position: relative;
 }

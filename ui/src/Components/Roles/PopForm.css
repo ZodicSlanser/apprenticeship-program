@@ -13,6 +13,7 @@
   gap: 18px;
   position: absolute;
   width: 600px;
+  height: 90vh;
   background: #ffffff;
   /* Purple */
   border: 1px solid #793ef5;
@@ -22,6 +23,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.popup::-webkit-scrollbar {
+  display: none;
 }
 
 .popup-container-blurred {

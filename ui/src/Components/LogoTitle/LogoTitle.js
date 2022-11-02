@@ -18,11 +18,11 @@ function LogoTitle(props) {
   function typingDone(e) {
     if (title !== "") {
       setOpacity(1);
-      if (selectedImage) props.invokeLogoTitle(null, true);
-      else props.invokeLogoTitle(null, false);
+      if (selectedImage) props.invokeLogoTitle(null, true, 0);
+      else props.invokeLogoTitle(null, false, 0);
     } else {
       setOpacity(0.3);
-      props.invokeLogoTitle(null, false);
+      props.invokeLogoTitle(null, false, 0);
     }
   }
   function handleTitleChange(e) {
@@ -36,9 +36,9 @@ function LogoTitle(props) {
     }
 
     if (title !== "" && (e.target.files[0] || selectedImage)) {
-      props.invokeLogoTitle(null, true);
+      props.invokeLogoTitle(null, true, 0);
     } else {
-      props.invokeLogoTitle(null, false);
+      props.invokeLogoTitle(null, false, 0);
     }
   }
   function handleImage(e) {

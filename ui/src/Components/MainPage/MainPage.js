@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect, memo } from "react";
+import ApprenticeshipDesc from "../AprenticeshipDescription/ApprenticeshipDesc";
+import CompanyDesc from "../CompanyDesc/CompanyDesc";
 import Header from "../Header/Header";
 import LogoTitle from "../LogoTitle/LogoTitle";
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -9,10 +11,13 @@ import TeamTypePanel from "../TeamType/TeamTypePanel";
 import TimeLine from "../TimeLine/TimeLine";
 import "./MainPage.css";
 let lock = false;
+let flags = [false, false, false];
 
 function MainPage() {
   const [title, setTitle] = useState("");
   const [logo, setLogo] = useState("");
+  const [companyDesc, setCompanyDesc] = useState("");
+  const [apprenticeshipDesc, setApprenticeshipDesc] = useState("");
   const [type, setType] = useState("");
   const [roles, setRoles] = useState([]);
   const [admin, setAdmin] = useState([]);
@@ -23,9 +28,11 @@ function MainPage() {
   const apprenticeship = {
     title: title,
     logo: logo,
-    type: type,
+    teamType: type,
+    compDesc: companyDesc,
+    appDesc: apprenticeshipDesc,
     roles: roles,
-    admin: admin,
+    members: admin,
     startDate: startDate,
     endDate: endDate,
   };
@@ -57,11 +64,17 @@ function MainPage() {
     }
   };
   let invokeDescriptionSetter;
-  const invokeDescription = (setStateCallback, done) => {
+  const invokeDescription = (setStateCallback, done, componentID) => {
     if (setStateCallback) {
       invokeDescriptionSetter = setStateCallback[1];
     } else {
-      if (invokeDescriptionSetter) invokeDescriptionSetter(done);
+      if (invokeDescriptionSetter) {
+        console.log(flags);
+        flags[componentID] = done;
+        console.log(flags, "asdln");
+
+        if (flags[0] && flags[1] && flags[2]) invokeDescriptionSetter(done);
+      }
     }
   };
   let invokeTypeSetter;
@@ -142,6 +155,16 @@ function MainPage() {
                 setTitle={setTitle}
                 setLogo={setLogo}
               ></LogoTitle>
+              <CompanyDesc
+                invokeActivity={invokeActivity}
+                invokeCompany={invokeDescription}
+                setCompanyDesc={setCompanyDesc}
+              ></CompanyDesc>
+              <ApprenticeshipDesc
+                invokeActivity={invokeActivity}
+                invokeApprenticeship={invokeDescription}
+                setApprenticeshipDesc={setApprenticeshipDesc}
+              ></ApprenticeshipDesc>
               <TeamTypePanel
                 invokeActivity={invokeActivity}
                 invokeType={invokeType}
@@ -163,7 +186,6 @@ function MainPage() {
                 setStartDate={setStartDate}
                 setEndDate={setEndDate}
               ></TimeLine>
-              <div>Rest of page</div>
             </Scaffolding>
           </div>
         </div>

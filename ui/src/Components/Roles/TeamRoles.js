@@ -16,7 +16,14 @@ export default memo(function TeamRoles(props) {
   }
 
   function appendToListOfRoles(role) {
-    if (!(role.type === "Select Role")) {
+    if (
+      role.type !== "Select Role" &&
+      role.compSkills.length > 0 &&
+      role.reqSkills.length > 0 &&
+      role.hours !== null &&
+      role.desc &&
+      role.location.length > 0
+    ) {
       setRoles((prevRoles) => {
         const newRoles = prevRoles;
         newRoles.push(role);

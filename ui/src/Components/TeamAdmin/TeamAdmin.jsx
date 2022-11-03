@@ -25,7 +25,7 @@ function TeamAdmin(props) {
   }, [list.length]);
   const handleSubmit = (e) => {
     if( formData.name===""||formData.photo===""||formData.socialURL===""||formData.email===""){
-        setErrorMessage("Please fill all the fields");
+        setErrorMessage("Please fill all the required fields");
         e.preventDefault();
       }
       else{

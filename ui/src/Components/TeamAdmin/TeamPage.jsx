@@ -63,6 +63,7 @@ function TeamPage(props) {
           ></img>
         </div>
         <form onSubmit={props.submit}>
+        {props.error && <p className='error'>{props.error}</p>}
           <div className="admin-name">
             <img src={profile}></img>
             <input

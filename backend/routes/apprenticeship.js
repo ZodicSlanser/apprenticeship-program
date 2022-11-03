@@ -141,8 +141,6 @@ const router = Router();
  *
  */
 
-
-
 /**
  * @Swagger
  * /apprenticeship:
@@ -212,7 +210,7 @@ router.post("/duplicate", (req, res) => {
 router.post("/add", (req, res) => {
   console.log("receiving data ...");
   console.log(req.body);
-  const msg = AddApprenticeship(new Apprenticeship(req.body));
+  const msg = AddApprenticeship(new Apprenticeship(req.body.data));
   res.send(`${msg}`);
 });
 router.get("/view", async (req, res) => {
@@ -220,6 +218,5 @@ router.get("/view", async (req, res) => {
   const msg = await ViewApprenticeship(req.query.id);
   res.send(JSON.stringify(msg));
 });
-
 
 export default router;

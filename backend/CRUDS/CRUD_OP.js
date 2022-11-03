@@ -12,17 +12,23 @@ const ApprenticeshipCollection = db().collection("Apprenticeship");
 async function commit(apprenticeship) {
   const batch = db().batch();
   const params = { ...apprenticeship };
+  //TODO: delete this line when the frontend is done
+  Object.keys(params).forEach((key) => {
+    if (params[key] === undefined) {
+      delete params[key];
+    }
+  });
   params.startDate = db.Timestamp.fromDate(new Date(params.startDate));
   params.endDate = db.Timestamp.fromDate(new Date(params.endDate));
   Object.values(apprenticeship.roles).forEach((role) => {
     const roleRef = RolesCollection.doc(role.id);
     batch.set(roleRef, role);
   });
-  Object.values(apprenticeship.members).forEach((teamMember) => {
-    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
-    batch.set(teamMemberRef, { ...teamMember });
-  });
-  batch.set(ApprenticeshipCollection.doc(apprenticeship.id), params);
+  // Object.values(apprenticeship.members).forEach((teamMember) => {
+  //   const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+  //   batch.set(teamMemberRef, teamMember );
+  // });
+  batch.set(ApprenticeshipCollection.doc(params.id), params);
   try {
     await batch.commit();
     return apprenticeship.id;

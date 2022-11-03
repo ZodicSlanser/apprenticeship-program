@@ -3,9 +3,16 @@ import { API_ROUTES } from "./Config";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
 const addApprenticeship = (postData, callback) => {
-  sendRequest("POST", API_ROUTES.addApprenticeship, { data: postData }).then(
-    callback
-  );
+  //TODO: for the frontend, rename linkedinUrl to socialURL and admin to members
+  //then remove the following lines up to postData.members = postData.admin
+  postData.admin.map((admin) => {
+    admin.socialURL = admin.linkedinUrl;
+    return admin;
+  });
+  postData.members = postData.admin;
+  sendRequest("POST", API_ROUTES.addApprenticeship, {
+    data: postData,
+  }).then(callback);
 };
 
 //returns a specific apprenticeship ID in an object
@@ -44,7 +51,7 @@ const duplicateApprenticeship = (postData, callback) => {
   sendRequest("POST", API_ROUTES.duplicateApprenticeship, {
     data: postData,
   }).then(callback);
-}
+};
 export {
   viewAllApprenticeships,
   deleteApprenticeship,

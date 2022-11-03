@@ -8,6 +8,8 @@ import {
 } from "./CRUD_OP.js";
 import { apprenticeshipSchema } from "../Firebase/Validation/ValidationSchema.js";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
+import { Role } from "../Firebase/Models/Role.js";
+import { TeamMember } from "../Firebase/Models/TeamMember.js";
 
 //Create, Read, Update, Delete  --> Apprenticeship
 
@@ -19,10 +21,13 @@ async function AddApprenticeship(apprenticeship) {
   // });
 
   // const res = await uploadToFireStore(apprenticeship.logo);
-
+  apprenticeship.roles = apprenticeship.roles.map((role) => {
+    return { ...new Role(role) };
+  });
+  apprenticeship.members = apprenticeship.members.map((member) => {
+    return { ...new TeamMember(member) };
+  });
   return await commit(apprenticeship);
-
-
 }
 
 //GET DB to API

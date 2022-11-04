@@ -7,14 +7,21 @@ import "./HomePage.css";
 import {
   viewAllApprenticeships,
   addApprenticeship,
+    duplicateApprenticeship
 } from "../../API interface/API";
 function HomePage() {
   const [Apprenticeships, setApprenticeships] = useState([]);
 
   useEffect(() => {
     viewAllApprenticeships(setApprenticeships);
-    console.log(Apprenticeships)
   }, []);
+
+
+  function Duplicate(Apprenticeship){
+    duplicateApprenticeship(Apprenticeship,()=>{});
+
+  }
+
 
   return (
     <>
@@ -36,9 +43,7 @@ function HomePage() {
                   <img
                     src={CopyIcon}
                     alt="Copy Icon"
-                    // onClick={() => {
-                    //   addApprenticeship(Apprenticeship, setApprenticeships);
-                    // }}
+                    onClick={()=>Duplicate(Apprenticeship)}
                   />
                   <img src={trashIcon} alt="Delete Icon" />
                 </div>

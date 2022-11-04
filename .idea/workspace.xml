@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="reverted last commit">
-      <change afterPath="$PROJECT_DIR$/ui/src/Assets/HomePage/add-square.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/Assets/HomePage/copy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/Assets/HomePage/edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/Assets/HomePage/trash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_20_2022_3_23_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_20_2022_3_23_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,16 +42,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/apprenticeship-program/ui/src/Assets",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\apprenticeship-program\\ui\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/apprenticeship-program/ui/src/Assets&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\apprenticeship-program\\ui\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\apprenticeship-program\ui\src\Assets" />
@@ -107,7 +101,8 @@
       <updated>1666955008685</updated>
       <workItem from="1666955014807" duration="11937000" />
       <workItem from="1667043733957" duration="9534000" />
-      <workItem from="1667584614869" duration="764000" />
+      <workItem from="1667584614869" duration="5161000" />
+      <workItem from="1667591634470" duration="5735000" />
     </task>
     <task id="LOCAL-00001" summary="Added validation when Deleting and Updating Apprenticeship&#10;Added ``uploadToFireStore()`` to upload files to fireStorage&#10;Added ``getFileFromFireStore()`` to download files based on fileName">
       <created>1666959669181</created>
@@ -150,19 +145,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD.js</url>
-          <line>23</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
           <line>26</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD.js</url>
-          <line>16</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>

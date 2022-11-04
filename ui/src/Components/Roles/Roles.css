@@ -90,7 +90,7 @@ header > p {
 }
 
 .role-name > h1 {
-  align-self: flex;
+  align-self: flex-start;
   width: 139px;
   height: 24px;
   font-family: "Space Grotesk";
@@ -101,7 +101,7 @@ header > p {
   line-height: 24px;
   /* identical to box height, or 150% */
   display: flex;
-  flex-wrap: 0;
+  flex-wrap: nowrap;
   align-items: center;
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;

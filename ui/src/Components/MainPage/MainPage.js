@@ -13,7 +13,7 @@ let lock = false;
 function MainPage() {
   const [title, setTitle] = useState("");
   const [logo, setLogo] = useState("");
-  const [type, setType] = useState("");
+  const [teamType, setTeamType] = useState("");
   const [roles, setRoles] = useState([]);
   const [admin, setAdmin] = useState([]);
   const [contentHover, setContentHover] = useState(false);
@@ -23,9 +23,9 @@ function MainPage() {
   const apprenticeship = {
     title: title,
     logo: logo,
-    type: type,
+    teamType: teamType,
     roles: roles,
-    admin: admin,
+    members: admin,
     startDate: startDate,
     endDate: endDate,
   };
@@ -145,7 +145,7 @@ function MainPage() {
               <TeamTypePanel
                 invokeActivity={invokeActivity}
                 invokeType={invokeType}
-                setType={setType}
+                setType={setTeamType}
               ></TeamTypePanel>
               <TeamRoles
                 invokeActivity={invokeActivity}

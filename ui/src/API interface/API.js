@@ -5,11 +5,7 @@ import { API_ROUTES } from "./Config";
 const addApprenticeship = (postData, callback) => {
   //TODO: for the frontend, rename linkedinUrl to socialURL and admin to members
   //then remove the following lines up to postData.members = postData.admin
-  postData.admin.map((admin) => {
-    admin.socialURL = admin.linkedinUrl;
-    return admin;
-  });
-  postData.members = postData.admin;
+  
   sendRequest("POST", API_ROUTES.addApprenticeship, {
     data: postData,
   }).then(callback);

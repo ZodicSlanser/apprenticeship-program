@@ -13,7 +13,7 @@ function TeamAdmin(props) {
   const [list, setList] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
-    linkedinUrl: "",
+    socialURL: "",
     photo: "",
     email: "",
   });

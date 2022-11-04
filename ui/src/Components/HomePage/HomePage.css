@@ -1,0 +1,183 @@
+.HomePage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0px;
+    gap: 32px;
+    position: absolute;
+    width: 1135px;
+    left: 311px;
+    top: 57px;
+}
+
+.HomePageTitleButton {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 626px;
+    width: 1135px;
+    height: 44px;
+}
+
+.HomePageTitle {
+    width: 241px;
+    height: 24px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 24px;
+    /* identical to box height, or 75% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
+}
+
+.CreateApperButton {
+    border: none;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 8px;
+    width: 254px;
+    height: 44px;
+    /* Purple */
+    background: #793EF5;
+    border-radius: 12px;
+}
+
+.CreateApperButton>p {
+    /* Create New Apprenticeship */
+    width: 194px;
+    height: 20px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    text-align: center;
+    letter-spacing: 0.4px;
+    font-feature-settings: 'liga' off;
+    color: #FFFFFF;
+}
+
+.Apprenticeships {
+    /* Frame 1321314744 */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0px;
+    gap: 20px;
+    width: 1135px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.Apprenticeship {
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    width: 365px;
+    height: 246px;
+    /* Snow */
+    background: #FFFFFF;
+    border: 1px solid #CFD3D9;
+    border-radius: 20px;
+}
+
+.ApprenticeshipTitleButtons {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 11px;
+    width: 325px;
+    height: 20px;
+}
+
+.ApprenticeshipTitleButtons>h2 {
+    /* Text */
+    margin: 0;
+    height: 18px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height, or 100% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
+}
+
+.ApprenticeshipDesc {
+    word-wrap: break-word;
+    width: 325px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    color: #1E1E1E;
+}
+
+.ApprenticeshipsTeamRoles {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0px;
+    gap: 8px;
+    width: 283px;
+    height: 62px;
+}
+
+.singleRole {
+    /* Frame 1321314710 */
+    box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 6px 10px;
+    gap: 10px;
+    height: 27px;
+    background: #EDEAFF;
+    /* Purple */
+    border: 1px solid #793EF5;
+    border-radius: 8px;
+    /* Text */
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+    font-feature-settings: 'liga' off;
+    /* Purple */
+    color: #793EF5;
+}

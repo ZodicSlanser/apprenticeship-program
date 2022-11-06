@@ -11,6 +11,7 @@ function TeamAdmin(props) {
   const [modalOpen, setModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [list, setList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     name: "",
     linkedinUrl: "",
@@ -23,11 +24,17 @@ function TeamAdmin(props) {
     props.setAdmin(list);
   }, [list.length]);
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setList((ls) => [...ls, formData]);
-    setFormData("");
+    if( formData.name===""||formData.photo===""||formData.socialURL===""||formData.email===""){
+        setErrorMessage("Please fill all the required fields");
+        e.preventDefault();
+      }
+      else{
+        e.preventDefault();
+    setList((ls) => [...ls, formData])
+    setFormData('')
     handleClose();
-  };
+}
+};
 
   const handleImage = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -42,6 +49,7 @@ function TeamAdmin(props) {
   };
   const handleClose = () => {
     setModal(false);
+    setErrorMessage("");
     setSelectedImage(false);
   };
   const removeAdmin = (index) => {
@@ -126,6 +134,7 @@ function TeamAdmin(props) {
             selectedImage={selectedImage}
             changeImage={handleImage}
             submit={handleSubmit}
+            error={errorMessage}
           />
         )}
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import AddIcon from "../../Assets/HomePage/add-square.png";
 import CopyIcon from "../../Assets/HomePage/copy.png";
 import EditIcon from "../../Assets/HomePage/edit.png";
@@ -7,7 +7,7 @@ import "./HomePage.css";
 import {
   viewAllApprenticeships,
   addApprenticeship,
-    duplicateApprenticeship
+  duplicateApprenticeship,
 } from "../../API interface/API";
 function HomePage() {
   const [Apprenticeships, setApprenticeships] = useState([]);
@@ -16,12 +16,9 @@ function HomePage() {
     viewAllApprenticeships(setApprenticeships);
   }, []);
 
-
-  function Duplicate(Apprenticeship){
-    duplicateApprenticeship(Apprenticeship,()=>{});
-
+  function Duplicate(Apprenticeship) {
+    duplicateApprenticeship(Apprenticeship, () => {});
   }
-
 
   return (
     <>
@@ -43,7 +40,7 @@ function HomePage() {
                   <img
                     src={CopyIcon}
                     alt="Copy Icon"
-                    onClick={()=>Duplicate(Apprenticeship)}
+                    onClick={() => Duplicate(Apprenticeship)}
                   />
                   <img src={trashIcon} alt="Delete Icon" />
                 </div>
@@ -61,4 +58,4 @@ function HomePage() {
     </>
   );
 }
-export default HomePage;
+export default memo(HomePage);

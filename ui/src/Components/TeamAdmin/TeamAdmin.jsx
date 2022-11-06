@@ -13,7 +13,7 @@ function TeamAdmin(props) {
   const [list, setList] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
-    linkedinUrl: "",
+    socialUrl: "",
     photo: "",
     email: "",
   });
@@ -104,7 +104,7 @@ function TeamAdmin(props) {
                   </div>
                 </div>
                 <div className="IconsAdmin">
-                  <a href={a.linkedinUrl} className="LinkedInIcon">
+                  <a href={a.socialUrl} className="LinkedInIcon">
                     <img src={link} alt="LinkedIn"></img>
                   </a>
 

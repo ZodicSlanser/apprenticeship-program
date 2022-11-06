@@ -21,9 +21,9 @@ function MainPage() {
   const [type, setType] = useState("");
   const [roles, setRoles] = useState([]);
   const [admin, setAdmin] = useState([]);
-  const [contentHover, setContentHover] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [contentHover, setContentHover] = useState(false);
   const contentRef = useRef(null);
   const apprenticeship = {
     title: title,

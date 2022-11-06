@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 import "./TeamAdmin.css";
 import close from "../../Assets/TeamAdmin/close.svg";
 import profile from "../../Assets/TeamAdmin/profile.svg";
@@ -63,7 +63,7 @@ function TeamPage(props) {
           ></img>
         </div>
         <form onSubmit={props.submit}>
-        {props.error && <p className='error'>{props.error}</p>}
+          {props.error && <p className="error">{props.error}</p>}
           <div className="admin-name">
             <img src={profile}></img>
             <input
@@ -96,4 +96,4 @@ function TeamPage(props) {
     </div>
   );
 }
-export default TeamPage;
+export default memo(TeamPage);

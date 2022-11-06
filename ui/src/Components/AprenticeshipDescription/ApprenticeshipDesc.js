@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import "./ApprenticeshipDesc.css";
 import exclmark from "../../Assets/ApprenticeshipDescription/exclmark.svg";
 import TextareaAutosize from "react-textarea-autosize";
 
-export default function ApprenticeshipDesc(props) {
+export default memo(function ApprenticeshipDesc(props) {
   const [opacity, setOpacity] = useState(0.3);
   const [typing, setTyping] = useState(false);
   const [active, setActive] = useState(false);
@@ -66,4 +66,4 @@ export default function ApprenticeshipDesc(props) {
       </div>
     </div>
   );
-}
+});

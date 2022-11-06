@@ -9,26 +9,29 @@ import Scaffolding from "../Scaffolding/Scaffolding";
 import TeamAdmin from "../TeamAdmin/TeamAdmin";
 import TeamTypePanel from "../TeamType/TeamTypePanel";
 import TimeLine from "../TimeLine/TimeLine";
+import Video from "../Video/Video";
 import "./MainPage.css";
 let lock = false;
-let flags = [false, false, false];
+let flags = [false, false, false, false];
 
 function MainPage() {
   const [title, setTitle] = useState("");
   const [logo, setLogo] = useState("");
   const [companyDesc, setCompanyDesc] = useState("");
   const [apprenticeshipDesc, setApprenticeshipDesc] = useState("");
+  const [video, setVideo] = useState("");
   const [type, setType] = useState("");
   const [roles, setRoles] = useState([]);
   const [admin, setAdmin] = useState([]);
-  const [contentHover, setContentHover] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [contentHover, setContentHover] = useState(false);
   const contentRef = useRef(null);
   const apprenticeship = {
     title: title,
     logo: logo,
     teamType: type,
+    introVideo: video,
     compDesc: companyDesc,
     appDesc: apprenticeshipDesc,
     roles: roles,
@@ -69,11 +72,9 @@ function MainPage() {
       invokeDescriptionSetter = setStateCallback[1];
     } else {
       if (invokeDescriptionSetter) {
-        console.log(flags);
         flags[componentID] = done;
-        console.log(flags, "asdln");
-
-        if (flags[0] && flags[1] && flags[2]) invokeDescriptionSetter(done);
+        if (flags[0] && flags[1] && flags[2] && flags[3])
+          invokeDescriptionSetter(done);
       }
     }
   };
@@ -165,6 +166,11 @@ function MainPage() {
                 invokeApprenticeship={invokeDescription}
                 setApprenticeshipDesc={setApprenticeshipDesc}
               ></ApprenticeshipDesc>
+              <Video
+                invokeActivity={invokeActivity}
+                invokeVideo={invokeDescription}
+                setVideo={setVideo}
+              ></Video>
               <TeamTypePanel
                 invokeActivity={invokeActivity}
                 invokeType={invokeType}

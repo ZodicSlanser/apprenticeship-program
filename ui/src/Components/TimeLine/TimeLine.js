@@ -28,7 +28,6 @@ function TimeLine(props) {
   }
 
   function handleDateChangeStart(e) {
-    props.setStartDate(e.target.value);
     if (e.target.value === "") {
       setShowStart(false);
       setStartDateFormatted("");
@@ -38,10 +37,10 @@ function TimeLine(props) {
     const day = date.getDate();
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
+    props.setStartDate(date);
     setStartDateFormatted(day + " " + month + " " + year);
   }
   function handleDateChangeEnd(e) {
-    props.setEndDate(e.target.value);
     if (e.target.value === "") {
       setShowEnd(false);
       setEndDateFormatted("");
@@ -52,6 +51,7 @@ function TimeLine(props) {
     const day = date.getDate();
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
+    props.setEndDate(date);
     setEndDateFormatted(day + " " + month + " " + year);
   }
   function handleStartCalendar() {

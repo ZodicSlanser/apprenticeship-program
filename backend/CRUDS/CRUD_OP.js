@@ -1,9 +1,10 @@
 import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
+import { getStorage, ref, uploadString } from "firebase/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 import { tryParse } from "firebase-tools/lib/utils.js";
-
+import { Blob } from "buffer";
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
@@ -12,22 +13,16 @@ const ApprenticeshipCollection = db().collection("Apprenticeship");
 async function commit(apprenticeship) {
   const batch = db().batch();
   const params = { ...apprenticeship };
-  //TODO: delete this line when the frontend is done
-  Object.keys(params).forEach((key) => {
-    if (params[key] === undefined) {
-      delete params[key];
-    }
-  });
   params.startDate = db.Timestamp.fromDate(new Date(params.startDate));
   params.endDate = db.Timestamp.fromDate(new Date(params.endDate));
   Object.values(apprenticeship.roles).forEach((role) => {
     const roleRef = RolesCollection.doc(role.id);
     batch.set(roleRef, role);
   });
-  // Object.values(apprenticeship.members).forEach((teamMember) => {
-  //   const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
-  //   batch.set(teamMemberRef, teamMember );
-  // });
+  Object.values(apprenticeship.members).forEach((teamMember) => {
+    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+    batch.set(teamMemberRef, teamMember);
+  });
   batch.set(ApprenticeshipCollection.doc(params.id), params);
   try {
     await batch.commit();
@@ -135,8 +130,7 @@ function updateRole(role) {
     .set({ ...role }, { merge: true });
 }
 
-async function uploadToFireStore(filePath) {
-  const fileName = filePath.split("/").pop();
+async function uploadToFireStore(file, fileName, type) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const generationMatchPrecondition = 0;
   const storage = new Storage({
@@ -144,17 +138,30 @@ async function uploadToFireStore(filePath) {
     keyFilename: "../backend/secrets/privateKey.json",
   });
   const options = {
-    destination: fileName,
+    destination: fileName + "." + type,
     preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
   };
+  let fileArrayBuffer = dataURItoBlob(file);
+  var fileUint8Array = new Uint8Array(fileArrayBuffer);
+
   try {
-    return await storage.bucket(bucketName).upload(filePath, options);
+    await storage
+      .bucket(bucketName)
+      .file(fileName + "." + type)
+      .save(fileUint8Array, options);
+    const url = await storage
+      .bucket(bucketName)
+      .file(fileName + "." + type)
+      .getSignedUrl({
+        action: "read",
+        expires: "03-09-2491",
+      });
+    return url;
   } catch (e) {
     console.log(e);
     return null;
   }
 }
-
 async function getFileFromFireStore(fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const storage = new Storage({
@@ -167,7 +174,27 @@ async function getFileFromFireStore(fileName) {
   await storage.bucket(bucketName).file(fileName).download(options);
   console.log(`${fileName} downloaded from ${bucketName}`);
 }
+function dataURItoBlob(dataURI) {
+  // convert base64 to raw binary data held in a string
+  // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+  var byteString = atob(dataURI.split(",")[1]);
 
+  // separate out the mime component
+  var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
+  // write the bytes of the string to an ArrayBuffer
+  var ab = new ArrayBuffer(byteString.length);
+
+  // create a view into the buffer
+  var ia = new Uint8Array(ab);
+
+  // set the bytes of the buffer to the correct values
+  for (var i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  // write the ArrayBuffer to a blob, and you're done
+  return ab;
+}
 export {
   commit,
   removeFromDB,

@@ -16,11 +16,18 @@ import { TeamMember } from "../Firebase/Models/TeamMember.js";
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
 async function AddApprenticeship(apprenticeship) {
-  // const validationResult = apprenticeshipSchema.validate(apprenticeship, {
-  //   abortEarly: true,
-  // });
-
-  // const res = await uploadToFireStore(apprenticeship.logo);
+  const validationResult = apprenticeshipSchema.validate(apprenticeship, {
+    abortEarly: true,
+  });
+  //TODO: upload files
+  const logoRes = await uploadToFireStore(apprenticeship.logo,apprenticeship.id+"_logo","png");
+  const videoRes  await uploadToFireStore(apprenticeship.introVideo,apprenticeship.id+"_logo","mp4");
+  apprenticeship.logo = logoRes;
+  apprenticeship.introVideo = videoRes;
+  apprenticeship.members.map((member) => {
+    const memberRes = await uploadToFireStore(member.image,apprenticeship.id+"_logo","png");
+    member.image = memberRes;
+  }
   apprenticeship.roles = apprenticeship.roles.map((role) => {
     return { ...new Role(role) };
   });

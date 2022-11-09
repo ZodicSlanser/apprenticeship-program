@@ -11,9 +11,10 @@ function TeamAdmin(props) {
   const [modalOpen, setModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [list, setList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
-    linkedinUrl: "",
+    socialUrl: "",
     photo: "",
     email: "",
   });
@@ -23,10 +24,20 @@ function TeamAdmin(props) {
     props.setAdmin(list);
   }, [list.length]);
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setList((ls) => [...ls, formData]);
-    setFormData("");
-    handleClose();
+    if (
+      formData.name === "" ||
+      formData.photo === "" ||
+      formData.socialURL === "" ||
+      formData.email === ""
+    ) {
+      setErrorMessage("Please fill all the required fields");
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+      setList((ls) => [...ls, formData]);
+      setFormData("");
+      handleClose();
+    }
   };
 
   const handleImage = (e) => {
@@ -42,6 +53,7 @@ function TeamAdmin(props) {
   };
   const handleClose = () => {
     setModal(false);
+    setErrorMessage("");
     setSelectedImage(false);
   };
   const removeAdmin = (index) => {
@@ -104,7 +116,7 @@ function TeamAdmin(props) {
                   </div>
                 </div>
                 <div className="IconsAdmin">
-                  <a href={a.linkedinUrl} className="LinkedInIcon">
+                  <a href={a.socialUrl} className="LinkedInIcon">
                     <img src={link} alt="LinkedIn"></img>
                   </a>
 
@@ -126,6 +138,7 @@ function TeamAdmin(props) {
             selectedImage={selectedImage}
             changeImage={handleImage}
             submit={handleSubmit}
+            error={errorMessage}
           />
         )}
       </div>

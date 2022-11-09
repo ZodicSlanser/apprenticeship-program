@@ -6,6 +6,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #f1f4f8;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+  position: relative;
 }
 
 code {

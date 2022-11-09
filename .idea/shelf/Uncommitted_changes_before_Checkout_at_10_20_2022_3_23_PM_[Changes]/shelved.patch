@@ -1,0 +1,17 @@
+Index: backend/.gitignore
+===================================================================
+diff --git a/backend/.gitignore b/backend/.gitignore
+--- a/backend/.gitignore	
++++ b/backend/.gitignore	
+@@ -1,5 +1,6 @@
+ ### Apperenticeship-Program ###
+ secerts/
++node_modules
+ 
+ ### Intellji ###
+ # Default ignored files
+@@ -7,4 +8,3 @@
+ .idea/workspace.xml
+ # Editor-based HTTP Client requests
+ .idea/httpRequests/
+-node_modules

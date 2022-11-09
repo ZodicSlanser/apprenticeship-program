@@ -1,9 +1,16 @@
 .scaffolding {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  flex: 1;
   padding: 0px;
-  gap: 20px;
-  isolation: isolate;
-  width: 770px;
+  gap: 16px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: visible;
+  width: 950px;
+}
+
+.scaffolding::-webkit-scrollbar {
+  display: none;
 }

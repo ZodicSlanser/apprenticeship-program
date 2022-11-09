@@ -6,11 +6,12 @@ const TeamMemberSchema = joi.object({
   photo: joi.string().required(),
   socialURL: joi.string().required(),
 });
+
 const RoleSchema = joi.object({
   id: joi
     .string()
     .required()
-    .messages({ "any.required": "cannot post apprenticeship without an ID " }),
+    .messages({ "any.required": "cannot post Role without an ID " }),
   type: joi
     .alternatives()
     .try(joi.string(), joi.number())
@@ -25,7 +26,7 @@ const RoleSchema = joi.object({
 //validate filed is string or number
 const apprenticeshipSchema = joi.object({
   id: joi.string().required(),
-  logo: joi.string().required(),
+  logo: joi.alternatives().try(joi.string(), joi.any()).required(),
   title: joi.string().required(),
   compDesc: joi.string().required(),
   appDesc: joi.string().required(),

@@ -1,20 +1,29 @@
-import React, { useState } from "react";
-import addCircle from "../../Assets/Roles/add-circle.png";
-import infoCircle from "../../Assets/Roles/info-circle.png";
+import React, { useState, useEffect, memo } from "react";
+import addCircle from "../../Assets/Roles/add-circle.svg";
+import infoCircle from "../../Assets/Roles/info-circle.svg";
 import "./TeamRoles.css";
 import Roles from "./Roles.jsx";
 import PopForm from "./PopForm";
-export default function TeamRoles(props) {
-  const [ListOfRoles, setRoles] = useState([]);
-
+export default memo(function TeamRoles(props) {
+  const [listOfRoles, setRoles] = useState([]);
   const [showPopForm, setShowPopForm] = useState(false);
-
+  useEffect(() => {
+    props.invokeRoles(null, listOfRoles.length > 0 ? true : false);
+    props.setRoles(listOfRoles);
+  }, [listOfRoles.length, props]);
   function togglePopForm() {
     setShowPopForm(!showPopForm);
   }
 
   function appendToListOfRoles(role) {
-    if (!(role.type === "Select Role")) {
+    if (
+      role.type !== "Select Role" &&
+      role.compSkills.length > 0 &&
+      role.reqSkills.length > 0 &&
+      role.hours !== null &&
+      role.desc &&
+      role.location.length > 0
+    ) {
       setRoles((prevRoles) => {
         const newRoles = prevRoles;
         newRoles.push(role);
@@ -69,7 +78,18 @@ export default function TeamRoles(props) {
 
   return (
     <>
-      <section className="team-roles-panel">
+      <section
+        className="team-roles-panel"
+        onMouseEnter={(e) => {
+          props.invokeActivity(null, 3);
+        }}
+        onClick={(e) => {
+          props.invokeActivity(null, 3);
+        }}
+        onMouseLeave={(e) => {
+          props.invokeActivity(null, 0);
+        }}
+      >
         <div className="team-Button-a">
           <div>
             <p> Team Roles </p>{" "}
@@ -88,25 +108,29 @@ export default function TeamRoles(props) {
             className="info-circle-icon"
           ></img>{" "}
         </div>{" "}
-        <div className="available-roles">
-          {" "}
-          {ListOfRoles.map((singleRole, index) => (
-            <Roles
-              key={index}
-              index={index}
-              handleDelete={deleteRole}
-              type={singleRole.type}
-              desc={singleRole.desc}
-              compSkills={singleRole.compSkills}
-              reqSkills={singleRole.reqSkills}
-              hours={singleRole.hours}
-              location={singleRole.location}
-              UpdateRole={UpdateRole}
-              duplicateRole={duplicateRole}
-            />
-          ))}{" "}
-        </div>{" "}
-      </section>{" "}
+        {listOfRoles.length > 0 ? (
+          <div className="available-roles">
+            {" "}
+            {listOfRoles.map((singleRole, index) => (
+              <Roles
+                key={index}
+                index={index}
+                handleDelete={deleteRole}
+                type={singleRole.type}
+                desc={singleRole.desc}
+                compSkills={singleRole.compSkills}
+                reqSkills={singleRole.reqSkills}
+                hours={singleRole.hours}
+                location={singleRole.location}
+                UpdateRole={UpdateRole}
+                duplicateRole={duplicateRole}
+              />
+            ))}
+          </div>
+        ) : (
+          <></>
+        )}
+      </section>
       {showPopForm && (
         <PopForm
           togglePopForm={togglePopForm}
@@ -115,4 +139,4 @@ export default function TeamRoles(props) {
       )}{" "}
     </>
   );
-}
+});

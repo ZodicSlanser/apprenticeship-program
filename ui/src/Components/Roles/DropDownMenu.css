@@ -26,6 +26,20 @@
   /* Card Selected */
 }
 
+.skillwrapper-icon-btn-hovering {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 552px;
+  padding: 12px 12px 12px 16px;
+  align-self: flex-start;
+  /* Snow */
+  background: #ffffff;
+  border: 1px solid #cecece;
+  border-radius: 12px;
+  border: 1px solid #793ef5;
+}
 .skillselect-btn {
   display: flex;
   flex-direction: row;
@@ -63,7 +77,6 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
-
   width: 476px;
   height: 40px;
 
@@ -105,8 +118,9 @@
   padding: 0%;
   width: inherit;
   width: 476px;
-  max-height: 236px;
   overflow: visible;
+  margin-top: 6px;
+  margin-bottom: 0px;
 }
 
 .skilloptions > li {
@@ -119,7 +133,7 @@
   align-self: flex-start;
   height: fit-content;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 6px;
   width: inherit;
   /* Text */
   font-family: "Space Grotesk";
@@ -147,4 +161,7 @@
 .tick-icon-selected {
   background-color: #793ef5;
   border-radius: 6px;
+}
+.close-skill {
+  cursor: pointer;
 }

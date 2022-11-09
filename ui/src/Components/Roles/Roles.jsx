@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState, memo } from "react";
 import "./Roles.css";
-import pen_icon from "../../Assets/Roles/pen-tool-2.png";
-import edit_icon from "../../Assets/Roles/edit.png";
-import copy_icon from "../../Assets/Roles/copy.png";
-import trash_icon from "../../Assets/Roles/trash.png";
+import pen_icon from "../../Assets/Roles/pen-tool-2.svg";
+import code_icon from "../../Assets/Roles/code.svg";
+import mobiledev_icon from "../../Assets/Roles/category.svg";
+import edit_icon from "../../Assets/Roles/edit.svg";
+import copy_icon from "../../Assets/Roles/copy.svg";
+import trash_icon from "../../Assets/Roles/trash.svg";
 import PopFormUpdate from "./PopFormUpdate";
-export default function Roles(props) {
+export default memo(function Roles(props) {
   const [showPopFormUpdate, setShowPopFormUpdate] = useState(false);
 
   function togglePopFormUpdate() {
@@ -21,8 +23,26 @@ export default function Roles(props) {
         <header>
           <div className="role-head">
             <div className="role-name">
-              <img src={pen_icon} alt="pen-icon" className="tagIcon" />
-              <h1>{props.type}</h1>
+              <img
+                src={
+                  props.type === "Full Stack Developer"
+                    ? pen_icon
+                    : props.type === "ios Developer" ||
+                      props.type === "Mobile Developer"
+                    ? mobiledev_icon
+                    : code_icon
+                }
+                alt="pen-icon"
+                className="tagIcon"
+              />
+              <div
+                style={{
+                  marginTop: "2px",
+                  marginLeft: "10px",
+                }}
+              >
+                {props.type}
+              </div>
             </div>
             <div className="side-icons">
               <img
@@ -74,4 +94,4 @@ export default function Roles(props) {
       )}
     </>
   );
-}
+});

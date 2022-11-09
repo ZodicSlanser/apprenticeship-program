@@ -1,73 +1,58 @@
-//TODO: 1- Add,Update,Delete,View --> Apprenticeship
 import {
   commit,
   getApprenticeship,
+  getAllApprenticeships,
   removeFromDB,
+  uploadToFireStore,
   updateInDB,
 } from "./CRUD_OP.js";
-import joi from "joi";
 import { apprenticeshipSchema } from "../Firebase/Validation/ValidationSchema.js";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
+import { Role } from "../Firebase/Models/Role.js";
+import { TeamMember } from "../Firebase/Models/TeamMember.js";
+
+//Create, Read, Update, Delete  --> Apprenticeship
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
-function AddApprenticeship(apprenticeship) {
-  //TODO: 1- Validation
-  //ValidateApprenticeship(apprenticeship) : Bool
-  //TODO: 2- Add to DB
-  //Commit(apprenticeship) : void
-  const validationResult = apprenticeshipSchema.validate(
-    { ...apprenticeship },
-    { abortEarly: true }
-  );
-  if (validationResult.error === undefined) {
-    commit(apprenticeship)
-    console.log("Commit done successfully");
-    return "Commit done successfully";
-  }
-  else {
-    console.log(validationResult.error);
-    return validationResult.error;
-  }
+async function AddApprenticeship(apprenticeship) {
+  // const validationResult = apprenticeshipSchema.validate(apprenticeship, {
+  //   abortEarly: true,
+  // });
+
+  // const res = await uploadToFireStore(apprenticeship.logo);
+  apprenticeship.roles = apprenticeship.roles.map((role) => {
+    return { ...new Role(role) };
+  });
+  apprenticeship.members = apprenticeship.members.map((member) => {
+    return { ...new TeamMember(member) };
+  });
+  return await commit(apprenticeship);
 }
 
 //GET DB to API
 //int ID => Apprenticeship object / null
-function ViewApprenticeship(ID) {
-  //TODO: 1- Validation
-  //ValidateApprenticeship()
-  //TODO: 2- return from DB
-  //returnApprenticeship()
-  getApprenticeship(ID)
-    .then(async (apprenticeship) => {
-      try {
-        await apprenticeshipSchema.validateAsync(apprenticeship);
-        return new Apprenticeship(apprenticeship);
-      } catch (err) {
-        console.log(err);
-        return null;
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-      return null;
-    });
+function ViewApprenticeship(ID = null) {
+  return ID != null ? getApprenticeship(ID) : getAllApprenticeships();
 }
 
 //POST API -> DB
 //int ID => bool
 function DeleteApprenticeship(ID) {
-  //1- Validation
-  //ValidateApprenticeship()
-  //Delete Apprenticeship from DB and return true
-  //Delete()
-  //false
-  removeFromDB(ID)
-    .then(() => {
-      return true;
+  //TODO : 1- Validation
+  getApprenticeship(ID)
+    .then((apprenticeship) => {
+      if (apprenticeship == null) return false;
+      removeFromDB(ID)
+        .then(() => {
+          return true;
+        })
+        .catch((error) => {
+          console.log(error);
+          return false;
+        });
     })
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
       return false;
     });
 }
@@ -75,80 +60,56 @@ function DeleteApprenticeship(ID) {
 //POST API -> DB
 //old Apprenticeship ID, New Apprenticeship Object => bool
 function UpdateApprenticeship(apprenticeship) {
-  //1- Validation
-  //ValidateApprenticeship()
-  //2- Update Document by ID
-  //updateInDB()
-  updateInDB(apprenticeship.id, null, { ...apprenticeship })
-    .then(() => {
-      return true;
-    })
-    .catch((error) => {
-      console.log(error);
-      return false;
-    });
+  apprenticeship = Object.values(apprenticeship)[0];
+  const isValid = apprenticeshipSchema.validate(apprenticeship, {
+    abortEarly: true,
+  });
+  if (isValid.error) {
+    console.log(isValid.error);
+    return isValid.error;
+  }
+  return updateInDB(apprenticeship, null, null);
 }
 
-//TODO: 2- Add,Update,Delete,View --> Fields
+//Create, Read, Update, Delete --> Fields
 
 //Add Field value to Apprenticeship Object.
 //Field Name, Value, Apprenticeship object => bool
 function AddValue(fieldName, value, apprenticeship) {
-  //TODO 1- Validate FieldName
-  //ValidateField() -> Bool
-  apprenticeshipSchema
-    .validateAsync(apprenticeship)
-    .then(() => {
-      return updateInDB(apprenticeship.id, fieldName, value);
-    })
-    .catch((err) => {
-      console.log(err);
-      return false;
-    });
-  //TODO 2- Validate Value
-  //ValidateValue() => bool
-  //TODO 3- Add to Apprenticeship object
-  //updateInDB() => bool
-}
-
-//POST Update Value in Apprenticeship Document
-//Field Name, Value, Apprenticeship ID => bool
-function UpdateField(ID, fieldName, value) {
-  //TODO 1- Validate FieldName
-  //ValidateField() -> Bool
-  //TODO 2- Validate Value
-  //ValidateValue() => bool
-  //TODO 3- Validate Apprenticeship
-  //ValidateApprenticeship() => bool
-  //TODO 4- replace value in Firebase
-  //updateInDB() =>
-  return updateInDB(ID, fieldName, value)
-    .then(() => {
-      return true;
-    })
-    .catch((error) => {
-      console.log(error);
-      return false;
-    });
+  // 1- Validate FieldName
+  // 2- Validate Value
+  // 3- Add to Apprenticeship object
+  const isValid = apprenticeshipSchema.validate(apprenticeship, {
+    abortEarly: true,
+  });
+  if (isValid.error) {
+    console.log(isValid.error);
+    return isValid.error;
+  }
+  return updateInDB(apprenticeship.id, fieldName, value);
 }
 
 //POST Delete field from Apprenticeship Document
 //Apprenticeship ID, Field => Bool
-function DeleteField(ID, fieldName) {
-  //TODO 1- Validate FieldName
-  //ValidateField() -> bool
-  //TODO 2- Validate Apprenticeship
-  //ValidateApprenticeship() => bool
-  //TODO 3- Delete field from Apprenticeship Document
-  //removeFromDB() => bool
+async function DeleteField(ID, fieldName) {
+  const app = await getApprenticeship(ID);
+  if (app == null) return false;
   return removeFromDB(ID, fieldName);
 }
+
+function uploadFile(filePath) {
+  uploadToFireStore(filePath).catch((error) => {
+    console.log(error);
+    return false;
+  });
+}
+
 export {
   AddApprenticeship,
   ViewApprenticeship,
   DeleteApprenticeship,
   UpdateApprenticeship,
   AddValue,
-  UpdateField,
   DeleteField,
+  uploadFile,
 };

@@ -1,0 +1,115 @@
+.timeline {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 770px;
+  height: 136px;
+  background: #ffffff;
+  border: 1px solid #e2e6eb;
+  border-radius: 24px;
+}
+
+.timelineHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 722px;
+  height: 24px;
+}
+
+.timelineText {
+  width: 300px;
+  height: 24px;
+
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+
+  color: #1e1e1e;
+}
+
+.dates {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  isolation: isolate;
+  margin-top: 16px;
+  width: 722px;
+  height: 80px;
+}
+
+.date {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px 12px 12px 16px;
+  gap: 10px;
+
+  width: 353px;
+  height: 48px;
+
+  /* Snow */
+
+  background: #ffffff;
+  border: 1px solid #cfd3d9;
+  border-radius: 12px;
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  font-feature-settings: "liga" off;
+}
+.date:hover {
+  border: 1px solid #665fef;
+}
+.startDate-overwrite {
+  bottom: 0px;
+  margin-bottom: 12px;
+  margin-left: 18px;
+  position: absolute;
+  opacity: 1;
+  background: #ffffff;
+  pointer-events: none;
+  height: 20px;
+  width: 200px;
+  z-index: 0;
+}
+
+.endDate-overwrite {
+  bottom: 0px;
+  margin-bottom: 12px;
+  margin-left: 385px;
+  position: absolute;
+  opacity: 1;
+  background: #ffffff;
+  pointer-events: none;
+  height: 20px;
+  width: 200px;
+  z-index: 0;
+}
+
+.calendar {
+  position: absolute;
+  background: #ffffff;
+  margin-left: 316px;
+  margin-top: 4px;
+}

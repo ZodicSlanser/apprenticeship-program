@@ -69,6 +69,7 @@
 
 .panel-selected {
   box-sizing: border-box;
+  cursor: pointer;
   /* Auto layout */
 
   display: flex;
@@ -152,7 +153,7 @@
   align-items: center;
   padding: 0px;
   gap: 16px;
-
+  font-weight: 600;
   width: 722px;
   height: 24px;
 

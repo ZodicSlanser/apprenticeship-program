@@ -7,7 +7,6 @@ import {
   updateInDB,
 } from "./CRUD_OP.js";
 import { apprenticeshipSchema } from "../Firebase/Validation/ValidationSchema.js";
-import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 import { Role } from "../Firebase/Models/Role.js";
 import { TeamMember } from "../Firebase/Models/TeamMember.js";
 
@@ -15,31 +14,44 @@ import { TeamMember } from "../Firebase/Models/TeamMember.js";
 
 //POST Apprenticeship to DB
 //Apprenticeship object => bool
+
 async function AddApprenticeship(apprenticeship) {
+  apprenticeship.roles = apprenticeship.roles.map((role) => {
+    return { ...new Role(role) };
+  });
+  apprenticeship.members = apprenticeship.members.map((member) => {
+    return { ...new TeamMember(member) };
+  });
   const validationResult = apprenticeshipSchema.validate(apprenticeship, {
     abortEarly: true,
   });
-  //TODO: upload files
+  if (validationResult.error) {
+    return validationResult.error;
+  }
   const logoRes = await uploadToFireStore(
     apprenticeship.logo,
-    apprenticeship.id + "_logo",
-    "png"
+    apprenticeship.id + "_logo"
   );
   const videoRes = await uploadToFireStore(
     apprenticeship.introVideo[0],
-    apprenticeship.id + apprenticeship.introVideo[1],
-    "mp4"
+    apprenticeship.id + apprenticeship.introVideo[1]
   );
   apprenticeship.logo = logoRes;
   apprenticeship.introVideo = videoRes;
-  apprenticeship.members.map(async (member) => {
+
+  for (let i = 0; i < apprenticeship.members.length; i++) {
     const memberRes = await uploadToFireStore(
-      member.image,
-      apprenticeship.id + "_logo",
-      "png"
+      apprenticeship.members[i].photo,
+      apprenticeship.members[i].name + "_logo"
     );
-    member.image = memberRes;
-  });
+    apprenticeship.members[i].photo = memberRes;
+    if (i === apprenticeship.members.length - 1) {
+      return await commit(apprenticeship);
+    }
+  }
+}
+
+async function DuplicateApprenticeship(apprenticeship) {
   apprenticeship.roles = apprenticeship.roles.map((role) => {
     return { ...new Role(role) };
   });
@@ -128,6 +140,7 @@ export {
   ViewApprenticeship,
   DeleteApprenticeship,
   UpdateApprenticeship,
+  DuplicateApprenticeship,
   AddValue,
   DeleteField,
   uploadFile,

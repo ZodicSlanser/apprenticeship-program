@@ -5,6 +5,7 @@ import {
   DeleteField,
   UpdateApprenticeship,
   ViewApprenticeship,
+  DuplicateApprenticeship,
 } from "../CRUDS/CRUD.js";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 import Router from "express";
@@ -202,15 +203,15 @@ router.delete("/delete-field", (req, res) => {
 router.post("/duplicate", (req, res) => {
   console.log("receiving data ...");
   req.body.data.id = null;
-  AddApprenticeship(new Apprenticeship(req.body.data)).then((msg) => {
+  DuplicateApprenticeship(new Apprenticeship(req.body.data)).then((msg) => {
     res.send(`${msg}`);
   });
 });
 
-router.post("/add", (req, res) => {
+router.post("/add", async (req, res) => {
   console.log("receiving data ...");
   console.log(req.body);
-  const msg = AddApprenticeship(new Apprenticeship(req.body.data));
+  const msg = await AddApprenticeship(new Apprenticeship(req.body.data));
   res.send(`${msg}`);
 });
 router.get("/view", async (req, res) => {

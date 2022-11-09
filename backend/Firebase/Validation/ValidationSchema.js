@@ -21,7 +21,7 @@ const RoleSchema = joi.object({
   reqSkills: joi.array().items(joi.string().required()),
   compSkills: joi.array().items(joi.string().required()),
   hours: joi.number().required(),
-  location: joi.string().required(),
+  location: joi.array().items(joi.string()).required(),
 });
 //validate filed is string or number
 const apprenticeshipSchema = joi.object({
@@ -30,7 +30,7 @@ const apprenticeshipSchema = joi.object({
   title: joi.string().required(),
   compDesc: joi.string().required(),
   appDesc: joi.string().required(),
-  introVideo: joi.array().required(),
+  introVideo: joi.any().required(),
   teamType: joi.alternatives().try(joi.string(), joi.number()).required(),
   roles: joi.array().items(RoleSchema).required(),
   members: joi.array().items(TeamMemberSchema).required(),

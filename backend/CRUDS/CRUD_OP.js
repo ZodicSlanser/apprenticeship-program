@@ -130,7 +130,7 @@ function updateRole(role) {
     .set({ ...role }, { merge: true });
 }
 
-async function uploadToFireStore(file, fileName, type) {
+async function uploadToFireStore(file, fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const generationMatchPrecondition = 0;
   const storage = new Storage({
@@ -138,7 +138,7 @@ async function uploadToFireStore(file, fileName, type) {
     keyFilename: "../backend/secrets/privateKey.json",
   });
   const options = {
-    destination: fileName + "." + type,
+    destination: fileName,
     preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
   };
   let fileArrayBuffer = dataURItoBlob(file);
@@ -147,18 +147,15 @@ async function uploadToFireStore(file, fileName, type) {
   try {
     await storage
       .bucket(bucketName)
-      .file(fileName + "." + type)
+      .file(fileName)
       .save(fileUint8Array, options);
-    const url = await storage
-      .bucket(bucketName)
-      .file(fileName + "." + type)
-      .getSignedUrl({
-        action: "read",
-        expires: "03-09-2491",
-      });
+    const url = await storage.bucket(bucketName).file(fileName).getSignedUrl({
+      action: "read",
+      expires: "03-09-2491",
+    });
     return url;
   } catch (e) {
-    console.log(e);
+    console.log(e, "ASDfsdfasdfsdfsdfsdfsfd");
     return null;
   }
 }

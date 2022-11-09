@@ -20,14 +20,26 @@ async function AddApprenticeship(apprenticeship) {
     abortEarly: true,
   });
   //TODO: upload files
-  const logoRes = await uploadToFireStore(apprenticeship.logo,apprenticeship.id+"_logo","png");
-  const videoRes  await uploadToFireStore(apprenticeship.introVideo,apprenticeship.id+"_logo","mp4");
+  const logoRes = await uploadToFireStore(
+    apprenticeship.logo,
+    apprenticeship.id + "_logo",
+    "png"
+  );
+  const videoRes = await uploadToFireStore(
+    apprenticeship.introVideo[0],
+    apprenticeship.id + apprenticeship.introVideo[1],
+    "mp4"
+  );
   apprenticeship.logo = logoRes;
   apprenticeship.introVideo = videoRes;
-  apprenticeship.members.map((member) => {
-    const memberRes = await uploadToFireStore(member.image,apprenticeship.id+"_logo","png");
+  apprenticeship.members.map(async (member) => {
+    const memberRes = await uploadToFireStore(
+      member.image,
+      apprenticeship.id + "_logo",
+      "png"
+    );
     member.image = memberRes;
-  }
+  });
   apprenticeship.roles = apprenticeship.roles.map((role) => {
     return { ...new Role(role) };
   });

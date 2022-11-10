@@ -1,10 +1,8 @@
 import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
-import { getStorage, ref, uploadString } from "firebase/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
-import { tryParse } from "firebase-tools/lib/utils.js";
-import { Blob } from "buffer";
+
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
@@ -83,7 +81,6 @@ async function getAllApprenticeships() {
 //Apprenticeship ID, Field Name, Field Value => Bool
 //Updates Content of document or object
 async function updateInDB(Apprenticeship, fieldName = null, value = null) {
-  console.log(Apprenticeship);
   if (fieldName && value) {
     const res = await db()
       .collection("Apprenticeship")
@@ -97,15 +94,46 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     }
     return false;
   }
-  const res = await db()
-    .collection("Apprenticeship")
-    .doc(Apprenticeship.id)
-    .set({ ...Apprenticeship }, { merge: true });
-  if (res) {
-    console.log("Updated");
-    return true;
+  console.log(Apprenticeship);
+  const batch = db().batch();
+  Apprenticeship.roles.forEach((role) => {
+    role = { ...new Role(role) };
+    const roleRef = RolesCollection.doc(role.id);
+    batch.set(roleRef, role);
+  });
+  Apprenticeship.members.forEach((teamMember) => {
+    teamMember = { ...new TeamMember(teamMember) };
+    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+    batch.set(teamMemberRef, teamMember);
+  });
+  if (typeof Apprenticeship.logo === "string") {
+    Apprenticeship.logo = await uploadToFireStore(
+      Apprenticeship.logo,
+      Apprenticeship.id + "1" + "_logo.png"
+    );
   }
-  return false;
+  if (Apprenticeship.introVideo.length !== 2) {
+    Apprenticeship.introVideo = await uploadToFireStore(
+      Apprenticeship.introVideo[0],
+      Apprenticeship.introVideo[1]
+    );
+  }
+  for (let i = 0; i < Apprenticeship.members.length; i++) {
+    if (typeof Apprenticeship.members[i].photo === "string") {
+      Apprenticeship.members[i].photo = await uploadToFireStore(
+        Apprenticeship.members[i].photo,
+        Apprenticeship.id + "1" + "_image.png"
+      );
+    }
+    if (i === Apprenticeship.members.length - 1) {
+      batch.set(
+        ApprenticeshipCollection.doc(Apprenticeship.id),
+        { ...Apprenticeship },
+        { merge: true }
+      );
+      return await batch.commit();
+    }
+  }
 }
 
 function getAllMembers() {

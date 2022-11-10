@@ -37,7 +37,7 @@ async function AddApprenticeship(apprenticeship) {
     apprenticeship.id + apprenticeship.introVideo[1]
   );
   apprenticeship.logo = logoRes;
-  apprenticeship.introVideo = videoRes;
+  apprenticeship.introVideo = [...videoRes, apprenticeship.introVideo[1]];
 
   for (let i = 0; i < apprenticeship.members.length; i++) {
     const memberRes = await uploadToFireStore(

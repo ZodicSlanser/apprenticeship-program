@@ -6,11 +6,15 @@ import addCircle from "../../Assets/TeamAdmin/add-circle.svg";
 import infoCircle from "../../Assets/TeamAdmin/info-circle.svg";
 import link from "../../Assets/TeamAdmin/linkedin.svg";
 import trash from "../../Assets/TeamAdmin/close.svg";
+import { useLocation } from "react-router-dom";
 
 function TeamAdmin(props) {
+  const location = useLocation();
   const [modalOpen, setModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    location.state?.members ? location.state.members : []
+  );
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -43,6 +47,7 @@ function TeamAdmin(props) {
   const handleImage = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0]);
+      location.state.photo = null;
       setFormData((prevFormData) => {
         return {
           ...prevFormData,
@@ -58,6 +63,16 @@ function TeamAdmin(props) {
   };
   const removeAdmin = (index) => {
     setList(list.filter((el, i) => i !== index));
+  };
+
+  const createObject = (img) => {
+    let objectURL;
+    try {
+      objectURL = URL.createObjectURL(img);
+    } catch (e) {
+      objectURL = "";
+    }
+    return objectURL;
   };
 
   const handleChange = (e) => {
@@ -105,7 +120,11 @@ function TeamAdmin(props) {
                   {a.photo ? (
                     <img
                       className="preview"
-                      src={URL.createObjectURL(a.photo)}
+                      src={
+                        location.state?.members[index]?.photo
+                          ? a.photo
+                          : createObject(a.photo)
+                      }
                       alt="pic"
                     ></img>
                   ) : (

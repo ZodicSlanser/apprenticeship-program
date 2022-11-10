@@ -9,6 +9,7 @@ import dottedBox from "../../Assets/TeamType/dotted-box.svg";
 import box from "../../Assets/TeamType/box.svg";
 import infoCircle from "../../Assets/TeamType/info-circle.svg";
 import TeamTypeSelect from "./TeamTypeSelect";
+import { useLocation } from "react-router-dom";
 
 interface TeamTypePanelProps {
   invokeActivity: (x: null, y: Number) => void;
@@ -20,7 +21,10 @@ export default memo(function TeamTypePanel({
   invokeActivity,
   invokeType,
 }: TeamTypePanelProps) {
-  const [selected, setSelected] = useState(0);
+  const location = useLocation();
+  const [selected, setSelected] = useState(
+    location.state ? location.state.teamType : 0
+  );
 
   function handleSelect(selection: number) {
     setSelected(selection === selected ? 0 : selection);

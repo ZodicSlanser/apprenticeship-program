@@ -5,7 +5,10 @@ import add from "../../Assets/Header/add.svg";
 import addDone from "../../Assets/Header/add-done.svg";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
-import { addApprenticeship } from "../../API interface/API";
+import {
+  addApprenticeship,
+  updateApprenticeship,
+} from "../../API interface/API";
 
 async function decodeFile(file) {
   return new Promise((resolve, reject) => {
@@ -34,19 +37,27 @@ export default memo(function Header(props) {
   async function backendCall() {
     let apprenticeship = Object.assign({}, props.apprenticeship);
     apprenticeship.members = structuredClone(apprenticeship.members);
-    const videoName = apprenticeship.introVideo.name;
-    apprenticeship.logo = await decodeFile(apprenticeship.logo);
-    apprenticeship.introVideo = await decodeFile(apprenticeship.introVideo);
+    const videoName = apprenticeship.introVideo.name
+      ? apprenticeship.introVideo.name
+      : apprenticeship.introVideo[1];
+    apprenticeship.logo = !location.state?.logo
+      ? await decodeFile(apprenticeship.logo)
+      : apprenticeship.logo;
+    apprenticeship.introVideo = !location.state?.introVideo
+      ? await decodeFile(apprenticeship.introVideo[0])
+      : [apprenticeship.introVideo[0], videoName];
     for (let i = 0; i < apprenticeship.members.length; i++) {
-      apprenticeship.members[i].photo = await decodeFile(
-        apprenticeship.members[i].photo
-      );
+      apprenticeship.members[i].photo = !location.state?.members[i]?.photo
+        ? await decodeFile(apprenticeship.members[i].photo)
+        : apprenticeship.members[i].photo;
       if (i === apprenticeship.members.length - 1) {
         console.log(apprenticeship);
         apprenticeship.introVideo = [apprenticeship.introVideo, videoName];
-        addApprenticeship(apprenticeship, () => {});
+        if (location.state) updateApprenticeship(apprenticeship, () => {});
+        else addApprenticeship(apprenticeship, () => {});
       }
     }
+    navigate("/");
   }
   return (
     <div className="FlexContainer">

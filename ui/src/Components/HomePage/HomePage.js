@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, memo } from "react";
 import AddIcon from "../../Assets/HomePage/add-square.png";
 import CopyIcon from "../../Assets/HomePage/copy.png";
@@ -7,7 +7,6 @@ import trashIcon from "../../Assets/HomePage/trash.png";
 import "./HomePage.css";
 import {
   viewAllApprenticeships,
-  addApprenticeship,
   duplicateApprenticeship,
   deleteApprenticeship,
 } from "../../API interface/API";
@@ -15,9 +14,10 @@ import {
 let myApp;
 
 function HomePage() {
+  setTimeout(() => {}, 3000);
+  const location = useLocation();
   const navigate = useNavigate();
   const [Apprenticeships, setApprenticeships] = useState([]);
-
   function getApprenticeships(app) {
     myApp = app;
   }
@@ -84,6 +84,7 @@ function HomePage() {
                     <img
                       src={EditIcon}
                       alt="Edit Icon"
+                      style={{ cursor: "pointer" }}
                       onClick={() => {
                         Edit(Apprenticeship);
                       }}
@@ -91,6 +92,7 @@ function HomePage() {
                     <img
                       src={CopyIcon}
                       alt="Copy Icon"
+                      style={{ cursor: "pointer" }}
                       onClick={() => {
                         Duplicate(Apprenticeship);
                       }}
@@ -98,6 +100,7 @@ function HomePage() {
                     <img
                       src={trashIcon}
                       alt="Delete Icon"
+                      style={{ cursor: "pointer" }}
                       onClick={() => Delete(Apprenticeship)}
                     />
                   </div>

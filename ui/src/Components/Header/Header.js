@@ -37,22 +37,30 @@ export default memo(function Header(props) {
   async function backendCall() {
     let apprenticeship = Object.assign({}, props.apprenticeship);
     apprenticeship.members = structuredClone(apprenticeship.members);
+
     const videoName = apprenticeship.introVideo.name
       ? apprenticeship.introVideo.name
       : apprenticeship.introVideo[1];
+
     apprenticeship.logo = !location.state?.logo
       ? await decodeFile(apprenticeship.logo)
       : apprenticeship.logo;
+
     apprenticeship.introVideo = !location.state?.introVideo
       ? await decodeFile(apprenticeship.introVideo[0])
-      : [apprenticeship.introVideo[0], videoName];
+      : [location.state.introVideo, videoName];
+
+    console.log("INTRO VIDEO ====> " + location.state.introVideo);
+    console.log("INTRO VIDEO NAME ====> " + videoName);
+
     for (let i = 0; i < apprenticeship.members.length; i++) {
       apprenticeship.members[i].photo = !location.state?.members[i]?.photo
         ? await decodeFile(apprenticeship.members[i].photo)
         : apprenticeship.members[i].photo;
+
       if (i === apprenticeship.members.length - 1) {
-        console.log(apprenticeship);
-        apprenticeship.introVideo = [apprenticeship.introVideo, videoName];
+        console.log("APPRENTICESHIP INTRO VIDEO ====> " + apprenticeship.introVideo);
+        //apprenticeship.introVideo = [apprenticeship.introVideo, videoName];
         if (location.state) updateApprenticeship(apprenticeship, () => {});
         else addApprenticeship(apprenticeship, () => {});
       }

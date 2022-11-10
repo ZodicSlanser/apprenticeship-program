@@ -31,7 +31,6 @@ function TeamAdmin(props) {
     if (
       formData.name === "" ||
       formData.photo === "" ||
-      formData.socialURL === "" ||
       formData.email === ""
     ) {
       setErrorMessage("Please fill all the required fields");
@@ -47,7 +46,7 @@ function TeamAdmin(props) {
   const handleImage = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0]);
-      location.state.photo = null;
+      if (location.state) location.state.photo = null;
       setFormData((prevFormData) => {
         return {
           ...prevFormData,

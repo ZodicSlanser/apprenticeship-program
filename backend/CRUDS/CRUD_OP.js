@@ -2,6 +2,9 @@ import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
+import {Role} from "../Firebase/Models/Role.js";
+import {TeamMember} from "../Firebase/Models/TeamMember.js";
+import apprenticeship from "../routes/apprenticeship.js";
 
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
@@ -94,6 +97,7 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     }
     return false;
   }
+
   console.log(Apprenticeship);
   const batch = db().batch();
   Apprenticeship.roles.forEach((role) => {
@@ -112,12 +116,17 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
       Apprenticeship.id + "1" + "_logo.png"
     );
   }
-  if (Apprenticeship.introVideo.length !== 2) {
+
+  Apprenticeship.introVideo[1] = Apprenticeship.introVideo[0][1];
+  Apprenticeship.introVideo[0] = Apprenticeship.introVideo[0][0];
+
+  if (!isURL(Apprenticeship.introVideo[0])) {
+    console.log("Uploading Video");
     Apprenticeship.introVideo = await uploadToFireStore(
-      Apprenticeship.introVideo[0],
-      Apprenticeship.introVideo[1]
-    );
+        Apprenticeship.introVideo[0],
+        Apprenticeship.introVideo[1]);
   }
+
   for (let i = 0; i < Apprenticeship.members.length; i++) {
     if (typeof Apprenticeship.members[i].photo === "string") {
       Apprenticeship.members[i].photo = await uploadToFireStore(
@@ -125,15 +134,29 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
         Apprenticeship.id + "1" + "_image.png"
       );
     }
+
     if (i === Apprenticeship.members.length - 1) {
       batch.set(
         ApprenticeshipCollection.doc(Apprenticeship.id),
         { ...Apprenticeship },
         { merge: true }
       );
+      console.log(batch);
       return await batch.commit();
     }
   }
+}
+
+//check if string is URL
+function isURL(str) {
+  str = str.substring(0, 50);
+  const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+  return pattern.test(str);
 }
 
 function getAllMembers() {
@@ -187,6 +210,7 @@ async function uploadToFireStore(file, fileName) {
     return null;
   }
 }
+
 async function getFileFromFireStore(fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const storage = new Storage({

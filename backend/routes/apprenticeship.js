@@ -165,14 +165,17 @@ router.get("/view-all", (req, res) => {
     data.forEach((doc) => {
       apprenticeships.push(new Apprenticeship(doc.data()));
     });
-    console.log(apprenticeships);
+    console.log(
+      apprenticeships,
+      "Hello hi                                     asdasdas"
+    );
+
     res.send(apprenticeships);
   });
 });
 
 router.delete("/delete", (req, res) => {
   console.log("receiving data ...");
-  console.log(req.body?.id);
   const msg = DeleteApprenticeship(req.body?.id);
   res.send(`${msg}`);
 });
@@ -203,17 +206,14 @@ router.delete("/delete-field", (req, res) => {
 router.post("/duplicate", (req, res) => {
   console.log("receiving data ...");
   req.body.data.id = null;
-  console.log("asdklfnaslkfbighgbjn");
 
   DuplicateApprenticeship(new Apprenticeship(req.body.data)).then((msg) => {
-    console.log(msg, "asdklfnaslkfbighgbjn");
     res.send(msg);
   });
 });
 
 router.post("/add", async (req, res) => {
   console.log("receiving data ...");
-  console.log(req.body);
   const msg = await AddApprenticeship(new Apprenticeship(req.body.data));
   res.send(`${msg}`);
 });

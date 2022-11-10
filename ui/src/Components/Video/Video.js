@@ -6,7 +6,6 @@ import closeSquare from "../../Assets/Video/close-square.svg";
 import { useLocation } from "react-router-dom";
 function Video(props) {
   const location = useLocation();
-  console.log(location.state);
   const [active, setActive] = useState(false);
   const [video, setVideo] = useState(
     location.state?.introVideo ? location.state.introVideo[0] : null

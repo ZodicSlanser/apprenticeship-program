@@ -20,12 +20,12 @@ function MainPage() {
   const [title, setTitle] = useState(location.state?.title || "");
   const [logo, setLogo] = useState(location.state?.logo || "");
   const [companyDesc, setCompanyDesc] = useState(
-    location.state?.companyDesc || ""
+    location.state?.compDesc || ""
   );
   const [apprenticeshipDesc, setApprenticeshipDesc] = useState(
-    location.state?.apprenticeshipDesc || ""
+    location.state?.appDesc || ""
   );
-  const [video, setVideo] = useState(location.state?.video || "");
+  const [video, setVideo] = useState(location.state?.introVideo || "");
   const [type, setType] = useState(location.state?.type || "");
   const [roles, setRoles] = useState(location.state?.roles || []);
   const [admin, setAdmin] = useState(location.state?.admin || "");
@@ -46,7 +46,7 @@ function MainPage() {
     startDate: startDate,
     endDate: endDate,
   };
-
+  console.log(location.state);
   useEffect(() => {
     const handleScrolling = (event) => {
       if (contentRef !== null) {
@@ -80,7 +80,6 @@ function MainPage() {
     } else {
       if (invokeDescriptionSetter) {
         flags[componentID] = done;
-        console.log(done);
         if (flags[0] && flags[1] && flags[2] && flags[3])
           invokeDescriptionSetter(true);
         else invokeDescriptionSetter(false);

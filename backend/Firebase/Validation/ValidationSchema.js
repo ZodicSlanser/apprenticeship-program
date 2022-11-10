@@ -3,8 +3,8 @@ import joi from "joi";
 const TeamMemberSchema = joi.object({
   id: joi.string().required(),
   name: joi.string().required(),
-  photo: joi.array().items(joi.string()).required(),
-  socialURL: joi.string().required(),
+  photo: joi.string().required(),
+  socialURL: joi.any().optional().allow("", null),
 });
 
 const RoleSchema = joi.object({

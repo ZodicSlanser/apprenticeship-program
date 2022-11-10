@@ -21,7 +21,6 @@ function LogoTitle(props) {
     }
   }, []);
 
-  console.log(selectedImage);
   function createObject(img) {
     let objectURL;
     try {
@@ -40,7 +39,6 @@ function LogoTitle(props) {
   function typingDone(e) {
     if (title !== "") {
       setOpacity(1);
-      console.log(selectedImage, title);
       if (selectedImage) props.invokeLogoTitle(null, true, 0);
       else props.invokeLogoTitle(null, false, 0);
     } else {
@@ -118,7 +116,7 @@ function LogoTitle(props) {
               alt=""
               src={
                 location.state?.logo
-                  ? location.state?.logo[0]
+                  ? location.state?.logo
                   : createObject(selectedImage)
               }
             ></img>

@@ -23,9 +23,7 @@ function HomePage() {
   }
 
   function newApprenticeship(app) {
-    console.log(typeof app);
     const newApp = [...Apprenticeships, app];
-    console.log(newApp);
     setApprenticeships(newApp);
   }
 
@@ -44,7 +42,6 @@ function HomePage() {
   }, []);
 
   function Duplicate(Apprenticeship) {
-    console.log();
     duplicateApprenticeship(Apprenticeship, newApprenticeship);
   }
 

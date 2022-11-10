@@ -3,7 +3,6 @@ import { API_ROUTES } from "./Config";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
 const addApprenticeship = (postData, callback) => {
-  console.log(postData);
   sendRequest("POST", API_ROUTES.addApprenticeship, {
     data: postData,
   }).then(callback);
@@ -23,7 +22,6 @@ const viewAllApprenticeships = (callback) =>
 const sendRequest = async (method, uri, axiosOptions) => {
   try {
     const response = await axios[method.toLowerCase()](uri, axiosOptions);
-    console.log(response);
     return response.data;
   } catch (error) {
     return error;

@@ -35,38 +35,34 @@ export default memo(function Header(props) {
   }, [done, props]);
 
   async function backendCall() {
-    let apprenticeship = Object.assign({}, props.apprenticeship);
+    const apprenticeship = structuredClone(props.apprenticeship);
     apprenticeship.members = structuredClone(apprenticeship.members);
+    apprenticeship.logo = location.state?.logo
+      ? apprenticeship.logo
+      : await decodeFile(apprenticeship.logo);
+    console.log(apprenticeship, "apprenticeship");
 
-    const videoName = apprenticeship.introVideo.name
-      ? apprenticeship.introVideo.name
-      : apprenticeship.introVideo[1];
-
-    apprenticeship.logo = !location.state?.logo
-      ? await decodeFile(apprenticeship.logo)
-      : apprenticeship.logo;
-
-    apprenticeship.introVideo = !location.state?.introVideo
-      ? await decodeFile(apprenticeship.introVideo[0])
-      : [location.state.introVideo, videoName];
-
-    console.log("INTRO VIDEO ====> " + location.state.introVideo);
-    console.log("INTRO VIDEO NAME ====> " + videoName);
+    apprenticeship.introVideo = location.state?.introVideo
+      ? apprenticeship.introVideo
+      : [
+          await decodeFile(apprenticeship.introVideo),
+          apprenticeship.introVideo.name,
+        ];
 
     for (let i = 0; i < apprenticeship.members.length; i++) {
-      apprenticeship.members[i].photo = !location.state?.members[i]?.photo
-        ? await decodeFile(apprenticeship.members[i].photo)
-        : apprenticeship.members[i].photo;
+      apprenticeship.members[i].photo = location.state?.members[i]?.photo
+        ? apprenticeship.members[i].photo
+        : await decodeFile(apprenticeship.members[i].photo);
 
       if (i === apprenticeship.members.length - 1) {
-        console.log("APPRENTICESHIP INTRO VIDEO ====> " + apprenticeship.introVideo);
-        //apprenticeship.introVideo = [apprenticeship.introVideo, videoName];
+        console.log(apprenticeship, "apprenticeship");
         if (location.state) updateApprenticeship(apprenticeship, () => {});
         else addApprenticeship(apprenticeship, () => {});
       }
     }
     navigate("/");
   }
+
   return (
     <div className="FlexContainer">
       <div className="back" onClick={navigateToHome}>

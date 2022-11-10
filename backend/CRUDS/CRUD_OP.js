@@ -2,8 +2,8 @@ import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
-import {Role} from "../Firebase/Models/Role.js";
-import {TeamMember} from "../Firebase/Models/TeamMember.js";
+import { Role } from "../Firebase/Models/Role.js";
+import { TeamMember } from "../Firebase/Models/TeamMember.js";
 import apprenticeship from "../routes/apprenticeship.js";
 
 const RolesCollection = db().collection("Roles");
@@ -98,7 +98,6 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     return false;
   }
 
-  console.log(Apprenticeship);
   const batch = db().batch();
   Apprenticeship.roles.forEach((role) => {
     role = { ...new Role(role) };
@@ -110,25 +109,23 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
     batch.set(teamMemberRef, teamMember);
   });
-  if (typeof Apprenticeship.logo === "string") {
+  if (!isURL(Apprenticeship.logo)) {
     Apprenticeship.logo = await uploadToFireStore(
       Apprenticeship.logo,
       Apprenticeship.id + "1" + "_logo.png"
     );
   }
-
-  Apprenticeship.introVideo[1] = Apprenticeship.introVideo[0][1];
-  Apprenticeship.introVideo[0] = Apprenticeship.introVideo[0][0];
-
+  console.log(Apprenticeship);
   if (!isURL(Apprenticeship.introVideo[0])) {
     console.log("Uploading Video");
-    Apprenticeship.introVideo = await uploadToFireStore(
-        Apprenticeship.introVideo[0],
-        Apprenticeship.introVideo[1]);
+    Apprenticeship.introVideo[0] = await uploadToFireStore(
+      Apprenticeship.introVideo[0],
+      Apprenticeship.introVideo[1]
+    );
   }
 
   for (let i = 0; i < Apprenticeship.members.length; i++) {
-    if (typeof Apprenticeship.members[i].photo === "string") {
+    if (!isURL(Apprenticeship.members[i].photo)) {
       Apprenticeship.members[i].photo = await uploadToFireStore(
         Apprenticeship.members[i].photo,
         Apprenticeship.id + "1" + "_image.png"
@@ -141,7 +138,6 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
         { ...Apprenticeship },
         { merge: true }
       );
-      console.log(batch);
       return await batch.commit();
     }
   }
@@ -149,13 +145,15 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
 
 //check if string is URL
 function isURL(str) {
-  str = str.substring(0, 50);
-  const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+  const pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
   return pattern.test(str);
 }
 
@@ -204,9 +202,9 @@ async function uploadToFireStore(file, fileName) {
       action: "read",
       expires: "03-09-2491",
     });
-    return url;
+    return url[0];
   } catch (e) {
-    console.log(e, "ASDfsdfasdfsdfsdfsdfsfd");
+    console.log(e);
     return null;
   }
 }
@@ -229,7 +227,7 @@ function dataURItoBlob(dataURI) {
   var byteString = atob(dataURI.split(",")[1]);
 
   // separate out the mime component
-  var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+  // var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
 
   // write the bytes of the string to an ArrayBuffer
   var ab = new ArrayBuffer(byteString.length);

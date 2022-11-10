@@ -12,7 +12,6 @@ export default memo(function ApprenticeshipDesc(props) {
   const location = useLocation();
   useEffect(() => {
     if (location.state?.appDesc) {
-      console.log(2);
       props.invokeApprenticeship(null, true, 2);
     }
   }, []);

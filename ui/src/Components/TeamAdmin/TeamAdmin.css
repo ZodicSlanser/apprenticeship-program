@@ -190,6 +190,7 @@ height: 24px; */
 .deleteAdmin {
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
 .popup-container {

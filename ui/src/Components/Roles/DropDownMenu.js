@@ -91,7 +91,7 @@ export default memo(function DropDownMenu(props) {
         <div
           className="skillMenuContent"
           style={
-            props.tabIndex === -4 ? { bottom: "-92px", height: "236px" } : null
+            props.tabIndex === -4 ? { bottom: "-7vh", height: "236px" } : null
           }
         >
           <div className="skillSearch">

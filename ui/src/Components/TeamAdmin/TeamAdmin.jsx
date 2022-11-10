@@ -44,7 +44,11 @@ function TeamAdmin(props) {
   };
 
   const handleImage = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
+    if (
+      e.target.files &&
+      e.target.files.length > 0 &&
+      e.target.files[0].type.split("/")[0] === "image"
+    ) {
       setSelectedImage(e.target.files[0]);
       if (location.state) location.state.photo = null;
       setFormData((prevFormData) => {

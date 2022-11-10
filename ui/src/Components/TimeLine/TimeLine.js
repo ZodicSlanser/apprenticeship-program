@@ -10,16 +10,37 @@ function TimeLine(props) {
   const [typing, setTyping] = useState(false);
   const [startDateFormatted, setStartDateFormatted] = useState("");
   const [endDateFormatted, setEndDateFormatted] = useState("");
-  const [showStart, setShowStart] = useState();
-  const [showEnd, setShowEnd] = useState();
+  const [showStart, setShowStart] = useState(
+    location.state?.startDate ? true : null
+  );
+  const [showEnd, setShowEnd] = useState(location.state?.endDate ? true : null);
   const endRef = useRef();
   const startRef = useRef();
+  useEffect(() => {
+    if (
+      (endDateFormatted && startDateFormatted) ||
+      (location.state?.startDate !== null && location.state?.endDate !== null)
+    )
+      props.invokeTimeline(null, true);
+    else {
+      props.invokeTimeline(null, false);
+    }
+  }, [endDateFormatted, startDateFormatted, props]);
 
   useEffect(() => {
-    if (endDateFormatted && startDateFormatted)
-      props.invokeTimeline(null, true);
-    else props.invokeTimeline(null, false);
-  }, [endDateFormatted, startDateFormatted, props]);
+    let date = new Date(startRef.current.defaultValue);
+    console.log(date);
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const month = date.toLocaleString("default", { month: "long" });
+    setStartDateFormatted(day + " " + month + " " + year);
+    let date2 = new Date(endRef.current.defaultValue);
+    console.log(date2);
+    const day2 = date2.getDate();
+    const year2 = date2.getFullYear();
+    const month2 = date2.toLocaleString("default", { month: "long" });
+    setEndDateFormatted(day2 + " " + month2 + " " + year2);
+  }, []);
 
   function handleClick() {
     setActive(true);
@@ -33,9 +54,17 @@ function TimeLine(props) {
     if (e.target.value === "") {
       setShowStart(false);
       setStartDateFormatted("");
+      if (location.state) location.state.startDate = null;
       return;
     }
     let date = new Date(e.target.value);
+    let date2 = new Date(endRef.current.value);
+    if (date2 < date) {
+      date = date2;
+      e.target.value = endRef.current.value;
+      return;
+    }
+    if (location.state) location.state.startDate = null;
     const day = date.getDate();
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
@@ -46,10 +75,17 @@ function TimeLine(props) {
     if (e.target.value === "") {
       setShowEnd(false);
       setEndDateFormatted("");
+      if (location.state) location.state.endDate = null;
       return;
     }
-
     let date = new Date(e.target.value);
+    let date2 = new Date(startRef.current.value);
+    if (date2 > date) {
+      date = date2;
+      e.target.value = startRef.current.value;
+      return;
+    }
+    if (location.state) location.state.endDate = null;
     const day = date.getDate();
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });

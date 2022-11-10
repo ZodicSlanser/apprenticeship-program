@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, memo } from "react";
 import AddIcon from "../../Assets/HomePage/add-square.png";
 import CopyIcon from "../../Assets/HomePage/copy.png";
@@ -14,8 +14,6 @@ import {
 let myApp;
 
 function HomePage() {
-  setTimeout(() => {}, 3000);
-  const location = useLocation();
   const navigate = useNavigate();
   const [Apprenticeships, setApprenticeships] = useState([]);
   function getApprenticeships(app) {
@@ -29,15 +27,8 @@ function HomePage() {
 
   useEffect(() => {
     viewAllApprenticeships(getApprenticeships).then(() => {
-      myApp.map((apprenticeship) => {
-        let startDate = apprenticeship.startDate._seconds / 1000;
-        let endDate = apprenticeship.endDate._seconds / 1000;
-        apprenticeship.startDate = new Date();
-        apprenticeship.endDate = new Date();
-        apprenticeship.startDate.setSeconds(startDate);
-        apprenticeship.endDate.setSeconds(endDate);
-      });
       setApprenticeships(myApp);
+      console.log(myApp);
     });
   }, []);
 

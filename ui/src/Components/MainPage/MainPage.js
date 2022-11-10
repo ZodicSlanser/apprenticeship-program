@@ -46,7 +46,6 @@ function MainPage() {
     startDate: startDate,
     endDate: endDate,
   };
-  console.log(location.state);
   useEffect(() => {
     const handleScrolling = (event) => {
       if (contentRef !== null) {

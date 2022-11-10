@@ -163,7 +163,16 @@ router.get("/view-all", (req, res) => {
   ViewApprenticeship().then((data) => {
     const apprenticeships = [];
     data.forEach((doc) => {
-      apprenticeships.push(new Apprenticeship(doc.data()));
+      let apprenticeship = new Apprenticeship(doc.data());
+      apprenticeship.startDate = apprenticeship.startDate
+        .toDate("MM-DD-YYYY")
+        .toISOString()
+        .split("T")[0];
+      apprenticeship.endDate = apprenticeship.endDate
+        .toDate("MM-DD-YYYY")
+        .toISOString()
+        .split("T")[0];
+      apprenticeships.push(apprenticeship);
     });
     console.log(
       apprenticeships,

@@ -98,6 +98,12 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     return false;
   }
 
+  Apprenticeship.startDate = db.Timestamp.fromDate(
+    new Date(Apprenticeship.startDate)
+  );
+  Apprenticeship.endDate = db.Timestamp.fromDate(
+    new Date(Apprenticeship.endDate)
+  );
   const batch = db().batch();
   Apprenticeship.roles.forEach((role) => {
     role = { ...new Role(role) };

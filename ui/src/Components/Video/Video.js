@@ -24,7 +24,7 @@ function Video(props) {
   }
 
   function handleChange(e) {
-    if (e.target.files[0]) {
+    if (e.target.files[0] && e.target.files[0].type === "video/mp4") {
       setVideo(e.target.files[0]);
       if (location.state) location.state.introVideo = null;
       props.setVideo(e.target.files[0]);

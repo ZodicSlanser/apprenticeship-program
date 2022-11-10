@@ -40,7 +40,6 @@ export default memo(function Header(props) {
     apprenticeship.logo = location.state?.logo
       ? apprenticeship.logo
       : await decodeFile(apprenticeship.logo);
-    console.log(apprenticeship, "apprenticeship");
 
     apprenticeship.introVideo = location.state?.introVideo
       ? apprenticeship.introVideo
@@ -55,7 +54,6 @@ export default memo(function Header(props) {
         : await decodeFile(apprenticeship.members[i].photo);
 
       if (i === apprenticeship.members.length - 1) {
-        console.log(apprenticeship, "apprenticeship");
         if (location.state) updateApprenticeship(apprenticeship, () => {});
         else addApprenticeship(apprenticeship, () => {});
       }

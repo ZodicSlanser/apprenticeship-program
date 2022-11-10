@@ -52,13 +52,18 @@ function LogoTitle(props) {
     props.setTitle(e.target.value);
   }
   function handleChange(e) {
-    if (e.target.files[0]) {
+    if (e.target.files[0] && e.target.files[0].type.split("/")[0] === "image") {
       setSelectedImage(e.target.files[0]);
       props.setLogo(e.target.files[0]);
       if (location.state) location.state.logo = null;
     }
 
-    if (title !== "" && (e.target.files[0] || selectedImage)) {
+    if (
+      title !== "" &&
+      ((e.target.files[0] &&
+        e.target.files[0].type.split("/")[0] === "image") ||
+        selectedImage)
+    ) {
       props.invokeLogoTitle(null, true, 0);
     } else {
       props.invokeLogoTitle(null, false, 0);

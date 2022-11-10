@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, memo } from "react";
+import { useLocation } from "react-router-dom";
 import ApprenticeshipDesc from "../AprenticeshipDescription/ApprenticeshipDesc";
 import CompanyDesc from "../CompanyDesc/CompanyDesc";
 import Header from "../Header/Header";
@@ -15,19 +16,25 @@ let lock = false;
 let flags = [false, false, false, false];
 
 function MainPage() {
-  const [title, setTitle] = useState("");
-  const [logo, setLogo] = useState("");
-  const [companyDesc, setCompanyDesc] = useState("");
-  const [apprenticeshipDesc, setApprenticeshipDesc] = useState("");
-  const [video, setVideo] = useState("");
-  const [type, setType] = useState("");
-  const [roles, setRoles] = useState([]);
-  const [admin, setAdmin] = useState([]);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const location = useLocation();
+  const [title, setTitle] = useState(location.state?.title || "");
+  const [logo, setLogo] = useState(location.state?.logo || "");
+  const [companyDesc, setCompanyDesc] = useState(
+    location.state?.compDesc || ""
+  );
+  const [apprenticeshipDesc, setApprenticeshipDesc] = useState(
+    location.state?.appDesc || ""
+  );
+  const [video, setVideo] = useState(location.state?.introVideo || "");
+  const [type, setType] = useState(location.state?.type || "");
+  const [roles, setRoles] = useState(location.state?.roles || []);
+  const [admin, setAdmin] = useState(location.state?.admin || "");
+  const [startDate, setStartDate] = useState(location.state?.startDate || "");
+  const [endDate, setEndDate] = useState(location.state?.endDate || "");
   const [contentHover, setContentHover] = useState(false);
   const contentRef = useRef(null);
   const apprenticeship = {
+    id: location.state ? location.state.id : null,
     title: title,
     logo: logo,
     teamType: type,
@@ -39,7 +46,7 @@ function MainPage() {
     startDate: startDate,
     endDate: endDate,
   };
-
+  console.log(location.state);
   useEffect(() => {
     const handleScrolling = (event) => {
       if (contentRef !== null) {
@@ -74,7 +81,8 @@ function MainPage() {
       if (invokeDescriptionSetter) {
         flags[componentID] = done;
         if (flags[0] && flags[1] && flags[2] && flags[3])
-          invokeDescriptionSetter(done);
+          invokeDescriptionSetter(true);
+        else invokeDescriptionSetter(false);
       }
     }
   };

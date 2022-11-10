@@ -1,12 +1,19 @@
-import { useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
 import "./CompanyDesc.css";
 import exclmark from "../../Assets/CompanyDesc/exclmark.svg";
 import TextareaAutosize from "react-textarea-autosize";
+import { useLocation } from "react-router-dom";
 
 export default memo(function CompanyDesc(props) {
   const [opacity, setOpacity] = useState(0.3);
   const [typing, setTyping] = useState(false);
   const [active, setActive] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state?.compDesc) {
+      props.invokeCompany(null, true, 1);
+    }
+  }, []);
 
   return (
     <div>
@@ -42,10 +49,12 @@ export default memo(function CompanyDesc(props) {
           <TextareaAutosize
             className="textarea"
             placeholder={"Enter Description"}
+            defaultValue={location.state ? location.state.compDesc : null}
             onBlur={(e) => {
               setActive(false);
               props.setCompanyDesc(e.target.value);
               if (e.target.value !== "") {
+                if (location.state) location.state.compDesc = null;
                 setOpacity(1);
                 props.invokeCompany(null, true, 1);
               } else {

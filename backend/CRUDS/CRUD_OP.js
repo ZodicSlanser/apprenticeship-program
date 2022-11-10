@@ -2,7 +2,9 @@ import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
-import { tryParse } from "firebase-tools/lib/utils.js";
+import { Role } from "../Firebase/Models/Role.js";
+import { TeamMember } from "../Firebase/Models/TeamMember.js";
+import apprenticeship from "../routes/apprenticeship.js";
 
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
@@ -12,26 +14,20 @@ const ApprenticeshipCollection = db().collection("Apprenticeship");
 async function commit(apprenticeship) {
   const batch = db().batch();
   const params = { ...apprenticeship };
-  //TODO: delete this line when the frontend is done
-  Object.keys(params).forEach((key) => {
-    if (params[key] === undefined) {
-      delete params[key];
-    }
-  });
   params.startDate = db.Timestamp.fromDate(new Date(params.startDate));
   params.endDate = db.Timestamp.fromDate(new Date(params.endDate));
   Object.values(apprenticeship.roles).forEach((role) => {
     const roleRef = RolesCollection.doc(role.id);
     batch.set(roleRef, role);
   });
-  // Object.values(apprenticeship.members).forEach((teamMember) => {
-  //   const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
-  //   batch.set(teamMemberRef, teamMember );
-  // });
+  Object.values(apprenticeship.members).forEach((teamMember) => {
+    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+    batch.set(teamMemberRef, teamMember);
+  });
   batch.set(ApprenticeshipCollection.doc(params.id), params);
   try {
     await batch.commit();
-    return apprenticeship.id;
+    return apprenticeship;
   } catch (e) {
     console.log(e);
     return e;
@@ -88,7 +84,6 @@ async function getAllApprenticeships() {
 //Apprenticeship ID, Field Name, Field Value => Bool
 //Updates Content of document or object
 async function updateInDB(Apprenticeship, fieldName = null, value = null) {
-  console.log(Apprenticeship);
   if (fieldName && value) {
     const res = await db()
       .collection("Apprenticeship")
@@ -102,15 +97,64 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     }
     return false;
   }
-  const res = await db()
-    .collection("Apprenticeship")
-    .doc(Apprenticeship.id)
-    .set({ ...Apprenticeship }, { merge: true });
-  if (res) {
-    console.log("Updated");
-    return true;
+
+  const batch = db().batch();
+  Apprenticeship.roles.forEach((role) => {
+    role = { ...new Role(role) };
+    const roleRef = RolesCollection.doc(role.id);
+    batch.set(roleRef, role);
+  });
+  Apprenticeship.members.forEach((teamMember) => {
+    teamMember = { ...new TeamMember(teamMember) };
+    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+    batch.set(teamMemberRef, teamMember);
+  });
+  if (!isURL(Apprenticeship.logo)) {
+    Apprenticeship.logo = await uploadToFireStore(
+      Apprenticeship.logo,
+      Apprenticeship.id + "1" + "_logo.png"
+    );
   }
-  return false;
+  console.log(Apprenticeship);
+  if (!isURL(Apprenticeship.introVideo[0])) {
+    console.log("Uploading Video");
+    Apprenticeship.introVideo[0] = await uploadToFireStore(
+      Apprenticeship.introVideo[0],
+      Apprenticeship.introVideo[1]
+    );
+  }
+
+  for (let i = 0; i < Apprenticeship.members.length; i++) {
+    if (!isURL(Apprenticeship.members[i].photo)) {
+      Apprenticeship.members[i].photo = await uploadToFireStore(
+        Apprenticeship.members[i].photo,
+        Apprenticeship.id + "1" + "_image.png"
+      );
+    }
+
+    if (i === Apprenticeship.members.length - 1) {
+      batch.set(
+        ApprenticeshipCollection.doc(Apprenticeship.id),
+        { ...Apprenticeship },
+        { merge: true }
+      );
+      return await batch.commit();
+    }
+  }
+}
+
+//check if string is URL
+function isURL(str) {
+  const pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return pattern.test(str);
 }
 
 function getAllMembers() {
@@ -135,8 +179,7 @@ function updateRole(role) {
     .set({ ...role }, { merge: true });
 }
 
-async function uploadToFireStore(filePath) {
-  const fileName = filePath.split("/").pop();
+async function uploadToFireStore(file, fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const generationMatchPrecondition = 0;
   const storage = new Storage({
@@ -147,8 +190,19 @@ async function uploadToFireStore(filePath) {
     destination: fileName,
     preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
   };
+  let fileArrayBuffer = dataURItoBlob(file);
+  var fileUint8Array = new Uint8Array(fileArrayBuffer);
+
   try {
-    return await storage.bucket(bucketName).upload(filePath, options);
+    await storage
+      .bucket(bucketName)
+      .file(fileName)
+      .save(fileUint8Array, options);
+    const url = await storage.bucket(bucketName).file(fileName).getSignedUrl({
+      action: "read",
+      expires: "03-09-2491",
+    });
+    return url[0];
   } catch (e) {
     console.log(e);
     return null;
@@ -167,7 +221,27 @@ async function getFileFromFireStore(fileName) {
   await storage.bucket(bucketName).file(fileName).download(options);
   console.log(`${fileName} downloaded from ${bucketName}`);
 }
+function dataURItoBlob(dataURI) {
+  // convert base64 to raw binary data held in a string
+  // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+  var byteString = atob(dataURI.split(",")[1]);
 
+  // separate out the mime component
+  // var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
+  // write the bytes of the string to an ArrayBuffer
+  var ab = new ArrayBuffer(byteString.length);
+
+  // create a view into the buffer
+  var ia = new Uint8Array(ab);
+
+  // set the bytes of the buffer to the correct values
+  for (var i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  // write the ArrayBuffer to a blob, and you're done
+  return ab;
+}
 export {
   commit,
   removeFromDB,

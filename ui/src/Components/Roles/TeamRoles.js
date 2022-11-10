@@ -4,8 +4,12 @@ import infoCircle from "../../Assets/Roles/info-circle.svg";
 import "./TeamRoles.css";
 import Roles from "./Roles.jsx";
 import PopForm from "./PopForm";
+import { useLocation } from "react-router-dom";
 export default memo(function TeamRoles(props) {
-  const [listOfRoles, setRoles] = useState([]);
+  const location = useLocation();
+  const [listOfRoles, setRoles] = useState(
+    location.state ? location.state.roles : []
+  );
   const [showPopForm, setShowPopForm] = useState(false);
   useEffect(() => {
     props.invokeRoles(null, listOfRoles.length > 0 ? true : false);

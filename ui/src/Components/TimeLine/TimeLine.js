@@ -2,8 +2,10 @@ import { useState, memo, useEffect, useRef } from "react";
 import "./TimeLine.css";
 import infoCircle from "../../Assets/TimeLine/info-circle.svg";
 import calendar from "../../Assets/TimeLine/calendar.svg";
+import { useLocation } from "react-router-dom";
 
 function TimeLine(props) {
+  const location = useLocation();
   const [active, setActive] = useState(false);
   const [typing, setTyping] = useState(false);
   const [startDateFormatted, setStartDateFormatted] = useState("");
@@ -28,7 +30,6 @@ function TimeLine(props) {
   }
 
   function handleDateChangeStart(e) {
-    props.setStartDate(e.target.value);
     if (e.target.value === "") {
       setShowStart(false);
       setStartDateFormatted("");
@@ -38,10 +39,10 @@ function TimeLine(props) {
     const day = date.getDate();
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
+    props.setStartDate(date);
     setStartDateFormatted(day + " " + month + " " + year);
   }
   function handleDateChangeEnd(e) {
-    props.setEndDate(e.target.value);
     if (e.target.value === "") {
       setShowEnd(false);
       setEndDateFormatted("");
@@ -52,6 +53,7 @@ function TimeLine(props) {
     const day = date.getDate();
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
+    props.setEndDate(date);
     setEndDateFormatted(day + " " + month + " " + year);
   }
   function handleStartCalendar() {
@@ -99,6 +101,7 @@ function TimeLine(props) {
           type={"text"}
           className="date"
           placeholder="Start Date"
+          defaultValue={location.state ? location.state.startDate : null}
           onBlur={(e) => {
             handleBlur();
             props.invokeActivity(null, 0, false);
@@ -135,6 +138,7 @@ function TimeLine(props) {
           type={"text"}
           className="date"
           placeholder="Estimated End Date"
+          defaultValue={location.state ? location.state.endDate : null}
           onBlur={(e) => {
             handleBlur();
             props.invokeActivity(null, 0, false);

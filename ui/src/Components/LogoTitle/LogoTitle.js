@@ -1,14 +1,35 @@
-import { useState, useRef, memo } from "react";
+import { useState, useRef, memo, useEffect } from "react";
 import "./LogoTitle.css";
 import image from "../../Assets/LogoTitle/image.svg";
 import infoCircle from "../../Assets/LogoTitle/info-circle.svg";
+import { useLocation } from "react-router-dom";
 function LogoTitle(props) {
+  const location = useLocation();
   const [active, setActive] = useState(false);
   const [opacity, setOpacity] = useState(0.3);
-  const [selectedImage, setSelectedImage] = useState();
-  const [title, setTitle] = useState("");
+  const [selectedImage, setSelectedImage] = useState(
+    location.state?.logo ? location.state?.logo : null
+  );
+  const [title, setTitle] = useState(
+    location.state ? location.state?.title : null
+  );
   const [typing, setTyping] = useState(false);
   const inputFile = useRef(null);
+  useEffect(() => {
+    if (location.state?.title && location.state?.logo) {
+      props.invokeLogoTitle(null, true, 0);
+    }
+  }, []);
+
+  function createObject(img) {
+    let objectURL;
+    try {
+      objectURL = URL.createObjectURL(img);
+    } catch (e) {
+      objectURL = "";
+    }
+    return objectURL;
+  }
   function handleClick() {
     setActive(true);
   }
@@ -27,12 +48,14 @@ function LogoTitle(props) {
   }
   function handleTitleChange(e) {
     setTitle(e.target.value);
+    if (location.state) location.state.title = null;
     props.setTitle(e.target.value);
   }
   function handleChange(e) {
     if (e.target.files[0]) {
       setSelectedImage(e.target.files[0]);
       props.setLogo(e.target.files[0]);
+      if (location.state) location.state.logo = null;
     }
 
     if (title !== "" && (e.target.files[0] || selectedImage)) {
@@ -91,7 +114,11 @@ function LogoTitle(props) {
             <img
               className="logoRectangle"
               alt=""
-              src={URL.createObjectURL(selectedImage)}
+              src={
+                location.state?.logo
+                  ? location.state?.logo
+                  : createObject(selectedImage)
+              }
             ></img>
           ) : (
             <></>
@@ -115,6 +142,7 @@ function LogoTitle(props) {
           type={"text"}
           className="logoTitleText"
           placeholder="Enter Apprenticeship Title"
+          defaultValue={location.state ? location.state.title : null}
           onBlur={() => {
             handleBlur();
             props.invokeActivity(null, 0, false);

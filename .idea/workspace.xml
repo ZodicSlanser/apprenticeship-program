@@ -1,128 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="reverted last commit">
+    <list default="true" id="dfd117b4-34a7-45ff-a118-b11f15b937f3" name="Changes" comment="Fixed bug when duplicating app">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/secrets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/secrets/privateKey.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/HomePage/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/CRUDS/CRUD.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CRUDS/CRUD.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Firebase/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Firebase/Database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/apprenticeship.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/apprenticeship.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/API interface/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/API interface/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/Components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/Components/TimeLine/TimeLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/Components/TimeLine/TimeLine.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ui" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2GlEvr5vRyGV1gw9swZkhYVdJTJ" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/apprenticeship-program/ui/src/Assets&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\apprenticeship-program\\ui\\node_modules\\typescript\\lib&quot;
-  }
-}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\apprenticeship-program\ui\src\Assets" />
-      <recent name="D:\apprenticeship-program\ui\src\Components\HomePage" />
-      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend/secrets" />
-      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/ui/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.App.js">
-    <configuration name="App.js" type="NodeJSConfigurationType" path-to-node="node" nameIsGenerated="true" path-to-js-file="App.js" working-dir="$PROJECT_DIR$/backend">
+  <component name="RunManager">
+    <configuration name="App.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="App.js" working-dir="$PROJECT_DIR$/backend">
       <method v="2" />
     </configuration>
-    <configuration name="react" type="NodeJSConfigurationType" path-to-js-file="src/App.js" working-dir="$PROJECT_DIR$/ui">
-      <method v="2" />
-    </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/ui/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Node.js.App.js" />
-      <item itemvalue="Node.js.react" />
-      <item itemvalue="npm.start" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.start" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="38079468-5f0b-42c4-a990-32611b2372ff" name="Changes" comment="" />
-      <created>1666955008685</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1666955008685</updated>
-      <workItem from="1666955014807" duration="11937000" />
-      <workItem from="1667043733957" duration="9534000" />
-      <workItem from="1667584614869" duration="5161000" />
-      <workItem from="1667591634470" duration="5735000" />
-    </task>
-    <task id="LOCAL-00001" summary="Added validation when Deleting and Updating Apprenticeship&#10;Added ``uploadToFireStore()`` to upload files to fireStorage&#10;Added ``getFileFromFireStore()`` to download files based on fileName">
-      <created>1666959669181</created>
+    <task id="LOCAL-00001" summary="Fixed bug when duplicating app">
+      <created>1668022410519</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1666959669185</updated>
+      <updated>1668022410519</updated>
     </task>
-    <task id="LOCAL-00002" summary="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship">
-      <created>1666963155147</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1666963155147</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -136,37 +68,35 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added validation when Deleting and Updating Apprenticeship&#10;Added ``uploadToFireStore()`` to upload files to fireStorage&#10;Added ``getFileFromFireStore()`` to download files based on fileName" />
-    <MESSAGE value="Added the ability to delete members and roles associated with the apprenticeship when deleting the apprenticeship" />
-    <MESSAGE value="reverted last commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="reverted last commit" />
+    <MESSAGE value="Fixed bug when duplicating app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug when duplicating app" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
-          <line>26</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/backend/routes/apprenticeship.js</url>
+          <line>202</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend/routes/apprenticeship.js</url>
+          <line>211</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
-          <line>133</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/CRUDS/CRUD_OP.js</url>
-          <line>145</line>
-          <option name="timeStamp" value="5" />
+          <line>143</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
-        <watch expression="apprenticeship" />
-        <watch expression="params" />
-        <watch expression="typeof role" language="JavaScript" />
-        <watch expression="Object.assign({}, role)" />
+        <watch expression="req.body.data" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>

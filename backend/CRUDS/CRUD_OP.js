@@ -1,10 +1,11 @@
 import db from "../Firebase/Database.js"; //Apprenticeship Object => bool
 import admin from "firebase-admin";
 import { Storage } from "@google-cloud/storage";
-import { getStorage, ref, uploadString } from "firebase/storage";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
-import { tryParse } from "firebase-tools/lib/utils.js";
-import { Blob } from "buffer";
+import { Role } from "../Firebase/Models/Role.js";
+import { TeamMember } from "../Firebase/Models/TeamMember.js";
+import apprenticeship from "../routes/apprenticeship.js";
+
 const RolesCollection = db().collection("Roles");
 const TeamMemberCollection = db().collection("TeamMembers");
 const ApprenticeshipCollection = db().collection("Apprenticeship");
@@ -26,7 +27,7 @@ async function commit(apprenticeship) {
   batch.set(ApprenticeshipCollection.doc(params.id), params);
   try {
     await batch.commit();
-    return apprenticeship.id;
+    return apprenticeship;
   } catch (e) {
     console.log(e);
     return e;
@@ -83,7 +84,6 @@ async function getAllApprenticeships() {
 //Apprenticeship ID, Field Name, Field Value => Bool
 //Updates Content of document or object
 async function updateInDB(Apprenticeship, fieldName = null, value = null) {
-  console.log(Apprenticeship);
   if (fieldName && value) {
     const res = await db()
       .collection("Apprenticeship")
@@ -97,15 +97,64 @@ async function updateInDB(Apprenticeship, fieldName = null, value = null) {
     }
     return false;
   }
-  const res = await db()
-    .collection("Apprenticeship")
-    .doc(Apprenticeship.id)
-    .set({ ...Apprenticeship }, { merge: true });
-  if (res) {
-    console.log("Updated");
-    return true;
+
+  const batch = db().batch();
+  Apprenticeship.roles.forEach((role) => {
+    role = { ...new Role(role) };
+    const roleRef = RolesCollection.doc(role.id);
+    batch.set(roleRef, role);
+  });
+  Apprenticeship.members.forEach((teamMember) => {
+    teamMember = { ...new TeamMember(teamMember) };
+    const teamMemberRef = TeamMemberCollection.doc(teamMember.id);
+    batch.set(teamMemberRef, teamMember);
+  });
+  if (!isURL(Apprenticeship.logo)) {
+    Apprenticeship.logo = await uploadToFireStore(
+      Apprenticeship.logo,
+      Apprenticeship.id + "1" + "_logo.png"
+    );
   }
-  return false;
+  console.log(Apprenticeship);
+  if (!isURL(Apprenticeship.introVideo[0])) {
+    console.log("Uploading Video");
+    Apprenticeship.introVideo[0] = await uploadToFireStore(
+      Apprenticeship.introVideo[0],
+      Apprenticeship.introVideo[1]
+    );
+  }
+
+  for (let i = 0; i < Apprenticeship.members.length; i++) {
+    if (!isURL(Apprenticeship.members[i].photo)) {
+      Apprenticeship.members[i].photo = await uploadToFireStore(
+        Apprenticeship.members[i].photo,
+        Apprenticeship.id + "1" + "_image.png"
+      );
+    }
+
+    if (i === Apprenticeship.members.length - 1) {
+      batch.set(
+        ApprenticeshipCollection.doc(Apprenticeship.id),
+        { ...Apprenticeship },
+        { merge: true }
+      );
+      return await batch.commit();
+    }
+  }
+}
+
+//check if string is URL
+function isURL(str) {
+  const pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return pattern.test(str);
 }
 
 function getAllMembers() {
@@ -130,7 +179,7 @@ function updateRole(role) {
     .set({ ...role }, { merge: true });
 }
 
-async function uploadToFireStore(file, fileName, type) {
+async function uploadToFireStore(file, fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const generationMatchPrecondition = 0;
   const storage = new Storage({
@@ -138,7 +187,7 @@ async function uploadToFireStore(file, fileName, type) {
     keyFilename: "../backend/secrets/privateKey.json",
   });
   const options = {
-    destination: fileName + "." + type,
+    destination: fileName,
     preconditionOpts: { ifGenerationMatch: generationMatchPrecondition },
   };
   let fileArrayBuffer = dataURItoBlob(file);
@@ -147,21 +196,19 @@ async function uploadToFireStore(file, fileName, type) {
   try {
     await storage
       .bucket(bucketName)
-      .file(fileName + "." + type)
+      .file(fileName)
       .save(fileUint8Array, options);
-    const url = await storage
-      .bucket(bucketName)
-      .file(fileName + "." + type)
-      .getSignedUrl({
-        action: "read",
-        expires: "03-09-2491",
-      });
-    return url;
+    const url = await storage.bucket(bucketName).file(fileName).getSignedUrl({
+      action: "read",
+      expires: "03-09-2491",
+    });
+    return url[0];
   } catch (e) {
     console.log(e);
     return null;
   }
 }
+
 async function getFileFromFireStore(fileName) {
   const bucketName = "gs://internship-db-1a1e1.appspot.com";
   const storage = new Storage({
@@ -180,7 +227,7 @@ function dataURItoBlob(dataURI) {
   var byteString = atob(dataURI.split(",")[1]);
 
   // separate out the mime component
-  var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+  // var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
 
   // write the bytes of the string to an ArrayBuffer
   var ab = new ArrayBuffer(byteString.length);

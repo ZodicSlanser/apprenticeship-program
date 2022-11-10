@@ -2,6 +2,7 @@ import { useEffect, useState, memo } from "react";
 import "./ProgressBar.css";
 import tickCircle from "../../Assets/ProgressBar/tick-circle.svg";
 import unTickCircle from "../../Assets/ProgressBar/untick-circle.svg";
+import { useLocation } from "react-router-dom";
 function ProgressBar(props) {
   const [activity, setActivity] = useState(0);
   const [descriptionDone, setDescriptionDone] = useState(false);
@@ -9,7 +10,6 @@ function ProgressBar(props) {
   const [rolesDone, setRolesDone] = useState(false);
   const [adminDone, setAdminDone] = useState(false);
   const [timelineDone, setTimelineDone] = useState(false);
-
   useEffect(() => {
     props.invokeActivity([activity, setActivity]);
     props.invokeDescription([descriptionDone, setDescriptionDone]);
@@ -17,7 +17,6 @@ function ProgressBar(props) {
     props.invokeRoles([rolesDone, setRolesDone]);
     props.invokeAdmin([adminDone, setAdminDone]);
     props.invokeTimeline([timelineDone, setTimelineDone]);
-
     if (descriptionDone && typeDone && rolesDone && adminDone && timelineDone)
       props.invokeDone(null, true);
     else props.invokeDone(null, false);

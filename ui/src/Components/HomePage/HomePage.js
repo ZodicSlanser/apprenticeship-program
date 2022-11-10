@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, memo } from "react";
 import AddIcon from "../../Assets/HomePage/add-square.png";
 import CopyIcon from "../../Assets/HomePage/copy.png";
@@ -8,39 +7,57 @@ import trashIcon from "../../Assets/HomePage/trash.png";
 import "./HomePage.css";
 import {
   viewAllApprenticeships,
-  addApprenticeship,
   duplicateApprenticeship,
   deleteApprenticeship,
 } from "../../API interface/API";
 
+let myApp;
+
 function HomePage() {
+  setTimeout(() => {}, 3000);
+  const location = useLocation();
   const navigate = useNavigate();
   const [Apprenticeships, setApprenticeships] = useState([]);
+  function getApprenticeships(app) {
+    myApp = app;
+  }
+
+  function newApprenticeship(app) {
+    const newApp = [...Apprenticeships, app];
+    setApprenticeships(newApp);
+  }
 
   useEffect(() => {
-    viewAllApprenticeships(setApprenticeships);
-  }, []);
-  useEffect(() => {
-    Apprenticeships.map((apprenticeship) => {
-      let startDate = apprenticeship.startDate._seconds / 1000;
-      let endDate = apprenticeship.endDate._seconds / 1000;
-      apprenticeship.startDate = new Date();
-      apprenticeship.endDate = new Date();
-      apprenticeship.startDate.setSeconds(startDate);
-      apprenticeship.endDate.setSeconds(endDate);
+    viewAllApprenticeships(getApprenticeships).then(() => {
+      myApp.map((apprenticeship) => {
+        let startDate = apprenticeship.startDate._seconds / 1000;
+        let endDate = apprenticeship.endDate._seconds / 1000;
+        apprenticeship.startDate = new Date();
+        apprenticeship.endDate = new Date();
+        apprenticeship.startDate.setSeconds(startDate);
+        apprenticeship.endDate.setSeconds(endDate);
+      });
+      setApprenticeships(myApp);
     });
-    setApprenticeships(Apprenticeships);
-  }, [Apprenticeships]);
+  }, []);
 
   function Duplicate(Apprenticeship) {
-    duplicateApprenticeship(Apprenticeship, () => {});
+    duplicateApprenticeship(Apprenticeship, newApprenticeship);
   }
+
   function Delete(Apprenticeship) {
-    deleteApprenticeship(Apprenticeship, () => {});
+    deleteApprenticeship(Apprenticeship.id, () => {});
+    setApprenticeships(
+      Apprenticeships.filter((app) => app.id !== Apprenticeship.id)
+    );
   }
   const navigateToMain = () => {
     navigate("/CreateApprenticeship");
   };
+
+  function Edit(apprenticeship) {
+    navigate("/CreateApprenticeship", { state: apprenticeship });
+  }
 
   return (
     <>
@@ -57,29 +74,44 @@ function HomePage() {
         <div className="Apprenticeships">
           {Apprenticeships.length > 0 &&
             Apprenticeships.map((Apprenticeship, index) => (
-              <div key={index} className="Apprenticeship">
-                <div key={index} className="ApprenticeshipTitleButtons">
+              <div key={Apprenticeship.id} className="Apprenticeship">
+                <div
+                  key={Apprenticeship.id}
+                  className="ApprenticeshipTitleButtons"
+                >
                   <h2>{Apprenticeship.title}</h2>
-                  <div className="buttons">
-                    <img src={EditIcon} alt="Edit Icon" />
+                  <div className="buttons" key={Apprenticeship.id}>
+                    <img
+                      src={EditIcon}
+                      alt="Edit Icon"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        Edit(Apprenticeship);
+                      }}
+                    />
                     <img
                       src={CopyIcon}
                       alt="Copy Icon"
-                      onClick={() => Duplicate(Apprenticeship)}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        Duplicate(Apprenticeship);
+                      }}
                     />
                     <img
                       src={trashIcon}
                       alt="Delete Icon"
+                      style={{ cursor: "pointer" }}
                       onClick={() => Delete(Apprenticeship)}
                     />
                   </div>
                 </div>
                 <p className="ApprenticeshipDesc">{Apprenticeship.appDesc}</p>
                 <div className="ApprenticeshipsTeamRoles">
-                  {Apprenticeship.roles.map((role) => (
-                    <div className="singleRole">{role.type}</div>
+                  {Apprenticeship.roles?.map((role) => (
+                    <div className="singleRole" key={role.id}>
+                      {role.type}
+                    </div>
                   ))}
-
                 </div>
               </div>
             ))}

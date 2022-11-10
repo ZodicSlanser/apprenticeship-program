@@ -3,7 +3,6 @@ import { API_ROUTES } from "./Config";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
 const addApprenticeship = (postData, callback) => {
-  console.log(postData.logo);
   sendRequest("POST", API_ROUTES.addApprenticeship, {
     data: postData,
   }).then(callback);
@@ -42,10 +41,12 @@ const addValue = (postData, callback) => {
   sendRequest("POST", API_ROUTES.addValue, { data: postData }).then(callback);
 };
 const duplicateApprenticeship = (postData, callback) => {
-  console.log(postData.startDate);
   sendRequest("POST", API_ROUTES.duplicateApprenticeship, {
     data: postData,
-  }).then(callback);
+  }).then((e) => {
+    console.log(e);
+    callback(e);
+  });
 };
 export {
   viewAllApprenticeships,

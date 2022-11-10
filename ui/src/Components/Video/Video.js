@@ -1,12 +1,21 @@
-import { useState, useRef, memo } from "react";
+import { useState, useRef, memo, useEffect } from "react";
 import "./Video.css";
 import uploadVideo from "../../Assets/Video/upload-video.svg";
 import infoCircle from "../../Assets/Video/info-circle.svg";
 import closeSquare from "../../Assets/Video/close-square.svg";
+import { useLocation } from "react-router-dom";
 function Video(props) {
+  const location = useLocation();
   const [active, setActive] = useState(false);
-  const [video, setVideo] = useState();
+  const [video, setVideo] = useState(
+    location.state?.introVideo ? location.state.introVideo[0] : null
+  );
   const inputFile = useRef(null);
+  useEffect(() => {
+    if (location.state?.introVideo) {
+      props.invokeVideo(null, true, 3);
+    }
+  }, []);
   function handleClick() {
     setActive(true);
   }
@@ -15,13 +24,14 @@ function Video(props) {
   }
 
   function handleChange(e) {
-    console.log(e.target.files);
     if (e.target.files[0]) {
       setVideo(e.target.files[0]);
+      if (location.state) location.state.introVideo = null;
       props.setVideo(e.target.files[0]);
+      if (location.state) location.state.introVideo = null;
       props.invokeVideo(null, true, 3);
     } else {
-      props.invokeVideo(null, false, 0);
+      props.invokeVideo(null, false, 3);
     }
   }
   function handleVideo(e) {
@@ -77,12 +87,18 @@ function Video(props) {
         ></img>
         {video && (
           <div className="video-tile">
-            <p className="video-tile-text">{video.name}</p>
+            <p className="video-tile-text">
+              {location.state?.introVideo
+                ? location.state.introVideo[1]
+                : video.name}
+            </p>
             <img
               src={closeSquare}
               alt="closeSquare"
               onClick={() => {
                 setVideo(null);
+                props.invokeVideo(null, false, 3);
+                if (location.state) location.state.introVideo = null;
                 inputFile.current.value = null;
               }}
               style={{ cursor: "pointer", marginRight: "10px" }}

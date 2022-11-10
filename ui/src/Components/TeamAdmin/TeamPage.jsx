@@ -87,7 +87,7 @@ function TeamPage(props) {
             <input
               type="url"
               placeholder="LinkedIn URL (optional)"
-              name="linkedinUrl"
+              name="socialURL"
               onChange={props.handleform}
             ></input>
           </div>

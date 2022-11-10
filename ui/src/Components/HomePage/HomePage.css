@@ -38,6 +38,7 @@
 }
 
 .CreateApperButton {
+  cursor: pointer;
   border: none;
   /* Auto layout */
   display: flex;
@@ -95,6 +96,7 @@
   gap: 20px;
   width: 365px;
   height: 246px;
+
   /* Snow */
   background: #ffffff;
   border: 1px solid #cfd3d9;
@@ -136,6 +138,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  height: 40px;
+  overflow-y: hidden;
   /* or 143% */
   letter-spacing: 0.3px;
   font-feature-settings: "liga" off;

@@ -1,4 +1,6 @@
-import { useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import "./ApprenticeshipDesc.css";
 import exclmark from "../../Assets/ApprenticeshipDescription/exclmark.svg";
 import TextareaAutosize from "react-textarea-autosize";
@@ -7,6 +9,12 @@ export default memo(function ApprenticeshipDesc(props) {
   const [opacity, setOpacity] = useState(0.3);
   const [typing, setTyping] = useState(false);
   const [active, setActive] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state?.appDesc) {
+      props.invokeApprenticeship(null, true, 2);
+    }
+  }, []);
 
   return (
     <div>
@@ -42,10 +50,12 @@ export default memo(function ApprenticeshipDesc(props) {
           <TextareaAutosize
             className="textarea"
             placeholder={"Enter Description"}
+            defaultValue={location.state ? location.state.appDesc : null}
             onBlur={(e) => {
               setActive(false);
               props.setApprenticeshipDesc(e.target.value);
               if (e.target.value !== "") {
+                if (location.state) location.state.appDesc = null;
                 setOpacity(1);
                 props.invokeApprenticeship(null, true, 2);
               } else {

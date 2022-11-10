@@ -6,15 +6,19 @@ import addCircle from "../../Assets/TeamAdmin/add-circle.svg";
 import infoCircle from "../../Assets/TeamAdmin/info-circle.svg";
 import link from "../../Assets/TeamAdmin/linkedin.svg";
 import trash from "../../Assets/TeamAdmin/close.svg";
+import { useLocation } from "react-router-dom";
 
 function TeamAdmin(props) {
+  const location = useLocation();
   const [modalOpen, setModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    location.state?.members ? location.state.members : []
+  );
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
-    socialUrl: "",
+    socialURL: "",
     photo: "",
     email: "",
   });
@@ -27,7 +31,6 @@ function TeamAdmin(props) {
     if (
       formData.name === "" ||
       formData.photo === "" ||
-      formData.socialURL === "" ||
       formData.email === ""
     ) {
       setErrorMessage("Please fill all the required fields");
@@ -43,6 +46,7 @@ function TeamAdmin(props) {
   const handleImage = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0]);
+      if (location.state) location.state.photo = null;
       setFormData((prevFormData) => {
         return {
           ...prevFormData,
@@ -58,6 +62,16 @@ function TeamAdmin(props) {
   };
   const removeAdmin = (index) => {
     setList(list.filter((el, i) => i !== index));
+  };
+
+  const createObject = (img) => {
+    let objectURL;
+    try {
+      objectURL = URL.createObjectURL(img);
+    } catch (e) {
+      objectURL = "";
+    }
+    return objectURL;
   };
 
   const handleChange = (e) => {
@@ -105,7 +119,11 @@ function TeamAdmin(props) {
                   {a.photo ? (
                     <img
                       className="preview"
-                      src={URL.createObjectURL(a.photo)}
+                      src={
+                        location.state?.members[index]?.photo
+                          ? a.photo
+                          : createObject(a.photo)
+                      }
                       alt="pic"
                     ></img>
                   ) : (
@@ -116,7 +134,7 @@ function TeamAdmin(props) {
                   </div>
                 </div>
                 <div className="IconsAdmin">
-                  <a href={a.socialUrl} className="LinkedInIcon">
+                  <a href={a.socialURL} className="LinkedInIcon">
                     <img src={link} alt="LinkedIn"></img>
                   </a>
 

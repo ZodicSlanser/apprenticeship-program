@@ -5,6 +5,7 @@ import {
   DeleteField,
   UpdateApprenticeship,
   ViewApprenticeship,
+  DuplicateApprenticeship,
 } from "../CRUDS/CRUD.js";
 import { Apprenticeship } from "../Firebase/Models/Apprenticeship.js";
 import Router from "express";
@@ -164,14 +165,17 @@ router.get("/view-all", (req, res) => {
     data.forEach((doc) => {
       apprenticeships.push(new Apprenticeship(doc.data()));
     });
-    console.log(apprenticeships);
+    console.log(
+      apprenticeships,
+      "Hello hi                                     asdasdas"
+    );
+
     res.send(apprenticeships);
   });
 });
 
 router.delete("/delete", (req, res) => {
   console.log("receiving data ...");
-  console.log(req.body?.id);
   const msg = DeleteApprenticeship(req.body?.id);
   res.send(`${msg}`);
 });
@@ -202,15 +206,15 @@ router.delete("/delete-field", (req, res) => {
 router.post("/duplicate", (req, res) => {
   console.log("receiving data ...");
   req.body.data.id = null;
-  AddApprenticeship(new Apprenticeship(req.body.data)).then((msg) => {
-    res.send(`${msg}`);
+
+  DuplicateApprenticeship(new Apprenticeship(req.body.data)).then((msg) => {
+    res.send(msg);
   });
 });
 
-router.post("/add", (req, res) => {
+router.post("/add", async (req, res) => {
   console.log("receiving data ...");
-  console.log(req.body);
-  const msg = AddApprenticeship(new Apprenticeship(req.body.data));
+  const msg = await AddApprenticeship(new Apprenticeship(req.body.data));
   res.send(`${msg}`);
 });
 router.get("/view", async (req, res) => {

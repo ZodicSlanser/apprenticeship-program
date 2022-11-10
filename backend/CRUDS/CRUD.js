@@ -30,7 +30,7 @@ async function AddApprenticeship(apprenticeship) {
   }
   const logoRes = await uploadToFireStore(
     apprenticeship.logo,
-    apprenticeship.id + "_logo"
+    apprenticeship.id + "_logo.png"
   );
   const videoRes = await uploadToFireStore(
     apprenticeship.introVideo[0],
@@ -42,20 +42,23 @@ async function AddApprenticeship(apprenticeship) {
   for (let i = 0; i < apprenticeship.members.length; i++) {
     const memberRes = await uploadToFireStore(
       apprenticeship.members[i].photo,
-      apprenticeship.members[i].name + "_logo"
+      apprenticeship.members[i].id + "_logo.png"
     );
     apprenticeship.members[i].photo = memberRes;
     if (i === apprenticeship.members.length - 1) {
-      return await commit(apprenticeship);
+      const result = await commit(apprenticeship);
+      return result.id;
     }
   }
 }
 
 async function DuplicateApprenticeship(apprenticeship) {
   apprenticeship.roles = apprenticeship.roles.map((role) => {
+    role.id = null;
     return { ...new Role(role) };
   });
   apprenticeship.members = apprenticeship.members.map((member) => {
+    member.id = null;
     return { ...new TeamMember(member) };
   });
   return await commit(apprenticeship);

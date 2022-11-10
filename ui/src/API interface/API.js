@@ -3,7 +3,7 @@ import { API_ROUTES } from "./Config";
 
 //adds the apprenticeship object to the Database and assigns an ID to it
 const addApprenticeship = (postData, callback) => {
-  console.log(postData.logo);
+  console.log(postData);
   sendRequest("POST", API_ROUTES.addApprenticeship, {
     data: postData,
   }).then(callback);
@@ -23,6 +23,7 @@ const viewAllApprenticeships = (callback) =>
 const sendRequest = async (method, uri, axiosOptions) => {
   try {
     const response = await axios[method.toLowerCase()](uri, axiosOptions);
+    console.log(response);
     return response.data;
   } catch (error) {
     return error;
@@ -42,10 +43,12 @@ const addValue = (postData, callback) => {
   sendRequest("POST", API_ROUTES.addValue, { data: postData }).then(callback);
 };
 const duplicateApprenticeship = (postData, callback) => {
-  console.log(postData.startDate);
   sendRequest("POST", API_ROUTES.duplicateApprenticeship, {
     data: postData,
-  }).then(callback);
+  }).then((e) => {
+    console.log(e);
+    callback(e);
+  });
 };
 export {
   viewAllApprenticeships,

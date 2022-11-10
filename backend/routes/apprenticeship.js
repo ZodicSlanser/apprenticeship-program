@@ -203,8 +203,11 @@ router.delete("/delete-field", (req, res) => {
 router.post("/duplicate", (req, res) => {
   console.log("receiving data ...");
   req.body.data.id = null;
+  console.log("asdklfnaslkfbighgbjn");
+
   DuplicateApprenticeship(new Apprenticeship(req.body.data)).then((msg) => {
-    res.send(`${msg}`);
+    console.log(msg, "asdklfnaslkfbighgbjn");
+    res.send(msg);
   });
 });
 

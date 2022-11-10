@@ -1,4 +1,5 @@
 import { useState, useEffect, memo } from "react";
+import { useLocation } from "react-router-dom";
 import arrowLeft from "../../Assets/Header/arrow-left.svg";
 import add from "../../Assets/Header/add.svg";
 import addDone from "../../Assets/Header/add-done.svg";
@@ -20,8 +21,7 @@ async function decodeFile(file) {
 export default memo(function Header(props) {
   const navigate = useNavigate();
   const [done, setDone] = useState();
-  const [apprenticeships, setApprenticeships] = useState([]);
-
+  const location = useLocation();
 
   const navigateToHome = () => {
     navigate("/");
@@ -31,12 +31,22 @@ export default memo(function Header(props) {
     props.invokeDone([done, setDone]);
   }, [done, props]);
 
-
   async function backendCall() {
     let apprenticeship = Object.assign({}, props.apprenticeship);
+    apprenticeship.members = structuredClone(apprenticeship.members);
+    const videoName = apprenticeship.introVideo.name;
     apprenticeship.logo = await decodeFile(apprenticeship.logo);
-    console.log(apprenticeship.logo);
-    addApprenticeship(apprenticeship, setApprenticeships);
+    apprenticeship.introVideo = await decodeFile(apprenticeship.introVideo);
+    for (let i = 0; i < apprenticeship.members.length; i++) {
+      apprenticeship.members[i].photo = await decodeFile(
+        apprenticeship.members[i].photo
+      );
+      if (i === apprenticeship.members.length - 1) {
+        console.log(apprenticeship);
+        apprenticeship.introVideo = [apprenticeship.introVideo, videoName];
+        addApprenticeship(apprenticeship, () => {});
+      }
+    }
   }
   return (
     <div className="FlexContainer">
@@ -44,7 +54,9 @@ export default memo(function Header(props) {
         <img src={arrowLeft} alt="arrow left" style={{ marginLeft: "24px" }} />{" "}
         <p style={{ marginLeft: "7px" }}> Back </p>{" "}
       </div>{" "}
-      <div className="title"> Creating Apprenticeship </div>{" "}
+      <div className="title">
+        {location.state ? "Editing Apprenticeship" : "Creating Apprenticeship"}{" "}
+      </div>{" "}
       <div className="publish">
         <button
           className={done ? "publish-button-ready" : "publish-button"}

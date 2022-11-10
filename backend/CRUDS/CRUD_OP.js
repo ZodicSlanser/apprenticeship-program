@@ -26,7 +26,7 @@ async function commit(apprenticeship) {
   batch.set(ApprenticeshipCollection.doc(params.id), params);
   try {
     await batch.commit();
-    return apprenticeship.id;
+    return apprenticeship;
   } catch (e) {
     console.log(e);
     return e;
